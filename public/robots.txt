@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ericblanklaw.com/sitemap-index.xml

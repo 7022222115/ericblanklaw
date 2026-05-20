@@ -1,0 +1,89 @@
+---
+const stats = [
+	{ value: "22+", label: "Years of Experience" },
+	{ value: "Millions", label: "Recovered for Clients" },
+	{ value: "Free", label: "Initial Consultation" },
+];
+---
+
+<section class="bg-white" aria-labelledby="about-heading">
+	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+		<div class="grid grid-cols-1 gap-10 lg:grid-cols-[320px_1fr] lg:items-start lg:gap-16">
+			<!-- Attorney photo -->
+			<div class="mx-auto w-full max-w-[320px] lg:mx-0">
+				<img
+					src="/Eric_Blank_01.jpg"
+					alt="Eric R. Blank — Personal Injury Attorney, Las Vegas"
+					width="600"
+					height="900"
+					loading="lazy"
+					class="h-auto w-full rounded-xl"
+				/>
+			</div>
+
+			<!-- Bio -->
+			<div>
+				<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+					Meet Your Attorney
+				</p>
+				<h2
+					id="about-heading"
+					class="mt-3 text-3xl font-bold tracking-tight text-brand-navy sm:text-4xl"
+				>
+					Eric R. Blank
+				</h2>
+				<p class="mt-2 text-lg font-semibold text-brand-gold sm:text-xl">
+					Former Insurance Defense Attorney. Now Fighting For You.
+				</p>
+
+				<div class="mt-6 space-y-4 text-base leading-relaxed text-pretty text-gray-600">
+					<p>
+						For years, Eric Blank worked for the insurance companies. As an insurance
+						defense attorney, he was hired to evaluate injury claims, find their weak
+						points, and keep payouts low. Today he stands on the opposite side — using
+						that insider knowledge to fight for the injured people those same companies
+						try to underpay.
+					</p>
+					<p>
+						With more than 22 years of legal experience, Eric has seen the claims process
+						from every angle. Before devoting his practice to injury victims, he defended
+						insurance carriers in court and served as general counsel for the local NBC
+						and Fox television affiliates. Today his focus is singular: representing
+						injured plaintiffs throughout Las Vegas and Clark County.
+					</p>
+					<p>
+						Eric left insurance defense for a straightforward reason — he wanted his work
+						to mean something. Helping injured people recover, rebuild, and hold the
+						responsible parties accountable is what drives him. That's the work he does
+						today, and he's recovered millions in verdicts and settlements doing it.
+					</p>
+				</div>
+
+				<!-- Stat callouts -->
+				<dl class="mt-8 grid grid-cols-3 gap-4 border-t border-gray-200 pt-8 sm:gap-6">
+					{
+						stats.map((stat) => (
+							<div>
+								<dt class="sr-only">{stat.label}</dt>
+								<dd>
+									<span class="block text-2xl font-extrabold text-brand-navy sm:text-3xl">
+										{stat.value}
+									</span>
+									<span class="mt-1 block text-sm text-gray-500">{stat.label}</span>
+								</dd>
+							</div>
+						))
+					}
+				</dl>
+
+				<!-- CTA -->
+				<a
+					href="https://ericblanklaw.com/our-firm/eric-r-blank/"
+					class="mt-8 inline-flex items-center justify-center rounded-md bg-brand-gold px-6 py-3 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b]"
+				>
+					Read Eric's Full Bio
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

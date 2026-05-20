@@ -1,0 +1,53 @@
+---
+const trustSignals = ["Available 24/7", "Free Consultation", "No Fees Unless We Win"];
+---
+
+<section class="bg-brand-navy text-white" aria-labelledby="midcta-heading">
+	<div class="mx-auto max-w-[700px] px-4 py-14 text-center sm:px-6 sm:py-16 lg:py-20">
+		<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+			Ready When You Are
+		</p>
+		<h2
+			id="midcta-heading"
+			class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+		>
+			Get Your Free Case Review
+		</h2>
+		<p class="mx-auto mt-4 max-w-lg text-base text-pretty text-white/70 sm:text-lg">
+			No fees unless we win. Just answer two quick questions and we'll call you within one
+			business day.
+		</p>
+
+		<a
+			href="#contact"
+			class="mt-8 inline-flex items-center justify-center rounded-lg bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:text-lg"
+		>
+			Request My Free Case Review
+		</a>
+
+		<p class="mt-5 text-sm text-white/70">
+			Prefer to call?{" "}
+			<a
+				href="tel:7022222115"
+				class="font-semibold text-white transition-colors hover:text-brand-gold"
+			>
+				(702) 222-2115
+			</a>
+		</p>
+
+		<ul class="mt-4 flex flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60">
+			{
+				trustSignals.map((signal, index) => (
+					<li
+						class:list={[
+							index > 0 &&
+								"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+						]}
+					>
+						{signal}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

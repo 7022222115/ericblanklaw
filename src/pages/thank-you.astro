@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import circleCheckBigIcon from 'lucide-static/icons/circle-check-big.svg?raw';
+
+const title = "Thank You — Eric Blank Injury Attorneys";
+const description =
+	"Your case review request has been received. Eric Blank Injury Attorneys will contact you within one business day.";
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/thank-you"
+			noindex={true}
+		/>
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<section class="bg-brand-navy text-white">
+				<div
+					class="mx-auto flex max-w-[640px] flex-col items-center px-4 py-20 text-center sm:px-6 sm:py-28 lg:py-32"
+				>
+					<span
+						class="text-brand-gold [&>svg]:size-16"
+						set:html={circleCheckBigIcon}
+						aria-hidden="true"
+					/>
+					<h1 class="mt-6 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Thanks. We Got It.
+					</h1>
+					<p class="mt-4 max-w-md text-base text-pretty text-white/70 sm:text-lg">
+						An attorney from our team will reach out to you within one business day —
+						usually much sooner.
+					</p>
+					<p class="mt-6 max-w-md text-base text-pretty text-white/80">
+						Need to speak with someone right now? Call{" "}
+						<a
+							href="tel:7022222115"
+							class="font-bold whitespace-nowrap text-brand-gold transition-colors hover:text-white"
+						>
+							(702) 222-2115
+						</a>{" "}
+						— we're available 24/7.
+					</p>
+					<a
+						href="/"
+						class="mt-10 text-sm font-semibold text-white/60 transition-colors hover:text-brand-gold"
+					>
+						← Return to homepage
+					</a>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

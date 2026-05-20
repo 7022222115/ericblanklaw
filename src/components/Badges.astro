@@ -1,0 +1,73 @@
+---
+const badges = [
+	{
+		src: "/Badge_SuperLawyers_2024.webp",
+		alt: "Super Lawyers 2024 — Eric R. Blank",
+		width: 200,
+		height: 200,
+	},
+	{
+		src: "/Badge_Martindale_AVPreeminent.webp",
+		alt: "Martindale-Hubbell AV Preeminent Rating",
+		width: 317,
+		height: 325,
+	},
+	{
+		src: "/Badge_Avvo_10Rating.png",
+		alt: "Avvo 10.0 Rating",
+		width: 273,
+		height: 210,
+	},
+	{
+		src: "/Badge_NTL_Top100.webp",
+		alt: "National Trial Lawyers Top 100",
+		width: 200,
+		height: 200,
+	},
+	{
+		src: "/Badge_LawyersOfDistinction.webp",
+		alt: "Lawyers of Distinction",
+		width: 200,
+		height: 200,
+	},
+];
+---
+
+<section class="bg-gray-50" aria-labelledby="badges-heading">
+	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+		<div class="mx-auto max-w-2xl text-center">
+			<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+				Recognized By
+			</p>
+			<h2
+				id="badges-heading"
+				class="mt-3 text-2xl font-bold tracking-tight text-balance text-brand-navy sm:text-3xl"
+			>
+				Industry-Leading Recognition
+			</h2>
+			<p class="mt-3 text-base text-pretty text-gray-600">
+				Eric Blank Injury Attorneys is consistently recognized by the legal industry's most
+				respected rating organizations.
+			</p>
+		</div>
+
+		<ul
+			class="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 sm:mt-12 sm:gap-x-12"
+		>
+			{
+				badges.map((badge) => (
+					<li>
+						<img
+							src={badge.src}
+							alt={badge.alt}
+							width={badge.width}
+							height={badge.height}
+							loading="lazy"
+							class="max-h-[60px] w-auto opacity-80 transition hover:opacity-100 sm:max-h-[80px]"
+						/>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
