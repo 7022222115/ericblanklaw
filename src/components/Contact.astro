@@ -2,6 +2,7 @@
 import checkCircleIcon from "lucide-static/icons/check-circle.svg?raw";
 import circleDollarSignIcon from "lucide-static/icons/circle-dollar-sign.svg?raw";
 import clockIcon from "lucide-static/icons/clock.svg?raw";
+import ContactForm from "./ContactForm.astro";
 
 const reasons = [
 	{ text: "Free, no-obligation case review", icon: checkCircleIcon },
@@ -57,63 +58,8 @@ const reasons = [
 				</p>
 			</div>
 
-			<!-- RIGHT: call-back form (submits to Formspree) -->
-			<div class="rounded-2xl bg-white p-6 text-brand-navy shadow-xl sm:p-8">
-				<h3 class="text-xl font-bold sm:text-2xl">Request a Call Back</h3>
-				<p class="mt-1 text-sm text-gray-500">We'll respond within 1 business day.</p>
-
-				<form
-					action="https://formspree.io/f/xjgzyjvz"
-					method="POST"
-					class="mt-6 space-y-4"
-				>
-					<div>
-						<label for="cb-name" class="block text-sm font-semibold">Full Name</label>
-						<input
-							type="text"
-							id="cb-name"
-							name="full_name"
-							required
-							autocomplete="name"
-							placeholder="Jane Doe"
-							class="mt-1.5 w-full rounded-md border border-gray-300 px-4 py-3 text-base placeholder:text-gray-400 focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/30 focus:outline-none"
-						/>
-					</div>
-					<div>
-						<label for="cb-phone" class="block text-sm font-semibold">Phone Number</label>
-						<input
-							type="tel"
-							id="cb-phone"
-							name="phone"
-							required
-							autocomplete="tel"
-							pattern="[0-9()+\s-]{7,}"
-							title="Please enter a valid phone number"
-							placeholder="(702) 555-0100"
-							class="mt-1.5 w-full rounded-md border border-gray-300 px-4 py-3 text-base placeholder:text-gray-400 focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/30 focus:outline-none"
-						/>
-					</div>
-					<button
-						type="submit"
-						class="w-full rounded-md bg-brand-gold px-6 py-3.5 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b]"
-					>
-						Request My Call Back
-					</button>
-					<p class="text-[11px] leading-relaxed text-gray-500">
-						By submitting, you agree to receive a call or text from Eric Blank Injury
-						Attorneys regarding your inquiry. Standard rates may apply. Reply STOP to opt out.
-					</p>
-
-					<!-- Formspree hidden fields (kept at the end so visible layout is unchanged) -->
-					<input
-						type="hidden"
-						name="_subject"
-						value="New Case Review Request — Eric Blank Law"
-					/>
-					<input type="hidden" name="_next" value="https://ericblanklaw.com/thank-you" />
-					<input type="text" name="_gotcha" style="display:none" />
-				</form>
-			</div>
+			<!-- RIGHT: call-back form -->
+			<ContactForm />
 		</div>
 	</div>
 </section>

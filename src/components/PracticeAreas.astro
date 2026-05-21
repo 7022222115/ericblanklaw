@@ -1,83 +1,5 @@
 ---
-import carIcon from "lucide-static/icons/car.svg?raw";
-import truckIcon from "lucide-static/icons/truck.svg?raw";
-import carFrontIcon from "lucide-static/icons/car-front.svg?raw";
-import triangleAlertIcon from "lucide-static/icons/triangle-alert.svg?raw";
-import dogIcon from "lucide-static/icons/dog.svg?raw";
-import hardHatIcon from "lucide-static/icons/hard-hat.svg?raw";
-import brainIcon from "lucide-static/icons/brain.svg?raw";
-import footprintsIcon from "lucide-static/icons/footprints.svg?raw";
-import bikeIcon from "lucide-static/icons/bike.svg?raw";
-import heartCrackIcon from "lucide-static/icons/heart-crack.svg?raw";
-import dice5Icon from "lucide-static/icons/dice-5.svg?raw";
-
-// Lucide has no motorcycle/scooter icon. Rather than a meaningless lightning
-// bolt ("Zap"), this is a custom inline SVG drawn in Lucide's style — 24x24
-// viewBox, stroke-width 2, round caps — so it matches the others' weight.
-const motorcycleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 8 12h6l2-3h2.5"/><path d="M13.5 12 18.5 17"/></svg>`;
-
-const practiceAreas = [
-	{
-		title: "Car Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/auto-accidents/car-accident-attorney/",
-		icon: carIcon,
-	},
-	{
-		title: "Motorcycle Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/auto-accidents/motorcycle-accidents/",
-		icon: motorcycleIcon,
-	},
-	{
-		title: "Truck Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/auto-accidents/truck-accident-attorney/",
-		icon: truckIcon,
-	},
-	{
-		title: "Rideshare (Uber/Lyft)",
-		href: "https://ericblanklaw.com/areas-of-practice/rideshare-accident-attorney/",
-		icon: carFrontIcon,
-	},
-	{
-		title: "Slip and Fall",
-		href: "https://ericblanklaw.com/areas-of-practice/slip-and-fall/",
-		icon: triangleAlertIcon,
-	},
-	{
-		title: "Dog Bites",
-		href: "https://ericblanklaw.com/areas-of-practice/dog-bite-lawyer/",
-		icon: dogIcon,
-	},
-	{
-		title: "Workers' Compensation",
-		href: "https://ericblanklaw.com/areas-of-practice/workers-compensation/",
-		icon: hardHatIcon,
-	},
-	{
-		title: "Brain & Spine Injury",
-		href: "https://ericblanklaw.com/areas-of-practice/brain-injuries/",
-		icon: brainIcon,
-	},
-	{
-		title: "Pedestrian Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/personal-injury/pedestrian-accident/",
-		icon: footprintsIcon,
-	},
-	{
-		title: "Bicycle Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/bicycle-accidents/",
-		icon: bikeIcon,
-	},
-	{
-		title: "Wrongful Death",
-		href: "https://ericblanklaw.com/areas-of-practice/wrongful-death/",
-		icon: heartCrackIcon,
-	},
-	{
-		title: "Casino Injuries",
-		href: "https://ericblanklaw.com/areas-of-practice/casino-injury/",
-		icon: dice5Icon,
-	},
-];
+import PracticeAreaGrid from "./PracticeAreaGrid.astro";
 ---
 
 <section class="bg-gray-50" aria-labelledby="practice-heading">
@@ -98,34 +20,8 @@ const practiceAreas = [
 			</p>
 		</div>
 
-		<div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:mt-16 lg:grid-cols-4">
-			{
-				practiceAreas.map((area) => (
-					<a
-						href={area.href}
-						class="group flex flex-col rounded-lg border border-gray-200 bg-white p-6 transition duration-200 hover:-translate-y-1 hover:border-brand-navy hover:shadow-md"
-					>
-						<span class="block text-brand-navy [&>svg]:size-10" set:html={area.icon} />
-						<h3 class="mt-4 text-lg font-bold text-brand-navy">{area.title}</h3>
-						<span class="mt-auto flex items-center gap-1 pt-4 text-sm font-semibold text-gray-500 transition-colors group-hover:text-brand-navy">
-							Learn more
-							<svg
-								class="size-4 transition-transform duration-200 group-hover:translate-x-1"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								aria-hidden="true"
-							>
-								<path d="M5 12h14" />
-								<path d="m13 6 6 6-6 6" />
-							</svg>
-						</span>
-					</a>
-				))
-			}
+		<div class="mt-12 lg:mt-16">
+			<PracticeAreaGrid />
 		</div>
 
 		<p class="mx-auto mt-10 max-w-2xl text-center text-base text-pretty text-gray-600 sm:mt-12">

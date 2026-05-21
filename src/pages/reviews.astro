@@ -1,0 +1,111 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Contact from '../components/Contact.astro';
+import Badges from '../components/Badges.astro';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+
+const testimonials = [
+	{
+		name: "Tami",
+		quote:
+			"I had terrible injuries as a result of the accident I had and hiring Eric Blank to be on my side during this difficult process was the best thing I did.",
+	},
+	{
+		name: "Joanna Crawford",
+		quote:
+			"I was very pleased with the recommendation, and I'm very happy with the service that I got here. I was very pleased with the process and the end result has been marvelous.",
+	},
+	{
+		name: "Shaun Carradine",
+		quote:
+			"I appreciate you guys coming through, and showing me where to get things when I need to. Thanks for making my day.",
+	},
+	{
+		name: "Warren Stewart",
+		quote:
+			"If you are looking for an attorney who will return your calls and e-mails and make you feel like you are being taken care of then look no further, Eric Blank is your guy.",
+	},
+];
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Client Reviews & Testimonials | Eric Blank Injury Attorneys Las Vegas"
+			description="Read real client testimonials for Eric Blank Injury Attorneys. Over 44 verified reviews on Avvo. Las Vegas personal injury law firm with a track record of satisfied clients. (702) 222-2115."
+			canonical="https://ericblanklaw.com/reviews"
+		/>
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<!-- A: page hero -->
+			<section class="bg-brand-navy text-white">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Client Reviews
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						What Our Clients Say
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						These are the people we've fought for, in their own words. For more reviews,
+						see our Avvo profile or watch our video testimonials.
+					</p>
+				</div>
+			</section>
+
+			<!-- B: testimonials grid -->
+			<section class="bg-white">
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+					<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+						{
+							testimonials.map((testimonial) => (
+								<figure class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 sm:p-8">
+									<span
+										aria-hidden="true"
+										class="text-brand-navy/60 [&>svg]:size-8"
+										set:html={quoteIcon}
+									/>
+									<blockquote class="mt-4 text-base leading-relaxed text-pretty text-gray-700 sm:text-lg">
+										{testimonial.quote}
+									</blockquote>
+									<figcaption class="mt-auto pt-6 text-base font-bold text-brand-navy">
+										{testimonial.name}
+									</figcaption>
+								</figure>
+							))
+						}
+					</div>
+
+					<div class="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row">
+						<a
+							href="https://www.avvo.com/attorneys/89117-nv-eric-blank-4209956.html"
+							target="_blank"
+							rel="noopener"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-6 py-3.5 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto"
+						>
+							Read More Reviews on Avvo →
+						</a>
+						<a
+							href="https://ericblanklaw.com/video-testimonials"
+							class="inline-flex w-full items-center justify-center rounded-md border border-brand-navy/20 px-6 py-3.5 text-base font-bold text-brand-navy transition-colors hover:border-brand-navy sm:w-auto"
+						>
+							Watch Video Testimonials →
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- C: recognition badges -->
+			<Badges />
+
+			<!-- D: contact form -->
+			<Contact />
+		</main>
+		<Footer />
+	</body>
+</html>

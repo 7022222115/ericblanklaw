@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Contact from '../components/Contact.astro';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import heartHandshakeIcon from 'lucide-static/icons/heart-handshake.svg?raw';
+
+const stats = [
+	{ value: "Millions", label: "Recovered for Injury Victims" },
+	{ value: "1,000+", label: "Cases Handled" },
+	{ value: "22+", label: "Years of Experience" },
+	{ value: "98%", label: "Client Satisfaction" },
+];
+
+const approach = [
+	{
+		title: "Insurance Insight",
+		icon: shieldCheckIcon,
+		text: "Eric's defense-side background means we know how insurance companies evaluate claims — and exactly where they'll push back.",
+	},
+	{
+		title: "Prepared to Try Any Case",
+		icon: gavelIcon,
+		text: "Insurance companies settle more aggressively when they know your attorney is ready for trial. We always are.",
+	},
+	{
+		title: "Personal Attention",
+		icon: heartHandshakeIcon,
+		text: "Every client gets direct access to their attorney. No call centers, no runaround, no \"we'll get back to you next week.\"",
+	},
+];
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Results & Approach | Eric Blank Injury Attorneys Las Vegas"
+			description="Eric Blank Injury Attorneys has recovered millions in verdicts and settlements for injured Las Vegas clients over 22+ years. Learn about our approach. Call (702) 222-2115 for a free case review."
+			canonical="https://ericblanklaw.com/results"
+		/>
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<!-- A + B: hero with track-record stats -->
+			<section class="bg-brand-navy text-white">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-3xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+							Track Record
+						</p>
+						<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+							Decades of Results for Las Vegas Injury Victims
+						</h1>
+						<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+							For over 22 years, Eric Blank Injury Attorneys has fought to maximize recovery
+							for clients hurt by negligence. Here's how we approach every case — and what
+							makes our results possible.
+						</p>
+					</div>
+					<dl class="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-x-8 gap-y-10 lg:mt-16 lg:max-w-none lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="flex flex-col-reverse gap-2 text-center">
+									<dt class="text-xs font-semibold tracking-wider text-white uppercase sm:text-sm">
+										{stat.label}
+									</dt>
+									<dd class="text-4xl font-extrabold text-brand-gold sm:text-5xl lg:text-6xl">
+										{stat.value}
+									</dd>
+								</div>
+							))
+						}
+					</dl>
+					<p class="mx-auto mt-12 max-w-2xl text-center text-sm text-pretty text-white/60">
+						Past results do not guarantee similar outcomes in future cases. Every case is
+						unique.
+					</p>
+				</div>
+			</section>
+
+			<!-- C: our approach -->
+			<section class="bg-white" aria-labelledby="approach-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							How We Win
+						</p>
+						<h2
+							id="approach-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Our Approach
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3 lg:mt-16">
+						{
+							approach.map((item) => (
+								<div>
+									<span
+										class="block text-brand-navy [&>svg]:size-12"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-5 text-xl font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- D: small CTA -->
+			<section class="bg-brand-navy text-white">
+				<div class="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 sm:py-16">
+					<h2 class="text-2xl font-bold tracking-tight text-balance sm:text-3xl">
+						Wondering if you have a case? Talk to us — it's free.
+					</h2>
+					<div class="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Call (702) 222-2115
+						</a>
+						<a
+							href="mailto:intake@ericblanklaw.com"
+							class="font-semibold text-white underline decoration-brand-gold decoration-2 underline-offset-4 transition-colors hover:text-brand-gold"
+						>
+							Email intake@ericblanklaw.com
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- E: contact form -->
+			<Contact />
+		</main>
+		<Footer />
+	</body>
+</html>
