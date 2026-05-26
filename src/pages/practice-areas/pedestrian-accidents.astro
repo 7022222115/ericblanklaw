@@ -1,0 +1,587 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Las Vegas Pedestrian Accident Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"Hit by a car in Las Vegas? Eric Blank Injury Attorneys has fought for injured pedestrians for over 22 years. Free consultation. No fees unless we win. Call (702) 222-2115.";
+
+const heroTrust = ["22+ Years", "Millions Recovered", "Available 24/7", "Free Consultation"];
+
+const stats = [
+	{ value: "Millions", label: "Recovered for Injury Victims" },
+	{ value: "1000s", label: "of Injury Cases Handled" },
+	{ value: "$0", label: "Out-of-Pocket Fees", note: "Contingency fee only" },
+	{ value: "24/7", label: "Free Consultation" },
+];
+
+const steps = [
+	{
+		icon: shieldIcon,
+		title: "Don't Move If You're Hurt",
+		text: "If you're seriously injured, stay where you are — moving someone with a possible spinal or pelvic injury can make it worse. Let EMS assess you first. If you can move safely, get out of the roadway.",
+	},
+	{
+		icon: phoneCallIcon,
+		title: "Call 911",
+		text: "Get a police report every time. Metro responds inside Las Vegas; Nevada Highway Patrol on the highways. The report identifies the driver, the lane, and whether you were in a crosswalk — every detail matters in a pedestrian case.",
+	},
+	{
+		icon: cameraIcon,
+		title: "Document Everything",
+		text: "If you're able, photograph the vehicle that hit you, its position, the crosswalk or intersection, traffic signs and signals, and your injuries. Collect the driver's insurance and license info, plus names and numbers for any witnesses.",
+	},
+	{
+		icon: stethoscopeIcon,
+		title: "See A Doctor",
+		text: "Pedestrian impacts produce serious injuries — TBI, internal bleeding, complex fractures — that adrenaline can mask. Get a full evaluation and follow every treatment recommendation. Gaps in care are the first thing insurers use against you.",
+	},
+	{
+		icon: banIcon,
+		title: "Don't Talk To Their Insurer",
+		text: "The driver's insurer will call within days. They'll ask leading questions — Were you in the crosswalk? Were you on your phone? — designed to shift blame to you. Refer them to your lawyer.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Call An Attorney First",
+		text: "Before you sign anything, give a recorded statement, or accept a settlement, talk to an attorney. Pedestrian injuries are often catastrophic — and quick offers almost always undervalue them.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Investigate The Crash",
+		text: "We pull traffic-camera footage from the Strip, surface streets, and nearby businesses before it overwrites, plus scene photos and witness statements. The crosswalk, the signal, and the driver's actions all matter — we lock them down.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Build The Medical Record",
+		text: "Pedestrian injuries are usually severe — TBI, fractures, internal damage. We work with your doctors to document every injury, current and future, so insurers can't minimize the harm.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Negotiate With Insurance",
+		text: "Eric Blank spent years on the insurance-defense side. We know how adjusters value pedestrian claims — and how they try to discount them. We push for the full coverage available, including UM/UIM on your own policy where it applies.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Try The Case If Needed",
+		text: "Insurers raise their numbers when they know your attorney is preparing for trial. We prepare every pedestrian case that way.",
+	},
+];
+
+const economicDamages = [
+	"Medical bills — past and future treatment",
+	"Lost wages and reduced future earning capacity",
+	"Property damage to belongings (phone, glasses, clothing)",
+	"Out-of-pocket costs — transportation, prescriptions, and more",
+];
+
+const nonEconomicDamages = [
+	"Pain and suffering",
+	"Emotional distress",
+	"Loss of enjoyment of life",
+	"Permanent disability or disfigurement",
+	"Loss of consortium",
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Statute of Limitations",
+		text: "Nevada gives you 2 years from the date of the accident to file a pedestrian injury lawsuit (NRS 11.190). Miss that deadline and your claim is gone — no matter how strong it was.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Comparative Negligence",
+		text: "Nevada follows a modified comparative negligence rule. If you are 51% or more at fault you recover nothing; if you are partly at fault but under that, your recovery is reduced by your share.",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "Driver's Duty & Insurance",
+		text: "Nevada drivers must yield to pedestrians in marked and unmarked crosswalks (NRS 484B.283), and additional penalties apply when a driver causes a pedestrian collision. The at-fault driver carries a minimum 25/50/20 in liability — usually not enough for a serious pedestrian injury, which makes UM/UIM coverage on your own policy critical.",
+	},
+];
+
+const faqs = [
+	{
+		q: "Do pedestrians always have the right of way in Nevada?",
+		a: "Not always — but in most situations involving a crosswalk, yes. Under NRS 484B.283, drivers must yield to pedestrians in marked and unmarked crosswalks. There are limits — a pedestrian can't suddenly leave a curb in front of a vehicle that can't stop — but the legal duty to look out for and yield to pedestrians falls squarely on the driver.",
+	},
+	{
+		q: "What if I was crossing outside a crosswalk?",
+		a: "You can still recover. Nevada uses modified comparative negligence, so being partly at fault reduces your recovery but doesn't bar it as long as you're 50% or less responsible. Drivers also still owe a duty of care to pedestrians outside crosswalks — they can't just hit you.",
+	},
+	{
+		q: "How long do I have to file a pedestrian accident claim in Nevada?",
+		a: "Two years from the date of the accident, under NRS 11.190. Wrongful-death actions also generally run two years. Don't wait — surveillance footage and witness memories fade fast, and claims against government entities can have much shorter notice deadlines.",
+	},
+	{
+		q: "What if the driver doesn't have enough insurance?",
+		a: "Many drivers carry only Nevada's minimum 25/50/20 coverage — which rarely covers a serious pedestrian injury. We look at every available source, including uninsured/underinsured motorist coverage on your own auto policy (which can apply even though you weren't in a car at the time), umbrella policies, and employer coverage if the driver was on the job.",
+	},
+	{
+		q: "What if the driver was working — for a rideshare, delivery service, or employer?",
+		a: "If the driver was on the clock, the employer's insurance may also be on the hook. Rideshare and delivery drivers often have additional commercial coverage that applies while they're working. We chase down every source.",
+	},
+	{
+		q: "How much does it cost to hire a pedestrian accident attorney?",
+		a: "Our fee is contingency-based — no upfront cost and no hourly billing. We only get paid if we win, and the fee is a percentage of your recovery, agreed to in writing before we start.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Free, no-obligation case review", icon: checkCircleIcon },
+	{ text: "No fees unless we win your case", icon: circleDollarSignIcon },
+	{ text: "Available 24/7 — nights, weekends, holidays", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/practice-areas/pedestrian-accidents#service",
+			name: "Eric Blank Injury Attorneys — Pedestrian Accident Representation",
+			serviceType: "Pedestrian Accident Legal Services",
+			url: "https://ericblanklaw.com/practice-areas/pedestrian-accidents",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			telephone: "+1-702-222-2115",
+			priceRange: "Contingency Fee — No Fees Unless We Win",
+			areaServed: ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Clark County", "Nevada"],
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: "7860 W Sahara Ave Ste. 110",
+				addressLocality: "Las Vegas",
+				addressRegion: "NV",
+				postalCode: "89117",
+				addressCountry: "US",
+			},
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		{
+			"@type": "Attorney",
+			"@id": "https://ericblanklaw.com/#attorney",
+			name: "Eric R. Blank",
+			jobTitle: "Personal Injury Attorney",
+		},
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/practice-areas/pedestrian-accidents#faq",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/practice-areas/pedestrian-accidents"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="bg-brand-navy text-white">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Las Vegas Pedestrian Accidents
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Las Vegas Pedestrian Accident Attorney
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						The Las Vegas Strip is one of the most pedestrian-heavy stretches of road in the
+						country, and even outside the resort corridor, walking in this valley means
+						sharing space with drivers who are tired, distracted, or unfamiliar with the
+						area. When a driver fails to yield, the person on foot pays the price — often
+						catastrophically. For over 22 years, Eric Blank Injury Attorneys has stood up to
+						the insurance companies on behalf of injured pedestrians. Free consultation, and
+						no fees unless we win.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Free Case Review
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What to do after a crash -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							First Steps
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What To Do After A Pedestrian Accident In Las Vegas
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							The first hours after a crash shape your entire claim. Here's how to protect
+							yourself and your case.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Our Approach
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							How Eric Blank Injury Attorneys Handles Pedestrian Accident Cases
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank spent the early part of his career defending insurance companies.
+							We bring that insider knowledge to every pedestrian claim — the same edge we
+							apply across our{" "}
+							<a
+								href="/practice-areas"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								personal injury practice
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — What you can recover -->
+			<section class="bg-white" aria-labelledby="damages-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Damages
+						</p>
+						<h2
+							id="damages-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What Pedestrian Accident Victims Can Recover In Nevada
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Nevada law lets injury victims recover compensatory damages — both the
+							concrete financial losses and the human cost of the crash. In rare cases
+							involving especially reckless conduct, punitive damages may also apply.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Economic Damages</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									economicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Non-Economic Damages</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									nonEconomicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Nevada caps damages in medical malpractice cases but <strong>not</strong> in
+						general personal injury claims. The amount you can recover depends on the
+						specifics of your case — a{" "}
+						<a
+							href="/contact"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							free consultation
+						</a>{" "}
+						is the best way to get a real answer.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nevada Law
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Key Nevada Pedestrian Accident Laws
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						This is general information, not legal advice for your specific case. Talk to an
+						attorney about the facts of your accident.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							FAQ
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Common Pedestrian Accident Questions
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<a
+						href="/reviews"
+						class="mt-8 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Read more client reviews →
+					</a>
+				</div>
+			</section>
+
+			<!-- SECTION 9 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Request Your Free Case Review
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							It's free, confidential, and there's no obligation.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Why Call Now
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Three Reasons To Reach Out Today
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								Nevada pedestrian claims have strict deadlines — and traffic-camera footage
+								from the Strip and surface streets is often the difference. The sooner we
+								hear from you, the more we can do.
+							</p>
+						</div>
+						<ContactForm />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

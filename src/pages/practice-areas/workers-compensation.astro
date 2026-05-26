@@ -1,0 +1,589 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Las Vegas Workers' Compensation Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"Injured at work in Nevada? Workers' comp is a no-fault system with strict deadlines (Form C-1 within 7 days; Form C-4 within 90 days). Eric Blank Injury Attorneys helps injured workers get the benefits they're owed. Free consultation. Call (702) 222-2115.";
+
+const heroTrust = ["22+ Years", "Millions Recovered", "Available 24/7", "Free Consultation"];
+
+const stats = [
+	{ value: "Millions", label: "Recovered for Injury Victims" },
+	{ value: "1000s", label: "of Injury Cases Handled" },
+	{ value: "$0", label: "Out-of-Pocket Fees", note: "Contingency fee only" },
+	{ value: "24/7", label: "Free Consultation" },
+];
+
+const steps = [
+	{
+		icon: stethoscopeIcon,
+		title: "Get Medical Care",
+		text: "Get immediate medical attention. Nevada workers' comp generally requires treatment from an authorized provider — your employer's or insurer's panel — so ask before you choose a doctor if it isn't an emergency.",
+	},
+	{
+		icon: phoneCallIcon,
+		title: "Notify Your Employer Right Away",
+		text: "Tell your supervisor or HR as soon as possible after the injury. Late reporting is one of the most common reasons claims get questioned or denied.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "File Form C-1 (Within 7 Days)",
+		text: "Form C-1 (Notice of Injury or Occupational Disease) is the formal employee notice. Nevada law requires it within 7 days of the injury. Keep a copy of the completed form for your own records.",
+	},
+	{
+		icon: searchIcon,
+		title: "File Form C-4 (Within 90 Days)",
+		text: "Form C-4 (Employee's Claim for Compensation / Report of Initial Treatment) is the claim itself. The treating physician completes it with you and submits it to the insurer and your employer. The C-4 must be filed within 90 days of the accident — another strict deadline.",
+	},
+	{
+		icon: banIcon,
+		title: "Don't Sign Away Your Rights",
+		text: "Don't sign settlement, release, or 'choice of physician' forms you don't fully understand. Some signatures forfeit benefits permanently. And don't quit your job without talking to a lawyer first.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Call An Attorney",
+		text: "Comp denials, lowball impairment ratings, and improperly cut-off benefits are common. The earlier a lawyer is in your file, the easier the fight — and the better the chance the third-party angle gets explored.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Build The Claim & Meet The Deadlines",
+		text: "We make sure your C-1 and C-4 are filed correctly and on time, your authorized treatment is documented, and the right form goes to the right party. The deadlines in Nevada comp are short and unforgiving.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Fight Denials & Bad Ratings",
+		text: "Denials, low impairment ratings, and benefit cut-offs are common. We handle the multi-step Nevada appeal — hearings officer, appeals officer, and beyond — and we push back hard on a rating evaluation that under-counts the injury.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Find The Third-Party Claim",
+		text: "If someone other than your employer caused the injury — a negligent driver, a contractor on the worksite, a defective product manufacturer — there may be a separate personal injury claim alongside your comp claim. That second claim can recover damages comp doesn't.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Negotiate Or Litigate",
+		text: "Whether your case settles at a hearing, resolves on appeal, or proceeds to a third-party lawsuit, we prepare every file as if it's going to be fought.",
+	},
+];
+
+const benefitsAvailable = [
+	"Authorized medical treatment",
+	"Temporary Total Disability (TTD) — wage replacement while you can't work",
+	"Temporary Partial Disability (TPD) — wage supplement on light duty",
+	"Permanent Partial Disability (PPD) — award based on rated impairment",
+	"Permanent Total Disability (PTD) — for catastrophic injuries",
+	"Vocational rehabilitation",
+	"Death benefits for surviving dependents",
+];
+
+const benefitsNotAvailable = [
+	"Pain and suffering",
+	"Emotional distress (in most situations)",
+	"Full lost wages — TTD generally replaces about two-thirds of wage",
+	"Loss of consortium for family members",
+	"Punitive damages",
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Strict Deadlines",
+		text: "Nevada comp has its own deadlines, separate from personal-injury law. Form C-1 (employee notice) is due within 7 days of the injury. Form C-4 (the claim itself) must be filed within 90 days of the accident. Missing these deadlines can sink an otherwise valid claim.",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "No-Fault System",
+		text: "Workers' compensation is no-fault. You generally don't need to prove your employer was negligent — only that the injury arose out of and in the course of your employment. The trade-off: comp benefits are defined by statute and don't include pain and suffering.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Third-Party Claims",
+		text: "If someone other than your employer caused the injury — a negligent driver, a contractor on the worksite, a defective product — you may have a separate personal injury claim alongside the comp claim. Coordinating the two is critical to a full recovery, and we handle both sides.",
+	},
+];
+
+const faqs = [
+	{
+		q: "Do I need to prove my employer was at fault?",
+		a: "No. Nevada workers' comp is a no-fault system. You generally have to show only that the injury arose out of and in the course of your employment — not that your employer did anything wrong. The trade-off is that comp benefits are limited to what the statute provides, and don't include pain and suffering.",
+	},
+	{
+		q: "What are the Nevada workers' comp deadlines?",
+		a: "Two key deadlines. First, notify your employer and complete Form C-1 (Notice of Injury or Occupational Disease) within 7 days of the injury. Second, file Form C-4 (Employee's Claim for Compensation) within 90 days of the accident. Both are strict — missing them can result in denial.",
+	},
+	{
+		q: "Can I see my own doctor for a work injury?",
+		a: "In most Nevada comp claims, treatment must come from an authorized provider — your employer's or insurer's panel. Unauthorized treatment may not be covered. Some exceptions apply, especially for emergencies. Ask before you choose, and don't assume the insurer will cover outside care.",
+	},
+	{
+		q: "What benefits can I receive?",
+		a: "Authorized medical care, temporary total or partial disability (wage replacement while you can't work or can only do light duty), permanent partial or total disability awards if your injury results in rated lasting impairment, vocational rehabilitation, and — if a worker dies — benefits to surviving dependents. There's generally no recovery for pain and suffering in a standard comp claim.",
+	},
+	{
+		q: "Can I sue someone other than my employer too?",
+		a: "Often yes. If a third party — a driver who hit you while you were on the job, a contractor on a worksite, a defective product manufacturer — caused or contributed to the injury, you may have a separate personal injury claim alongside your comp claim. Those claims CAN recover damages comp doesn't, including pain and suffering. We coordinate the two so workers' comp doesn't undercut a full third-party recovery.",
+	},
+	{
+		q: "What if my comp claim was denied?",
+		a: "Denials are common and appealable. Nevada has a multi-step appeal process — hearings officer, appeals officer, and ultimately district court review. Deadlines for each step are short, so don't wait to get a lawyer involved.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Free, no-obligation case review", icon: checkCircleIcon },
+	{ text: "No fees unless we win your case", icon: circleDollarSignIcon },
+	{ text: "Available 24/7 — nights, weekends, holidays", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/practice-areas/workers-compensation#service",
+			name: "Eric Blank Injury Attorneys — Workers' Compensation Representation",
+			serviceType: "Workers' Compensation Legal Services",
+			url: "https://ericblanklaw.com/practice-areas/workers-compensation",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			telephone: "+1-702-222-2115",
+			priceRange: "Contingency Fee — No Fees Unless We Win",
+			areaServed: ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Clark County", "Nevada"],
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: "7860 W Sahara Ave Ste. 110",
+				addressLocality: "Las Vegas",
+				addressRegion: "NV",
+				postalCode: "89117",
+				addressCountry: "US",
+			},
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		{
+			"@type": "Attorney",
+			"@id": "https://ericblanklaw.com/#attorney",
+			name: "Eric R. Blank",
+			jobTitle: "Personal Injury Attorney",
+		},
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/practice-areas/workers-compensation#faq",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/practice-areas/workers-compensation"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="bg-brand-navy text-white">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Las Vegas Workers' Compensation
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Las Vegas Workers' Compensation Attorney
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						A Nevada workers' compensation claim is not a personal injury lawsuit. It's a
+						separate no-fault system with its own forms, its own benefits, and very short
+						deadlines — and one missed step can sink an otherwise solid claim. For over 22
+						years, Eric Blank Injury Attorneys has helped injured workers move through the
+						comp process and recover the benefits they're entitled to. Free consultation,
+						and no fees unless we win.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Free Case Review
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What to do after a work injury -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							First Steps
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What To Do After A Work Injury In Nevada
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Nevada workers' comp turns on deadlines and paperwork. Here's how to protect
+							your claim from day one.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Our Approach
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							How Eric Blank Injury Attorneys Handles Workers' Comp Cases
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank spent the early part of his career defending insurance companies.
+							We bring that insider knowledge to every comp file — the same edge we apply
+							across our{" "}
+							<a
+								href="/practice-areas"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								personal injury practice
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — Benefits (NOT PI damages) -->
+			<section class="bg-white" aria-labelledby="benefits-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Benefits
+						</p>
+						<h2
+							id="benefits-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What Nevada Workers' Comp Covers — And What It Doesn't
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Workers' comp is a defined-benefit system. It pays for specific categories
+							of loss spelled out by Nevada statute — but does not include the full range
+							of damages a personal injury lawsuit would.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Comp Benefits Available</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									benefitsAvailable.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Not Available Under Comp Alone</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									benefitsNotAvailable.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={banIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						If a third party — someone other than your employer — caused the injury, a
+						separate personal injury claim alongside the comp claim can include pain and
+						suffering and other damages comp doesn't cover. A{" "}
+						<a
+							href="/contact"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							free consultation
+						</a>{" "}
+						is the best way to identify every claim that applies.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nevada Law
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Key Nevada Workers' Comp Rules
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						This is general information, not legal advice for your specific case. Talk to an
+						attorney about the facts of your injury.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							FAQ
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Common Workers' Comp Questions
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<a
+						href="/reviews"
+						class="mt-8 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Read more client reviews →
+					</a>
+				</div>
+			</section>
+
+			<!-- SECTION 9 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Request Your Free Case Review
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							It's free, confidential, and there's no obligation.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Why Call Now
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Three Reasons To Reach Out Today
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								Nevada workers' comp deadlines are short and strict — and the third-party
+								angle can change the whole recovery picture. The sooner we hear from you,
+								the more we can do.
+							</p>
+						</div>
+						<ContactForm />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

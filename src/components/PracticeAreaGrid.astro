@@ -22,65 +22,68 @@ const {
 // Lucide has no motorcycle icon — custom inline SVG in Lucide's style.
 const motorcycleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 8 12h6l2-3h2.5"/><path d="M13.5 12 18.5 17"/></svg>`;
 
+// All 12 practice-area cards now link to internal pages. If a new area is added
+// before its detail page is built, fall back to an existing legacy URL only as
+// a stopgap — and update the Pre-Launch Legal Review Checklist note in CLAUDE.md.
 const practiceAreas = [
 	{
 		title: "Car Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/auto-accidents/car-accident-attorney/",
+		href: "/practice-areas/car-accidents",
 		icon: carIcon,
 	},
 	{
 		title: "Motorcycle Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/auto-accidents/motorcycle-accidents/",
+		href: "/practice-areas/motorcycle-accidents",
 		icon: motorcycleIcon,
 	},
 	{
 		title: "Truck Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/auto-accidents/truck-accident-attorney/",
+		href: "/practice-areas/truck-accidents",
 		icon: truckIcon,
 	},
 	{
 		title: "Rideshare (Uber/Lyft)",
-		href: "https://ericblanklaw.com/areas-of-practice/rideshare-accident-attorney/",
+		href: "/practice-areas/rideshare-accidents",
 		icon: carFrontIcon,
 	},
 	{
 		title: "Slip and Fall",
-		href: "https://ericblanklaw.com/areas-of-practice/slip-and-fall/",
+		href: "/practice-areas/slip-and-fall",
 		icon: triangleAlertIcon,
 	},
 	{
 		title: "Dog Bites",
-		href: "https://ericblanklaw.com/areas-of-practice/dog-bite-lawyer/",
+		href: "/practice-areas/dog-bites",
 		icon: dogIcon,
 	},
 	{
 		title: "Workers' Compensation",
-		href: "https://ericblanklaw.com/areas-of-practice/workers-compensation/",
+		href: "/practice-areas/workers-compensation",
 		icon: hardHatIcon,
 	},
 	{
 		title: "Brain & Spine Injury",
-		href: "https://ericblanklaw.com/areas-of-practice/brain-injuries/",
+		href: "/practice-areas/brain-and-spine-injury",
 		icon: brainIcon,
 	},
 	{
 		title: "Pedestrian Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/personal-injury/pedestrian-accident/",
+		href: "/practice-areas/pedestrian-accidents",
 		icon: footprintsIcon,
 	},
 	{
 		title: "Bicycle Accidents",
-		href: "https://ericblanklaw.com/areas-of-practice/bicycle-accidents/",
+		href: "/practice-areas/bicycle-accidents",
 		icon: bikeIcon,
 	},
 	{
 		title: "Wrongful Death",
-		href: "https://ericblanklaw.com/areas-of-practice/wrongful-death/",
+		href: "/practice-areas/wrongful-death",
 		icon: heartCrackIcon,
 	},
 	{
 		title: "Casino Injuries",
-		href: "https://ericblanklaw.com/areas-of-practice/casino-injury/",
+		href: "/practice-areas/casino-injuries",
 		icon: dice5Icon,
 	},
 ];
