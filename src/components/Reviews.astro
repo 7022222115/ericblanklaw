@@ -1,0 +1,278 @@
+---
+import quoteIcon from "lucide-static/icons/quote.svg?raw";
+import starIcon from "lucide-static/icons/star.svg?raw";
+import xIcon from "lucide-static/icons/x.svg?raw";
+import { reviews, googleAggregate, resultsDisclaimer } from "../data/reviews.js";
+
+// Render only published `reviews` (never `pendingReviews`).
+// Quotes may be empty strings until verbatim Google text is pasted in —
+// the layout must not collapse, so cards carry a min-height and empty
+// quotes fall back to a muted placeholder.
+---
+
+<section
+	class="bg-brand-navy"
+	aria-labelledby="reviews-heading"
+	data-reviews-root
+>
+	<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+		<div class="mx-auto max-w-2xl text-center">
+			<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+				Client Reviews
+			</p>
+			<h2
+				id="reviews-heading"
+				class="mt-3 text-3xl font-bold tracking-tight text-balance text-white sm:text-4xl"
+			>
+				What Our Clients Say
+			</h2>
+
+			{/* Google aggregate rating */}
+			<div class="mt-6 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-3">
+				<div class="flex items-center gap-1" aria-hidden="true">
+					{
+						Array.from({ length: 5 }).map(() => (
+							<span class="text-brand-gold [&>svg]:size-5 [&>svg]:fill-current" set:html={starIcon} />
+						))
+					}
+				</div>
+				<p class="text-base text-white">
+					<span class="font-bold text-brand-gold">{googleAggregate.rating.toFixed(1)}</span>
+					<span class="text-white/70"> / 5</span>
+					<span class="text-white/70"> · based on </span>
+					<span class="font-semibold">{googleAggregate.count.toLocaleString()}</span>
+					<span class="text-white/70"> Google reviews</span>
+				</p>
+			</div>
+			{
+				googleAggregate.profileUrl && googleAggregate.profileUrl !== "PLACEHOLDER" && (
+					<a
+						href={googleAggregate.profileUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="mt-2 inline-block text-sm font-semibold text-brand-gold transition-opacity hover:opacity-80"
+					>
+						Read our reviews on Google →
+					</a>
+				)
+			}
+		</div>
+
+		{/* Card grid */}
+		<ul
+			class="mt-12 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3"
+			data-reviews-grid
+		>
+			{
+				reviews.map((review, i) => (
+					<li>
+						<button
+							type="button"
+							class="group flex h-full w-full cursor-pointer flex-col rounded-lg border border-white/10 bg-white/[0.04] p-6 text-left transition-all duration-300 hover:border-brand-gold/60 hover:bg-white/[0.07] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold sm:p-8"
+							data-review-card
+							data-index={i}
+							aria-label={`Read ${review.name}'s full review`}
+						>
+							<span
+								aria-hidden="true"
+								class="text-brand-gold/50 [&>svg]:size-8"
+								set:html={quoteIcon}
+							/>
+							<blockquote
+								class="mt-4 min-h-[4.5rem] text-base leading-relaxed text-pretty text-white/90 max-sm:line-clamp-3"
+								data-review-quote
+							>
+								{review.quote || ""}
+								{!review.quote && (
+									<span class="text-white/40 italic">Review coming soon.</span>
+								)}
+							</blockquote>
+							{/* Mobile-only "read full review" cue */}
+							<span
+								class="mt-3 text-sm font-semibold text-brand-gold sm:hidden"
+								aria-hidden="true"
+							>
+								Read full review →
+							</span>
+							<figcaption class="mt-auto pt-6 text-base font-bold text-white">
+								— {review.name}
+							</figcaption>
+						</button>
+					</li>
+				))
+			}
+		</ul>
+
+		{/* Results disclaimer */}
+		<p class="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-white/50 sm:mt-12">
+			{resultsDisclaimer}
+		</p>
+	</div>
+
+	{/* Lightbox */}
+	<div
+		class="fixed inset-0 z-50 hidden items-center justify-center bg-brand-navy/80 p-4 backdrop-blur-sm"
+		data-reviews-lightbox
+		role="dialog"
+		aria-modal="true"
+		aria-labelledby="reviews-lightbox-name"
+		hidden
+	>
+		<div
+			class="relative max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-xl border border-brand-gold/30 bg-white p-8 shadow-2xl sm:p-10"
+			data-reviews-lightbox-panel
+		>
+			<button
+				type="button"
+				class="absolute top-4 right-4 rounded-md p-1 text-gray-400 transition-colors hover:text-brand-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
+				data-reviews-lightbox-close
+				aria-label="Close review"
+			>
+				<span class="[&>svg]:size-6" set:html={xIcon} />
+			</button>
+			<span
+				aria-hidden="true"
+				class="text-brand-gold [&>svg]:size-10"
+				set:html={quoteIcon}
+			/>
+			<blockquote
+				class="mt-4 text-lg leading-relaxed text-pretty text-gray-800"
+				data-reviews-lightbox-quote
+			></blockquote>
+			<p
+				id="reviews-lightbox-name"
+				class="mt-6 text-base font-bold text-brand-navy"
+				data-reviews-lightbox-name
+			></p>
+		</div>
+	</div>
+</section>
+
+<script>
+	const PREFERS_REDUCED_MOTION = window.matchMedia(
+		"(prefers-reduced-motion: reduce)",
+	).matches;
+	const ROTATE_MS = 7000;
+	const ACTIVE_CLASSES = ["ring-2", "ring-brand-gold", "bg-white/[0.07]", "border-brand-gold/60"];
+
+	document.querySelectorAll("[data-reviews-root]").forEach((root) => {
+		const cards = Array.from(root.querySelectorAll("[data-review-card]"));
+		if (cards.length === 0) return;
+
+		const lightbox = root.querySelector("[data-reviews-lightbox]");
+		const lightboxPanel = root.querySelector("[data-reviews-lightbox-panel]");
+		const lightboxQuote = root.querySelector("[data-reviews-lightbox-quote]");
+		const lightboxName = root.querySelector("[data-reviews-lightbox-name]");
+		const lightboxClose = root.querySelector("[data-reviews-lightbox-close]");
+
+		// --- Auto-rotating highlight -------------------------------------
+		let activeIndex = 0;
+		let timer = null;
+		let paused = false;
+
+		function setActive(index) {
+			cards.forEach((card, i) => {
+				card.classList.toggle("ring-2", i === index);
+				card.classList.toggle("ring-brand-gold", i === index);
+				card.classList.toggle("border-brand-gold/60", i === index);
+				card.classList.toggle("bg-white/[0.07]", i === index);
+			});
+			activeIndex = index;
+		}
+
+		function tick() {
+			if (paused) return;
+			setActive((activeIndex + 1) % cards.length);
+		}
+
+		function startRotation() {
+			if (PREFERS_REDUCED_MOTION || timer !== null) return;
+			setActive(0);
+			timer = window.setInterval(tick, ROTATE_MS);
+		}
+
+		function stopRotation() {
+			if (timer !== null) {
+				window.clearInterval(timer);
+				timer = null;
+			}
+		}
+
+		// Pause on hover/focus within the grid.
+		const grid = root.querySelector("[data-reviews-grid]");
+		if (grid) {
+			grid.addEventListener("mouseenter", () => (paused = true));
+			grid.addEventListener("mouseleave", () => {
+				if (!isLightboxOpen()) paused = false;
+			});
+			grid.addEventListener("focusin", () => (paused = true));
+			grid.addEventListener("focusout", () => {
+				if (!isLightboxOpen()) paused = false;
+			});
+		}
+
+		startRotation();
+
+		// --- Lightbox ----------------------------------------------------
+		let lastFocused = null;
+
+		function isLightboxOpen() {
+			return lightbox && !lightbox.hasAttribute("hidden");
+		}
+
+		function openLightbox(card) {
+			if (!lightbox) return;
+			const quoteEl = card.querySelector("[data-review-quote]");
+			const nameEl = card.querySelector("figcaption");
+			const quoteText = quoteEl ? quoteEl.textContent.trim() : "";
+			lightboxQuote.textContent = quoteText || "Review coming soon.";
+			lightboxQuote.classList.toggle("italic", !quoteText);
+			lightboxQuote.classList.toggle("text-gray-400", !quoteText);
+			lightboxName.textContent = nameEl ? nameEl.textContent.trim() : "";
+
+			lastFocused = document.activeElement;
+			paused = true;
+			lightbox.removeAttribute("hidden");
+			lightbox.classList.remove("hidden");
+			lightbox.classList.add("flex");
+			document.body.style.overflow = "hidden";
+			if (lightboxClose) lightboxClose.focus();
+		}
+
+		function closeLightbox() {
+			if (!lightbox) return;
+			lightbox.setAttribute("hidden", "");
+			lightbox.classList.add("hidden");
+			lightbox.classList.remove("flex");
+			document.body.style.overflow = "";
+			paused = false;
+			if (lastFocused && typeof lastFocused.focus === "function") {
+				lastFocused.focus();
+			}
+		}
+
+		cards.forEach((card) => {
+			card.addEventListener("click", () => openLightbox(card));
+		});
+
+		if (lightboxClose) {
+			lightboxClose.addEventListener("click", closeLightbox);
+		}
+
+		// Click outside the panel closes.
+		if (lightbox) {
+			lightbox.addEventListener("click", (event) => {
+				if (lightboxPanel && !lightboxPanel.contains(event.target)) {
+					closeLightbox();
+				}
+			});
+		}
+
+		// Esc closes.
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && isLightboxOpen()) {
+				closeLightbox();
+			}
+		});
+	});
+</script>
