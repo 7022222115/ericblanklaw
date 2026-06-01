@@ -4,6 +4,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Contact from '../components/Contact.astro';
+import TestimonialGallery from '../components/TestimonialGallery.astro';
+import Lightbox from '../components/Lightbox.astro';
 import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
 import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
 import heartHandshakeIcon from 'lucide-static/icons/heart-handshake.svg?raw';
@@ -118,6 +120,9 @@ const approach = [
 				</div>
 			</section>
 
+			<!-- Video testimonial gallery -->
+			<TestimonialGallery />
+
 			<!-- D: small CTA -->
 			<section class="bg-brand-navy text-white">
 				<div class="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 sm:py-16">
@@ -145,5 +150,8 @@ const approach = [
 			<Contact />
 		</main>
 		<Footer />
+
+		<!-- Universal media lightbox (used by the video gallery) -->
+		<Lightbox />
 	</body>
 </html>

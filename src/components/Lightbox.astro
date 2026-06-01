@@ -1,0 +1,146 @@
+---
+// Universal lightbox / modal — displays EITHER a YouTube video OR an image,
+// centered, with the page dimmed behind it. Designed to be reused (galleries,
+// carousels, etc.).
+//
+// Usage — include ONCE per page, near the end of the <body>:
+//   import Lightbox from '../components/Lightbox.astro';
+//   ...
+//   <Lightbox />
+//
+// Trigger — any element on the page with these data attributes:
+//   Video:  data-lightbox data-type="video" data-video-id="VIDEO_ID"
+//   Image:  data-lightbox data-type="image" data-src="/path.jpg" data-alt="..."
+//
+// Event delegation means any number of triggers anywhere on the page open this
+// single instance. The YouTube iframe is built lazily on click and removed on
+// close so audio always stops.
+import xIcon from 'lucide-static/icons/x.svg?raw';
+---
+
+<div
+	id="lightbox"
+	class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6"
+	role="dialog"
+	aria-modal="true"
+	aria-label="Media viewer"
+>
+	<!-- Backdrop -->
+	<div data-lightbox-backdrop class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+
+	<!-- Close button (fixed to the viewport corner so it's always reachable) -->
+	<button
+		type="button"
+		data-lightbox-close
+		aria-label="Close"
+		class="absolute right-4 top-4 z-20 inline-flex size-10 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold sm:right-6 sm:top-6 [&>svg]:size-6"
+		set:html={xIcon}
+	></button>
+
+	<!-- Content -->
+	<div class="relative z-10 w-full max-w-4xl">
+		<!-- Media is injected here on open and cleared on close -->
+		<div data-lightbox-stage></div>
+	</div>
+</div>
+
+<script>
+	const lightbox = document.getElementById('lightbox');
+
+	if (lightbox) {
+		const stage = lightbox.querySelector('[data-lightbox-stage]') as HTMLElement;
+		const closeBtn = lightbox.querySelector('[data-lightbox-close]') as HTMLElement;
+		const backdrop = lightbox.querySelector('[data-lightbox-backdrop]') as HTMLElement;
+
+		const FOCUSABLE = 'button, [href], iframe, input, [tabindex]:not([tabindex="-1"])';
+		let lastTrigger: HTMLElement | null = null;
+
+		function open(trigger: HTMLElement) {
+			lastTrigger = trigger;
+			stage.innerHTML = '';
+
+			const type = trigger.getAttribute('data-type');
+
+			if (type === 'image') {
+				const img = document.createElement('img');
+				img.src = trigger.getAttribute('data-src') || '';
+				img.alt = trigger.getAttribute('data-alt') || '';
+				img.className = 'mx-auto block max-h-[85vh] w-auto max-w-full rounded-lg shadow-2xl';
+				stage.appendChild(img);
+			} else {
+				const id = trigger.getAttribute('data-video-id') || '';
+				const wrap = document.createElement('div');
+				wrap.className =
+					'relative aspect-video w-full overflow-hidden rounded-lg bg-black shadow-2xl';
+				const iframe = document.createElement('iframe');
+				iframe.className = 'absolute inset-0 h-full w-full';
+				// Lazy: the embed src (and autoplay) is only built now, on click.
+				iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+				iframe.title = 'Video';
+				iframe.allow =
+					'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+				iframe.setAttribute('allowfullscreen', '');
+				iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+				wrap.appendChild(iframe);
+				stage.appendChild(wrap);
+			}
+
+			lightbox.classList.remove('hidden');
+			lightbox.classList.add('flex');
+			document.body.style.overflow = 'hidden';
+			document.addEventListener('keydown', onKeydown);
+			closeBtn.focus();
+		}
+
+		function close() {
+			lightbox.classList.add('hidden');
+			lightbox.classList.remove('flex');
+			// Removing the iframe from the DOM guarantees audio stops — no escaping sound.
+			stage.innerHTML = '';
+			document.body.style.overflow = '';
+			document.removeEventListener('keydown', onKeydown);
+			if (lastTrigger) {
+				lastTrigger.focus();
+				lastTrigger = null;
+			}
+		}
+
+		function onKeydown(e: KeyboardEvent) {
+			if (e.key === 'Escape') {
+				close();
+				return;
+			}
+			if (e.key === 'Tab') {
+				const focusables = Array.from(
+					lightbox!.querySelectorAll<HTMLElement>(FOCUSABLE)
+				).filter((el) => el.offsetParent !== null || el.tagName === 'IFRAME');
+				if (focusables.length === 0) {
+					e.preventDefault();
+					return;
+				}
+				const first = focusables[0];
+				const last = focusables[focusables.length - 1];
+				if (e.shiftKey && document.activeElement === first) {
+					e.preventDefault();
+					last.focus();
+				} else if (!e.shiftKey && document.activeElement === last) {
+					e.preventDefault();
+					first.focus();
+				}
+			}
+		}
+
+		// Event delegation — any [data-lightbox] trigger on the page opens this instance.
+		document.addEventListener('click', (e) => {
+			const target = e.target as HTMLElement;
+			const trigger = target.closest<HTMLElement>('[data-lightbox]');
+			if (trigger) {
+				e.preventDefault();
+				open(trigger);
+			}
+		});
+
+		closeBtn.addEventListener('click', close);
+		backdrop.addEventListener('click', close);
+	}
+</script>

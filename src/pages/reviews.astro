@@ -6,6 +6,8 @@ import Footer from '../components/Footer.astro';
 import Contact from '../components/Contact.astro';
 import Badges from '../components/Badges.astro';
 import Reviews from '../components/Reviews.astro';
+import TestimonialGallery from '../components/TestimonialGallery.astro';
+import Lightbox from '../components/Lightbox.astro';
 import { googleAggregate } from '../data/reviews.js';
 import starIcon from 'lucide-static/icons/star.svg?raw';
 ---
@@ -58,6 +60,9 @@ import starIcon from 'lucide-static/icons/star.svg?raw';
 			<!-- B: client reviews (verbatim Google reviews component) -->
 			<Reviews showHeader={false} />
 
+			<!-- B1: video testimonial gallery -->
+			<TestimonialGallery />
+
 			<!-- B2: external review links -->
 			<section class="bg-white">
 				<div class="mx-auto max-w-[1200px] px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-28">
@@ -87,5 +92,8 @@ import starIcon from 'lucide-static/icons/star.svg?raw';
 			<Contact />
 		</main>
 		<Footer />
+
+		<!-- Universal media lightbox (used by the video gallery) -->
+		<Lightbox />
 	</body>
 </html>

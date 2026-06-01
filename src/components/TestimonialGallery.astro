@@ -1,0 +1,141 @@
+---
+// Video testimonial gallery — a responsive grid of clickable YouTube-thumbnail
+// cards. Each card is a Lightbox trigger (data-lightbox). No iframes load until
+// a card is clicked. Used on /results and /reviews.
+//
+// Requires <Lightbox /> to be present once on the same page.
+//
+// To add/remove a video later, edit one line in the arrays below.
+import playIcon from 'lucide-static/icons/play.svg?raw';
+
+// GROUP A — client video testimonials.
+const clientVideos = [
+	{ id: '9JcLX3d8vaE', name: 'Tami', label: 'Recovered after a serious accident' },
+	{ id: '5rIXqFmnEoM', name: 'Joanna Crawford', label: 'Pleased with the process and result' },
+	{ id: '5ufsBNPmPh4', name: 'Shaun Carradine', label: 'Felt taken care of' },
+	{ id: 'tG8srnf9G3Q', name: 'Warren Stewart', label: 'Returns calls and emails' },
+	{ id: 'yuoWIW7uSQg', name: 'Aaron', label: 'Made me feel taken care of' },
+];
+
+// GROUP B — news features (NOT client testimonials).
+const newsVideos = [
+	{ id: 'fEz_Eq3JSlk', label: 'Featured: Eric Blank in the news' },
+	{ id: '8EXuSHfDAtk', label: 'Featured: Eric Blank in the news' },
+	{ id: 'PyqmbF9T1_g', label: 'Featured: Eric Blank in the news' },
+];
+
+const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+---
+
+<section class="bg-gray-50" aria-labelledby="video-testimonials-heading">
+	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+		<!-- GROUP A — Results In Their Words -->
+		<div class="mx-auto max-w-2xl text-center">
+			<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+				Real Clients
+			</p>
+			<h2
+				id="video-testimonials-heading"
+				class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+			>
+				Results In Their Words
+			</h2>
+			<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+				Hear directly from people we've represented — in their own words, on camera.
+			</p>
+		</div>
+
+		<ul class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+			{
+				clientVideos.map((video) => (
+					<li>
+						<button
+							type="button"
+							data-lightbox
+							data-type="video"
+							data-video-id={video.id}
+							aria-label={`Play video testimonial — ${video.name}`}
+							class="group block w-full overflow-hidden rounded-xl border border-gray-200 bg-white text-left shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2"
+						>
+							<span class="relative block aspect-video overflow-hidden bg-brand-navy">
+								<img
+									src={thumb(video.id)}
+									alt=""
+									loading="lazy"
+									width="480"
+									height="360"
+									class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+								/>
+								<span class="absolute inset-0 flex items-center justify-center">
+									<span
+										class="inline-flex size-14 items-center justify-center rounded-full bg-brand-gold/90 text-brand-navy shadow-lg transition-all duration-200 group-hover:scale-110 group-hover:bg-brand-gold [&>svg]:size-7 [&>svg]:translate-x-0.5 [&>svg]:fill-current"
+										set:html={playIcon}
+									/>
+								</span>
+							</span>
+							<span class="block p-4">
+								<span class="block font-bold text-brand-navy">{video.name}</span>
+								<span class="mt-0.5 block text-sm text-gray-500">{video.label}</span>
+							</span>
+						</button>
+					</li>
+				))
+			}
+		</ul>
+
+		<!-- GROUP B — In The News (smaller, visually distinct) -->
+		<div class="mt-16 border-t border-gray-200 pt-12 lg:mt-20 lg:pt-16">
+			<div class="mx-auto max-w-2xl text-center">
+				<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+					Press
+				</p>
+				<h3 class="mt-3 text-2xl font-bold tracking-tight text-balance text-brand-navy sm:text-3xl">
+					In The News
+				</h3>
+				<p class="mt-3 text-base text-pretty text-gray-600">
+					News features — not client testimonials.
+				</p>
+			</div>
+
+			<ul class="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
+				{
+					newsVideos.map((video) => (
+						<li>
+							<button
+								type="button"
+								data-lightbox
+								data-type="video"
+								data-video-id={video.id}
+								aria-label={`Play news feature — ${video.label}`}
+								class="group block w-full text-left focus:outline-none"
+							>
+								<span class="relative block aspect-video overflow-hidden rounded-lg bg-brand-navy shadow-sm transition-all duration-200 group-hover:shadow-md group-focus-visible:ring-2 group-focus-visible:ring-brand-gold group-focus-visible:ring-offset-2">
+									<img
+										src={thumb(video.id)}
+										alt=""
+										loading="lazy"
+										width="480"
+										height="360"
+										class="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
+									/>
+									<span class="absolute left-2 top-2 rounded bg-brand-navy/85 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+										News
+									</span>
+									<span class="absolute inset-0 flex items-center justify-center">
+										<span
+											class="inline-flex size-10 items-center justify-center rounded-full bg-brand-gold/90 text-brand-navy shadow transition-all duration-200 group-hover:scale-110 group-hover:bg-brand-gold [&>svg]:size-5 [&>svg]:translate-x-0.5 [&>svg]:fill-current"
+											set:html={playIcon}
+										/>
+									</span>
+								</span>
+								<span class="mt-2 block text-xs text-pretty text-gray-500 sm:text-sm">
+									{video.label}
+								</span>
+							</button>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</section>
