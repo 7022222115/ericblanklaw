@@ -1,0 +1,37 @@
+---
+/*
+ * AwaitingReview — TEMPORARY pre-launch review-gate banner.
+ *
+ * Purpose: makes it impossible to miss, on the live preview, that a page is
+ * waiting on attorney review/sign-off before launch. NOT for production.
+ *
+ * REMOVE BEFORE DOMAIN CUTOVER:
+ *   1. Delete the <AwaitingReview ... /> tag from each page.
+ *   2. Delete the matching `import AwaitingReview` line.
+ *   3. Delete this component file.
+ * (Search the repo for "AwaitingReview" to find every instance.)
+ *
+ * Props:
+ *   note  — short line naming exactly what's needed from the reviewing attorney.
+ */
+const { note } = Astro.props;
+---
+
+<aside
+	role="alert"
+	class="sticky top-0 z-50 border-b-2 border-[#7a1f1f] bg-[#b3261e] text-white"
+	data-awaiting-review
+>
+	<div class="mx-auto flex max-w-[1200px] items-start gap-3 px-4 py-3 sm:px-6 lg:px-8">
+		<span aria-hidden="true" class="mt-0.5 text-lg leading-none">⚠️</span>
+		<div class="text-sm sm:text-base">
+			<p class="font-bold tracking-wide uppercase">
+				Awaiting attorney review — not approved for launch
+			</p>
+			{note && <p class="mt-1 text-white/90">{note}</p>}
+			<p class="mt-1 text-xs text-white/70">
+				Preview only. This banner is removed once this page is signed off.
+			</p>
+		</div>
+	</div>
+</aside>
