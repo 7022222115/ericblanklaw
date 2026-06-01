@@ -214,8 +214,10 @@ const jsonLd = {
 		<Header />
 		<main>
 			<!-- SECTION 1 — Hero -->
-			<section class="bg-brand-navy text-white">
-				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/bicycle-accidents-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
 					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
 						Las Vegas Bicycle Accidents
 					</p>
