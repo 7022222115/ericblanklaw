@@ -5,30 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Contact from '../components/Contact.astro';
 import Badges from '../components/Badges.astro';
-import quoteIcon from 'lucide-static/icons/quote.svg?raw';
-
-const testimonials = [
-	{
-		name: "Tami",
-		quote:
-			"I had terrible injuries as a result of the accident I had and hiring Eric Blank to be on my side during this difficult process was the best thing I did.",
-	},
-	{
-		name: "Joanna Crawford",
-		quote:
-			"I was very pleased with the recommendation, and I'm very happy with the service that I got here. I was very pleased with the process and the end result has been marvelous.",
-	},
-	{
-		name: "Shaun Carradine",
-		quote:
-			"I appreciate you guys coming through, and showing me where to get things when I need to. Thanks for making my day.",
-	},
-	{
-		name: "Warren Stewart",
-		quote:
-			"If you are looking for an attorney who will return your calls and e-mails and make you feel like you are being taken care of then look no further, Eric Blank is your guy.",
-	},
-];
+import Reviews from '../components/Reviews.astro';
 ---
 
 <html lang="en">
@@ -58,30 +35,13 @@ const testimonials = [
 				</div>
 			</section>
 
-			<!-- B: testimonials grid -->
-			<section class="bg-white">
-				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
-					<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-						{
-							testimonials.map((testimonial) => (
-								<figure class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 sm:p-8">
-									<span
-										aria-hidden="true"
-										class="text-brand-navy/60 [&>svg]:size-8"
-										set:html={quoteIcon}
-									/>
-									<blockquote class="mt-4 text-base leading-relaxed text-pretty text-gray-700 sm:text-lg">
-										{testimonial.quote}
-									</blockquote>
-									<figcaption class="mt-auto pt-6 text-base font-bold text-brand-navy">
-										{testimonial.name}
-									</figcaption>
-								</figure>
-							))
-						}
-					</div>
+			<!-- B: client reviews (verbatim Google reviews component) -->
+			<Reviews />
 
-					<div class="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row">
+			<!-- B2: external review links -->
+			<section class="bg-white">
+				<div class="mx-auto max-w-[1200px] px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-28">
+					<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 						<a
 							href="https://www.avvo.com/attorneys/89117-nv-eric-blank-4209956.html"
 							target="_blank"
