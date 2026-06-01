@@ -8,6 +8,11 @@ import { reviews, googleAggregate, resultsDisclaimer } from "../data/reviews.js"
 // Quotes may be empty strings until verbatim Google text is pasted in —
 // the layout must not collapse, so cards carry a min-height and empty
 // quotes fall back to a muted placeholder.
+//
+// showHeader (default true): renders the "Client Reviews / What Our Clients Say"
+// heading + aggregate. Pass showHeader={false} on pages that already have their
+// own reviews <h1> hero (e.g. the /reviews page) to avoid a duplicate header.
+const { showHeader = true } = Astro.props;
 ---
 
 <section
@@ -16,6 +21,7 @@ import { reviews, googleAggregate, resultsDisclaimer } from "../data/reviews.js"
 	data-reviews-root
 >
 	<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+		{showHeader && (
 		<div class="mx-auto max-w-2xl text-center">
 			<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
 				Client Reviews
@@ -57,6 +63,7 @@ import { reviews, googleAggregate, resultsDisclaimer } from "../data/reviews.js"
 				)
 			}
 		</div>
+		)}
 
 		{/* Card grid */}
 		<ul

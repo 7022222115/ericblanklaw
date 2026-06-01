@@ -6,6 +6,8 @@ import Footer from '../components/Footer.astro';
 import Contact from '../components/Contact.astro';
 import Badges from '../components/Badges.astro';
 import Reviews from '../components/Reviews.astro';
+import { googleAggregate } from '../data/reviews.js';
+import starIcon from 'lucide-static/icons/star.svg?raw';
 ---
 
 <html lang="en">
@@ -32,11 +34,27 @@ import Reviews from '../components/Reviews.astro';
 						These are the people we've fought for, in their own words. For more reviews,
 						see our Avvo profile or watch our video testimonials.
 					</p>
+
+					<div class="mt-6 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-3">
+						<div class="flex items-center gap-1" aria-hidden="true">
+							{
+								Array.from({ length: 5 }).map(() => (
+									<span class="text-brand-gold [&>svg]:size-5 [&>svg]:fill-current" set:html={starIcon} />
+								))
+							}
+						</div>
+						<p class="text-base text-white">
+							<span class="font-bold text-brand-gold">{googleAggregate.rating.toFixed(1)}</span>
+							<span class="text-white/70"> / 5 · based on </span>
+							<span class="font-semibold">{googleAggregate.count.toLocaleString()}</span>
+							<span class="text-white/70"> Google reviews</span>
+						</p>
+					</div>
 				</div>
 			</section>
 
 			<!-- B: client reviews (verbatim Google reviews component) -->
-			<Reviews />
+			<Reviews showHeader={false} />
 
 			<!-- B2: external review links -->
 			<section class="bg-white">
