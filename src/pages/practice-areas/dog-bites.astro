@@ -5,6 +5,8 @@ import Header from '../../components/Header.astro';
 import AwaitingReview from '../../components/AwaitingReview.astro';
 import Footer from '../../components/Footer.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
+import Lightbox from '../../components/Lightbox.astro';
 
 import phoneIcon from 'lucide-static/icons/phone.svg?raw';
 import shieldIcon from 'lucide-static/icons/shield.svg?raw';
@@ -534,6 +536,9 @@ const jsonLd = {
 				</div>
 			</section>
 
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel />
+
 			<!-- SECTION 9 — Final CTA + contact form -->
 			<section
 				id="contact"
@@ -586,5 +591,7 @@ const jsonLd = {
 			</section>
 		</main>
 		<Footer />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
 	</body>
 </html>

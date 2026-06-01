@@ -4,6 +4,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Contact from '../components/Contact.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import Lightbox from '../components/Lightbox.astro';
 import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
 import languagesIcon from 'lucide-static/icons/languages.svg?raw';
 import houseIcon from 'lucide-static/icons/house.svg?raw';
@@ -222,8 +224,13 @@ const team = [
 			</section>
 
 			<!-- E: contact form -->
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel />
+
 			<Contact />
 		</main>
 		<Footer />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
 	</body>
 </html>

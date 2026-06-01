@@ -4,6 +4,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactForm from '../components/ContactForm.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import Lightbox from '../components/Lightbox.astro';
 import phoneIcon from 'lucide-static/icons/phone.svg?raw';
 import mailIcon from 'lucide-static/icons/mail.svg?raw';
 import mapPinIcon from 'lucide-static/icons/map-pin.svg?raw';
@@ -146,7 +148,12 @@ const mapsHref =
 					</a>
 				</div>
 			</section>
+		<!-- Video testimonial carousel -->
+		<TestimonialCarousel />
+
 		</main>
 		<Footer />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
 	</body>
 </html>

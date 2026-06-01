@@ -11,6 +11,8 @@ import Results from '../components/Results.astro';
 import Reviews from '../components/Reviews.astro';
 import Badges from '../components/Badges.astro';
 import Contact from '../components/Contact.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import Lightbox from '../components/Lightbox.astro';
 import Footer from '../components/Footer.astro';
 
 const title =
@@ -111,8 +113,13 @@ const jsonLd = {
 			<Results />
 			<Reviews />
 			<Badges />
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel />
+
 			<Contact />
 		</main>
 		<Footer />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
 	</body>
 </html>

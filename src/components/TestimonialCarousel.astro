@@ -1,0 +1,155 @@
+---
+// Video testimonial carousel — a compact, horizontally-scrolling row of
+// clickable video thumbnail cards. Each card is a Lightbox trigger
+// (data-lightbox); no iframes load until clicked.
+//
+// Reuses the EXISTING Lightbox.astro — include <Lightbox /> once on any page
+// that uses this carousel.
+//
+// Layout: scroll-snap track. 1 card per view on mobile (centered), max 2 on
+// wider screens. Desktop prev/next arrows scroll one card at a time and
+// disable at the ends; mobile uses native swipe. `safe center` keeps a single
+// card centered while still letting a full set scroll from the start.
+//
+// To add/remove a video later, edit one line in the array below.
+import playIcon from 'lucide-static/icons/play.svg?raw';
+import chevronLeftIcon from 'lucide-static/icons/chevron-left.svg?raw';
+import chevronRightIcon from 'lucide-static/icons/chevron-right.svg?raw';
+
+// Client testimonials only (no news clips — those live on the gallery pages).
+const videos = [
+	{ id: '9JcLX3d8vaE', name: 'Tami', label: 'Recovered after a serious accident' },
+	{ id: '5rIXqFmnEoM', name: 'Joanna Crawford', label: 'Pleased with the process and result' },
+	{ id: '5ufsBNPmPh4', name: 'Shaun Carradine', label: 'Felt taken care of' },
+	{ id: 'tG8srnf9G3Q', name: 'Warren Stewart', label: 'Returns calls and emails' },
+	{ id: 'yuoWIW7uSQg', name: 'Aaron', label: 'Made me feel taken care of' },
+];
+
+const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+---
+
+<section class="border-t border-gray-200 bg-white" aria-labelledby="carousel-heading">
+	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+		<div class="mx-auto max-w-2xl text-center">
+			<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+				Real Clients
+			</p>
+			<h2
+				id="carousel-heading"
+				class="mt-3 text-2xl font-bold tracking-tight text-balance text-brand-navy sm:text-3xl"
+			>
+				Hear From Our Clients
+			</h2>
+			<p class="mt-3 text-base text-pretty text-gray-600">
+				Short video stories from people we've represented.
+			</p>
+		</div>
+
+		<div class="relative mx-auto mt-10 max-w-3xl lg:mt-12" data-carousel>
+			<!-- Prev arrow (desktop) -->
+			<button
+				type="button"
+				data-carousel-prev
+				aria-label="Previous testimonial"
+				class="absolute -left-3 top-1/2 z-10 hidden size-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-brand-navy shadow-md transition-all hover:border-brand-gold hover:text-brand-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold disabled:pointer-events-none disabled:opacity-0 sm:inline-flex lg:-left-5 [&>svg]:size-5"
+				set:html={chevronLeftIcon}
+			></button>
+
+			<ul
+				data-carousel-track
+				class="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [justify-content:safe_center] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+			>
+				{
+					videos.map((video) => (
+						<li class="shrink-0 basis-full snap-center sm:basis-[calc(50%-0.75rem)]">
+							<button
+								type="button"
+								data-lightbox
+								data-type="video"
+								data-video-id={video.id}
+								aria-label={`Play video testimonial — ${video.name}`}
+								class="group block w-full overflow-hidden rounded-xl border border-gray-200 bg-white text-left shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2"
+							>
+								<span class="relative block aspect-video overflow-hidden bg-brand-navy">
+									<img
+										src={thumb(video.id)}
+										alt=""
+										loading="lazy"
+										width="480"
+										height="360"
+										class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+									/>
+									<span class="absolute inset-0 flex items-center justify-center">
+										<span
+											class="inline-flex size-14 items-center justify-center rounded-full bg-brand-gold/90 text-brand-navy shadow-lg transition-all duration-200 group-hover:scale-110 group-hover:bg-brand-gold [&>svg]:size-7 [&>svg]:translate-x-0.5 [&>svg]:fill-current"
+											set:html={playIcon}
+										/>
+									</span>
+								</span>
+								<span class="block p-4">
+									<span class="block font-bold text-brand-navy">{video.name}</span>
+									<span class="mt-0.5 block text-sm text-gray-500">{video.label}</span>
+								</span>
+							</button>
+						</li>
+					))
+				}
+			</ul>
+
+			<!-- Next arrow (desktop) -->
+			<button
+				type="button"
+				data-carousel-next
+				aria-label="Next testimonial"
+				class="absolute -right-3 top-1/2 z-10 hidden size-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-brand-navy shadow-md transition-all hover:border-brand-gold hover:text-brand-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold disabled:pointer-events-none disabled:opacity-0 sm:inline-flex lg:-right-5 [&>svg]:size-5"
+				set:html={chevronRightIcon}
+			></button>
+		</div>
+	</div>
+</section>
+
+<script>
+	document.querySelectorAll('[data-carousel]').forEach((root) => {
+		const track = root.querySelector('[data-carousel-track]') as HTMLElement | null;
+		const prev = root.querySelector('[data-carousel-prev]') as HTMLButtonElement | null;
+		const next = root.querySelector('[data-carousel-next]') as HTMLButtonElement | null;
+		if (!track) return;
+
+		// Width to advance per click: one card + the flex gap.
+		function step() {
+			const card = track!.querySelector('li');
+			if (!card) return track!.clientWidth;
+			const gap = parseFloat(getComputedStyle(track!).columnGap) || 0;
+			return card.getBoundingClientRect().width + gap;
+		}
+
+		function update() {
+			const maxScroll = track!.scrollWidth - track!.clientWidth;
+			const x = track!.scrollLeft;
+			const scrollable = maxScroll > 1;
+			if (prev) prev.disabled = !scrollable || x <= 1;
+			if (next) next.disabled = !scrollable || x >= maxScroll - 1;
+		}
+
+		prev?.addEventListener('click', () =>
+			track.scrollBy({ left: -step(), behavior: 'smooth' })
+		);
+		next?.addEventListener('click', () =>
+			track.scrollBy({ left: step(), behavior: 'smooth' })
+		);
+
+		track.addEventListener('scroll', () => window.requestAnimationFrame(update), {
+			passive: true,
+		});
+		window.addEventListener('resize', update);
+
+		// Keyboard: left/right arrows scroll while focus is within the carousel.
+		root.addEventListener('keydown', (e) => {
+			const key = (e as KeyboardEvent).key;
+			if (key === 'ArrowLeft') track.scrollBy({ left: -step(), behavior: 'smooth' });
+			else if (key === 'ArrowRight') track.scrollBy({ left: step(), behavior: 'smooth' });
+		});
+
+		update();
+	});
+</script>

@@ -4,6 +4,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Contact from '../components/Contact.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import Lightbox from '../components/Lightbox.astro';
 import PracticeAreaGrid from '../components/PracticeAreaGrid.astro';
 ---
 
@@ -84,8 +86,13 @@ import PracticeAreaGrid from '../components/PracticeAreaGrid.astro';
 			</section>
 
 			<!-- D: contact form -->
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel />
+
 			<Contact />
 		</main>
 		<Footer />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
 	</body>
 </html>
