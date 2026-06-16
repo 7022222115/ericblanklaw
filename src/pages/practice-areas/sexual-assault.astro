@@ -1,0 +1,555 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import AwaitingReview from '../../components/AwaitingReview.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+import landmarkIcon from 'lucide-static/icons/landmark.svg?raw';
+
+const title = "Las Vegas Sexual Assault & Abuse Survivor Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"If you've survived sexual assault or abuse, Nevada law gives you options — and often no deadline to come forward. Eric Blank Injury Attorneys offers a free, confidential, no-pressure conversation. Call (702) 222-2115.";
+
+const heroTrust = ["26+ Years", "Compassionate Representation", "Available 24/7", "Free & Confidential"];
+
+const stats = [
+	{ value: "26+", label: "Years Helping Injury Victims" },
+	{ value: "1000s", label: "of Injury Cases Handled" },
+	{ value: "$0", label: "Out-of-Pocket Fees", note: "Contingency fee only" },
+	{ value: "100%", label: "Free & Confidential" },
+];
+
+const steps = [
+	{
+		icon: shieldIcon,
+		title: "You Are In Control",
+		text: "There is no wrong way to come forward, and no timeline you have to meet to talk with us. You decide what happens next, every step of the way.",
+	},
+	{
+		icon: scaleIcon,
+		title: "A Civil Case Is Separate From A Criminal One",
+		text: "You do not need a police report, a criminal charge, or a conviction to pursue a civil claim. These are different paths, and you can choose either, both, or neither.",
+	},
+	{
+		icon: calendarClockIcon,
+		title: "You May Have More Time Than You Think",
+		text: "Nevada has removed the filing deadline for many sexual-assault claims. Coming forward years — even decades — later may still be possible.",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "Your Privacy Matters",
+		text: "These conversations are confidential. We handle every case with discretion and care for your safety and wellbeing.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: handshakeIcon,
+		title: "Listen, Believe, And Go At Your Pace",
+		text: "We start by listening. Nothing moves forward until you're ready for it to.",
+	},
+	{
+		icon: landmarkIcon,
+		title: "Hold The Right Parties Accountable",
+		text: "This can include the individual responsible and, in many cases, an institution that enabled or ignored the abuse — a school, employer, or organization.",
+	},
+	{
+		icon: shieldIcon,
+		title: "Protect Your Privacy Throughout",
+		text: "We take steps to shield your identity and handle sensitive information with care during the legal process.",
+	},
+	{
+		icon: stethoscopeIcon,
+		title: "Pursue Meaningful Recovery",
+		text: "Compensation can't undo what happened, but it can support your healing, your treatment, and your future.",
+	},
+];
+
+const economicDamages = [
+	"Counseling and therapy costs",
+	"Medical expenses",
+	"Lost income or earning capacity",
+	"Costs of relocation or safety measures",
+];
+
+const nonEconomicDamages = [
+	"Emotional and psychological harm",
+	"Pain and suffering",
+	"Loss of enjoyment of life",
+	"Harm to relationships and sense of safety",
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Often, There Is No Deadline To Come Forward",
+		text: "In 2023, Nevada removed the statute of limitations for civil claims based on sexual assault that occurred when the survivor was an adult. Survivors abused as children have long had no filing deadline. The change applies retroactively — which can revive options for people who were previously told it was 'too late.'",
+	},
+	{
+		icon: landmarkIcon,
+		title: "You Can Pursue Those Who Enabled It",
+		text: "A civil claim isn't limited to the individual who caused harm. Where an institution — a school, employer, religious or youth organization, or business — failed to protect you or ignored warning signs, it may share legal responsibility.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Civil And Criminal Cases Are Different",
+		text: "A civil case is about your recovery and accountability, and it stands on its own. You don't need a criminal conviction — or any criminal case at all — to bring one.",
+	},
+	{
+		icon: clockIcon,
+		title: "Some Claims Have Their Own Timelines",
+		text: "While Nevada has lifted the deadline for sexual-assault claims specifically, related claims can carry different rules. The only way to know what applies to your situation is a private conversation — and there's no cost or obligation to have one.",
+	},
+];
+
+const faqs = [
+	{
+		q: "Is it too late to come forward?",
+		a: "Probably not. Nevada has removed the filing deadline for many sexual-assault claims, and the change reaches back to cases from years ago. Even if you were once told you were out of time, it's worth asking again.",
+	},
+	{
+		q: "Do I have to go to the police?",
+		a: "No. A civil claim is completely separate from the criminal system. You can pursue accountability and recovery without a police report or a criminal case.",
+	},
+	{
+		q: "Will my name be made public?",
+		a: "We take your privacy seriously and use available legal protections to keep your identity and information as confidential as possible. We'll explain exactly how that works before anything moves forward.",
+	},
+	{
+		q: "Can I hold a school or organization responsible?",
+		a: "Sometimes, yes. If an institution failed to protect you or ignored what it knew, it may share responsibility. This is often an important part of a survivor's case.",
+	},
+	{
+		q: "What will it cost me?",
+		a: "Nothing to talk with us. The consultation is free and confidential, and if we work together, there are no fees unless we recover for you.",
+	},
+	{
+		q: "I'm not sure I'm ready. Can I still reach out?",
+		a: "Yes. You can talk with us just to understand your options, with no pressure and no obligation to do anything further. You set the pace.",
+	},
+];
+
+const contactReasons = [
+	{ text: "A free, confidential conversation", icon: checkCircleIcon },
+	{ text: "No fees unless we recover for you", icon: circleDollarSignIcon },
+	{ text: "You set the pace — no pressure, no obligation", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/practice-areas/sexual-assault#service",
+			name: "Eric Blank Injury Attorneys — Sexual Assault & Abuse Survivor Representation",
+			serviceType: "Sexual Assault & Abuse Survivor Legal Services",
+			url: "https://ericblanklaw.com/practice-areas/sexual-assault",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			telephone: "+1-702-222-2115",
+			priceRange: "Contingency Fee — No Fees Unless We Win",
+			areaServed: ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Clark County", "Nevada"],
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: "7860 W Sahara Ave Ste. 110",
+				addressLocality: "Las Vegas",
+				addressRegion: "NV",
+				postalCode: "89117",
+				addressCountry: "US",
+			},
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		{
+			"@type": "Attorney",
+			"@id": "https://ericblanklaw.com/#attorney",
+			name: "Eric R. Blank",
+			jobTitle: "Personal Injury Attorney",
+		},
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/practice-areas/sexual-assault#faq",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/practice-areas/sexual-assault"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<AwaitingReview note="Eric: priority legal review — most sensitive page; please confirm the softened, survivor-centered tone is right. Confirm the 2023 elimination of the civil statute of limitations for adult sexual-assault claims and its retroactive reach, the no-deadline-for-childhood-abuse point, the institutional-liability framing, and the civil-vs-criminal independence." />
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/sexual-assault-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Sexual Assault & Abuse Survivors
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Support And Legal Options For Survivors
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						If you've survived sexual assault or abuse, you deserve to be heard, believed,
+						and treated with care. Nevada law gives survivors real options — including, in
+						many cases, no deadline to come forward. Whenever you're ready, we're here to
+						talk, confidentially and at your pace.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Speak With Us Confidentially
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What you should know -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							For Survivors
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What You Should Know
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							A few things that may help as you consider whether, and when, to reach out.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Our Approach
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							How Eric Blank Injury Attorneys Can Help
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							We handle these cases with compassion, discretion, and respect for what you've
+							been through — part of how we serve our broader{" "}
+							<a
+								href="/practice-areas"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								personal injury practice
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — What you can recover -->
+			<section class="bg-white" aria-labelledby="damages-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Damages
+						</p>
+						<h2
+							id="damages-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What Survivors May Be Able To Recover
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Compensation can never undo the harm. What it can do is help support a
+							survivor's healing and future — covering both tangible costs and the deeper
+							personal toll.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Economic Damages</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									economicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Non-Economic Damages</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									nonEconomicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Every survivor's situation is different, and what a claim may involve depends on
+						the specific facts. A{" "}
+						<a
+							href="/contact"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							free, confidential conversation
+						</a>{" "}
+						is the best way to understand your options.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nevada Law
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Key Nevada Survivor-Protection Laws
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						This is general information, not legal advice for your specific case. Talk to an
+						attorney about the facts of your situation.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							FAQ
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Common Questions From Survivors
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							When You're Ready, We're Here To Listen
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							Whatever you've been through, you deserve to be treated with care and respect.
+							Reach out whenever you're ready — confidentially, and at your pace.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								What To Expect
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								A Conversation, On Your Terms
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								There's no pressure and no obligation. You can reach out simply to
+								understand your options, and decide what feels right for you from there.
+							</p>
+						</div>
+						<ContactForm />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
