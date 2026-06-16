@@ -1,0 +1,150 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = (await getCollection('blog')).filter((post) => !post.data.draft);
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const { title, description, pubDate, updatedDate, author, heroImage } = post.data;
+
+const fmtDate = (date: Date) =>
+	date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const pageTitle = `${title} | Eric Blank Injury Attorneys`;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={description} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<article class="bg-white">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+						<a href="/blog" class="transition-colors hover:text-brand-gold">Blog</a>
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl lg:text-5xl">
+						{title}
+					</h1>
+					<div class="mt-4 flex flex-wrap items-center gap-x-2 text-sm text-gray-500">
+						<time datetime={pubDate.toISOString()}>{fmtDate(pubDate)}</time>
+						<span aria-hidden="true" class="text-brand-gold">&bull;</span>
+						<span>{author}</span>
+						{
+							updatedDate && (
+								<>
+									<span aria-hidden="true" class="text-brand-gold">&bull;</span>
+									<span>Updated {fmtDate(updatedDate)}</span>
+								</>
+							)
+						}
+					</div>
+
+					{
+						heroImage && (
+							<img
+								src={heroImage}
+								alt=""
+								class="mt-8 aspect-video w-full rounded-lg object-cover"
+							/>
+						)
+					}
+
+					<div class="post-body mt-10 text-base leading-relaxed text-gray-700">
+						<Content />
+					</div>
+
+					<div class="mt-12 border-t border-gray-200 pt-8">
+						<a
+							href="/blog"
+							class="inline-flex items-center gap-1 text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+						>
+							&larr; Back to all posts
+						</a>
+					</div>
+				</div>
+			</article>
+		</main>
+		<Footer />
+
+		<style>
+			/* Scoped styling for rendered Markdown body — no typography plugin in use. */
+			.post-body :global(h2) {
+				margin-top: 2.5rem;
+				margin-bottom: 1rem;
+				font-size: 1.5rem;
+				line-height: 1.3;
+				font-weight: 700;
+				color: var(--color-brand-navy);
+			}
+			.post-body :global(h3) {
+				margin-top: 2rem;
+				margin-bottom: 0.75rem;
+				font-size: 1.25rem;
+				line-height: 1.3;
+				font-weight: 700;
+				color: var(--color-brand-navy);
+			}
+			.post-body :global(p) {
+				margin-top: 1.25rem;
+				margin-bottom: 1.25rem;
+			}
+			.post-body :global(ul),
+			.post-body :global(ol) {
+				margin-top: 1.25rem;
+				margin-bottom: 1.25rem;
+				padding-left: 1.5rem;
+			}
+			.post-body :global(ul) {
+				list-style: disc;
+			}
+			.post-body :global(ol) {
+				list-style: decimal;
+			}
+			.post-body :global(li) {
+				margin-top: 0.5rem;
+				margin-bottom: 0.5rem;
+			}
+			.post-body :global(a) {
+				font-weight: 600;
+				color: var(--color-brand-navy);
+				text-decoration: underline;
+				text-decoration-color: var(--color-brand-gold);
+				text-decoration-thickness: 2px;
+				text-underline-offset: 2px;
+			}
+			.post-body :global(a:hover) {
+				text-decoration-color: var(--color-brand-navy);
+			}
+			.post-body :global(strong) {
+				font-weight: 700;
+				color: var(--color-brand-navy);
+			}
+			.post-body :global(blockquote) {
+				margin: 1.5rem 0;
+				border-left: 4px solid var(--color-brand-gold);
+				padding-left: 1.25rem;
+				font-style: italic;
+				color: #4b5563;
+			}
+			.post-body :global(h2:first-child),
+			.post-body :global(h3:first-child),
+			.post-body :global(p:first-child) {
+				margin-top: 0;
+			}
+		</style>
+	</body>
+</html>
