@@ -1,0 +1,603 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import AwaitingReview from '../../components/AwaitingReview.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
+import Lightbox from '../../components/Lightbox.astro';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Las Vegas Drunk Driving Accident Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"Hit by a drunk driver in Las Vegas? Eric Blank Injury Attorneys has fought insurance companies for 26+ years to get DUI crash victims full recovery. Free consultation. No fees unless we win. Call (702) 222-2115.";
+
+const heroTrust = ["26+ Years", "Millions Recovered", "Available 24/7", "Free Consultation"];
+
+const stats = [
+	{ value: "Millions", label: "Recovered for Crash Victims" },
+	{ value: "1000s", label: "of Injury Cases Handled" },
+	{ value: "$0", label: "Out-of-Pocket Fees", note: "Contingency fee only" },
+	{ value: "24/7", label: "Free Consultation" },
+];
+
+const steps = [
+	{
+		icon: shieldIcon,
+		title: "Get To Safety",
+		text: "If you can move, get yourself and your vehicle out of traffic. Then check yourself and your passengers for injuries before doing anything else.",
+	},
+	{
+		icon: phoneCallIcon,
+		title: "Call 911",
+		text: "Report the crash — and tell the dispatcher if you suspect the other driver is impaired. That prompts a DUI investigation, and the resulting arrest and BAC evidence become powerful proof in your civil claim. Metro responds on surface streets; Nevada Highway Patrol on the highways.",
+	},
+	{
+		icon: cameraIcon,
+		title: "Document Everything",
+		text: "Photograph the vehicles, the scene, and any visible injuries. Note any signs of the other driver's impairment, and collect names and numbers of witnesses who saw how they were driving.",
+	},
+	{
+		icon: stethoscopeIcon,
+		title: "See A Doctor",
+		text: "Get checked even if you feel fine — adrenaline hides injuries, and soft-tissue and brain injuries often surface days later. A gap in treatment is the first thing insurers use against you.",
+	},
+	{
+		icon: banIcon,
+		title: "Don't Talk To Their Insurer",
+		text: "The drunk driver's insurance company will call fast and sound friendly. They are not on your side. Don't give a recorded statement or accept a quick offer — refer them to your attorney.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Call An Attorney First",
+		text: "Before you sign anything or accept any settlement, talk to a lawyer. Once you accept an offer you can't reopen the claim — even if your injuries turn out worse than you thought.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Use The Criminal Case To Your Advantage",
+		text: "We gather the police report, BAC results, and arrest records from the DUI prosecution and use them to build your civil claim. A conviction isn't required for you to recover — but it strengthens your case.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Build The Medical Record",
+		text: "We work directly with your doctors to document every injury, current and future, so the full cost of the crash is on paper — not guessed at.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Find Every Source Of Recovery",
+		text: "Beyond the driver, we look at whether an employer is liable if the driver was working, and at every insurance policy that might apply — including your own uninsured/underinsured motorist coverage.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Try The Case If Needed",
+		text: "Insurance companies settle harder when they know your attorney will take them to trial. We prepare every case as if it's going in front of a jury — and a drunk driver's conduct can open the door to punitive damages.",
+	},
+];
+
+const economicDamages = [
+	"Medical bills — past and future treatment",
+	"Lost wages and reduced future earning capacity",
+	"Property damage to your vehicle",
+	"Out-of-pocket costs — transportation, prescriptions, and more",
+];
+
+const nonEconomicDamages = [
+	"Pain and suffering",
+	"Emotional distress",
+	"Loss of enjoyment of life",
+	"Permanent disability or disfigurement",
+	"Loss of consortium",
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Statute of Limitations",
+		text: "Nevada gives you 2 years from the date of the crash to file a drunk driving injury lawsuit (NRS 11.190). The criminal DUI case against the driver is separate and runs on its own timeline — your civil deadline still applies, so don't wait for the criminal case to finish.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Comparative Negligence",
+		text: "Nevada follows modified comparative negligence. If you are 51% or more at fault you recover nothing; otherwise your recovery is reduced by your share (NRS 41.141). In most DUI crashes, fault rests squarely with the impaired driver.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Punitive Damages",
+		text: "Because driving drunk is reckless, Nevada has a specific punitive-damages statute for DUI injury cases (NRS 42.010) — damages meant to punish the driver, beyond compensation for your losses. Unlike most punitive awards in Nevada, DUI punitive damages are not subject to the usual statutory cap. This is one important way a drunk driving case can differ from an ordinary accident claim.",
+	},
+	{
+		icon: banIcon,
+		title: "Can You Sue The Bar? (Dram Shop)",
+		text: "Unlike many states, Nevada generally does not allow you to sue a bar, casino, or restaurant for serving an adult who later causes a DUI crash — the law places responsibility on the drinker (NRS 41.1305). There is a narrow exception when alcohol is knowingly served to someone under 21. Whether anyone beyond the driver can be held responsible is fact-specific, and worth reviewing with an attorney.",
+	},
+];
+
+const faqs = [
+	{
+		q: "How much does it cost to hire a drunk driving accident lawyer?",
+		a: "Our fee is contingency-based — no upfront cost and no hourly billing. We only get paid if we win your case, and the fee is a percentage of your settlement, agreed to in writing before we start.",
+	},
+	{
+		q: "Do I have to wait for the driver's criminal case to finish?",
+		a: "No. Your civil injury claim is separate from the criminal DUI case and has its own two-year deadline. We often use evidence from the criminal case to strengthen yours, but you don't have to wait for a conviction to pursue compensation.",
+	},
+	{
+		q: "Can I sue the bar or casino that served the driver?",
+		a: "Usually not. Nevada law (NRS 41.1305) generally protects establishments that serve alcohol to adults, placing responsibility on the drinker. The main exception is when alcohol was knowingly served to someone under 21. We can review whether any third party shares responsibility in your case.",
+	},
+	{
+		q: "What are punitive damages?",
+		a: "They're damages meant to punish especially reckless conduct, like drunk driving, on top of compensation for your losses. Not every case qualifies, but DUI crashes are one of the situations where they may apply.",
+	},
+	{
+		q: "What if the drunk driver had no insurance, or not enough?",
+		a: "You may still be able to recover through your own uninsured/underinsured motorist coverage. We'll review every policy that might apply to your accident.",
+	},
+	{
+		q: "Do I have to go to court?",
+		a: "Most cases settle without ever going to trial. But insurance companies pay more when they know your attorney is willing and able to try the case — and Eric Blank is.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Free, no-obligation case review", icon: checkCircleIcon },
+	{ text: "No fees unless we win your case", icon: circleDollarSignIcon },
+	{ text: "Available 24/7 — nights, weekends, holidays", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/practice-areas/dui-accidents#service",
+			name: "Eric Blank Injury Attorneys — Drunk Driving Accident Representation",
+			serviceType: "Drunk Driving Accident Legal Services",
+			url: "https://ericblanklaw.com/practice-areas/dui-accidents",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			telephone: "+1-702-222-2115",
+			priceRange: "Contingency Fee — No Fees Unless We Win",
+			areaServed: ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Clark County", "Nevada"],
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: "7860 W Sahara Ave Ste. 110",
+				addressLocality: "Las Vegas",
+				addressRegion: "NV",
+				postalCode: "89117",
+				addressCountry: "US",
+			},
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		{
+			"@type": "Attorney",
+			"@id": "https://ericblanklaw.com/#attorney",
+			name: "Eric R. Blank",
+			jobTitle: "Personal Injury Attorney",
+		},
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/practice-areas/dui-accidents#faq",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/practice-areas/dui-accidents"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<AwaitingReview note="Eric: priority legal review. Confirm the NRS 42.010 DUI punitive-damages statute and the no-cap statement, the NRS 41.1305 dram-shop framing and under-21 exception, the NRS 41.141 comparative-negligence cite, and the 2-year SOL (NRS 11.190)." />
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/dui-accidents-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Las Vegas Drunk Driving Accidents
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Las Vegas Drunk Driving Accident Attorney
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						A drunk driver made a choice — and you're the one paying for it. In a 24-hour
+						city built on nightlife, DUI crashes are a constant danger on the Strip, on
+						I-15, and on surface streets across the valley. The good news: when a drunk
+						driver causes your injuries, fault is often clear, and Nevada law gives you
+						strong options for recovery. For over 26 years, Eric Blank Injury Attorneys has
+						held impaired drivers accountable. Free consultation, and no fees unless we win.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Free Case Review
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What to do after a crash -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							First Steps
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What To Do After A Drunk Driving Crash In Las Vegas
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							The first hours after a crash shape your entire claim. Here's how to protect
+							yourself and your case.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Our Approach
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							How Eric Blank Injury Attorneys Handles Drunk Driving Cases
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank spent the early part of his career defending insurance companies.
+							We bring that insider knowledge to every drunk driving claim — the same edge
+							we apply across our{" "}
+							<a
+								href="/practice-areas"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								personal injury practice
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — What you can recover -->
+			<section class="bg-white" aria-labelledby="damages-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Damages
+						</p>
+						<h2
+							id="damages-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What Drunk Driving Accident Victims Can Recover In Nevada
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Nevada law lets injury victims recover compensatory damages — both the
+							concrete financial losses and the human cost of the crash. In rare cases
+							involving especially reckless conduct, punitive damages may also apply.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Economic Damages</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									economicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Non-Economic Damages</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									nonEconomicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Nevada caps damages in medical malpractice cases but not in general personal
+						injury claims. DUI cases carry an extra dimension: because drunk driving is
+						reckless conduct, a victim may also be able to seek punitive damages — money
+						meant to punish the driver, on top of compensation for your losses. A{" "}
+						<a
+							href="/contact"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							free consultation
+						</a>{" "}
+						is the best way to understand what your case may be worth.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nevada Law
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Key Nevada Drunk Driving Laws
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						This is general information, not legal advice for your specific case. Talk to an
+						attorney about the facts of your accident.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							FAQ
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Common Drunk Driving Accident Questions
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<a
+						href="/reviews"
+						class="mt-8 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Read more client reviews →
+					</a>
+				</div>
+			</section>
+
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel />
+
+			<!-- SECTION 9 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Request Your Free Case Review
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							It's free, confidential, and there's no obligation.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Why Call Now
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Three Reasons To Reach Out Today
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								Most Nevada drunk driving claims have strict deadlines — and the evidence
+								that wins them disappears fast. The sooner we hear from you, the more we
+								can do.
+							</p>
+						</div>
+						<ContactForm />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
+	</body>
+</html>
