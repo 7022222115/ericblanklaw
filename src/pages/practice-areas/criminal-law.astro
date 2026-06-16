@@ -1,0 +1,491 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import AwaitingReview from '../../components/AwaitingReview.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import fileTextIcon from 'lucide-static/icons/file-text.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Las Vegas Criminal Defense Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"Charged with a crime in Las Vegas? A charge is not a conviction. Eric Blank's team protects your rights from your first court date through resolution. Request a confidential consultation. Call (702) 222-2115.";
+
+const heroTrust = ["26+ Years Experience", "Confidential Consultation", "Available When You Need Us"];
+
+const stats = [
+	{ value: "26+", label: "Years Experience" },
+	{ value: "Confidential", label: "Consultation" },
+	{ value: "Available", label: "When You Need Us" },
+];
+
+const steps = [
+	{
+		icon: banIcon,
+		title: "Use Your Right To Remain Silent",
+		text: "You are not required to explain or talk your way out of anything. Politely state that you want a lawyer, and then stop. What you say can be used against you.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Ask For A Lawyer — Clearly",
+		text: "Once you ask for an attorney, questioning is supposed to stop. Say it plainly: 'I want a lawyer.' Don't wait to see how the conversation goes.",
+	},
+	{
+		icon: shieldIcon,
+		title: "Don't Consent To Searches",
+		text: "You can decline to consent to a search of your phone, car, or home. Stay calm and don't resist physically — just clearly say you do not consent.",
+	},
+	{
+		icon: fileTextIcon,
+		title: "Write Down What Happened",
+		text: "As soon as you can, note the details: times, officers, what was said, who was there. These facts matter to your defense.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: shieldCheckIcon,
+		title: "Protect Your Rights From Day One",
+		text: "We make sure your constitutional rights are respected — from questioning and searches through every court appearance.",
+	},
+	{
+		icon: searchIcon,
+		title: "Investigate The State's Case",
+		text: "We examine how evidence was gathered, whether procedures were followed, and where the prosecution's case is weak.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Negotiate Where It Helps You",
+		text: "Where it serves your interests, we work with prosecutors on reduced charges, alternatives to jail, or dismissal — and we're honest with you about your options.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Defend You At Trial",
+		text: "If your case goes to trial, you'll have an experienced advocate standing between you and the State.",
+	},
+];
+
+const nevadaLaws = [
+	{
+		icon: clipboardListIcon,
+		title: "How Nevada Classifies Charges",
+		text: "Nevada sorts crimes into three levels: misdemeanors (the least serious), gross misdemeanors, and felonies (the most serious). Where your charge falls affects everything — where a sentence is served, how long it can be, and the lasting impact on your record.",
+	},
+	{
+		icon: scaleIcon,
+		title: "What The Levels Can Carry",
+		text: "Generally, a misdemeanor can carry up to 6 months in county jail and a fine up to $1,000; a gross misdemeanor up to 364 days and up to $2,000; and felonies are divided into five categories (A through E) with much heavier potential penalties. These are general ranges — the actual exposure depends entirely on the specific charge.",
+	},
+	{
+		icon: shieldIcon,
+		title: "A Charge Is Not A Conviction",
+		text: "Being arrested or charged does not mean you are guilty. The State has to prove its case, and you are presumed innocent. A strong defense can challenge the evidence, the procedures used, and the charges themselves.",
+	},
+	{
+		icon: calendarClockIcon,
+		title: "Acting Early Matters",
+		text: "Decisions made in the first days of a case — about statements, searches, and court dates — can shape everything that follows. The earlier you have a lawyer, the more can often be done.",
+	},
+];
+
+const faqs = [
+	{
+		q: "Should I talk to the police without a lawyer?",
+		a: "Generally, no. You have the right to remain silent and the right to an attorney. The safest course is to clearly ask for a lawyer and avoid discussing your case until you have one.",
+	},
+	{
+		q: "What does a criminal defense lawyer cost?",
+		a: "Criminal defense is not handled on a 'no fee unless we win' basis the way injury cases are. Fees depend on the charge and the complexity of the case. We'll discuss costs clearly and honestly during your consultation, before you commit to anything.",
+	},
+	{
+		q: "A charge isn't the same as a conviction, right?",
+		a: "Correct. You are presumed innocent, and the State carries the burden of proving the charge. Many cases are resolved well short of a conviction.",
+	},
+	{
+		q: "What happens at my first court date?",
+		a: "Your first appearance (arraignment) is generally where the charges are formally stated and you enter a plea. Having a lawyer before that point helps you understand your options rather than reacting on the spot.",
+	},
+	{
+		q: "Can a charge be reduced or dismissed?",
+		a: "Sometimes. Depending on the facts, the evidence, and your record, it may be possible to negotiate reduced charges or alternatives. No lawyer can promise an outcome, but a careful defense can pursue every available option.",
+	},
+	{
+		q: "Should I just take the plea I'm offered?",
+		a: "Not without advice. A plea is a major decision with lasting consequences. Talk to a lawyer about what it really means before you agree to anything.",
+	},
+];
+
+const contactReasons = [
+	{ text: "A confidential consultation", icon: checkCircleIcon },
+	{ text: "Straight answers about what you're facing", icon: scaleIcon },
+	{ text: "Available when you need us", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/practice-areas/criminal-law#service",
+			name: "Eric Blank Injury Attorneys — Criminal Defense Representation",
+			serviceType: "Criminal Defense Legal Services",
+			url: "https://ericblanklaw.com/practice-areas/criminal-law",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			telephone: "+1-702-222-2115",
+			areaServed: ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Clark County", "Nevada"],
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: "7860 W Sahara Ave Ste. 110",
+				addressLocality: "Las Vegas",
+				addressRegion: "NV",
+				postalCode: "89117",
+				addressCountry: "US",
+			},
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		{
+			"@type": "Attorney",
+			"@id": "https://ericblanklaw.com/#attorney",
+			name: "Eric R. Blank",
+			jobTitle: "Attorney",
+		},
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/practice-areas/criminal-law#faq",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/practice-areas/criminal-law"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<AwaitingReview note="Eric: priority legal review — criminal-defense page (departs from the PI template). Confirm the misdemeanor / gross-misdemeanor / felony classification and the penalty ranges (misdemeanor up to 6 mo / $1,000; gross up to 364 days / $2,000; felony categories A–E), the arraignment description, and that no PI / contingency / 'no fees unless we win' language slipped in." />
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/criminal-law-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Criminal Defense
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Charged With A Crime In Las Vegas?
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						A criminal charge is not a conviction. From your first court date to the
+						resolution of your case, you have the right to a defense — and to a lawyer who
+						protects your rights at every step. The sooner you have representation, the more
+						options you may have.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Request A Confidential Consultation
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-3">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — If you've been arrested or charged -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Know Your Rights
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							If You've Been Arrested Or Charged
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							What you do in the first hours can shape your entire case. Here's how to
+							protect yourself.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Our Approach
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							How We Defend Your Case
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							From your first contact with investigators through trial, our focus is
+							protecting your rights and pursuing the best available outcome — part of how
+							we serve clients across our{" "}
+							<a
+								href="/practice-areas"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								practice areas
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — Areas we handle -->
+			<section class="bg-white" aria-labelledby="areas-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Criminal Matters
+						</p>
+						<h2
+							id="areas-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Areas We Handle
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							We represent people facing a wide range of criminal matters in the Las Vegas
+							area — from misdemeanors through serious felony charges. If you've been
+							arrested, cited, or contacted by investigators, it's worth a confidential
+							conversation to understand what you're facing and how we can help.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nevada Law
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Understanding Nevada Criminal Charges
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						This is general information, not legal advice for your specific case. Talk to an
+						attorney about the facts of your situation.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							FAQ
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Common Criminal Defense Questions
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Facing A Charge? Don't Wait To Get Advice.
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							The sooner you understand your options, the better positioned you are. Reach
+							out for a confidential consultation about your situation.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								What To Expect
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Talk To Us Before You Make A Decision
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								Decisions early in a case — about statements, searches, and court dates —
+								can shape everything that follows. A confidential consultation helps you
+								understand your options before you act.
+							</p>
+						</div>
+						<ContactForm />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
