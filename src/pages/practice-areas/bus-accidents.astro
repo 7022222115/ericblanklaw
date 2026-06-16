@@ -2,7 +2,6 @@
 import '../../styles/global.css';
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
-import AwaitingReview from '../../components/AwaitingReview.astro';
 import Footer from '../../components/Footer.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
@@ -30,13 +29,13 @@ import landmarkIcon from 'lucide-static/icons/landmark.svg?raw';
 
 const title = "Las Vegas Bus Accident Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
 const description =
-	"Injured in a Las Vegas bus or RTC transit accident? Eric Blank Injury Attorneys has fought insurance companies for 26+ years. Free consultation. No fees unless we win. Call (702) 222-2115.";
+	"Injured in a Las Vegas bus or RTC accident? Eric Blank Injury Attorneys has fought insurance companies for over 26 years. Free consultation. No fees unless we win. Call (702) 222-2115.";
 
 const heroTrust = ["26+ Years", "Millions Recovered", "Available 24/7", "Free Consultation"];
 
 const stats = [
-	{ value: "Millions", label: "Recovered for Crash Victims" },
-	{ value: "1000s", label: "of Injury Cases Handled" },
+	{ value: "Millions", label: "Recovered for Injury Victims" },
+	{ value: "1000s", label: "of Auto Cases Handled" },
 	{ value: "$0", label: "Out-of-Pocket Fees", note: "Contingency fee only" },
 	{ value: "24/7", label: "Free Consultation" },
 ];
@@ -45,17 +44,17 @@ const steps = [
 	{
 		icon: shieldIcon,
 		title: "Get To Safety",
-		text: "If you can move, get yourself out of traffic and away from the roadway. Then check yourself and others for injuries before doing anything else.",
+		text: "If you can move, get yourself and your vehicle out of traffic. Then check yourself and your passengers for injuries before doing anything else.",
 	},
 	{
 		icon: phoneCallIcon,
-		title: "Call 911 & Report It",
-		text: "Always report the crash. Note the bus number, route, and operator if you can. On Las Vegas surface streets Metro Police respond; on the highways and I-15 it's Nevada Highway Patrol. The police report becomes key evidence.",
+		title: "Call 911",
+		text: "Always report the crash. On Las Vegas surface streets, Metro Police respond; on the highways and I-15, it's Nevada Highway Patrol. The police report becomes key evidence in your claim.",
 	},
 	{
 		icon: cameraIcon,
 		title: "Document Everything",
-		text: "Photograph the bus, the scene, road conditions, and any visible injuries. Get the bus number and the driver's name — and collect names and numbers of fellow passengers, who are your witnesses.",
+		text: "Photograph the vehicles, the scene, road conditions, and any visible injuries. Collect the other driver's insurance and license details, plus names and numbers of any witnesses.",
 	},
 	{
 		icon: stethoscopeIcon,
@@ -64,13 +63,13 @@ const steps = [
 	},
 	{
 		icon: banIcon,
-		title: "Don't Give A Statement",
-		text: "The bus company or transit agency's insurer will contact you fast and sound friendly. They are not on your side. Don't give a recorded statement or accept a quick offer — refer them to your attorney.",
+		title: "Don't Talk To Their Insurer",
+		text: "The other driver's insurance company will call fast and sound friendly. They are not on your side. Don't give a recorded statement or accept a quick offer — refer them to your attorney.",
 	},
 	{
 		icon: scaleIcon,
-		title: "Call An Attorney Fast",
-		text: "Claims involving a government bus have their own filing rules, and evidence like onboard camera footage can be erased on a schedule. The sooner a lawyer is involved, the more can be preserved.",
+		title: "Call An Attorney First",
+		text: "Before you sign anything or accept any settlement, talk to a lawyer. Once you accept an offer you can't reopen the claim — even if your injuries turn out worse than you thought.",
 	},
 ];
 
@@ -78,22 +77,22 @@ const howWeHelp = [
 	{
 		icon: searchIcon,
 		title: "Investigate The Crash",
-		text: "We move fast to preserve onboard and traffic-camera footage, driver logs, maintenance records, and witness statements before they disappear or memories fade.",
+		text: "We move fast to preserve evidence — traffic-camera footage, scene photos, vehicle data, and witness statements — before it disappears or memories fade.",
 	},
 	{
 		icon: clipboardListIcon,
-		title: "Identify Every Liable Party",
-		text: "A bus case can involve the driver, the bus company, a maintenance contractor, a vehicle manufacturer, or a government transit agency. We identify everyone responsible.",
+		title: "Build The Medical Record",
+		text: "We work directly with your doctors to document every injury, current and future, so the full cost of the crash is on paper — not guessed at.",
 	},
 	{
 		icon: handshakeIcon,
 		title: "Negotiate With Insurance",
-		text: "Eric Blank spent years on the insurance-defense side. We know how these claims get valued — and undervalued — and we use it to push for a fair settlement.",
+		text: "Eric Blank spent years on the insurance-defense side. We know how adjusters value claims and where they cut corners — and we use it to push for a fair settlement.",
 	},
 	{
 		icon: gavelIcon,
 		title: "Try The Case If Needed",
-		text: "Insurance companies and agencies settle harder when they know your attorney will take them to trial. We prepare every case as if it's going in front of a jury.",
+		text: "Insurance companies settle harder when they know your attorney will take them to trial. We prepare every case as if it's going in front of a jury.",
 	},
 ];
 
@@ -149,16 +148,16 @@ const faqs = [
 		a: "RTC is a government agency, so your claim follows the Nevada Tort Claims Act — a notice of claim under NRS 41.036 and a $200,000 cap on recovery from the government under NRS 41.035. These rules are strict, so talk to an attorney quickly.",
 	},
 	{
-		q: "How long do I have to file a bus accident claim in Nevada?",
-		a: "Two years from the date of the accident under NRS 11.190. But government-bus claims carry their own notice steps, so the practical deadline can come sooner. Don't wait.",
+		q: "How long do I have to file?",
+		a: "Two years from the date of the accident (NRS 11.190), but government-bus claims carry their own notice steps, so don't wait.",
 	},
 	{
-		q: "Should I talk to the bus company's insurance company?",
-		a: "No. They are not on your side, and anything you say can be used to reduce or deny your claim. Politely refer them to your attorney and let us handle that conversation.",
+		q: "Should I talk to the bus company's insurer?",
+		a: "No. Refer them to your attorney; anything you say can be used to reduce or deny your claim.",
 	},
 	{
 		q: "Do I have to go to court?",
-		a: "Most cases settle without ever going to trial. But insurance companies and agencies pay more when they know your attorney is willing and able to try the case — and Eric Blank is.",
+		a: "Most cases settle, but insurers and agencies pay more when they know your attorney will try the case — and Eric Blank will.",
 	},
 ];
 
@@ -222,7 +221,6 @@ const jsonLd = {
 	<body class="overflow-x-clip">
 		<Header />
 		<main>
-			<AwaitingReview note="Eric: priority legal review. Confirm the common-carrier highest-duty standard, the NRS 41.036 notice-of-claim and $200,000 NRS 41.035 cap on RTC/government claims, the NRS 41.141 comparative-negligence cite, and the 2-year SOL (NRS 11.190)." />
 			<!-- SECTION 1 — Hero -->
 			<section class="relative bg-brand-navy text-white">
 				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/bus-accidents-hero.jpeg')" aria-hidden="true"></div>
@@ -235,12 +233,13 @@ const jsonLd = {
 						Las Vegas Bus Accident Attorney
 					</h1>
 					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
-						From RTC transit routes and the Strip's double-decker Deuce to charter, tour,
-						and shuttle buses, Las Vegas runs on buses — and when one crashes, the injuries
-						are often severe. Bus companies and government transit agencies have teams of
-						lawyers and adjusters working to limit what they pay. For over 26 years, Eric
-						Blank Injury Attorneys has stood up to them on behalf of injured passengers,
-						pedestrians, and other drivers. Free consultation, and no fees unless we win.
+						From RTC transit buses and the Deuce on the Strip to tour buses, school buses,
+						and charter coaches, Las Vegas runs on buses — and when one crashes, the injuries
+						are often serious and the parties responsible aren't always obvious. A government
+						transit agency, a private bus company, and their insurers all have lawyers
+						working to limit what they pay. For over 26 years, Eric Blank Injury Attorneys has
+						fought to get injury victims the recovery those companies don't want to pay. Free
+						consultation, and no fees unless we win.
 					</p>
 					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
 						<a
@@ -307,8 +306,8 @@ const jsonLd = {
 							What To Do After A Bus Accident In Las Vegas
 						</h2>
 						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
-							The first hours after a crash shape your entire claim. Here's how to protect
-							yourself and your case.
+							The first hours after a bus crash shape your entire claim. Here's how to
+							protect yourself and your case.
 						</p>
 					</div>
 					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
@@ -351,8 +350,8 @@ const jsonLd = {
 						</h2>
 						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
 							Eric Blank spent the early part of his career defending insurance companies.
-							We bring that insider knowledge to every bus case — the same edge we apply
-							across our{" "}
+							We bring that insider knowledge to every bus accident claim — the same edge
+							we apply across our{" "}
 							<a
 								href="/practice-areas"
 								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
