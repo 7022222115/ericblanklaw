@@ -45,7 +45,7 @@ const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 			</p>
 		</div>
 
-		<div class="relative mx-auto mt-10 max-w-3xl lg:mt-12" data-carousel>
+		<div class="relative mx-auto mt-10 lg:mt-12" data-carousel>
 			<!-- Prev arrow (desktop) -->
 			<button
 				type="button"
@@ -61,7 +61,7 @@ const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 			>
 				{
 					videos.map((video) => (
-						<li class="shrink-0 basis-full snap-center sm:basis-[calc(50%-0.75rem)]">
+						<li class="shrink-0 basis-full snap-center sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)] xl:basis-[calc(25%-1.125rem)]">
 							<button
 								type="button"
 								data-lightbox
