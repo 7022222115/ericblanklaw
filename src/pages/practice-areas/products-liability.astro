@@ -1,0 +1,605 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import AwaitingReview from '../../components/AwaitingReview.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
+import Lightbox from '../../components/Lightbox.astro';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Las Vegas Product Liability Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"Injured by a defective product? Eric Blank Injury Attorneys has fought manufacturers and insurers for 26+ years. In Nevada, you don't have to prove negligence — just that the product was defective. Free consultation. Call (702) 222-2115.";
+
+const heroTrust = ["26+ Years", "Millions Recovered", "Available 24/7", "Free Consultation"];
+
+const stats = [
+	{ value: "Millions", label: "Recovered for Crash Victims" },
+	{ value: "1000s", label: "of Injury Cases Handled" },
+	{ value: "$0", label: "Out-of-Pocket Fees", note: "Contingency fee only" },
+	{ value: "24/7", label: "Free Consultation" },
+];
+
+const steps = [
+	{
+		icon: stethoscopeIcon,
+		title: "Get Medical Care",
+		text: "Treat your injuries first, and make sure they're documented. The medical record is what ties your injury to the product that caused it.",
+	},
+	{
+		icon: shieldIcon,
+		title: "Keep The Product",
+		text: "Do not throw it away, repair it, or return it. The defective product itself is the single most important piece of evidence in your case. Preserve it exactly as it was.",
+	},
+	{
+		icon: cameraIcon,
+		title: "Save Everything That Came With It",
+		text: "Keep the packaging, receipts, manuals, warning labels, and any purchase records. Photograph the product and your injuries from multiple angles.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Write Down What Happened",
+		text: "While it's fresh, note how you were using the product, what went wrong, and who witnessed it. Memory fades; written notes don't.",
+	},
+	{
+		icon: banIcon,
+		title: "Don't Talk To The Manufacturer's Insurer",
+		text: "They may offer a refund or a quick settlement in exchange for the product or a signed release. Don't hand over the evidence or sign anything — refer them to your attorney.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Call An Attorney",
+		text: "Product cases are document- and expert-heavy. The sooner a lawyer is involved, the better the evidence can be preserved and analyzed.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Preserve & Analyze The Product",
+		text: "We secure the defective product and work with engineering and safety experts to pinpoint exactly what failed and why.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Identify The Defect Type",
+		text: "Design defect, manufacturing defect, or failure to warn — each is proven differently. We build the case around the right theory.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Trace The Supply Chain",
+		text: "Liability can reach the manufacturer, the distributor, and the retailer. We identify every party that put the defective product in your hands.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Try The Case If Needed",
+		text: "Manufacturers have deep pockets and aggressive defense lawyers. We prepare every case as if it's going in front of a jury.",
+	},
+];
+
+const economicDamages = [
+	"Medical bills — past and future treatment",
+	"Lost wages and reduced future earning capacity",
+	"Property damage to your vehicle",
+	"Out-of-pocket costs — transportation, prescriptions, and more",
+];
+
+const nonEconomicDamages = [
+	"Pain and suffering",
+	"Emotional distress",
+	"Loss of enjoyment of life",
+	"Permanent disability or disfigurement",
+	"Loss of consortium",
+];
+
+const nevadaLaws = [
+	{
+		icon: shieldCheckIcon,
+		title: "Strict Liability: No Need To Prove Negligence",
+		text: "Nevada follows the doctrine of strict product liability. You do not have to prove the manufacturer was careless — only that the product was defective, that the defect existed when it left the company's hands, that you used the product in a reasonably foreseeable way, and that the defect caused your injury.",
+	},
+	{
+		icon: scaleIcon,
+		title: "The Four Legal Theories",
+		text: "A Nevada product claim can rest on any of four theories: strict liability, negligence, breach of warranty, or misrepresentation/fraud. The same defective product may support more than one. We plead the theories that give your case the strongest footing.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Who Can Be Held Liable",
+		text: "Liability isn't limited to the manufacturer. Under Nevada law, a distributor or a retailer in the business of selling the product can also be held responsible. That matters when the manufacturer is overseas, out of business, or hard to reach.",
+	},
+	{
+		icon: calendarClockIcon,
+		title: "Statute of Limitations",
+		text: "Nevada generally applies a 2-year deadline to personal injury claims, including many product cases (NRS 11.190). But the deadline can depend on how the claim is brought, and the \"discovery rule\" can move the start date when a defect wasn't immediately apparent — common with toxic exposure or gradual harm. Because the timing is fact-specific, talk to an attorney early.",
+	},
+];
+
+const faqs = [
+	{
+		q: "How much does it cost to hire a product liability lawyer?",
+		a: "Our fee is contingency-based — no upfront cost and no hourly billing. We only get paid if we win your case, and the fee is a percentage of your settlement, agreed to in writing before we start.",
+	},
+	{
+		q: "Do I have to prove the company was negligent?",
+		a: "No. That's what makes Nevada product law powerful for injury victims. Under strict liability you only need to show the product was defective and that the defect caused your injury — not that the company was careless.",
+	},
+	{
+		q: "What are the types of product defects?",
+		a: "Generally three: design defects, where the product is dangerous as designed; manufacturing defects, where something went wrong in production; and failure to warn, where the product carried a non-obvious risk without adequate warnings or instructions.",
+	},
+	{
+		q: "What should I do with the product that injured me?",
+		a: "Keep it, and don't alter, repair, or return it. The product itself is your most important evidence. Store it safely and bring it to your consultation if you can.",
+	},
+	{
+		q: "How long do I have to file a product liability claim in Nevada?",
+		a: "Generally two years from the date of injury under NRS 11.190, though the deadline can depend on how the claim is framed, and the discovery rule may apply if the defect wasn't immediately known. Don't wait to get advice.",
+	},
+	{
+		q: "Do I have to go to court?",
+		a: "Most cases settle without ever going to trial. But manufacturers pay more when they know your attorney is willing and able to try the case — and Eric Blank is.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Free, no-obligation case review", icon: checkCircleIcon },
+	{ text: "No fees unless we win your case", icon: circleDollarSignIcon },
+	{ text: "Available 24/7 — nights, weekends, holidays", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/practice-areas/products-liability#service",
+			name: "Eric Blank Injury Attorneys — Product Liability Representation",
+			serviceType: "Product Liability Legal Services",
+			url: "https://ericblanklaw.com/practice-areas/products-liability",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			telephone: "+1-702-222-2115",
+			priceRange: "Contingency Fee — No Fees Unless We Win",
+			areaServed: ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Clark County", "Nevada"],
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: "7860 W Sahara Ave Ste. 110",
+				addressLocality: "Las Vegas",
+				addressRegion: "NV",
+				postalCode: "89117",
+				addressCountry: "US",
+			},
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		{
+			"@type": "Attorney",
+			"@id": "https://ericblanklaw.com/#attorney",
+			name: "Eric R. Blank",
+			jobTitle: "Personal Injury Attorney",
+		},
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/practice-areas/products-liability#faq",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/practice-areas/products-liability"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<AwaitingReview note="Eric: priority legal review. Confirm the strict-liability four-element statement and 'no need to prove negligence' framing, the four-theories list, the distributor/retailer liability point, the no-punitive-cap-for-product-claims statement, and the SOL / discovery-rule language (NRS 11.190)." />
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/products-liability-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Nevada Product Liability
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Las Vegas Product Liability Attorney
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						You trusted that the product was safe — a vehicle part, a medical device, a power
+						tool, a household appliance, a children's product. When a defect causes serious
+						injury, the manufacturer and its insurers will spend heavily to avoid
+						responsibility. Nevada law is on your side here: you don't have to prove the
+						company was careless, only that the product was defective and it hurt you. For
+						over 26 years, Eric Blank Injury Attorneys has taken on manufacturers to get
+						injury victims full recovery. Free consultation, and no fees unless we win.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Free Case Review
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What to do after a crash -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							First Steps
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What To Do After A Defective Product Injury
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							A product injury claim is built on evidence — most of all, the product itself.
+							Here's how to protect your health and your case.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Our Approach
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							How Eric Blank Injury Attorneys Handles Product Liability Cases
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank spent the early part of his career defending insurance companies.
+							We bring that insider knowledge to every product liability case — the same
+							edge we apply across our{" "}
+							<a
+								href="/practice-areas"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								personal injury practice
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — What you can recover -->
+			<section class="bg-white" aria-labelledby="damages-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Damages
+						</p>
+						<h2
+							id="damages-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							What Product Liability Victims Can Recover In Nevada
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Nevada law lets injury victims recover compensatory damages — both the
+							concrete financial losses and the human cost of the crash. In rare cases
+							involving especially reckless conduct, punitive damages may also apply.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Economic Damages</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									economicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Non-Economic Damages</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									nonEconomicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Nevada caps damages in medical malpractice cases but not in general personal
+						injury claims. In product cases involving especially egregious conduct — for
+						example, a manufacturer that knew about a danger and sold the product anyway —
+						punitive damages may also be available, and Nevada does not apply its usual
+						punitive-damage cap to product liability claims. A{" "}
+						<a
+							href="/contact"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							free consultation
+						</a>{" "}
+						is the best way to understand what your case may be worth.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nevada Law
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Key Nevada Product Liability Laws
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						This is general information, not legal advice for your specific case. Talk to an
+						attorney about the facts of your accident.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							FAQ
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Common Product Liability Questions
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<a
+						href="/reviews"
+						class="mt-8 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Read more client reviews →
+					</a>
+				</div>
+			</section>
+
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel />
+
+			<!-- SECTION 9 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Request Your Free Case Review
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							It's free, confidential, and there's no obligation.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Why Call Now
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Three Reasons To Reach Out Today
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								Most Nevada product liability claims have strict deadlines — and the
+								evidence that wins them disappears fast. The sooner we hear from you, the
+								more we can do.
+							</p>
+						</div>
+						<ContactForm />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
+	</body>
+</html>
