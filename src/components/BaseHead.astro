@@ -4,6 +4,7 @@ interface Props {
 	description: string;
 	canonical?: string;
 	ogImage?: string;
+	ogType?: string;
 	noindex?: boolean;
 }
 
@@ -12,6 +13,7 @@ const {
 	description,
 	canonical,
 	ogImage = "/og-default.jpg",
+	ogType = "website",
 	noindex = false,
 } = Astro.props;
 
@@ -36,10 +38,8 @@ const robotsContent = noindex
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="/Eric_Blank_Injury_Attorneys_Logo.png" />
 
-<!-- TODO: Create /public/og-default.jpg — 1200x630px social sharing card. Should include logo, firm name, tagline. Generate this in v2 design pass. -->
-
 <!-- Open Graph -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalURL} />
