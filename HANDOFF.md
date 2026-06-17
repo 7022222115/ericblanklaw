@@ -1,6 +1,6 @@
-# HANDOFF — Phase 4 SEO Parity, Batch C (firmNode rollout COMPLETE)
+# HANDOFF — Phase 4 SEO Parity (firmNode rollout + Wave 2 attorney consolidation COMPLETE)
 
-**Last updated:** 2026-06-17, end of session. **HEAD at this write:** e914362.
+**Last updated:** 2026-06-17, end of session. **HEAD at this write:** c69d30e.
 
 ## What Batch C is
 Killing the 31× duplicated firm NAP in the JSON-LD @graph. Created ONE shared
@@ -26,8 +26,12 @@ own name/serviceType/url/image/(priceRange)/employee + its own `#service` @id.
 
 ## Progress
 - ✅ firm.ts created + committed (e6429bb).
-- ✅ ALL 20 practice-area pages wired to firmNode (Waves 1–4: 0eb591d, 43f7284,
-  85f499c, fb77bf2). ~200 lines of duplicated NAP removed.
+- ✅ ALL 20 practice-area pages wired to firmNode. Waves 1–4 (0eb591d, 43f7284,
+  85f499c, fb77bf2) covered only 19 — wrongful-death.astro silently slipped through
+  ALL four waves and kept shipping duplicated inline NAP. The "20/20" claimed at
+  fb77bf2 was actually 19/20. Discovered during Wave 2 (its missing firmNode import
+  surfaced when the attorney swap failed); backfilled in 4dbbde3 (firmNode wiring +
+  attorney consolidation, body-copy diff verified empty). NOW genuinely 20/20.
 - ✅ ALL 10 LP pages wired (canary las-vegas-car-accident 1de1928 + batch of 9 8c3b454).
   LPs were uniform — no FAQPage, standard Lightbox import anchor, priceRange on all 10.
 - ✅ homepage (index.astro) wired (e914362). SPECIAL CASE done: replaced its inline
@@ -38,11 +42,20 @@ own name/serviceType/url/image/(priceRange)/employee + its own `#service` @id.
 **firmNode rollout = 31/31 pages COMPLETE.** firm.ts is the single source of truth
 for the firm NAP. The duplicated inline NAP that started this batch is gone.
 
+## Wave 2 — COMPLETE (30/30)
+- ✅ Attorney node consolidated across all 30 remaining pages. Every page now sources
+  #attorney from shared attorneyNode (car-accidents canary 603a418, batch of 27 18e1b3a,
+  wrongful-death 4dbbde3, criminal-law c69d30e). firm.ts is now single source of truth
+  for BOTH firm (#legalservice) AND attorney (#attorney) across all 31 schema pages.
+  All inline attorney nodes gone. Each page GAINED worksFor → #legalservice (the inline
+  nodes lacked it — lossless + additive).
+- criminal-law jobTitle was NOT auto-corrected to "Personal Injury Attorney". DELIBERATE
+  DECISION to keep generic "Attorney" via `{ ...attorneyNode, jobTitle: "Attorney" }` —
+  "Personal Injury Attorney" is inaccurate schema labeling on a criminal-defense page
+  (NRPC 7.1 — every page is a separate advertisement). criminal-law now has TWO
+  deliberate per-page overrides: no priceRange + jobTitle "Attorney".
+
 ## Still open
-- ⬜ WAVE 2: consolidate the Attorney node across the other 30 pages (practice + LP).
-  They still re-declare #attorney inline; only homepage uses attorneyNode so far.
-  Replace inline copies with imported attorneyNode. Also auto-fixes criminal-law's
-  jobTitle drift ("Attorney" vs "Personal Injury Attorney").
 - ⬜ BROKEN BODY LINKS (distinct from the schema fix): two live user-facing links to
   /our-firm/eric-r-blank/ still 404 — AboutEric.astro:81 (homepage CTA button) and
   about.astro:29 (bioUrl). GATED on the bio-page decision: when the real
@@ -51,12 +64,18 @@ for the firm NAP. The duplicated inline NAP that started this batch is gone.
   destination (e.g. /about) before that decision.
 - ⬜ VALIDATE in Google Rich Results Test once Cloudflare redeploys: LegalService on a
   couple practice + LP URLs, Article+Breadcrumb on a couple blog URLs.
+- ✅ RESOLVED: 2 untracked logos deleted. ERB_Logo_W.png was a byte-identical dup of
+  tracked Eric_Blank_Injury_Attorneys_Logo_White.png (still in use); ebl-logo.png was
+  a unique unused orphan (no refs, no intent signal). Both removed; tree clean.
 
 ## Outlier files (learned during rollout)
 - criminal-law.astro + sexual-assault.astro: imports stop at ContactForm (no Lightbox
   import) — firmNode import goes after ContactForm, not Lightbox.
 - criminal-law #service node has NO priceRange (correct — criminal defense isn't
   contingency; a contingency claim there is false). Keep it priceRange-free.
+- criminal-law Attorney node deliberately keeps jobTitle "Attorney" (NOT the canonical
+  "Personal Injury Attorney") via spread override. This is intentional, not drift — do
+  not "fix" it to match the shared node.
 
 ## Flagged for Eric (logged in ClickUp task 86bafjx5c)
 - criminal-law: the shared firm node still renders priceRange "Contingency Fee…" on
