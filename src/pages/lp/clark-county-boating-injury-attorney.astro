@@ -8,27 +8,23 @@ import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
 import Lightbox from '../../components/Lightbox.astro';
 
 import phoneIcon from 'lucide-static/icons/phone.svg?raw';
-import scaleIcon from 'lucide-static/icons/scale.svg?raw';
-import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
-import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
 import searchIcon from 'lucide-static/icons/search.svg?raw';
 import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
 import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
-import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
 import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
 import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
 import clockIcon from 'lucide-static/icons/clock.svg?raw';
 import quoteIcon from 'lucide-static/icons/quote.svg?raw';
 
-const title = "Clark County Personal Injury Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
+const title = "Las Vegas Boating Accident Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
 const description =
-	"Hurt in a Las Vegas car accident? Eric Blank Injury Attorneys has fought insurance companies for over 26 years. Free consultation. No fees unless we win. Call (702) 222-2115.";
+	"Injured in a Lake Mead or Lake Mojave boating accident? Eric Blank Injury Attorneys takes on boat owners and insurers — 26+ years, no fees unless we win. (702) 222-2115.";
 
 const heroTrust = ["26+ Years", "Millions Recovered", "Available 24/7", "Free Consultation"];
 
 const stats = [
 	{ value: "Millions", label: "Recovered for Injury Victims" },
-	{ value: "1000s", label: "of Auto Cases Handled" },
+	{ value: "1000s", label: "of Injury Cases Handled" },
 	{ value: "$0", label: "Out-of-Pocket Fees", note: "Contingency fee only" },
 	{ value: "24/7", label: "Free Consultation" },
 ];
@@ -36,36 +32,18 @@ const stats = [
 const howWeHelp = [
 	{
 		icon: searchIcon,
-		title: "Investigate The Crash",
-		text: "We move fast to preserve evidence — traffic-camera footage, scene photos, vehicle data, and witness statements — before it disappears or memories fade.",
+		title: "Investigate The Accident",
+		text: "We move fast to preserve vessel evidence, NDOW and Coast Guard reports, maintenance records, and witness statements before they disappear or memories fade.",
 	},
 	{
 		icon: clipboardListIcon,
-		title: "Build The Medical Record",
-		text: "We work directly with your doctors to document every injury, current and future, so the full cost of the crash is on paper — not guessed at.",
+		title: "Identify Every Liable Party",
+		text: "A boating case can involve the operator, the boat's owner, a rental or charter company, or the manufacturer of a defective vessel or part. We identify everyone responsible.",
 	},
 	{
 		icon: handshakeIcon,
 		title: "Negotiate With Insurance",
-		text: "Eric Blank spent years on the insurance-defense side. We know how adjusters value claims and where they cut corners — and we use it to push for a fair settlement.",
-	},
-];
-
-const nevadaLaws = [
-	{
-		icon: calendarClockIcon,
-		title: "Statute of Limitations",
-		text: "Nevada gives you 2 years from the date of the accident to file a car accident lawsuit (NRS 11.190). Miss that deadline and your claim is gone — no matter how strong it was.",
-	},
-	{
-		icon: scaleIcon,
-		title: "Comparative Negligence",
-		text: "Nevada follows a modified comparative negligence rule. If you are 51% or more at fault you recover nothing; if you are partly at fault but under that, your recovery is reduced by your share.",
-	},
-	{
-		icon: shieldCheckIcon,
-		title: "Insurance Minimums",
-		text: "Nevada requires drivers to carry at least 25/50/20 liability coverage (NRS 485.185). Many carry only the minimum — which is exactly why uninsured / underinsured motorist coverage matters so much.",
+		text: "Eric Blank spent years on the insurance-defense side. We know how these claims get valued — and undervalued — and we use it to push for a fair settlement.",
 	},
 ];
 
@@ -80,10 +58,10 @@ const jsonLd = {
 	"@graph": [
 		{
 			"@type": "LegalService",
-			"@id": "https://ericblanklaw.com/lp/clark-county-personal-injury-attorney#service",
-			name: "Eric Blank Injury Attorneys — Personal Injury Representation",
-			serviceType: "Personal Injury Legal Services",
-			url: "https://ericblanklaw.com/lp/clark-county-personal-injury-attorney",
+			"@id": "https://ericblanklaw.com/lp/clark-county-boating-injury-attorney#service",
+			name: "Eric Blank Injury Attorneys — Boating Accident Representation",
+			serviceType: "Boating Accident Legal Services",
+			url: "https://ericblanklaw.com/lp/clark-county-boating-injury-attorney",
 			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
 			telephone: "+1-702-222-2115",
 			priceRange: "Contingency Fee — No Fees Unless We Win",
@@ -113,7 +91,7 @@ const jsonLd = {
 		<BaseHead
 			title={title}
 			description={description}
-			canonical="https://ericblanklaw.com/lp/clark-county-personal-injury-attorney"
+			canonical="https://ericblanklaw.com/lp/clark-county-boating-injury-attorney"
 		/>
 		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</head>
@@ -122,20 +100,20 @@ const jsonLd = {
 		<main>
 			<!-- SECTION 1 — Hero -->
 			<section class="relative bg-brand-navy text-white">
-				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/car-accidents-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/boating-accidents-hero.jpeg')" aria-hidden="true"></div>
 				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
 				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
 					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
-						Clark County Personal Injury Lawyer
+						Lake Mead Boating Accident Lawyer
 					</p>
 					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-						Clark County Personal Injury Attorney
+						Las Vegas Boating Accident Attorney
 					</h1>
 					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
-						Injured in an accident anywhere in Clark County — Las Vegas, Henderson, North
-						Las Vegas, or beyond? For over 26 years, Eric Blank Injury Attorneys has fought
-						to get injury victims the recovery insurance companies don't want to pay. Free
-						consultation, and no fees unless we win.
+						Hurt in a boating accident on Lake Mead, Lake Mojave, or the Colorado River? For
+						over 26 years, Eric Blank Injury Attorneys has helped injured boaters take on
+						owners, operators, and their insurers. Free consultation, and no fees unless we
+						win.
 					</p>
 					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
 						<a
@@ -199,11 +177,11 @@ const jsonLd = {
 							id="help-heading"
 							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
 						>
-							Why Injured Clark County Residents Trust Eric Blank
+							Why Injured Boaters Trust Eric Blank
 						</h2>
 						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
 							Eric Blank spent the early part of his career defending insurance companies.
-							We bring that insider knowledge to every injury claim.
+							We bring that insider knowledge to every boating claim.
 						</p>
 					</div>
 					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
@@ -226,46 +204,8 @@ const jsonLd = {
 				</div>
 			</section>
 
-			<!-- SECTION 4 — Nevada law -->
-			<section class="bg-white" aria-labelledby="law-heading">
-				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-					<div class="mx-auto max-w-2xl text-center">
-						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
-							Nevada Law
-						</p>
-						<h2
-							id="law-heading"
-							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
-						>
-							Key Nevada Car Accident Laws
-						</h2>
-					</div>
-					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16">
-						{
-							nevadaLaws.map((law) => (
-								<div class="rounded-lg border border-gray-200 bg-white p-6">
-									<span
-										class="block text-brand-navy [&>svg]:size-10"
-										set:html={law.icon}
-										aria-hidden="true"
-									/>
-									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
-									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
-										{law.text}
-									</p>
-								</div>
-							))
-						}
-					</div>
-					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
-						This is general information, not legal advice for your specific case. Talk to an
-						attorney about the facts of your accident.
-					</p>
-				</div>
-			</section>
-
-			<!-- SECTION 5 — Featured testimonial -->
-			<section class="bg-gray-50">
+			<!-- SECTION 4 — Featured testimonial -->
+			<section class="bg-white">
 				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
 					<figure>
 						<span
@@ -291,7 +231,7 @@ const jsonLd = {
 			<!-- Video testimonial carousel -->
 			<TestimonialCarousel />
 
-			<!-- SECTION 6 — Final CTA + contact form -->
+			<!-- SECTION 5 — Final CTA + contact form -->
 			<section
 				id="contact"
 				class="scroll-mt-24 bg-brand-navy text-white"
@@ -332,8 +272,8 @@ const jsonLd = {
 								}
 							</ul>
 							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
-								Most Nevada injury claims have strict deadlines — and the evidence that
-								wins them disappears fast. The sooner we hear from you, the more we can do.
+								Boating cases can fall under Nevada or federal maritime law, and the
+								evidence fades fast. The sooner we hear from you, the more we can do.
 							</p>
 						</div>
 						<ContactForm />
