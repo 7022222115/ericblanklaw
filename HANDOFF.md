@@ -1,6 +1,6 @@
-# HANDOFF — Phase 4 SEO Parity, Batch C (in progress)
+# HANDOFF — Phase 4 SEO Parity, Batch C (firmNode rollout COMPLETE)
 
-**Last updated:** 2026-06-17, mid-Batch-C. **HEAD at this write:** fb77bf2.
+**Last updated:** 2026-06-17, end of session. **HEAD at this write:** e914362.
 
 ## What Batch C is
 Killing the 31× duplicated firm NAP in the JSON-LD @graph. Created ONE shared
@@ -20,24 +20,37 @@ own name/serviceType/url/image/(priceRange)/employee + its own `#service` @id.
   hours, 5 sameAs, 8-entry areaServed). firmNode omits per-page `description`.
 - attorneyNode has NO url (the /attorneys/eric-r-blank bio doesn't exist yet — a url
   would be a sitewide 404 in schema). TODO comment is in firm.ts. Tracked in ClickUp.
+- Homepage attorney: kept its description via `{ ...attorneyNode, description: "..." }`;
+  dropped the stale url by omission (killed the schema 404).
 - Attorney consolidation = WAVE 2, deliberately deferred (see below).
 
 ## Progress
 - ✅ firm.ts created + committed (e6429bb).
 - ✅ ALL 20 practice-area pages wired to firmNode (Waves 1–4: 0eb591d, 43f7284,
   85f499c, fb77bf2). ~200 lines of duplicated NAP removed.
-- ⬜ 10 LP pages (src/pages/lp/) — NOT done. Need a Step-A shape check FIRST: their
-  @graph differs (no FAQPage, different line offsets, possibly non-standard import
-  blocks). Do not assume practice-page anchors transfer.
-- ⬜ homepage (index.astro) — NOT done. SPECIAL CASE: it already defines the canonical
-  #legalservice + #attorney inline. Wiring = REPLACE inline nodes with firmNode/
-  attorneyNode imports (not slim). Use `{ ...firmNode, description }` so the homepage
-  keeps its page-level description on the firm node. Fix the stale
-  Attorney.url → /our-firm/eric-r-blank/ (404) here too.
-- ⬜ WAVE 2 (after firm rollout): consolidate the Attorney node. It's currently
-  re-declared inline on every page with @id #attorney. Replace inline copies with
-  imported attorneyNode. This also auto-fixes criminal-law's jobTitle drift
-  ("Attorney" vs "Personal Injury Attorney").
+- ✅ ALL 10 LP pages wired (canary las-vegas-car-accident 1de1928 + batch of 9 8c3b454).
+  LPs were uniform — no FAQPage, standard Lightbox import anchor, priceRange on all 10.
+- ✅ homepage (index.astro) wired (e914362). SPECIAL CASE done: replaced its inline
+  canonical #legalservice + #attorney nodes with `{ ...firmNode, description }` and
+  `{ ...attorneyNode, description: "..." }`. Stale schema Attorney.url 404 dropped.
+  index.astro is now the FIRST and ONLY consumer of attorneyNode.
+
+**firmNode rollout = 31/31 pages COMPLETE.** firm.ts is the single source of truth
+for the firm NAP. The duplicated inline NAP that started this batch is gone.
+
+## Still open
+- ⬜ WAVE 2: consolidate the Attorney node across the other 30 pages (practice + LP).
+  They still re-declare #attorney inline; only homepage uses attorneyNode so far.
+  Replace inline copies with imported attorneyNode. Also auto-fixes criminal-law's
+  jobTitle drift ("Attorney" vs "Personal Injury Attorney").
+- ⬜ BROKEN BODY LINKS (distinct from the schema fix): two live user-facing links to
+  /our-firm/eric-r-blank/ still 404 — AboutEric.astro:81 (homepage CTA button) and
+  about.astro:29 (bioUrl). GATED on the bio-page decision: when the real
+  /attorneys/eric-r-blank page exists (alongside Miller/Hernandez bios), fix both links
+  AND add url to attorneyNode in one pass — they all resolve together. Don't guess a
+  destination (e.g. /about) before that decision.
+- ⬜ VALIDATE in Google Rich Results Test once Cloudflare redeploys: LegalService on a
+  couple practice + LP URLs, Article+Breadcrumb on a couple blog URLs.
 
 ## Outlier files (learned during rollout)
 - criminal-law.astro + sexual-assault.astro: imports stop at ContactForm (no Lightbox
@@ -50,10 +63,6 @@ own name/serviceType/url/image/(priceRange)/employee + its own `#service` @id.
   that page (it's the firm-wide node). Service node is clean; firm node isn't.
   Bar-advertising judgment call — Eric to decide if firm-level contingency language is
   OK on the criminal page or if priceRange should leave the shared node entirely.
-
-## After Batch C
-Validate in Google Rich Results Test: LegalService on a couple practice URLs,
-Article+Breadcrumb on a couple blog URLs, once Cloudflare redeploys.
 
 ## Standing rules
 Recon read-only before edits. One change at a time, explicit filenames, no `git add .`,
