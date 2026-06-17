@@ -8,7 +8,7 @@ draft: false
 
 In Las Vegas, casinos are massive properties full of people, retail shops, restaurants, bars, and entertainment venues. With a property so large, it’s almost inevitable that the occasional slip and fall injury at a Las Vegas casino will occur. In these cases, the injury is almost always the result of negligence on behalf of the property leading to a premises liability claim being filed. Premises liability is when the property owners or managers are responsible for an injury due to their inability to provide visitors with a safe environment. Sometimes this could be caused by something as small as forgetting to place a “Caution: Wet” sign after mopping and other times it could be much more serious such as neglecting to address an obvious slipping or tripping hazard even after numerous complaints.
 Regardless of the cause, the result is often the same one: a patron slips, trips, and injures themselves.
-So what should you do if you ever find yourself in a position where you’ve been [injured at a casino property](https://ericblanklaw.com/areas-of-practice/casino-injury/) in Las Vegas?
+So what should you do if you ever find yourself in a position where you’ve been [injured at a casino property](/practice-areas/casino-injuries) in Las Vegas?
 
 ## Seek Help For Any Injuries
 
@@ -21,4 +21,4 @@ Once you have sought out medical attention for any injuries that you have suffer
 ## Report the Incident to Management for Recording
 
 In addition to collecting evidence on your own, you want to make sure that you report the incident to management immediately. Reporting the injury to management will ensure that management makes a written record or incident report which can be referred back to when filing your [premises liability](/areas-of-practice/slip-and-fall/) case.
-If you have been injured in a slip and fall injury at a Las Vegas casino, be sure to [contact](https://ericblanklaw.com/contact/) [the personal injury attorneys at Eric Blank Injury Attorneys](https://ericblanklaw.com/contact). Our experienced legal team can help you receive the compensation that you may be entitled to.
+If you have been injured in a slip and fall injury at a Las Vegas casino, be sure to [contact](/contact) [the personal injury attorneys at Eric Blank Injury Attorneys](/contact). Our experienced legal team can help you receive the compensation that you may be entitled to.

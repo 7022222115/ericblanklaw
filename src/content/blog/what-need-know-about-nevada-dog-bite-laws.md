@@ -6,8 +6,8 @@ author: "Eric Blank Injury Attorneys"
 draft: false
 ---
 
-Dogs are a beloved part of our families, known for their loyalty and companionship. However, even the best-trained dogs can sometimes act out of character and bite, potentially resulting in significant physical and emotional injuries. To best protect yourself and understand your rights, it's vital to familiarize yourself with [Nevada dog bite laws](https://ericblanklaw.com/areas-of-practice/dog-bite-lawyer/). 
-Being bitten by a dog is a traumatic experience. No matter the severity of your injuries, having the support of an experienced and compassionate legal team can make all the difference. Contact Eric Blank Injury Attorneys to schedule your FREE consultation with a [Las Vegas dog bite lawyer](https://ericblanklaw.com/areas-of-practice/dog-bite-lawyer/). *It’s always better with Blank!*
+Dogs are a beloved part of our families, known for their loyalty and companionship. However, even the best-trained dogs can sometimes act out of character and bite, potentially resulting in significant physical and emotional injuries. To best protect yourself and understand your rights, it's vital to familiarize yourself with [Nevada dog bite laws](/practice-areas/dog-bites). 
+Being bitten by a dog is a traumatic experience. No matter the severity of your injuries, having the support of an experienced and compassionate legal team can make all the difference. Contact Eric Blank Injury Attorneys to schedule your FREE consultation with a [Las Vegas dog bite lawyer](/practice-areas/dog-bites). *It’s always better with Blank!*
 
 ## Holding the Dog Owner Responsible
 
@@ -64,7 +64,7 @@ Keep a clear record of all dog bite-related expenses - medical costs, medicines,
 
 ### 7. Consult a Las Vegas Dog Bite Attorney
 
-Contact a [Las Vegas dog bite attorney](https://ericblanklaw.com/areas-of-practice/dog-bite-lawyer/). They'll guide you on your rights, potential compensation, and legal path if you choose to pursue them.
+Contact a [Las Vegas dog bite attorney](/practice-areas/dog-bites). They'll guide you on your rights, potential compensation, and legal path if you choose to pursue them.
 Stay proactive and informed to ensure your well-being and rights are front and center following a dog bite.
 
 ## How Insurance Companies Play a Role
@@ -96,13 +96,13 @@ The trauma might manifest in nightmares, flashbacks, or [post-traumatic stress d
 
 Protection lies in prevention. Dog owners in Nevada must take measures like training, socializing, and understanding their dog’s body language to ensure safety. Non-owners, on the other hand, should be cautious around unfamiliar dogs and educate their children similarly.
 Dog bites can be painful, traumatic, and costly. However, understanding Nevada dog bite laws can help you protect your rights and seek justice if you are injured by a dog. 
-If you've been injured due to a dog in Nevada, consult an experienced [Las Vegas personal injury attorney](https://ericblanklaw.com/areas-of-practice/personal-injury/) who can help you navigate the legal process and seek compensation for your injuries. 
+If you've been injured due to a dog in Nevada, consult an experienced [Las Vegas personal injury attorney](/practice-areas) who can help you navigate the legal process and seek compensation for your injuries. 
 By taking reasonable steps to prevent dog bites and holding dog owners accountable for their pet’s actions, we can work together to protect ourselves and our communities.
 
 ## BETTER with BLANK: We Can Help You Understand Your Rights After a Dog Attack
 
 Dog bites can be traumatic, both physically and mentally, but knowledge is your most powerful ally. While understanding the nuances of Nevada dog bite laws is crucial, knowing that you have a legal team ready to champion your cause is invaluable. 
-If you or a loved one has suffered due to a dog bite incident, the team at Eric Blank Personal Injury Attorneys is ready to assist, ensuring justice and rightful compensation for your injuries. Reach out to us today at [(702) 222-2115](tel:702-222-2115) or fill out our [online form](https://ericblanklaw.com/contact/) to speak with a [Las Vegas dog bite attorney](https://ericblanklaw.com/areas-of-practice/dog-bite-lawyer/).
+If you or a loved one has suffered due to a dog bite incident, the team at Eric Blank Personal Injury Attorneys is ready to assist, ensuring justice and rightful compensation for your injuries. Reach out to us today at [(702) 222-2115](tel:702-222-2115) or fill out our [online form](/contact) to speak with a [Las Vegas dog bite attorney](/practice-areas/dog-bites).
 Our dedicated staff is fluent in English and Spanish and always ready to listen with empathy and compassion. Remember, partnering with us comes at no upfront cost to you. We only earn our fee when we achieve a victory in your case. Discover why it’s always *BETTER with BLANK!* 
 **Copyright © 2023. Eric Blank Injury Attorneys. All rights reserved.**
 The information in this blog post (“post”) is provided for general informational purposes only and may not reflect the current law in your jurisdiction. No information in this post should be construed as legal advice from the individual author or the law firm, nor is it intended to be a substitute for legal counsel on any subject matter. No reader of this post should act or refrain from acting based on any information included in or accessible through this post without seeking the appropriate legal or other professional advice on the particular facts and circumstances at issue from a lawyer licensed in the recipient’s state, country, or other appropriate licensing jurisdiction.
@@ -110,4 +110,3 @@ The information in this blog post (“post”) is provided for general informati
 7860 W Sahara Ave Ste. 110
 Las Vegas, NV 89117
 [(702) 222-2115](tel:702-222-2115)
-<https://ericblanklaw.com/>

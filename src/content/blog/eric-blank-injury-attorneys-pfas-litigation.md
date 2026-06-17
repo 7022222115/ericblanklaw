@@ -88,4 +88,4 @@ If your PFAS lawsuit is successful, you may be able to recover compensation for 
 ## Championing Your Cause with Eric Blank Injury Attorneys
 
 At Eric Blank Injury Attorneys, we understand the complexities of PFAS lawsuits. We have extensive experience handling PFAS cases and can provide the legal guidance and support our clients need to pursue a successful lawsuit. In addition to our legal services, we also provide compassionate and supportive representation to them.
-If you have been affected by PFAS contamination or exposure and are considering legal action, contact Eric Blank Injury Attorneys today at or visit [www.ericblanklaw.com](https://ericblanklaw.com/) for a free consultation. We can help you understand your legal options and take the necessary steps to protect and advance your rights and interests.
+If you have been affected by PFAS contamination or exposure and are considering legal action, contact Eric Blank Injury Attorneys today at [702-222-2115](tel:+17022222115) or visit [our website](/) for a free consultation. We can help you understand your legal options and take the necessary steps to protect and advance your rights and interests.

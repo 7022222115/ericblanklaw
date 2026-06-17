@@ -6,7 +6,7 @@ author: "Eric Blank Injury Attorneys"
 draft: false
 ---
 
-From simple fender-benders to deadly crashes, thousands of [Nevadans](https://zerofatalitiesnv.com/app/uploads/2021/10/Nevada-Crash-Facts-2021_04-29-2021.pdf) are involved in car accidents every year. Filing a car accident claim that results in a fair settlement depends on how badly you and your passengers were injured and the extent of damages to your car. It’s always best to talk to an experienced [car accident attorney](https://ericblanklaw.com/areas-of-practice/auto-accidents/car-accident-attorney/), who can advise you of your rights and the likelihood of receiving just compensation.
+From simple fender-benders to deadly crashes, thousands of [Nevadans](https://zerofatalitiesnv.com/app/uploads/2021/10/Nevada-Crash-Facts-2021_04-29-2021.pdf) are involved in car accidents every year. Filing a car accident claim that results in a fair settlement depends on how badly you and your passengers were injured and the extent of damages to your car. It’s always best to talk to an experienced [car accident attorney](/practice-areas/car-accidents), who can advise you of your rights and the likelihood of receiving just compensation.
 If you are in a car accident, the team at Eric Blank Injury Attorneys recommends the following steps:
 
 ## #1. Stop And Call 911
@@ -23,26 +23,25 @@ Of course, you must answer questions from the police, such as how fast you were 
 
 Assuming you are physically able, use your phone to take pictures and videos of all cars involved, the other driver(s), and any statements they make. Take photos of license plates and drivers’ licenses. Note the make and model of the other car(s).
 Make sure you obtain the phone number, address, and insurance information from the other driver(s). Document the road conditions and weather. If there are witnesses to the accident, film their statements and get their contact information.
-Avoid posting information about the accident online – sharing anything on social media about the accident could [harm your case](https://ericblanklaw.com/personal-injury/social-media-can-harm-your-case/).
+Avoid posting information about the accident online – sharing anything on social media about the accident could [harm your case](/blog/social-media-can-harm-case).
 
 ## #4. Notify Your Insurance Company
 
-Report the accident to your insurance company, either by calling them or using their app. If you suffered injuries and are hospitalized, have a family member or friend call the insurance company for you to open the case. A [car accident personal injury attorney](https://ericblanklaw.com/) can also contact the insurance company on your behalf.
+Report the accident to your insurance company, either by calling them or using their app. If you suffered injuries and are hospitalized, have a family member or friend call the insurance company for you to open the case. A [car accident personal injury attorney](/) can also contact the insurance company on your behalf.
 In Nevada, you have two years to file an insurance claim, but the sooner you file, the better for your case.
 
 ## #5. Avoid Communicating With The Other Driver’s Insurance Company
 
-You may receive a phone call or a letter from the other driver’s insurance company offering a settlement. Do not reply. Turn over all correspondence to a [car accident lawyer](https://ericblanklaw.com/our-firm/), who will negotiate with the insurance company for you.
-A skilled attorney will know how to present evidence to insurance adjusters to receive compensation for pain and suffering, medical expenses, reduced quality of life, property damage, loss of wages, and [wrongful death](https://ericblanklaw.com/areas-of-practice/wrongful-death/).
-Will you remember all this advice if you’ve been in an accident? Probably not. That’s why Eric Blank Injury Attorneys offers a helpful guide, [*5 Things To Do When You’re In An Accident*](https://ericblanklaw.com/5-things-to-do-when-youre-in-an-accident/). Print a copy and keep it in your glove compartment.
+You may receive a phone call or a letter from the other driver’s insurance company offering a settlement. Do not reply. Turn over all correspondence to a [car accident lawyer](/about), who will negotiate with the insurance company for you.
+A skilled attorney will know how to present evidence to insurance adjusters to receive compensation for pain and suffering, medical expenses, reduced quality of life, property damage, loss of wages, and [wrongful death](/practice-areas/wrongful-death).
+Will you remember all this advice if you’ve been in an accident? Probably not. That’s why Eric Blank Injury Attorneys offers a helpful guide, [*5 Things To Do When You’re In An Accident*](/blog). Print a copy and keep it in your glove compartment.
 
 ## BETTER with BLANK: We’ll Represent You Just As We Would Our Own Family
 
 If you or a loved one have been involved in a car accident, don’t try to negotiate with insurance companies and medical providers on your own. The team at Eric Blank Injury Attorneys has 79 years of collective experience in successfully representing clients in car accident claims. In fact, our founder, Eric Blank, understands the methods insurance adjusters use in personal injury cases because he originally worked in insurance defense.
-Your job is to focus on healing. Our job is to represent you. Call us today at  or fill out our [online form](https://ericblanklaw.com/contact/). Our staff speaks English and Spanish and can visit you in the hospital or at home to take your statements and have you review documents. There is no cost to you to retain our firm, as we only collect a fee if we win your case.
+Your job is to focus on healing. Our job is to represent you. Call us today at  or fill out our [online form](/contact). Our staff speaks English and Spanish and can visit you in the hospital or at home to take your statements and have you review documents. There is no cost to you to retain our firm, as we only collect a fee if we win your case.
 **Copyright © 2023. Eric Blank Injury Attorneys. All rights reserved.**
 The information in this blog post (“post”) is provided for general informational purposes only and may not reflect the current law in your jurisdiction. No information in this post should be construed as legal advice from the individual author or the law firm, nor is it intended to be a substitute for legal counsel on any subject matter. No reader of this post should act or refrain from acting based on any information included in or accessible through this post without seeking the appropriate legal or other professional advice on the particular facts and circumstances at issue from a lawyer licensed in the recipient’s state, country, or other appropriate licensing jurisdiction.
 **Eric Blank Injury Attorneys**
 7860 W Sahara Ave Ste. 110
 Las Vegas, NV 89117
-<https://ericblanklaw.com/>

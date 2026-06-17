@@ -95,4 +95,4 @@ At Eric Blank Injury Attorneys, we can help you:
 * Negotiate with insurance companies and other parties involved in the case
 * Represent you in court, if necessary
 
-To learn more, contact Eric Blank Injury Attorneys today at or visit [www.ericblanklaw.com](https://ericblanklaw.com/) for a free consultation.
+To learn more, contact Eric Blank Injury Attorneys today at [702-222-2115](tel:+17022222115) or visit [our website](/) for a free consultation.

@@ -26,3 +26,6 @@ pnpm-debug.log*
 # local env overrides and logs
 .env.local
 *.log
+
+# Local WordPress export - never commit
+_import/

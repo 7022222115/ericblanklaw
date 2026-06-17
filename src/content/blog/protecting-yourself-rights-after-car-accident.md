@@ -7,8 +7,8 @@ draft: false
 ---
 
 Recent car accidents, ranging from a [tragic collision in east Las Vegas](https://www.8newsnow.com/news/local-news/1-killed-in-crash-involving-multiple-vehicles-in-east-las-vegas/) that claimed a 75-year-old woman's life, to the loss of [three young teens in north Las Vegas](https://www.reviewjournal.com/local/traffic/3-teens-killed-in-north-las-vegas-crash-were-under-16-2883747/), serve as a stark reminder of the unexpected challenges and dangers drivers may encounter when they take to the road.
-In another accident, the city saw its traffic disrupted when a [multi-vehicle accident](https://www.ktnv.com/traffic/multi-vehicle-crash-involving-bus-shuts-down-multiple-lanes-in-southern-valley) involving a bus led to multiple lane closures in the southern valley. Beyond the immediate impact, such incidents emphasize the need to know how to protect yourself and your rights after a [car accident in Las Vegas](https://ericblanklaw.com/areas-of-practice/auto-accidents/car-accident-attorney/).
-This blog outlines the essential steps you should follow after a car accident. Always remember: if you need professional legal guidance in such a situation, Eric Blank Injury Attorneys stand ready to assist. Contact us at [(702) 222-2115](tel:702-222-2115) to schedule your FREE consultation with a [Las Vegas car accident lawyer](https://ericblanklaw.com/areas-of-practice/auto-accidents/car-accident-attorney/). *It’s always better with Blank!*
+In another accident, the city saw its traffic disrupted when a [multi-vehicle accident](https://www.ktnv.com/traffic/multi-vehicle-crash-involving-bus-shuts-down-multiple-lanes-in-southern-valley) involving a bus led to multiple lane closures in the southern valley. Beyond the immediate impact, such incidents emphasize the need to know how to protect yourself and your rights after a [car accident in Las Vegas](/practice-areas/car-accidents).
+This blog outlines the essential steps you should follow after a car accident. Always remember: if you need professional legal guidance in such a situation, Eric Blank Injury Attorneys stand ready to assist. Contact us at [(702) 222-2115](tel:702-222-2115) to schedule your FREE consultation with a [Las Vegas car accident lawyer](/practice-areas/car-accidents). *It’s always better with Blank!*
 
 ## Immediate Actions at the Accident Scene
 
@@ -91,7 +91,7 @@ With the clock ticking, reaching out to an experienced personal injury attorney 
 ## BETTER with BLANK: Standing By Your Side After a Car Accident
 
 Car accidents can shake you to your core, bringing a mix of physical challenges and legal questions. Knowing your rights and having a dedicated team in your corner can make all the difference.
-If a car accident in Las Vegas or a loved one has impacted you, Eric Blank Injury Attorneys are here for you. We'll work hard to ensure you're informed and supported every step of the way. Contact us today at [(702) 222-2115](tel:702-222-2115) or fill out our [online form](https://ericblanklaw.com/contact/) to speak with a Las Vegas [personal injury lawyer](https://ericblanklaw.com/areas-of-practice/personal-injury/).
+If a car accident in Las Vegas or a loved one has impacted you, Eric Blank Injury Attorneys are here for you. We'll work hard to ensure you're informed and supported every step of the way. Contact us today at [(702) 222-2115](tel:702-222-2115) or fill out our [online form](/contact) to speak with a Las Vegas [personal injury lawyer](/practice-areas).
 Our dedicated staff is fluent in English and Spanish and always ready to listen with empathy and compassion. Remember, partnering with us comes at no upfront cost to you. We only earn our fee when we achieve a victory in your case. Discover why it’s always *BETTER with BLANK!*
 **Copyright © 2023. Eric Blank Injury Attorneys. All rights reserved.**
 The information in this blog post (“post”) is provided for general informational purposes only and may not reflect the current law in your jurisdiction. No information in this post should be construed as legal advice from the individual author or the law firm, nor is it intended to be a substitute for legal counsel on any subject matter. No reader of this post should act or refrain from acting based on any information included in or accessible through this post without seeking the appropriate legal or other professional advice on the particular facts and circumstances at issue from a lawyer licensed in the recipient’s state, country, or other appropriate licensing jurisdiction.
@@ -99,4 +99,3 @@ The information in this blog post (“post”) is provided for general informati
 7860 W Sahara Ave Ste. 110
 Las Vegas, NV 89117
 [(702) 222-2115](tel:702-222-2115)
-<https://ericblanklaw.com/>

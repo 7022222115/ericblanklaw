@@ -10,7 +10,7 @@ draft: false
 
 The baby food/Tylenol autism lawsuit is a complex and evolving issue, with potential risks and consequences for those affected by exposure to these products. While the use of baby food and medications like Tylenol is a common practice, it's important for parents to be aware of the potential risks and to take steps to protect their children from harm.
 If you believe that your child has been affected by exposure to dangerous or defective products, it's important to seek legal advice and explore your options for pursuing compensation. With the help of Eric Blank Injury Attorneys, you can fight for your rights and hold those responsible accountable for their actions.
-[Do I Have a Case? Click Here to Find Out](https://ericblanklaw.com/web-form-the-baby-food-tylenol-autism-lawsuit/)
+[Do I Have a Case? Click Here to Find Out](/practice-areas/mass-tort)
 
 ## What is Tylenol?
 
@@ -115,4 +115,4 @@ Individuals who have been harmed or affected by unsafe baby food products or bel
 ## What Can Eric Blank Injury Attorneys Do
 
 Eric Blank Injury Attorneys is a group of skilled and committed attorneys who represent victims of defective products, such as unsafe baby food products and Tylenol-related injuries. We understand the physical, emotional, and financial toll that these incidents can take on victims and their families, and we are committed to fighting for justice and fair compensation on their behalf.
-At Eric Blank Injury Attorneys, we believe that every defective product victim has the right to be heard and compensated for their losses. If you or a loved one has been harmed by an unsafe baby food product or suffered from Tylenol-related injuries, contact Eric Blank Injury Attorneys today at or visit [www.ericblanklaw.com](https://ericblanklaw.com/). We offer a free consultation to discuss your case and answer any questions you may have about your legal options.
+At Eric Blank Injury Attorneys, we believe that every defective product victim has the right to be heard and compensated for their losses. If you or a loved one has been harmed by an unsafe baby food product or suffered from Tylenol-related injuries, contact Eric Blank Injury Attorneys today at [702-222-2115](tel:+17022222115) or visit [our website](/). We offer a free consultation to discuss your case and answer any questions you may have about your legal options.

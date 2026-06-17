@@ -97,4 +97,4 @@ It's important to note that the specific parties you may be able to sue will dep
 ## Eric Blank Injury Attorneys: Legal Options
 
 If you or a loved one has been diagnosed with cancer or other health problems related to exposure to AFFF, Eric Blank Injury Attorneys is here to help. Our experienced personal injury attorneys have a deep understanding of the science behind AFFF exposure and can help you navigate the legal process. We will work with you to gather all necessary evidence, build a strong case on your behalf, and recover compensation for the harm you have suffered.
-To determine if you have an AFFF cancer case, contact Eric Blank Injury Attorneys at or visit [www.ericblanklaw.com](https://ericblanklaw.com/). At Eric Blank Injury Attorneys, we offer a free case review to anyone who has been harmed by AFFF exposure.
+To determine if you have an AFFF cancer case, contact Eric Blank Injury Attorneys at [702-222-2115](tel:+17022222115) or visit [our website](/). At Eric Blank Injury Attorneys, we offer a free case review to anyone who has been harmed by AFFF exposure.

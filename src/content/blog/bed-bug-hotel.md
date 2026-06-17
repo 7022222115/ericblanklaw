@@ -76,4 +76,4 @@ The amount of compensation you may recover will depend on the specific circumsta
 
 Don't let bed bugs ruin your Las Vegas vacation or business trip. Contact the experienced personal injury lawyers at Eric Blank Injury Attorneys to learn more about your legal rights and options for pursuing a bed bug lawsuit. Our team has years of experience representing clients in personal injury cases, and we are dedicated to helping you recover the compensation you deserve for your injuries and damages.
 At Eric Blank Injury Attorneys, we offer a free initial consultation to discuss your case and provide guidance on your legal options. We work on a contingency fee basis, which means that we don't get paid unless we recover compensation on your behalf. This allows you to focus on your recovery while we handle the legal aspects of your case.
-Contact Eric Blank Injury Attorneys today at  or visit [www.ericblanklaw.com](https://ericblanklaw.com/) to discuss your legal options.
+Contact Eric Blank Injury Attorneys today at [702-222-2115](tel:+17022222115) or visit [our website](/) to discuss your legal options.

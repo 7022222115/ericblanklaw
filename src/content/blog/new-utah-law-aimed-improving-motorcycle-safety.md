@@ -6,7 +6,7 @@ author: "Eric Blank Injury Attorneys"
 draft: false
 ---
 
-As cities expand and populations cause booms in traffic, motorcycles become more and more common but with that popularity, boom comes the increased risks involved with motorcycles. According to the National Highway Traffic Safety Administration, as many as 93,000 motorists experience [motorcycle related injuries](https://ericblanklaw.com/areas-of-practice/auto-accidents/motorcycle-accidents/) annually. Nearly 5,000 of these injuries resulted in fatalities. In fact, motorcyclists are 28 times more likely than other motorists to suffer these injuries. That being said, there has been recent legislation aimed at making the roads safer for riders. Because of the nature of riding, we highly recommend practicing safe and defensive riding at all times.
+As cities expand and populations cause booms in traffic, motorcycles become more and more common but with that popularity, boom comes the increased risks involved with motorcycles. According to the National Highway Traffic Safety Administration, as many as 93,000 motorists experience [motorcycle related injuries](/practice-areas/motorcycle-accidents) annually. Nearly 5,000 of these injuries resulted in fatalities. In fact, motorcyclists are 28 times more likely than other motorists to suffer these injuries. That being said, there has been recent legislation aimed at making the roads safer for riders. Because of the nature of riding, we highly recommend practicing safe and defensive riding at all times.
 
 ### What is House Bill 149?
 

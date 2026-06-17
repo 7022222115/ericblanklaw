@@ -6,16 +6,16 @@ author: "Eric Blank Injury Attorneys"
 draft: false
 ---
 
-Imagine you’ve enjoyed a night out in Las Vegas and call an Uber for a safe ride home. But instead of a smooth ride, the unexpected happens – an accident leaves you injured and you’re left with mounting medical bills and missed time from work. You might be wondering, [can you sue Uber for an accident](https://ericblanklaw.com/areas-of-practice/rideshare-accident-attorney/uber-driver-accidents/)?" Yes, you can sue Uber for an accident in Las Vegas under certain circumstances. Nevada follows comparative negligence laws, meaning you can still recover damages as long as you're less than 50% at fault for the accident. However, determining liability in Uber accidents can be complex, especially if multiple parties are involved. 
-This blog will explore the factors influencing the possibility of suing Uber, the steps to take after an accident, and the importance of having an experienced [Las Vegas Uber accident lawyer](https://ericblanklaw.com/areas-of-practice/rideshare-accident-attorney/uber-driver-accidents/) on your side.
-[Can you sue Uber for an accident](https://ericblanklaw.com/areas-of-practice/rideshare-accident-attorney/uber-driver-accidents/)? Continue reading as we share what you need to know.
+Imagine you’ve enjoyed a night out in Las Vegas and call an Uber for a safe ride home. But instead of a smooth ride, the unexpected happens – an accident leaves you injured and you’re left with mounting medical bills and missed time from work. You might be wondering, [can you sue Uber for an accident](/practice-areas/rideshare-accidents)?" Yes, you can sue Uber for an accident in Las Vegas under certain circumstances. Nevada follows comparative negligence laws, meaning you can still recover damages as long as you're less than 50% at fault for the accident. However, determining liability in Uber accidents can be complex, especially if multiple parties are involved. 
+This blog will explore the factors influencing the possibility of suing Uber, the steps to take after an accident, and the importance of having an experienced [Las Vegas Uber accident lawyer](/practice-areas/rideshare-accidents) on your side.
+[Can you sue Uber for an accident](/practice-areas/rideshare-accidents)? Continue reading as we share what you need to know.
 
 ## When Can You Sue Uber for a Las Vegas Accident?
 
 While Uber provides commercial [insurance coverage](https://www.uber.com/us/en/drive/insurance/) for its drivers while they're on a trip with passengers, suing Uber might be an option in specific situations:
 
 * **Uber Driver Negligence:** If the Uber driver's actions caused the accident, such as texting while driving, speeding, or driving under the influence, you may have a case against Uber.
-* **Shared Liability:** Nevada's comparative negligence law assigns fault as a percentage. Even if another driver caused the accident, Uber might still share some liability depending on the circumstances. A [rideshare accident lawyer in Las Vegas](https://ericblanklaw.com/areas-of-practice/rideshare-accident-attorney/uber-driver-accidents/) can help determine this.
+* **Shared Liability:** Nevada's comparative negligence law assigns fault as a percentage. Even if another driver caused the accident, Uber might still share some liability depending on the circumstances. A [rideshare accident lawyer in Las Vegas](/practice-areas/rideshare-accidents) can help determine this.
 * **Improper Background Checks:** If Uber failed to conduct proper background checks on a driver with a history of reckless driving or safety violations, and that driver caused the accident, you might be able to sue Uber.
 
 ## Damages You Can Recover After an Uber Accident in Las Vegas
@@ -72,8 +72,8 @@ If you've been injured in an Uber accident in Las Vegas, Eric Blank Injury Attor
 
 ## Don't Let a Vegas Accident Derail Your Life. Get Help Now!
 
-If you’ve been searching online for a [Las Vegas personal injury law firm](https://ericblanklaw.com/areas-of-practice/rideshare-accident-attorney/uber-driver-accidents/), experience why it’s “Better with Blank.” At Eric Blank Injury Attorneys, you’ll find an ally experienced in dealing with the complexities of Uber accidents – whether it’s dealing with multiple parties or negotiating with insurance companies and everything in between. Our team will review your case, determine if Uber shares liability, and help you navigate the legal process to seek fair compensation for your injuries.
-Start your road to recovery now.  Contact us at [(702) 222-2115](tel:702-222-2115), or fill out our [online form](https://ericblanklaw.com/contact/) for a FREE case review with a [rideshare accident lawyer in Las Vegas](https://ericblanklaw.com/areas-of-practice/rideshare-accident-attorney/uber-driver-accidents/) if you’ve been injured. 
+If you’ve been searching online for a [Las Vegas personal injury law firm](/practice-areas/rideshare-accidents), experience why it’s “Better with Blank.” At Eric Blank Injury Attorneys, you’ll find an ally experienced in dealing with the complexities of Uber accidents – whether it’s dealing with multiple parties or negotiating with insurance companies and everything in between. Our team will review your case, determine if Uber shares liability, and help you navigate the legal process to seek fair compensation for your injuries.
+Start your road to recovery now.  Contact us at [(702) 222-2115](tel:702-222-2115), or fill out our [online form](/contact) for a FREE case review with a [rideshare accident lawyer in Las Vegas](/practice-areas/rideshare-accidents) if you’ve been injured. 
 Our friendly team speaks both English and Spanish, ensuring everyone feels heard and understood. And remember, we're on your side: you don't pay us a dime unless we win for you. See for yourself why so many say *it’s always BETTER with BLANK!*
 **Copyright © 2024. Eric Blank Injury Attorneys. All rights reserved.**
 The information in this blog post (“post”) is provided for general informational purposes only and may not reflect the current law in your jurisdiction. No information in this post should be construed as legal advice from the individual author or the law firm, nor is it intended to be a substitute for legal counsel on any subject matter. No reader of this post should act or refrain from acting based on any information included in or accessible through this post without seeking the appropriate legal or other professional advice on the particular facts and circumstances at issue from a lawyer licensed in the recipient’s state, country, or other appropriate licensing jurisdiction.
@@ -81,4 +81,3 @@ The information in this blog post (“post”) is provided for general informati
 7860 W Sahara Ave Ste. 110
 Las Vegas, NV 89117
 [(702) 222-2115](tel:702-222-2115)
-<https://ericblanklaw.com/>

@@ -7,7 +7,7 @@ draft: false
 ---
 
 Are you dealing with significant pain and medical bills from a slip and fall in a Las Vegas casino? Most Las Vegas visitors focus more on fun and excitement and do not consider the possibility of suffering an injury due to faulty infrastructure. Even at the best Las Vegas casinos, a negligent property owner may fail to implement appropriate safety measures, leading to life-altering slip and fall accidents.
-Speak with our veteran [casino injury attorneys](https://ericblanklaw.com/areas-of-practice/casino-injury/) to seek compensation for health care, lost wages, attorney fees, and other expenses. Call Eric Blank Injury Attorneys at to schedule a free consultation today.
+Speak with our veteran [casino injury attorneys](/practice-areas/casino-injuries) to seek compensation for health care, lost wages, attorney fees, and other expenses. Call Eric Blank Injury Attorneys at to schedule a free consultation today.
 Watch below as Eric Blank, Personal Injury Attorney and Founder of Eric Blank Injury Attorneys, a top-rated Las Vegas law firm, shares the history of his top-rated law firm.
 https://youtu.be/t3RJ4BNMsfs
 
@@ -54,7 +54,7 @@ Victims of a slip and fall may receive monetary damages for various expenses. Co
 
 ## **What to Do When You Suffer a Slip and Fall**
 
-Many clients panic after suffering an injury and do not know how to protect themselves. If you experience a [slip and fall injury](https://ericblanklaw.com/areas-of-practice/slip-and-fall/las-vegas-slip-and-fall-attorney/), adhere to the following steps to strengthen your case against the defendant.
+Many clients panic after suffering an injury and do not know how to protect themselves. If you experience a [slip and fall injury](/practice-areas/slip-and-fall), adhere to the following steps to strengthen your case against the defendant.
 
 ### **Step #1: See a Doctor**
 
@@ -75,11 +75,10 @@ Avoid legal pitfalls by working with experienced slip and fall accident attorney
 
 ## **BETTER with BLANK: Eric Blank Injury Attorneys Is Your Trusted Personal Injury Law Firm**
 
-At Eric Blank Injury Attorneys, our experienced lawyers, paralegals, and support staff dedicate themselves to serving our valued clients. Our [slip and fall accident lawyers](https://ericblanklaw.com/areas-of-practice/slip-and-fall/) deliver powerful legal representation by exploring every available option and advancing compelling arguments to fight on your behalf. Discover why you can take it to the bank with Eric Blank and his team.
-If you’ve suffered an injury at a casino due to someone else's negligence, speak with one of our lawyers at Eric Blank Injury Attorneys and receive a free case review by calling  or completing our [online form](https://ericblanklaw.com/contact/) today.
+At Eric Blank Injury Attorneys, our experienced lawyers, paralegals, and support staff dedicate themselves to serving our valued clients. Our [slip and fall accident lawyers](/practice-areas/slip-and-fall) deliver powerful legal representation by exploring every available option and advancing compelling arguments to fight on your behalf. Discover why you can take it to the bank with Eric Blank and his team.
+If you’ve suffered an injury at a casino due to someone else's negligence, speak with one of our lawyers at Eric Blank Injury Attorneys and receive a free case review by calling  or completing our [online form](/contact) today.
 **Copyright© 2022. Eric Blank Injury Attorneys. All rights reserved.**
 The information in this blog post (“post”) is provided for general informational purposes only and may not reflect the current law in your jurisdiction. No information in this post should be construed as legal advice from the individual author or the law firm, nor is it intended to be a substitute for legal counsel on any subject matter. No reader of this post should act or refrain from acting based on any information included in or accessible through this post without seeking the appropriate legal or other professional advice on the particular facts and circumstances at issue from a lawyer licensed in the recipient’s state, country or other appropriate licensing jurisdiction.
 **Eric Blank Injury Attorneys**
 7860 W Sahara Ave Ste. 110
 Las Vegas, NV 89117
-<https://ericblanklaw.com/>

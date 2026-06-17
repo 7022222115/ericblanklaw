@@ -8,4 +8,4 @@ draft: false
 
 https://youtube.com/shorts/oNyDXE5FSWQ?feature=share
 Do you want to win a free motorcycle valued up to $20,000?
-We recently gave one away and the next winner can be you if you're interested click on the link below go to biker wins.com or <https://ericblanklaw.com/> for frequent news and frequent updates
+We recently gave one away and the next winner can be you if you're interested click on the link below go to biker wins.com or [ericblanklaw.com](/) for frequent news and frequent updates
