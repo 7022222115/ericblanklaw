@@ -6,7 +6,7 @@ import Footer from '../../components/Footer.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
 import Lightbox from '../../components/Lightbox.astro';
-import { firmNode } from '../../data/firm';
+import { firmNode, attorneyNode } from '../../data/firm';
 
 import phoneIcon from 'lucide-static/icons/phone.svg?raw';
 import shieldIcon from 'lucide-static/icons/shield.svg?raw';
@@ -177,12 +177,7 @@ const jsonLd = {
 			provider: { "@id": "https://ericblanklaw.com/#legalservice" },
 			employee: { "@id": "https://ericblanklaw.com/#attorney" },
 		},
-		{
-			"@type": "Attorney",
-			"@id": "https://ericblanklaw.com/#attorney",
-			name: "Eric R. Blank",
-			jobTitle: "Personal Injury Attorney",
-		},
+		attorneyNode,
 		{
 			"@type": "FAQPage",
 			"@id": "https://ericblanklaw.com/practice-areas/car-accidents#faq",
