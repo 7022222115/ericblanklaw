@@ -1,0 +1,348 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
+import Lightbox from '../../components/Lightbox.astro';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+
+const title = "Las Vegas Truck Accident Attorney | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"Hurt in a Las Vegas truck accident? Eric Blank Injury Attorneys takes on trucking companies and their insurers — 26+ years, no fees unless we win. (702) 222-2115.";
+
+const heroTrust = ["26+ Years", "Millions Recovered", "Available 24/7", "Free Consultation"];
+
+const stats = [
+	{ value: "Millions", label: "Recovered for Truck Crash Victims" },
+	{ value: "1000s", label: "of Truck Accident Cases Handled" },
+	{ value: "$0", label: "Out-of-Pocket Fees", note: "Contingency fee only" },
+	{ value: "24/7", label: "Free Consultation" },
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Investigate The Crash",
+		text: "Truck cases turn on evidence the carrier controls — ELD logs, dashcam footage, driver qualification files, maintenance records, dispatch logs. We send preservation letters fast and pursue every source before it disappears.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Build The Medical Record",
+		text: "Truck-crash injuries are often catastrophic and lifelong. We work with your treating doctors — and, where needed, life-care planners — to document the full cost: current treatment, surgeries, rehabilitation, and decades of future care.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Negotiate With Insurance",
+		text: "Trucking carriers and their insurers carry far more coverage than the typical driver — and bring far more lawyers to the fight. Eric Blank's insurance-defense background helps us navigate that battlefield.",
+	},
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Statute of Limitations",
+		text: "Nevada gives you 2 years from the date of the crash to file a truck accident lawsuit (NRS 11.190). Miss that deadline and your claim is gone — and for commercial cases, the evidence often disappears long before then.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Comparative Negligence",
+		text: "Nevada follows a modified comparative negligence rule. If you are 51% or more at fault you recover nothing; if you are partly at fault but under that, your recovery is reduced by your share.",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "Federal Regulations & Insurance",
+		text: "Commercial trucks crossing state lines must carry significantly more liability coverage than passenger vehicles — typically $750,000 up to $5,000,000 depending on cargo, under federal FMCSA rules. Carriers are also bound by federal hours-of-service, electronic logging, and maintenance regulations that often surface as evidence of negligence.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Free, no-obligation case review", icon: checkCircleIcon },
+	{ text: "No fees unless we win your case", icon: circleDollarSignIcon },
+	{ text: "Available 24/7 — nights, weekends, holidays", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/lp/clark-county-truck-accident-attorney#service",
+			name: "Eric Blank Injury Attorneys — Truck Accident Representation",
+			serviceType: "Truck Accident Legal Services",
+			url: "https://ericblanklaw.com/lp/clark-county-truck-accident-attorney",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			telephone: "+1-702-222-2115",
+			priceRange: "Contingency Fee — No Fees Unless We Win",
+			areaServed: ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Clark County", "Nevada"],
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: "7860 W Sahara Ave Ste. 110",
+				addressLocality: "Las Vegas",
+				addressRegion: "NV",
+				postalCode: "89117",
+				addressCountry: "US",
+			},
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		{
+			"@type": "Attorney",
+			"@id": "https://ericblanklaw.com/#attorney",
+			name: "Eric R. Blank",
+			jobTitle: "Personal Injury Attorney",
+		},
+	],
+};
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/lp/clark-county-truck-accident-attorney"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/truck-accidents-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Clark County Truck Accident Lawyer
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Las Vegas Truck Accident Attorney
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						Hurt in a crash with a commercial truck on I-15, US-95, or Las Vegas streets?
+						Trucking companies move within hours to protect themselves — so should you. For
+						over 26 years, Eric Blank Injury Attorneys has taken on carriers and their
+						insurers. Free consultation, and no fees unless we win.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Free Case Review
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — Why Us -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Why Us
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Why Injured Truck-Crash Victims Trust Eric Blank
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank spent the early part of his career defending insurance companies.
+							We bring that insider knowledge to every truck case.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — Nevada law -->
+			<section class="bg-white" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nevada Law
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Key Nevada Truck Accident Laws
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						This is general information, not legal advice for your specific case. Talk to an
+						attorney about the facts of your accident.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<a
+						href="/reviews"
+						class="mt-8 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Read more client reviews →
+					</a>
+				</div>
+			</section>
+
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel />
+
+			<!-- SECTION 6 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Request Your Free Case Review
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							It's free, confidential, and there's no obligation.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Why Call Now
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Three Reasons To Reach Out Today
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								With commercial trucks, key evidence — ELD logs, dashcam footage, dispatch
+								records — can disappear in days. The sooner we hear from you, the more we
+								can do.
+							</p>
+						</div>
+						<ContactForm />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
+	</body>
+</html>
