@@ -6,6 +6,7 @@ import Footer from '../../components/Footer.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
 import Lightbox from '../../components/Lightbox.astro';
+import { firmNode } from '../../data/firm';
 
 import phoneIcon from 'lucide-static/icons/phone.svg?raw';
 import shieldIcon from 'lucide-static/icons/shield.svg?raw';
@@ -169,6 +170,7 @@ const contactReasons = [
 const jsonLd = {
 	"@context": "https://schema.org",
 	"@graph": [
+		firmNode,
 		{
 			"@type": "LegalService",
 			"@id": "https://ericblanklaw.com/practice-areas/products-liability#service",
@@ -176,17 +178,8 @@ const jsonLd = {
 			serviceType: "Product Liability Legal Services",
 			url: "https://ericblanklaw.com/practice-areas/products-liability",
 			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
-			telephone: "+1-702-222-2115",
 			priceRange: "Contingency Fee — No Fees Unless We Win",
-			areaServed: ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Clark County", "Nevada"],
-			address: {
-				"@type": "PostalAddress",
-				streetAddress: "7860 W Sahara Ave Ste. 110",
-				addressLocality: "Las Vegas",
-				addressRegion: "NV",
-				postalCode: "89117",
-				addressCountry: "US",
-			},
+			provider: { "@id": "https://ericblanklaw.com/#legalservice" },
 			employee: { "@id": "https://ericblanklaw.com/#attorney" },
 		},
 		{
