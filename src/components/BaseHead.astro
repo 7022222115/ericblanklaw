@@ -17,7 +17,16 @@ const {
 	noindex = false,
 } = Astro.props;
 
-const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+let canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+// Directory-format build: the trailing-slash URL is the 200-status canonical.
+// Add a trailing slash unless the path already ends in "/" or in a file
+// extension (e.g. .xml, .pdf).
+const canonicalParsed = new URL(canonicalURL);
+const canonicalLastSegment = canonicalParsed.pathname.split("/").pop() ?? "";
+if (!canonicalParsed.pathname.endsWith("/") && !canonicalLastSegment.includes(".")) {
+	canonicalParsed.pathname += "/";
+	canonicalURL = canonicalParsed.href;
+}
 const ogImageURL = new URL(ogImage, Astro.site).href;
 const siteName = "Eric Blank Injury Attorneys";
 const robotsContent = noindex
