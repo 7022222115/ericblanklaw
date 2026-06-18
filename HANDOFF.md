@@ -1,3 +1,68 @@
+# 🟢 CURRENT STATE — 2026-06-18 (PM)  ·  HEAD `e4b3f02`
+
+> Newest-on-top. Everything below the `---` rule is prior state, preserved
+> as historical record. Read this section first.
+
+**Tree clean, all pushed. 4 fixes shipped this session (A/B/C/D), all VERIFIED
+LIVE on pages.dev.** Came in for the trailing-slash fix; verify-don't-assume
+caught two pre-existing bugs (infinite redirect loop + sitewide soft-404) and
+fixed both.
+
+## Commits this session (on top of f18791f)
+| Job | Commit | Fix |
+| --- | --- | --- |
+| A | `21c87d2` | Canonical + og:url → trailing slash, centralized in BaseHead (1-line, file-ext guard). Fixed all 37 hardcoded no-slash literals; no-op for the 36 correct pages. |
+| B | `b85b3df` | All 292 `_redirects` targets slashed → killed 2-hop chains (single hop now). Lyft redirect confirmed single-hop live. |
+| C | `8af7053` | Removed 5 self-referential redirect rules (`/blog/`, `/contact/`, `/faq/`, `/careers/`, `/privacy-policy/` → each redirected to itself) causing INFINITE LOOPS. `/blog/` + `/contact/` shadowed real built pages → were UNREACHABLE. Un-shadowed; ~65 inbound `/blog/` redirects now resolve. |
+| D | `e4b3f02` | Added `src/pages/404.astro` (was missing entirely) → fixed sitewide SOFT-404 (no 404 page meant homepage served at HTTP 200 for every bad URL). noindex=true, on-brand. Real 404 status confirmed live. |
+
+## Patterns established this session (reuse)
+- **Canonical is centralized in `BaseHead.astro`** — one place emits the
+  canonical + og:url, normalized to trailing slash w/ file-extension guard.
+  Pages passing NO canonical prop fall back to pathname (correct slash).
+  DO NOT re-add per-page hardcoded canonical literals.
+- **`_redirects` edits:** transform to TEMP file → diff old-vs-new to prove
+  ONLY the intended change → apply. Preserve column whitespace (perl/sed, NOT
+  `awk OFS="\t"` which collapses alignment). Verify dist/_redirects == source
+  after build.
+- **Verify against pages.dev, NOT apex.** Apex `ericblanklaw.com` still serves
+  OLD WordPress (X-Powered-By: PHP). New build is pages.dev-only until cutover.
+- **Cloudflare edge propagates mid-probe** — re-run live checks after ~1-2 min
+  before concluding (saw 200 then 404 on the same URL seconds apart this session).
+
+## New open item from this session
+- **8 missing redirect targets now return clean 404s** (were soft-404
+  homepage-200 pre-D): `/attorneys` + 3 bios (`/eric-blank`,
+  `/robert-hernandez`, `/fikisha-miller`), `/faq`, `/careers`,
+  `/privacy-policy`, `/terms-of-use`. 13 redirect lines feed these. Correct
+  behavior, but these legacy URLs hit a 404 until the pages exist.
+  **`/privacy-policy` + `/terms-of-use` likely pre-launch must-haves — raise
+  with Eric.** Attorney bios gated on the bio-page decision.
+- **404 self-canonicalizes to `/404/`** (BaseHead emits canonical
+  unconditionally). Benign on a noindex page. Optional future JOB D-2: make
+  BaseHead canonical conditional. Low priority.
+
+## Still open (carried, unchanged)
+- Attorney bio-page decision (ClickUp `86ba711eu`) — unblocks
+  `/our-firm/eric-r-blank/` body links (AboutEric.astro:81, about.astro:29),
+  `attorneyNode.url`, and Wave 2 schema rollout.
+- Custom-domain cutover — apex still WordPress; handle Cloudflare-side, NEVER
+  add noindex/Disallow in-repo (would ship to prod).
+- Rich Results validation (pending redeploy).
+- criminal-law priceRange call (ClickUp `86bafjx5c`) — Eric's judgment.
+- Phase 4 leftovers: Wave 2 `attorneyNode` rollout (~30 pages), title/meta
+  verification, OG tags + og-default.jpg recon, blog in nav, Adobe Stock heroes.
+
+## Key IDs (current)
+- HEAD `e4b3f02` | session commits `21c87d2`, `b85b3df`, `8af7053`, `e4b3f02`
+- Notion parent `36fc0431-1626-8131-9050-ebee84fda8b9`
+  | this session log `383c0431-1626-8130-9c0f-eb8005d98cc9`
+- ClickUp: Phase 4 `86baf0x59` | Phase 5 Redirect Map `86baf0x9v`
+  | Pre-Cutover Gate `86baf0xf1` | criminal-law priceRange `86bafjx5c`
+  | bios/broken-link `86ba711eu`
+
+---
+
 # HANDOFF — Phase 4 SEO Parity (firmNode rollout + Wave 2 attorney consolidation COMPLETE)
 
 **Last updated:** 2026-06-17, end of session. **HEAD at this write:** c69d30e.
