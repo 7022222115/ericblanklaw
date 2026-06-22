@@ -1,4 +1,17 @@
-# 🟢 CURRENT STATE — 2026-06-22  ·  HEAD `9eff5de`
+# 🟢 CURRENT STATE — 2026-06-22 (session 2)  ·  HEAD `a414432`
+
+Tree clean · all pushed. This session shipped 3 commits:
+- `b9b9af8` — replaced `[Bio details to be added.]` placeholder card blurbs for Miller + Hernandez on `/about/` (condensed from approved bio-page facts; no new claims). Last visible-placeholder problem on the site = GONE.
+- `129f5a5` — built `/careers/` (page 81; evergreen copy, info@ericblanklaw.com apply path; indexable, slashed canonical; mirrors privacy-policy shell). Was 404, now 200 once deployed.
+- `a414432` — added Careers link to footer legalLinks array (sitewide, all 81 pages). /careers/ no longer orphaned.
+
+## OPEN / NEXT
+- `/faq/` is now the LAST unbuilt redirect target. GATED: legal-copy risk (FAQ answers restate SOL/fees/etc → Eric's gate). Park until Q&A copy + gate sorted. Two legacy URLs (`/faq/personal-injury-faq/`, `/video-faq/`) still 301 to a `/faq/` that 404s until built.
+- Part B (about-card headshots) still open & unstarted: `photo:null` on Miller/Hernandez cards. Landscape headshots (363×289 / 537×427) don't fit `aspect-[2/3]` portrait frame + low-res. Needs frame tweak OR portrait crops OR higher-res images. Decision not yet made.
+- Bar admission numbers/years still missing for all 3 attorneys (Eric's gate).
+- Eric's `LEGAL-REVIEW.docx` sign-off = hard gate before DNS cutover.
+
+# 🗄️ SUPERSEDED — 2026-06-22 (attorney cluster)  ·  HEAD `9eff5de`
 
 ## One line
 Attorney bio-page decision RESOLVED and the full `/attorneys/` cluster shipped (index + 3 bios) + all downstream link/schema cleanup. 5 commits, all pushed, tree clean, in sync.
