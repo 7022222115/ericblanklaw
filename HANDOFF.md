@@ -1,4 +1,34 @@
-# 🟢 CURRENT STATE — 2026-06-22  ·  HEAD `d6cbd29`
+# 🟢 CURRENT STATE — 2026-06-22  ·  HEAD `9eff5de`
+
+## One line
+Attorney bio-page decision RESOLVED and the full `/attorneys/` cluster shipped (index + 3 bios) + all downstream link/schema cleanup. 5 commits, all pushed, tree clean, in sync.
+
+## Commits this session
+- `7e1a4df` feat — Eric Blank bio `/attorneys/eric-blank/` (real confirmed copy; canary, shell aligned to privacy-policy)
+- `7c1e83e` feat — Fikisha Miller + Robert Hernandez bios + headshots (real copy from Eric; exact-case img src, intrinsic dims)
+- `1d669c3` feat — `/attorneys/` index (3-card grid, self-contained data)
+- `38f8b84` fix — repoint 4 body links (about.astro ×3 + AboutEric.astro ×1) `/our-firm/` → `/attorneys/` direct
+- `9eff5de` feat — `attorneyNode.url` in firm.ts (`/attorneys/eric-blank/`) + stale TODO removed; propagates sitewide incl. criminal-law spread
+
+## URL scheme LOCKED
+`/attorneys/` parent + NO middle initial: `/attorneys/eric-blank/`, `/attorneys/fikisha-miller/`, `/attorneys/robert-hernandez/`. Matched the `_redirects` map (authoritative). Display names keep initials; slugs don't.
+
+## Top open items (no gate — buildable next)
+1. **Live `[Bio details to be added.]` placeholders on `/about/`** — Fikisha/Robert team cards still show this publicly. TOP of next list. Needs short summary copy + card-frame decision (landscape headshots crop in the `aspect-[2/3]` frame; bio pages use natural-ratio `h-auto` instead).
+2. `/faq` + `/careers` — last 2 unbuilt redirect targets (down from 8). Same shell pattern.
+
+## Still gated
+- Bar numbers missing for ALL THREE attorneys (Eric incl.) — load-bearing schema field, for Eric's review.
+- Eric's `LEGAL-REVIEW.docx` sign-off = hard gate before DNS cutover. Bio facts ride this same gate.
+- Custom-domain cutover (apex still WordPress); Rich Results validation; criminal-law priceRange (`86bafjx5c`).
+
+## Corrections
+- Fikisha Miller is NOT a two-person name collision — the Nashville/TN history is hers (relocated to LV 2014). Prior ClickUp note corrected.
+
+## Don't-forget
+Verify against pages.dev (NOT apex). Canonical lives in BaseHead. No `src/layouts/` — mirror existing page shells. Image src must be exact-case (Cloudflare serves case-sensitively). One change at a time, explicit filenames, no `git add .`, recon-first. Close: push → HANDOFF → Notion → ClickUp.
+
+# 🗄️ SUPERSEDED — 2026-06-22 (privacy/terms)  ·  HEAD `d6cbd29`
 
 > Newest-on-top. The `🗄️ SUPERSEDED` section below was the prior current-state;
 > kept as history. Patterns + Notion/ClickUp IDs there still apply unless noted here.
