@@ -1,4 +1,51 @@
-# 🟢 CURRENT STATE — 2026-06-18 (PM)  ·  HEAD `e4b3f02`
+# 🟢 CURRENT STATE — 2026-06-22  ·  HEAD `d6cbd29`
+
+> Newest-on-top. The `🗄️ SUPERSEDED` section below was the prior current-state;
+> kept as history. Patterns + Notion/ClickUp IDs there still apply unless noted here.
+
+**In sync with origin/main, tree clean. Two new pages + a footer fix shipped and
+VERIFIED LIVE on pages.dev.** Prior HEAD was `7146d88` (docs commit); last code
+commit before this round was `e4b3f02`.
+
+## Commits this round (on top of 7146d88)
+| Commit | Change |
+| --- | --- |
+| `24bb4a2` | feat: privacy-policy + terms-of-use pages. Both LIVE, indexable (no noindex), 200 on pages.dev. Mirror the 404/contact pattern; NO hardcoded canonical (BaseHead fallback emits the slashed canonical). |
+| `d6cbd29` | fix: footer legal links. `/privacy-policy` → `/privacy-policy/`, `/terms` → `/terms-of-use/`, `/sitemap` → `/sitemap-index.xml`. Were: `/terms` 404, `/sitemap` 404, `/privacy-policy` no-slash 308. All three now resolve 200 (verified in dist sitewide + live). |
+
+## Verified live (pages.dev)
+- `/privacy-policy/` → 200 ✓ · `/terms-of-use/` → 200 ✓ · `/sitemap-index.xml` → 200 ✓
+- Legacy `/term-of-use/` (singular) → **301 → `/terms-of-use/` → 200, SINGLE HOP** ✓
+  (the existing `_redirects` rule now lands on a real page; the new page slug was
+  chosen PLURAL to match that redirect target — building singular would have been
+  shadowed by the rule).
+- Footer legal links all resolve (no 404s).
+
+## DONE this round
+- ✅ `/privacy-policy/` + `/terms-of-use/` built — resolves **2 of the 8** missing
+  redirect-target 404s.
+- ✅ Footer legal links corrected (3 hrefs).
+
+## Open items (delta from the SUPERSEDED section)
+- **NEW — Naming-consistency sweep:** confirm nothing in codebase / content /
+  sitemap still references **singular `/term-of-use/`** as a DESTINATION. Canonical
+  is plural `/terms-of-use/`. The legacy singular→plural redirect is correct and
+  verified live — this is a reference sweep, NOT a redirect fix.
+- **Still to build** (missing redirect targets): `/faq`, `/careers`, `/attorneys`
+  + 3 bios (`/eric-blank`, `/robert-hernandez`, `/fikisha-miller`). Bios gated on
+  the bio-page decision. (privacy/terms now DONE — removed from this list.)
+- Carried unchanged: attorney bio-page decision (ClickUp `86ba711eu`, unblocks
+  `/our-firm/eric-r-blank/` body links + `attorneyNode.url` + Wave 2 schema);
+  custom-domain cutover (apex still WordPress); Rich Results validation;
+  criminal-law priceRange (ClickUp `86bafjx5c`); Phase 4 leftovers.
+
+## Key IDs (current)
+- HEAD `d6cbd29` | this round `24bb4a2`, `d6cbd29` | prior code commit `e4b3f02`
+- Earlier session commits + Notion / ClickUp IDs: see the SUPERSEDED section below.
+
+---
+
+# 🗄️ SUPERSEDED — 2026-06-18 (PM)  ·  HEAD `e4b3f02`
 
 > Newest-on-top. Everything below the `---` rule is prior state, preserved
 > as historical record. Read this section first.
