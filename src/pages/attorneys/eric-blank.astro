@@ -1,0 +1,67 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = 'Eric Blank | Personal Injury & Workers’ Compensation Attorney';
+const description = 'Eric Blank represents plaintiffs in personal injury and workers’ compensation cases in Las Vegas, drawing on prior insurance-defense experience to anticipate how insurers evaluate claims.';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="overflow-x-clip">
+    <Header />
+    <main>
+      <section class="bg-brand-navy text-white">
+        <div class="max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+          <p class="text-sm uppercase tracking-wide text-brand-gold mb-3">Our Attorneys</p>
+          <h1 class="text-4xl font-bold mb-4">Eric Blank</h1>
+          <p class="text-lg text-gray-200">Personal Injury &amp; Workers’ Compensation Attorney</p>
+        </div>
+      </section>
+
+      <section class="bg-white">
+        <div class="max-w-3xl mx-auto px-4 py-16">
+          <div class="space-y-10 text-gray-600 leading-relaxed">
+            <p>Eric Blank focuses his practice on representing plaintiffs in personal injury and workers’ compensation actions. Before opening his current practice representing plaintiffs, he worked in insurance defense, defending insurance companies against claims asserted by plaintiffs. This experience provides Mr. Blank with unique insight into how insurance companies evaluate various types of claims and the strategies they employ to defend them. He also gained extensive business experience acting as general counsel for local NBC and Fox affiliates.</p>
+
+            <p>Mr. Blank decided to pursue a more fulfilling career, and shifted his practice to the exclusive representation of individual plaintiffs against insurance companies and corporations. Since transitioning his practice to the representation of plaintiffs, Mr. Blank has obtained millions of dollars in settlements and verdicts on behalf of his clients. More importantly, he has achieved a level of satisfaction in helping others that he was never able to achieve when he represented insurance companies and corporations.</p>
+
+            <p>Mr. Blank is committed to assisting people with legal problems, previously hosting a radio show where listeners could call in and have their basic legal questions answered. He derives great personal satisfaction in helping clients obtain the recovery they are entitled to receive.</p>
+
+            <p>Outside the practice of law, Mr. Blank is heavily involved in the community. He was voted Man of the Year by the Southern Nevada Chapter of the Leukemia &amp; Lymphoma Society and he enjoys spending time volunteering at the Jewish Federation of Las Vegas. Mr. Blank has also published the inspirational illustrated book <em>The Success of Robert Fitzgibbons</em>, in which he encourages readers to listen to their hearts, work hard, and follow their dreams. He uses these philosophies in his practice of law as he assists people who are experiencing difficult times in their lives.</p>
+
+            <div>
+              <h2 class="text-2xl font-bold text-brand-navy mb-4">Education</h2>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>J.D., <a href="https://law.arizona.edu/" target="_blank" rel="noopener noreferrer" class="text-brand-navy underline">University of Arizona James E. Rogers College of Law</a></li>
+                <li>B.S., <a href="https://www.wharton.upenn.edu/" target="_blank" rel="noopener noreferrer" class="text-brand-navy underline">The Wharton School of the University of Pennsylvania</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-bold text-brand-navy mb-4">Admission</h2>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><a href="https://www.nvbar.org/" target="_blank" rel="noopener noreferrer" class="text-brand-navy underline">Nevada</a></li>
+                <li><a href="https://www.ca9.uscourts.gov/" target="_blank" rel="noopener noreferrer" class="text-brand-navy underline">United States Court of Appeals for the Ninth Circuit</a></li>
+                <li><a href="https://www.supremecourtus.gov/" target="_blank" rel="noopener noreferrer" class="text-brand-navy underline">United States Supreme Court</a></li>
+                <li><a href="https://www.nvd.uscourts.gov/" target="_blank" rel="noopener noreferrer" class="text-brand-navy underline">U.S. District Court for the District of Nevada</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-bold text-brand-navy mb-4">Memberships</h2>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><a href="https://www.nevadajustice.org/NV/" target="_blank" rel="noopener noreferrer" class="text-brand-navy underline">Nevada Justice Association</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
