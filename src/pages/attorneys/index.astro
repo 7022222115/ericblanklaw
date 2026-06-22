@@ -1,0 +1,70 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = 'Our Attorneys | Eric Blank Injury Attorneys';
+const description = 'Meet the attorneys at Eric Blank Injury Attorneys — a Las Vegas personal injury and workers’ compensation team representing injured clients across Nevada.';
+
+const attorneys = [
+  {
+    name: 'Eric Blank',
+    role: 'Personal Injury & Workers’ Compensation Attorney',
+    photo: '/Eric_Blank_01.jpg',
+    width: 600,
+    height: 900,
+    url: '/attorneys/eric-blank/',
+  },
+  {
+    name: 'Fikisha Miller',
+    role: 'Criminal Defense & Personal Injury Attorney',
+    photo: '/Fikisha-Miller.png',
+    width: 363,
+    height: 289,
+    url: '/attorneys/fikisha-miller/',
+  },
+  {
+    name: 'Robert T. Hernandez',
+    role: 'Personal Injury Attorney',
+    photo: '/Robert-Hernandez.png',
+    width: 537,
+    height: 427,
+    url: '/attorneys/robert-hernandez/',
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="overflow-x-clip">
+    <Header />
+    <main>
+      <section class="bg-brand-navy text-white">
+        <div class="max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+          <p class="text-sm uppercase tracking-wide text-brand-gold mb-3">Our Team</p>
+          <h1 class="text-4xl font-bold mb-4">Our Attorneys</h1>
+          <p class="text-lg text-gray-200">Meet the team representing injured clients across Nevada.</p>
+        </div>
+      </section>
+
+      <section class="bg-white">
+        <div class="max-w-5xl mx-auto px-4 py-16">
+          <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {attorneys.map((a) => (
+              <div class="flex flex-col">
+                <img src={a.photo} alt={a.name} width={a.width} height={a.height} loading="lazy" class="w-full h-auto rounded-lg mb-4" />
+                <h2 class="text-xl font-bold text-brand-navy">{a.name}</h2>
+                <p class="text-gray-600 mb-3">{a.role}</p>
+                <a href={a.url} class="text-brand-navy font-semibold underline mt-auto">Read Full Bio</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
