@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Careers | Eric Blank Injury Attorneys';
+const description = 'Join Eric Blank Injury Attorneys. We are always interested in connecting with talented attorneys, paralegals, and support staff who share our commitment to injured clients in Las Vegas.';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="overflow-x-clip">
+    <Header />
+    <main>
+      <section class="bg-brand-navy text-white">
+        <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+          <p class="text-sm font-semibold uppercase tracking-wide text-brand-gold">Join Our Team</p>
+          <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Careers at Eric Blank Injury Attorneys</h1>
+        </div>
+      </section>
+      <section class="bg-white">
+        <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+          <div class="space-y-10 text-gray-600 leading-relaxed">
+            <div>
+              <h2 class="text-2xl font-bold text-brand-navy">Build a Career That Matters</h2>
+              <p class="mt-3">At Eric Blank Injury Attorneys, we fight for injured people across the Las Vegas valley — and we know that work is only as strong as the team behind it. We are always interested in connecting with talented, driven people who share our commitment to clients.</p>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-brand-navy">We Are Always Looking for Talent</h2>
+              <p class="mt-3">Whether you are an attorney, a paralegal, a case manager, or support staff, we would like to hear from you — even when we do not have a specific opening posted. Great people are worth making room for.</p>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-brand-navy">How to Apply</h2>
+              <p class="mt-3">Send your resume and a brief note about yourself to <a href="mailto:info@ericblanklaw.com" class="text-brand-navy font-semibold underline">info@ericblanklaw.com</a>. Tell us a little about what you do and what you are looking for, and we will be in touch if there is a fit.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
