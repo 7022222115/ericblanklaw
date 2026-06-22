@@ -1,4 +1,27 @@
-# 🟢 CURRENT STATE — 2026-06-22 (session 2)  ·  HEAD `a414432`
+# 🟢 CURRENT STATE — 2026-06-22 (session 3)  ·  HEAD `327b74c`
+
+Tree clean · all pushed. This session swapped the homepage hero portrait. 2 commits:
+- `b300903` — `Hero.astro` `<img>` → `/Eric_Blank_Portrait_20260612.png`; `width`/`height` → 1122×1402 (same 4:5 ratio, so `object-cover`/`max-w-sm` layout unaffected; `alt`/`class` untouched).
+- `327b74c` — added the portrait asset itself. NEAR-MISS: the markup (`b300903`) shipped before the asset was committed — `327b74c` closed the live-404 risk. Lesson: asset + reference must land together (scope `git add` to both).
+
+## Standing flag
+- Hero is now a **1.9 MB PNG above the fold** = LCP debt. Optimization owed (resize ~768px + convert WebP/JPG → ~50–150 KB; same filename = no code change). ClickUp `86baj7a9t`.
+
+## BIG NEXT JOB
+- Rebuild `LEGAL-REVIEW.docx` for all 20 practice-area pages — do in a FRESH chat. Full spec in Notion checkpoint page `387c0431-1626-81c9-96e0-cd0598403d69`.
+
+## Still gated / carried forward
+- `/faq/` — last unbuilt redirect target; gated on legal-copy risk (Q&A restates SOL/fees/etc → Eric's gate). Two legacy URLs (`/faq/personal-injury-faq/`, `/video-faq/`) still 301 to a `/faq/` that 404s until built.
+- Bar admission numbers/years missing for all 3 attorneys (Eric's gate).
+- Eric's `LEGAL-REVIEW.docx` sign-off = HARD gate before DNS cutover.
+- Custom-domain cutover (Cloudflare-side; apex still WordPress).
+- Rich Results validation.
+- criminal-law priceRange — ClickUp `86bafjx5c`.
+
+## Deferred
+- Part B about-card headshots (Miller/Hernandez `photo:null`) — waiting on hi-res portrait images. ClickUp `86ba711eu`.
+
+# 🗄️ SUPERSEDED — 2026-06-22 (session 2)  ·  HEAD `a414432` (about/careers/footer)
 
 Tree clean · all pushed. This session shipped 3 commits:
 - `b9b9af8` — replaced `[Bio details to be added.]` placeholder card blurbs for Miller + Hernandez on `/about/` (condensed from approved bio-page facts; no new claims). Last visible-placeholder problem on the site = GONE.
