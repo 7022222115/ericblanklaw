@@ -49,12 +49,10 @@ export const firmNode = {
 	],
 };
 
-// TODO: ATTORNEY BIO MISSING — add  url: "https://ericblanklaw.com/attorneys/eric-r-blank"
-// to attorneyNode below ONLY once that bio page actually exists and returns 200.
-// Shipping a url here before the page is built = sitewide 404 in schema. Tracked in ClickUp.
 export const attorneyNode = {
 	"@type": "Attorney",
 	"@id": "https://ericblanklaw.com/#attorney",
+	url: "https://ericblanklaw.com/attorneys/eric-blank/",
 	name: "Eric R. Blank",
 	jobTitle: "Personal Injury Attorney",
 	worksFor: { "@id": "https://ericblanklaw.com/#legalservice" },
