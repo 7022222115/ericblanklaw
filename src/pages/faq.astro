@@ -1,0 +1,300 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Content ported 2026-09-23 from the legacy WordPress /faq/ page (three FAQ groups).
+// Two edits from the original: the comparative-negligence answer uses Eric's approved
+// 2026-09-23 paragraph, and "property authorities" -> "proper authorities" (typo).
+// Everything else is the firm's existing published copy.
+
+const title = 'Frequently Asked Questions | Eric Blank Injury Attorneys';
+const description =
+  'Answers to common questions about personal injury, auto accident, and slip and fall claims in Las Vegas from Eric Blank Injury Attorneys. Questions? Call (702) 222-2115.';
+
+type Block = { type: 'p'; text: string } | { type: 'ul'; items: string[] };
+type Faq = { q: string; a: Block[] };
+type Group = { id: string; heading: string; faqs: Faq[]; outro: string };
+
+const phone = '<a href="tel:+17022222115" class="text-brand-navy font-semibold underline">(702) 222-2115</a>';
+const contactLink = '<a href="/contact/" class="text-brand-navy font-semibold underline">online contact form</a>';
+
+const groups: Group[] = [
+  {
+    id: 'personal-injury',
+    heading: 'Personal Injury FAQs',
+    faqs: [
+      {
+        q: 'Who Is Liable For My Injuries?',
+        a: [
+          { type: 'p', text: 'Determining liability is the first step in personal injury claims. You want to know who caused the accident and name that party as the defendant in your case. The liable party will have to cover the damages you suffer from the accident.' },
+          { type: 'p', text: 'The question of liability is complex, with several contributing factors. It is possible to have multiple parties liable for a single accident.' },
+          { type: 'p', text: 'Your personal injury lawyer will help analyze the evidence available to determine liability.' },
+        ],
+      },
+      {
+        q: 'What Is My Claim Worth?',
+        a: [
+          { type: 'p', text: "The basis of your claim's value depends on several elements that require careful consideration. One of the roles of a personal injury lawyer is to help calculate the amount by assessing measurable damages, such as:" },
+          { type: 'ul', items: [
+            'Your current medical expenses to treat the injuries sustained from the accident',
+            'Future costs of rehabilitation and treatment to mend the injuries',
+            'The income and wages lost because you are unable to work',
+            'Damage to property',
+          ] },
+          { type: 'p', text: 'The non-economic damages are added to the personal injury lawsuit. These cover:' },
+          { type: 'ul', items: [
+            'Emotional stress',
+            'Pain and suffering',
+            'Loss of consortium',
+            'Losing the ability to enjoy life',
+          ] },
+        ],
+      },
+      {
+        q: 'How Long Does My Claim Take?',
+        a: [
+          { type: 'p', text: 'The time to resolve a case depends on the particular circumstances, and how the insurance companies respond. You can expect the process to take anywhere from one month to one year. In extraordinary cases, it can take even longer.' },
+        ],
+      },
+      {
+        q: 'What Should I Do After An Accident?',
+        a: [
+          { type: 'p', text: 'The first thing you should do after an accident is to assess yourself. Are you hurt in any way? Do you feel pain? Even if you seem okay at first glance, seek medical attention immediately. The doctor can get a better look at you and determine if you have underlying injuries from the accident.' },
+          { type: 'p', text: 'The next step is to report the incident to the proper authorities. That would depend on the nature of the accident. In slip and fall cases within hotel premises, that means filing a report with the management team. In any case, you have the option to call the police.' },
+          { type: 'p', text: 'Try to collect evidence if you are not seriously injured. Use your phone to take pictures and videos of the scene. Talk to other people on the premises and write down what they witnessed along with their contact details. Your lawyer may want to talk to them later.' },
+          { type: 'p', text: 'Talk to an experienced personal injury attorney to assess your case.' },
+        ],
+      },
+      {
+        q: 'What Are Punitive Damages?',
+        a: [
+          { type: 'p', text: 'Economic and non-economic damages are paid to the victim to compensate for the costs they incur from the accident. Punitive damages are required by courts if there was malicious intent on the part of the defendant. Essentially, it is a financial penalty added on top of the compensation paid to the victims.' },
+        ],
+      },
+      {
+        q: 'Should I Talk With The Insurance Company?',
+        a: [
+          { type: 'p', text: 'You can talk to the insurance company of the other party after the accident. However, be wary of what information you share with them. Remember, they are working for their best interest, not yours. That means they will try what they can to lower the amount of your claim.' },
+          { type: 'p', text: 'Consult your personal injury attorney before talking with the insurance company. And do not accept any offer before doing so.' },
+        ],
+      },
+    ],
+    outro: `Do you have other questions about personal injury claims not covered on this page? You can contact Eric Blank Injury Attorneys at ${phone} to get more information. We are here to guide you through the legal proceedings of your personal injury claim.`,
+  },
+  {
+    id: 'auto-accidents',
+    heading: 'Auto Accidents FAQ',
+    faqs: [
+      {
+        q: 'Should I Move My Car After An Auto Accident?',
+        a: [
+          { type: 'p', text: 'The Nevada Department of Transportation recommends that people involved in an auto accident clear their vehicles from the road to avoid another crash. However, police investigators may want to see the vehicle positions after the incident for their report.' },
+          { type: 'p', text: 'You can take pictures or videos of the scene before moving your car. That way, the police and your lawyer can have something to refer to later.' },
+          { type: 'p', text: 'All of that is assuming you can move. If you are injured or in pain, it is better to wait for help.' },
+        ],
+      },
+      {
+        q: "What Happens If I'm Partly To Blame For The Accident?",
+        a: [
+          { type: 'p', text: "In Nevada, you don't lose your case just because you were partly at fault. As long as you are 50% or less to blame, you can still bring a claim, but your recovery will be reduced by your share of fault. When the other party can push your responsibility over 50%, however, Nevada's modified comparative negligence rule generally bars you from recovering any compensation (NRS 41.141)." },
+        ],
+      },
+      {
+        q: 'Do I Need Medical Attention Even If I Do Not Feel Hurt?',
+        a: [
+          { type: 'p', text: 'Not all injuries are apparent after an auto accident. Adrenaline would prevent you from feeling pain to some extent. You should always seek immediate medical attention.' },
+          { type: 'p', text: 'Getting checked by medical professionals also creates an official document of your injuries right after the crash, which can later be used for your claim.' },
+        ],
+      },
+      {
+        q: 'Should I Call The Police?',
+        a: [
+          { type: 'p', text: 'Although you are not legally required to do so, calling the police is a good idea to ensure a report is filed. Always call the police if:' },
+          { type: 'ul', items: [
+            'The vehicles involved are blocking the normal flow of traffic.',
+            'There is damage to other properties like cars, buildings, and public spaces.',
+            'Any person suffered an injury during the accident.',
+            'There is a chance that one or more vehicles could catch fire.',
+          ] },
+        ],
+      },
+      {
+        q: 'Who Is Liable For My Injuries?',
+        a: [
+          { type: 'p', text: 'The party who caused the accident is liable for the injuries you sustained. Even if you are a passenger, you can file a lawsuit against the other driver.' },
+          { type: 'p', text: 'There are cases where other factors contribute to the accident. For example, if the airbags fail to deploy, the manufacturer carries liability.' },
+          { type: 'p', text: 'Your auto accident lawyer will help determine the liable parties by analyzing the evidence and reports of the accident.' },
+        ],
+      },
+      {
+        q: 'What If The Other Driver Denies Responsibility?',
+        a: [
+          { type: 'p', text: "The other driver can deny responsibility for the accident, and it happens often. In this case, the burden of proof shifts onto you, and their insurance company will not entertain a settlement until you prove the other driver's culpability." },
+          { type: 'p', text: 'Your auto accident attorney can organize and present your proof. That starts with analyzing the available evidence to reconstruct the timeline of the accident.' },
+        ],
+      },
+      {
+        q: 'Should I Take The Settlement Offer Of The Insurance Company?',
+        a: [
+          { type: 'p', text: 'The first offer from insurance companies is always low. Their goal is to get this over with as fast as possible while minimizing their cost. It is all about the money. Do not agree to any offer without:' },
+          { type: 'ul', items: [
+            'Getting a medical checkup to see if you have lingering injuries because of the accident.',
+            'Talking to a legal representative to discuss your case.',
+          ] },
+          { type: 'p', text: 'After an auto accident, the insurance company of the other driver will likely reach out to you with an offer. You can talk to them but try not to answer too many questions until you consult with an attorney.' },
+        ],
+      },
+    ],
+    outro: `An auto accident claim in Las Vegas can be complex, but Eric Blank Injury Attorneys has the necessary experience to help you. Call ${phone} to book a free strategy session.`,
+  },
+  {
+    id: 'slip-and-fall',
+    heading: 'Slip and Fall FAQ',
+    faqs: [
+      {
+        q: 'How Is A Slip And Fall Claim Proven In Las Vegas?',
+        a: [
+          { type: 'p', text: "Slipping and falling can lead to various injuries. When that happens on another person's property, you could sue them for negligence. As the plaintiff, you need to prove the following elements:" },
+          { type: 'ul', items: [
+            'That the defendant has control over the premises of where the accident took place.',
+            'The plaintiff had permission to be on the property.',
+            'There was a hazard on the premises that led to the accident.',
+            'The defendant knew or should have known about the hazard.',
+            'Falling hazards injured the plaintiff.',
+          ] },
+          { type: 'p', text: 'The burden of proof is on the shoulders of the plaintiff.' },
+        ],
+      },
+      {
+        q: 'What Is The Definition Of Dangerous Surfaces And Conditions?',
+        a: [
+          { type: 'p', text: 'There is no single definition of what a dangerous surface condition is. A floor becomes hazardous when property managers ignore maintenance and repair issues, or fail to take preventative measures. The property owner or the staff should warn patrons about the hazard if they cannot fix the problem immediately.' },
+          { type: 'p', text: 'Specific examples of preventative measures include:' },
+          { type: 'ul', items: [
+            'Using slip-resistant rugs',
+            'Replacing torn carpeting',
+            'Repairing uneven walkways or stairs',
+            'Placing warning cones near construction areas',
+            'Cleaning up wet surfaces',
+            'Removing excess wax from floors',
+            'Installing handrails on staircases',
+            'Following safety codes',
+            'Providing proper lighting',
+            'Cordoning off hazardous areas',
+            'Keeping public bathroom floors dry and safe',
+          ] },
+        ],
+      },
+      {
+        q: 'Is A Las Vegas Hotel Liable If I Slip And Get Injured In Their Establishment?',
+        a: [
+          { type: 'p', text: 'Hotels and casinos use different types of flooring. Under Nevada law, they are responsible for regularly inspecting the premises and addressing existing hazards. If the hotel or their staff neglect their obligation to maintain a safe environment for patrons, they can be liable for your injury.' },
+        ],
+      },
+      {
+        q: 'What Are The Damages Involved In Slip And Fall Claims?',
+        a: [
+          { type: 'p', text: 'Plaintiffs can seek damages depending on the accident and the circumstances surrounding it. In standard negligence claims, they can seek compensatory damages to cover:' },
+          { type: 'ul', items: [
+            'All the medical bills related to the injury caused by the accident. That should cover hospitalization, rehab, treatments, home care, medication, and doctor visits.',
+            'The wages the plaintiff lost because they were unable to work while injured. Calculation of this includes the bonuses and tips they should have received.',
+            'In cases where the person can no longer work, the plaintiff has the right to receive the money they should have earned if not for the accident. That is called future lost wages.',
+            'Pain and suffering are challenging to calculate. The purpose is to compensate the plaintiff for the emotional stress and physical pain they go through from the injuries.',
+          ] },
+        ],
+      },
+      {
+        q: 'Is There A Statute Of Limitations With Slip And Fall Claims In Las Vegas?',
+        a: [
+          { type: 'p', text: 'In Nevada, you have two years to file a personal injury claim, including slip and fall accidents. There are instances where the deadline is extended, but those are for special circumstances. Talk to a lawyer immediately if you get injured because of a slip and fall accident.' },
+        ],
+      },
+      {
+        q: 'What Can I Do After I Slip Or Fall?',
+        a: [
+          { type: 'p', text: 'Call for medical attention after a slip and fall accident, especially if you are in pain. Your health comes first, and it is crucial to get checked immediately.' },
+          { type: 'p', text: 'Report the incident at once to the proper authorities. Most commercial properties have a process for this. You can also call the police to give your official statement.' },
+          { type: 'p', text: 'Gather evidence about the accident. Talk to potential witnesses to get their point of view and write it down. Take down their contact details, too.' },
+          { type: 'p', text: 'Most importantly, talk to a slip and fall accident lawyer who can help organize the information to build your claim.' },
+        ],
+      },
+    ],
+    outro: `If you have other questions about slip and fall claims not covered in this list, you can contact Eric Blank Injury Attorneys by calling ${phone} or filling out our ${contactLink}. We'll provide you with a free strategy session to discuss the details of your case and determine the next best step.`,
+  },
+];
+
+const plainText = (blocks: Block[]) =>
+  blocks.map((b) => (b.type === 'p' ? b.text : b.items.join(' '))).join(' ');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://ericblanklaw.com/faq/#faq',
+  mainEntity: groups.flatMap((g) =>
+    g.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: plainText(faq.a) },
+    })),
+  ),
+};
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="overflow-x-clip">
+    <Header />
+    <main>
+      <section class="bg-brand-navy text-white">
+        <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+          <p class="text-sm font-semibold uppercase tracking-wide text-brand-gold">Answers From Our Team</p>
+          <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h1>
+          <p class="mx-auto mt-4 max-w-2xl text-base text-white/70 sm:text-lg">
+            Answers to the questions we hear most often about personal injury, auto accident, and slip and fall claims in Las Vegas. Don't see yours? Call <a href="tel:+17022222115" class="font-semibold text-brand-gold underline">(702) 222-2115</a> or <a href="/contact/" class="font-semibold text-brand-gold underline">contact us</a>.
+          </p>
+        </div>
+      </section>
+      <section class="bg-white">
+        <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+          <nav aria-label="FAQ sections" class="mb-12 flex flex-wrap justify-center gap-3">
+            {groups.map((g) => (
+              <a href={`#${g.id}`} class="rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-brand-navy transition-colors hover:border-brand-gold hover:text-brand-gold">{g.heading}</a>
+            ))}
+          </nav>
+          <div class="space-y-16 text-gray-600 leading-relaxed">
+            {groups.map((g) => (
+              <div id={g.id} class="scroll-mt-24">
+                <h2 class="text-2xl font-bold text-brand-navy">{g.heading}</h2>
+                <div class="mt-6 space-y-8">
+                  {g.faqs.map((faq) => (
+                    <div>
+                      <h3 class="text-lg font-bold text-brand-navy">{faq.q}</h3>
+                      <div class="mt-2 space-y-3">
+                        {faq.a.map((b) =>
+                          b.type === 'p' ? (
+                            <p>{b.text}</p>
+                          ) : (
+                            <ul class="list-disc space-y-1 pl-6">
+                              {b.items.map((item) => <li>{item}</li>)}
+                            </ul>
+                          ),
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p class="mt-8 border-l-4 border-brand-gold bg-gray-50 p-4" set:html={g.outro} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
