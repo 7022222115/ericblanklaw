@@ -1,4 +1,41 @@
-# 🟢 CURRENT STATE — 2026-06-22 (session 3)  ·  HEAD `327b74c`
+# 🟢 CURRENT STATE — 2026-09-23 (session 4)  ·  HEAD `f66b6ad`
+
+Tree clean · pushed · VERIFIED LIVE on pages.dev. First session since 2026-06-22. One code commit:
+- `f66b6ad` — `public/_redirects` +54 lines (51 rules + 2 comments + blank). 287 → 338 rules.
+
+## What was wrong (and why 3 sessions missed it)
+The 2026-06-22 handoff said `/faq/` was "the last unbuilt redirect **target**." True, but nobody audited redirect **sources**. The original `_redirects` generator only emitted triage rows with Action = `301 REDIRECT` (292). The 51 rows with Action = `BUILD NEW` (6), `REBUILD (landing page)` (10), `KEEP (migrate)` (35) never got a rule — and every one of those pages was built under a NEW slug (blog slugs stop-word-stripped, LP slugs shortened, `/areas-of-practice/` → `/practice-areas/`). Result: 51 legacy URLs 404'd on pages.dev, including the #1 organic asset `/google-chrome-incognito-lawsuit/` (3,247 clk), the 437-clk school-bullying LP, and `/areas-of-practice/bus-accidents/` (126 clk, T1). `CLAUDE.md` says blog URLs "MUST be preserved exactly" — they weren't, and nothing covered it. Would have torched top traffic at cutover.
+
+## Audit method (reuse before cutover — this is the real pre-cutover gate)
+All 349 legacy URLs from `EBIAtriageinventory_2_WORKING.xlsx` (project file) curl'd against pages.dev; expected target = `New Astro URL` column; PASS = 301/308 to exact target, single hop, target 200.
+- **Before:** 288 / 349 OK · 56 × 404 · 5 false-flags.
+- **After `f66b6ad`:** **344 / 349 OK.** All 51 new rules single-hop → 200.
+
+## Remaining 5 (all known / gated — target page does not exist)
+| Legacy URL | Triage says | Status |
+| --- | --- | --- |
+| `/faq/` (+ `/faq/personal-injury-faq/`, `/video-faq/` → `/faq/`) | 301 → `/faq/` | UNBUILT — Eric's legal-copy gate (unchanged) |
+| `/clark-county-reclamos-de-lesiones-personales-abogado-nevada/` | PRESERVE → `/es/…` | No `/es/` section exists. Spanish = separate migration per triage Summary |
+| `/abogado-de-reclamo-de-lesiones-de-accidente-de-automovil-en-las-vegas-nevada/` | PRESERVE → `/es/…` | same |
+| `/sitemap/` | KEEP (regenerate) → `/sitemap.xml` | No rule. Astro emits `/sitemap-index.xml`; triage target is wrong. 1-line fix, needs a decision on target |
+| `/chayannegiveaway/` | HOLD (keep URL) | Not built, 1 clk. Decide: build / redirect / drop |
+
+## Housekeeping noted, NOT done
+- `_redirects` header comment still says "292 redirects" — stale (338 now). Cosmetic.
+- Blog slug `/blog/international-students-us-colleges-face-new-challenges-under-trump-administ/` is truncated mid-word (WP import). Live + redirected; renaming = new redirect rule. Low priority.
+- Untracked `_legalreview_tmp/` in repo root (from 2026-06-22 legal-review work). Left alone, not committed.
+- `git status` viewed through a Linux mount shows ~38 files "M" — CRLF noise only (equal +/−). Windows `git status` is clean. Never commit from the Linux side.
+
+## Carried forward (unchanged from session 3)
+- Hero PNG 1.9 MB LCP debt — ClickUp `86baj7a9t`.
+- BIG NEXT JOB: rebuild `LEGAL-REVIEW.docx` for all 20 practice pages (Notion `387c0431-1626-81c9-96e0-cd0598403d69`). Eric's sign-off = HARD gate before DNS.
+- Bar admission numbers for all 3 attorneys (Eric's gate). criminal-law priceRange `86bafjx5c`. Part B headshots `86ba711eu`.
+- Custom-domain cutover (Cloudflare-side; apex still WordPress as of 2026-09-22). Rich Results validation.
+
+## Session-4 pattern worth keeping
+Redirect coverage is a SOURCE-side check, not a target-side check. Re-run the 349-URL audit after any `_redirects` change and again the day of cutover. Status snapshot also saved to the Claude project as `claude/STATUS-where-we-left-off-2026-09-22.md`.
+
+# 🗄️ SUPERSEDED — 2026-06-22 (session 3)  ·  HEAD `327b74c`
 
 Tree clean · all pushed. This session swapped the homepage hero portrait. 2 commits:
 - `b300903` — `Hero.astro` `<img>` → `/Eric_Blank_Portrait_20260612.png`; `width`/`height` → 1122×1402 (same 4:5 ratio, so `object-cover`/`max-w-sm` layout unaffected; `alt`/`class` untouched).
