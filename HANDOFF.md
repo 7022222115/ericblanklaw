@@ -1,9 +1,9 @@
-# 🟢 CURRENT STATE — 2026-09-23 (session 5)  ·  HEAD `9c733ae` + UNCOMMITTED edits (19 files)
+# 🟢 CURRENT STATE — 2026-09-23 (session 5)  ·  HEAD `831f8fd`
 
-**Eric's legal review came back.** His markup of the 20-page `LEGAL-REVIEW` (prepared 2026-06-22) was applied to the Astro source this session. Edits are ON DISK, NOT COMMITTED — H.K. commits from Windows PowerShell (CRLF rule). Linux build check passed: 81 pages, 0 errors (built from a copy in the VM's `~/build-check`, not in the repo).
+**Eric's legal review came back.** His markup of the 20-page `LEGAL-REVIEW` (prepared 2026-06-22) was applied to the Astro source this session. Committed `831f8fd` (19 files) · pushed · VERIFIED LIVE on pages.dev (car-accidents, sexual-assault, rideshare spot-checked by curl: new text present, hedge gone). Linux build check before commit: 81 pages, 0 errors (built from a copy in the VM's `~/build-check`, not in the repo).
 
 ## Source of truth
-Eric's marked-up docx (inline "OK / USE THIS / CHANGE" notes, no tracked changes) — H.K. has the .docx; plain-text extraction saved to the Claude project as `claude/LEGAL-REVIEW-Eric-markup-2026-09-23.md` (project doc API rejects binaries). Overall status box NOT ticked, signature line blank → this is "approved with corrections," not a signed launch clearance. **Sign-off gate still OPEN until Eric signs.**
+Eric's marked-up docx (inline "OK / USE THIS / CHANGE" notes, no tracked changes) — H.K. has the .docx; plain-text extraction saved to the Claude project as `claude/LEGAL-REVIEW-Eric-markup-2026-09-23.md` (project doc API rejects binaries). Status box unticked / signature blank — **H.K.'s call 2026-09-23: ignore it, Eric never fills those in. His marked-up review = the approval. LEGAL SIGN-OFF GATE: CLOSED** (as of these edits; any future copy change to a Nevada Law or FAQ section reopens it for that page).
 
 ## What changed (18 practice-area pages; workers-compensation + wrongful-death untouched — Eric OK'd every line)
 - **Comparative Negligence card → Eric's paragraph + `(NRS 41.141)`** on 12 pages: bicycle, boating, brain-and-spine, bus, car, casino, dui, motorcycle, pedestrian, rideshare, slip-and-fall, truck. `dog-bites` got his dog-specific version. DUI keeps its trailing "fault rests squarely with the impaired driver" sentence. Old "51% or more" wording: 0 occurrences left. FAQ answers that already said "50% or less" (car/casino/pedestrian/slip) left as-is — consistent with the new rule text.
@@ -27,10 +27,10 @@ Eric's marked-up docx (inline "OK / USE THIS / CHANGE" notes, no tracked changes
 Keep NRS 41.141 cite · items Eric left blank = approved · DUI gloss = yes · FAQ 6 question = "Should I accept the insurance company's settlement offer?" · 5 exact-match pages only · per-page accident type.
 
 ## NEXT
-1. **H.K.: commit + push from Windows PowerShell** (explicit filenames — 18 `.astro` + `HANDOFF.md`; no `git add .`). Then verify on pages.dev after ~2 min: spot-check `/practice-areas/car-accidents/` (comparative card + FAQ 6), `/practice-areas/sexual-assault/` (hero), `/practice-areas/rideshare-accidents/` (no "to be confirmed").
-2. Send Eric the diff-summary (this section) + ask him to tick the status box and sign. Point him at the 3 judgment calls (bicycle helmet Q, criminal split, rideshare wording).
-3. Rich Results test on one FAQ page after deploy (JSON-LD is built from the same `faqs` array, so it should match by construction).
-4. Everything from session 4 still stands: `/faq/`, 2× `/es/`, `/chayannegiveaway/`, bar numbers, hero LCP, cutover checklist.
+1. ~~Commit + push~~ DONE `831f8fd`. ~~Eric signature~~ NOT NEEDED per H.K.
+2. Optional: mention the 3 judgment calls to Eric next time you talk (bicycle helmet Q, criminal split, rideshare wording) — none is a legal-substance change.
+3. Rich Results test on one FAQ page (JSON-LD is built from the same `faqs` array, so it should match by construction).
+4. Remaining cutover gates (legal gate now closed): bar admission numbers ×3 · `/faq/` decision (legal copy — Eric's gate still applies to NEW copy) · 2× `/es/` · `/chayannegiveaway/` · day-of 349-URL redirect audit · Cloudflare DNS + GSC sitemap resubmit. Debt: hero LCP `86baj7a9t`.
 
 ## Gotchas this session
 - 20 practice files are MIXED line endings on disk (8 CRLF, 12 LF — each file consistent). Python `newline=""` read/write preserved each. Don't "fix" this in a content commit.
