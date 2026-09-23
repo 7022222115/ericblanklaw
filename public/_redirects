@@ -349,3 +349,10 @@
 /aqueous-film-forming-foam-afff-and-cancer-risks/                                                                    /blog/aqueous-film-forming-foam-afff-cancer-risks/  301
 /how-to-know-if-your-car-insurance-company-is-acting-in-bad-faith/                                                   /blog/how-know-if-car-insurance-company-acting-bad-faith/  301
 /what-to-do-after-a-slip-and-fall-injury-in-a-las-vegas-casino/                                                      /blog/what-do-after-slip-fall-injury-las-vegas-casino/  301
+
+# --- Added 2026-09-23: old WordPress sitemap URLs -> Astro sitemap index (XML targets keep no trailing slash; file-ext guard).
+# WP served /sitemap/ (HTML page) + /sitemap_index.xml (Yoast-style index); /sitemap.xml + /wp-sitemap.xml 301'd to it. Resubmit /sitemap-index.xml in GSC at cutover.
+/sitemap/                                                                                                            /sitemap-index.xml  301
+/sitemap.xml                                                                                                         /sitemap-index.xml  301
+/sitemap_index.xml                                                                                                   /sitemap-index.xml  301
+/wp-sitemap.xml                                                                                                      /sitemap-index.xml  301
