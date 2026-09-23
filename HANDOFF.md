@@ -1,7 +1,47 @@
-# 🟢 CURRENT STATE — 2026-09-23 (session 4)  ·  HEAD `f66b6ad`
+# 🟢 CURRENT STATE — 2026-09-23 (session 5)  ·  HEAD `9c733ae` + UNCOMMITTED edits (19 files)
 
-Tree clean · pushed · VERIFIED LIVE on pages.dev. First session since 2026-06-22. One code commit:
+**Eric's legal review came back.** His markup of the 20-page `LEGAL-REVIEW` (prepared 2026-06-22) was applied to the Astro source this session. Edits are ON DISK, NOT COMMITTED — H.K. commits from Windows PowerShell (CRLF rule). Linux build check passed: 81 pages, 0 errors (built from a copy in the VM's `~/build-check`, not in the repo).
+
+## Source of truth
+Eric's marked-up docx (inline "OK / USE THIS / CHANGE" notes, no tracked changes) — H.K. has the .docx; plain-text extraction saved to the Claude project as `claude/LEGAL-REVIEW-Eric-markup-2026-09-23.md` (project doc API rejects binaries). Overall status box NOT ticked, signature line blank → this is "approved with corrections," not a signed launch clearance. **Sign-off gate still OPEN until Eric signs.**
+
+## What changed (18 practice-area pages; workers-compensation + wrongful-death untouched — Eric OK'd every line)
+- **Comparative Negligence card → Eric's paragraph + `(NRS 41.141)`** on 12 pages: bicycle, boating, brain-and-spine, bus, car, casino, dui, motorcycle, pedestrian, rideshare, slip-and-fall, truck. `dog-bites` got his dog-specific version. DUI keeps its trailing "fault rests squarely with the impaired driver" sentence. Old "51% or more" wording: 0 occurrences left. FAQ answers that already said "50% or less" (car/casino/pedestrian/slip) left as-is — consistent with the new rule text.
+- **FAQ 6 "Do I have to go to court?" → "Should I accept the insurance company's settlement offer?"** + Eric's don't-sign-a-release answer on the 5 exact-match pages: car, boating, bus, dui, products-liability. Opening phrase swapped per page (car accident / boating accident / bus accident / drunk driving crash / by a defective product). Motorcycle ("go to trial?") and mass-tort ("Will I have to go to court?") variants deliberately NOT changed — Eric OK'd motorcycle FAQs; H.K. chose exact matches only.
+- **motorcycle** — Helmet Law & Insurance card + helmet FAQ answer (Eric's text).
+- **truck** — CDL, ELD, FMCSA now defined at first use (steps 1–2 + law card). Eric wrote "Federal Motor Carrier Safety Act" — corrected to **Administration** (it's an agency).
+- **pedestrian** — Driver's Duty & Insurance card + UM/UIM FAQ answer.
+- **bicycle** — Cyclist Rights & 3-Foot card; helmet FAQ question changed to "Does Nevada have a bicycle helmet law?" so Eric's "no statewide helmet law" answer fits (H.K. call).
+- **dog-bites** — "How Nevada Assigns Liability" card → Eric's merged paragraph (straight quotes per site convention).
+- **rideshare** — Insurance Tiers card → Eric's AB 523 paragraph; "to be confirmed against the current statute" hedge GONE. One wording fix: "Nevada typically provides contingent coverage" → "the rideshare company typically provides" (the state doesn't insure anyone).
+- **boating** — Mandatory Accident Reporting card → Eric's text. NDOW was already defined at first use (step 1) — no change.
+- **bus** — Claims Against Government Buses card → Eric's RTC paragraph, "Regional Transportation Commission (RTC)" spelled out.
+- **dui** — punitive cap line + gloss "— the dollar limit Nevada law normally places on punitive damages" (Eric's "if people understand what a statutory cap is").
+- **criminal-law** — Eric's one classification+penalties paragraph split sentence-for-sentence across the 2 existing cards (kept the 2×2 grid); fee FAQ, presumption FAQ, arraignment FAQ, "reduced or dismissed" FAQ → his text. Police + plea FAQs unchanged (he flagged, gave no text; H.K.: treat as approved).
+- **mass-tort** — class-action card → his text; hero lead paragraph → his text (h1 unchanged); "multidistrict litigation (MDL)" defined at first use (How We Help).
+- **products-liability** — SOL/discovery-rule card → his text.
+- **school-bullying** — 2 law cards + 3 FAQs ("Does" → "Will my child have to testify…").
+- **sexual-assault** — 4 law cards (all softened: "many claims", "may apply retroactively"), all 6 FAQs, hero lead paragraph. Typos fixed: "no coast" → "no cost"; "Nevada has removed" → "Nevada removed". Meta description ("often no deadline") still consistent with his kept heading.
+
+## Decisions made this session (H.K.)
+Keep NRS 41.141 cite · items Eric left blank = approved · DUI gloss = yes · FAQ 6 question = "Should I accept the insurance company's settlement offer?" · 5 exact-match pages only · per-page accident type.
+
+## NEXT
+1. **H.K.: commit + push from Windows PowerShell** (explicit filenames — 18 `.astro` + `HANDOFF.md`; no `git add .`). Then verify on pages.dev after ~2 min: spot-check `/practice-areas/car-accidents/` (comparative card + FAQ 6), `/practice-areas/sexual-assault/` (hero), `/practice-areas/rideshare-accidents/` (no "to be confirmed").
+2. Send Eric the diff-summary (this section) + ask him to tick the status box and sign. Point him at the 3 judgment calls (bicycle helmet Q, criminal split, rideshare wording).
+3. Rich Results test on one FAQ page after deploy (JSON-LD is built from the same `faqs` array, so it should match by construction).
+4. Everything from session 4 still stands: `/faq/`, 2× `/es/`, `/chayannegiveaway/`, bar numbers, hero LCP, cutover checklist.
+
+## Gotchas this session
+- 20 practice files are MIXED line endings on disk (8 CRLF, 12 LF — each file consistent). Python `newline=""` read/write preserved each. Don't "fix" this in a content commit.
+- Repo `node_modules` is win32-only (esbuild/rollup binaries) — can't build from the Linux mount. Fresh `npm ci` in `~/build-check` (outside the mount) + copy `src public astro.config.mjs tsconfig.json` = working Linux build in ~3 s.
+- Site convention for inner quotes is straight `'…'`, not curly. Eric's docx uses non-breaking hyphens (U+2011) — normalized to `-`.
+
+# 🗄️ SUPERSEDED — 2026-09-23 (session 4)  ·  HEAD `9c733ae`
+
+Tree clean · pushed · VERIFIED LIVE on pages.dev. First session since 2026-06-22. Two code commits:
 - `f66b6ad` — `public/_redirects` +54 lines (51 rules + 2 comments + blank). 287 → 338 rules.
+- `9c733ae` — `public/_redirects` +7 lines: 4 old WP sitemap URLs → `/sitemap-index.xml`. 338 → 342 rules. All four verified 301 → 200 single hop.
 
 ## What was wrong (and why 3 sessions missed it)
 The 2026-06-22 handoff said `/faq/` was "the last unbuilt redirect **target**." True, but nobody audited redirect **sources**. The original `_redirects` generator only emitted triage rows with Action = `301 REDIRECT` (292). The 51 rows with Action = `BUILD NEW` (6), `REBUILD (landing page)` (10), `KEEP (migrate)` (35) never got a rule — and every one of those pages was built under a NEW slug (blog slugs stop-word-stripped, LP slugs shortened, `/areas-of-practice/` → `/practice-areas/`). Result: 51 legacy URLs 404'd on pages.dev, including the #1 organic asset `/google-chrome-incognito-lawsuit/` (3,247 clk), the 437-clk school-bullying LP, and `/areas-of-practice/bus-accidents/` (126 clk, T1). `CLAUDE.md` says blog URLs "MUST be preserved exactly" — they weren't, and nothing covered it. Would have torched top traffic at cutover.
@@ -10,14 +50,14 @@ The 2026-06-22 handoff said `/faq/` was "the last unbuilt redirect **target**." 
 All 349 legacy URLs from `EBIAtriageinventory_2_WORKING.xlsx` (project file) curl'd against pages.dev; expected target = `New Astro URL` column; PASS = 301/308 to exact target, single hop, target 200.
 - **Before:** 288 / 349 OK · 56 × 404 · 5 false-flags.
 - **After `f66b6ad`:** **344 / 349 OK.** All 51 new rules single-hop → 200.
+- **After `9c733ae`:** **345 / 349 OK** (`/sitemap/` resolved). Bonus: `/sitemap.xml`, `/sitemap_index.xml`, `/wp-sitemap.xml` also covered — these were NOT in the triage sheet (XML sitemaps don't appear in GSC page reports). Old WP served `/sitemap/` as an HTML page and `/sitemap_index.xml` (Yoast-style) as the real index; the other two 301'd to it. **Cutover-day item: resubmit `https://ericblanklaw.com/sitemap-index.xml` in GSC.**
 
-## Remaining 5 (all known / gated — target page does not exist)
+## Remaining 4 (all known / gated — target page does not exist)
 | Legacy URL | Triage says | Status |
 | --- | --- | --- |
 | `/faq/` (+ `/faq/personal-injury-faq/`, `/video-faq/` → `/faq/`) | 301 → `/faq/` | UNBUILT — Eric's legal-copy gate (unchanged) |
 | `/clark-county-reclamos-de-lesiones-personales-abogado-nevada/` | PRESERVE → `/es/…` | No `/es/` section exists. Spanish = separate migration per triage Summary |
 | `/abogado-de-reclamo-de-lesiones-de-accidente-de-automovil-en-las-vegas-nevada/` | PRESERVE → `/es/…` | same |
-| `/sitemap/` | KEEP (regenerate) → `/sitemap.xml` | No rule. Astro emits `/sitemap-index.xml`; triage target is wrong. 1-line fix, needs a decision on target |
 | `/chayannegiveaway/` | HOLD (keep URL) | Not built, 1 clk. Decide: build / redirect / drop |
 
 ## Housekeeping noted, NOT done
