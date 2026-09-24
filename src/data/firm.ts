@@ -50,7 +50,7 @@ export const firmNode = {
 };
 
 export const attorneyNode = {
-	"@type": "Attorney",
+	"@type": "Person",
 	"@id": "https://ericblanklaw.com/#attorney",
 	url: "https://ericblanklaw.com/attorneys/eric-blank/",
 	name: "Eric R. Blank",
