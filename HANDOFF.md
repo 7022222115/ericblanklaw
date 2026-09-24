@@ -1,4 +1,33 @@
-# 🟢 CURRENT STATE — 2026-09-23 (session 5)  ·  HEAD `a2151b3`
+# 🟢 CURRENT STATE — 2026-09-24 (session 6)  ·  HEAD `1cb3cb6`  ·  NO code changes
+
+Rich Results check done. **No commits this session** — only this file changed (H.K. commits from PowerShell; the session-5 HANDOFF edit may still be uncommitted too — one commit covers both).
+
+## Finding: FAQ rich results are gone (Google's doing, not ours)
+Google stopped showing FAQ rich results on **2026-05-07** and removed FAQ from the Rich Results Test + Search Console reporting in **June 2026** (the FAQPage docs page now carries only a removal notice: https://developers.google.com/search/docs/appearance/structured-data/faqpage). So "Rich Results test on a FAQ page" can no longer be done as written — the RRT reports nothing FAQ-related for anyone. Google's guidance: keep FAQPage markup when it matches visible content (Bing / AI crawlers still read it). **Decision: markup stays. No action.**
+
+## What was checked (2026-09-24, live pages.dev)
+- **Local JSON-LD validation** (`~/ldcheck.py` in the VM, stdlib only, NOT committed — trivially re-creatable): parse each `ld+json` block; every `Question` / `Answer` has the right `@type` + non-empty text; every question AND answer string appears verbatim in the page's visible text.
+  - `/faq/` — 1 block, `FAQPage` `#faq`, **19/19 valid + matching**.
+  - `/practice-areas/car-accidents/` — 1 block, @graph = `LegalService #legalservice` + `LegalService #service` + `Attorney #attorney` + `FAQPage #faq`, **6/6 valid + matching** (incl. the new Q6 settlement-offer answer).
+- **Google Rich Results Test — `/practice-areas/car-accidents/`:** crawled OK (smartphone), **6 valid items, 0 errors**: Local businesses ×3 (firm node clean; `#service` node "missing optional address/telephone" — by design, it delegates via `provider`; `#attorney` node "missing optional telephone/priceRange/address/image"), Organization ×3. **No FAQ item** — confirms the June removal.
+- **Google Rich Results Test — `/faq/`:** NOT run. Google blocked a second anonymous test ("Something went wrong — Log in and try again"). Not worth a sign-in: it would show nothing FAQ-related.
+
+## NEW ticket (not a cutover blocker): `#attorney` node type
+`src/data/firm.ts` `attorneyNode` is `@type: "Attorney"`. schema.org marks `Attorney` **deprecated** ("This type is deprecated - LegalService is more inclusive and less ambiguous", https://schema.org/Attorney) and it is an Organization/LocalBusiness subtype — which is why the RRT lists "Eric R. Blank" as a *local business*. `jobTitle` and `worksFor` are `Person` properties, not valid on it (Google ignores them silently today). Correct fix: `@type: "Person"` (keep `@id #attorney`, `name`, `url`, `jobTitle`, `worksFor`; the firm node's `employee` already expects a Person). One-file change → propagates to all 31 schema pages. criminal-law's `jobTitle: "Attorney"` spread-override is unaffected. Own commit; re-run RRT on one practice page after. Log in ClickUp.
+
+## NEXT (updated)
+1. H.K.: commit `HANDOFF.md` from PowerShell (session-5 + session-6 edits).
+2. ~~Rich Results test on one FAQ page~~ DONE / moot — see finding above.
+3. Optional: `attorneyNode` → `Person` (ticket above).
+4. Optional, next time you talk to Eric: the 3 judgment calls (bicycle helmet Q, criminal split, rideshare wording) + old-FAQ copy flags (punitive "required", "one month to one year").
+5. Remaining cutover gates unchanged: bar admission numbers ×3 · 2× `/es/` (leave alone) · day-of 349-URL redirect audit · Cloudflare DNS + GSC sitemap resubmit. Debt: hero LCP `86baj7a9t`.
+6. Still untested in RRT (optional, from the 06-18 list): Article + Breadcrumb on a couple of blog URLs; LegalService on one LP URL.
+
+## Gotchas this session
+- Rich Results Test lets an anonymous session run ~1 test, then demands Google sign-in. Sign in first if you want more than one URL per sitting. `?url=<encoded>` in the RRT address bar pre-fills AND auto-runs.
+- "Eric R. Blank" showing up as a Local business in the RRT is a schema.org type-hierarchy artifact (Attorney ⊂ LegalService ⊂ LocalBusiness), not a bug in the test.
+
+# 🗄️ SUPERSEDED — 2026-09-23 (session 5)  ·  HEAD `1cb3cb6`
 
 **Eric's legal review came back.** His markup of the 20-page `LEGAL-REVIEW` (prepared 2026-06-22) was applied to the Astro source this session. Committed `831f8fd` (19 files) · pushed · VERIFIED LIVE on pages.dev (car-accidents, sexual-assault, rideshare spot-checked by curl: new text present, hedge gone). Linux build check before commit: 81 pages, 0 errors (built from a copy in the VM's `~/build-check`, not in the repo).
 
@@ -15,11 +44,11 @@ Closes 2 of the 4 remaining legacy-URL orphans. `/es/` ×2 deliberately left alo
 - Live checks: `/faq/` 200 indexable (19 h3 + 19 JSON-LD Questions), `/giveaway/` 200 `noindex,nofollow`, `/chayannegiveaway/` 301 → `/giveaway/` single hop, `/faq/personal-injury-faq/` + `/video-faq/` 301 → `/faq/` 200, sitemap has `/faq/` not `/giveaway/`. (First curl ~60 s after push saw `/chayannegiveaway/` 404 — edge propagation lag; re-test before concluding.)
 - **Full 349-URL audit re-run (new `scripts/redirect_audit.py`, UNCOMMITTED):** 345 / 349 literal, **347 / 349 effective**. The 2 "fails" beyond `/es/` are stale sheet targets, not bugs: #164 `/sitemap/` (sheet `/sitemap.xml`, real `/sitemap-index.xml`) and #194 `/chayannegiveaway/` (sheet "keep", real `/giveaway/`). Update those 2 cells in the triage xlsx when the sheet is next touched.
 - **⚠ NEW FINDING — no-trailing-slash gap, site-wide, pre-existing:** WordPress 301s `/foo` → `/foo/` for every URL; Cloudflare Pages `_redirects` only matches the slash form, so **343 of 349 legacy paths 404 without the trailing slash** on pages.dev (`/video-faq`, `/dog-bites-in-nevada`, …). Not caused by today's work; the audit never tested it before. Astro's own pages are fine (`/faq` → 308 → `/faq/`). Options for H.K.: (a) generator duplicates every rule minus the slash in `_redirects` (343 → 686 lines, under the 2,000 static limit, testable on pages.dev now); (b) one zone-level Cloudflare Redirect Rule at cutover (`not ends_with "/"` and no `.` → 301 path + `/`) — needs the custom domain on Cloudflare first, can't test on pages.dev; (c) ignore (GSC reports slash URLs; risk is external backlinks typed without slash). Decision pending.
-- **Round 3 (UNCOMMITTED, 4 files): decisions taken.** H.K. chose (a) for no-slash + footer link for `/faq/`.
+- **Round 3 — COMMITTED `eac4c1f` (footer) + `1cb3cb6` (redirects + audit script) · VERIFIED LIVE.** H.K. chose (a) for no-slash + footer link for `/faq/`. Post-deploy audit: **347/349 effective; no-slash 404s 343 → 2** (the 2 are the `/es/` pair, which have no rule at all — by design). Footer FAQ link confirmed on `/about/`.
   - `public/_redirects` +340 twin rules (generated: every exact rule whose source ends in `/` → same rule minus the slash; .xml sources + no wildcards, so ordering irrelevant). **343 → 683 rules**, under the 2,000 static limit, 0 dynamic. Header comment "292" finally fixed → "683 = 343 + 340". **RULE GOING FORWARD: every new `_redirects` rule gets its no-slash twin** (or re-run the generator — logic is 6 lines in this section's python, see audit script docstring).
   - `src/components/Footer.astro` `legalLinks` + `{ label: "FAQ", href: "/faq/" }` between Careers and Sitemap → sitewide, `/faq/` no longer orphaned.
-  - Linux build 83 pages OK; `dist/_redirects` 683 rules, 0 malformed. Expect audit after deploy: 347/349 AND no-slash 404s **343 → 0**.
-- `scripts/redirect_audit.py` (NEW, uncommitted) — the reusable gate. `pip install openpyxl`, then `python scripts/redirect_audit.py EBIAtriageinventory_2_WORKING.xlsx https://ericblanklaw.pages.dev`. Prints PASS/FAIL per URL + the no-slash count. Run again on cutover day against the apex.
+  - Linux build 83 pages OK; `dist/_redirects` 683 rules, 0 malformed.
+- `scripts/redirect_audit.py` (in `1cb3cb6`) — the reusable gate. `pip install openpyxl`, then `python scripts/redirect_audit.py EBIAtriageinventory_2_WORKING.xlsx https://ericblanklaw.pages.dev`. Prints PASS/FAIL per URL + the no-slash count. Run again on cutover day against the apex.
 
 ## What changed (18 practice-area pages; workers-compensation + wrongful-death untouched — Eric OK'd every line)
 - **Comparative Negligence card → Eric's paragraph + `(NRS 41.141)`** on 12 pages: bicycle, boating, brain-and-spine, bus, car, casino, dui, motorcycle, pedestrian, rideshare, slip-and-fall, truck. `dog-bites` got his dog-specific version. DUI keeps its trailing "fault rests squarely with the impaired driver" sentence. Old "51% or more" wording: 0 occurrences left. FAQ answers that already said "50% or less" (car/casino/pedestrian/slip) left as-is — consistent with the new rule text.
@@ -49,6 +78,7 @@ Keep NRS 41.141 cite · items Eric left blank = approved · DUI gloss = yes · F
 4. Remaining cutover gates (legal gate now closed): bar admission numbers ×3 · `/faq/` decision (legal copy — Eric's gate still applies to NEW copy) · 2× `/es/` · `/chayannegiveaway/` · day-of 349-URL redirect audit · Cloudflare DNS + GSC sitemap resubmit. Debt: hero LCP `86baj7a9t`.
 
 ## Gotchas this session
+- `git add` from PowerShell warns "LF will be replaced by CRLF" for files Claude wrote from the Linux side (HANDOFF.md, _redirects, scripts/*.py). Harmless: autocrlf normalises to LF in the repo; the working copy flips to CRLF next time git touches it. Ignore the warning; don't "fix" line endings.
 - 20 practice files are MIXED line endings on disk (8 CRLF, 12 LF — each file consistent). Python `newline=""` read/write preserved each. Don't "fix" this in a content commit.
 - Repo `node_modules` is win32-only (esbuild/rollup binaries) — can't build from the Linux mount. Fresh `npm ci` in `~/build-check` (outside the mount) + copy `src public astro.config.mjs tsconfig.json` = working Linux build in ~3 s.
 - Site convention for inner quotes is straight `'…'`, not curly. Eric's docx uses non-breaking hyphens (U+2011) — normalized to `-`.
