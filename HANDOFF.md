@@ -1,6 +1,26 @@
-# 🟢 CURRENT STATE — 2026-09-24 (session 6)  ·  HEAD `1cb3cb6`  ·  NO code changes
+# 🟢 CURRENT STATE — 2026-09-24 (session 6)  ·  HEAD `d7d160c`  ·  tree clean except this file
 
-Rich Results check done. **No commits this session** — only this file changed (H.K. commits from PowerShell; the session-5 HANDOFF edit may still be uncommitted too — one commit covers both).
+Three commits, all pushed, all VERIFIED LIVE on pages.dev: `e9cec5b` (docs) · `4372120` (fix: `attorneyNode` Attorney → Person) · **`d7d160c` (feat: Nevada bar numbers on all 3 bio pages)**.
+
+## Round 3 — Bar numbers · COMMITTED `d7d160c` · VERIFIED LIVE · **CUTOVER GATE "bar admission numbers ×3" = CLOSED**
+- H.K. supplied Eric 6910 + Fikisha 13539. All three looked up in the State Bar of Nevada public directory (`https://nvbar.org/for-the-public/find-a-lawyer/?usearch=<number or surname>`) before publishing — Robert's came from the directory (firm on record = Eric Blank Injury Attorneys), H.K. approved publishing it:
+
+  | Attorney | Bar No. | Status | Admitted | Discipline |
+  | --- | --- | --- | --- | --- |
+  | Eric R. Blank | 6910 | Active | 1999-10-12 | None |
+  | Fikisha Liki Miller | 13539 | Active | 2014-10-22 | None |
+  | Robert T. Hernandez | 13892 | Active | 2015-10-08 | None |
+
+- Edit: `src/pages/attorneys/{eric-blank,fikisha-miller,robert-hernandez}.astro` — the existing Admission bullet `…>Nevada</a></li>` → `…>Nevada</a> (Bar No. NNNN)</li>`. One line per file, link text unchanged, LF preserved. H.K. chose: number only (no admission year), visible text only (no schema field — see "not done").
+- Linux build 83 pages, 0 errors; `dist/attorneys/*/index.html` all three present. Live curl ~2.5 min after push: 3/3.
+- NOT done (deliberate, H.K.): bar number in Eric's `Person` node in `firm.ts` (`identifier` PropertyValue or similar). Fikisha/Robert have no schema nodes at all. Optional follow-up, own commit.
+
+## Round 2 — `attorneyNode` → `Person` · COMMITTED `4372120` · VERIFIED LIVE
+- `src/data/firm.ts` line 53: `"@type": "Attorney"` → `"@type": "Person"`. **One line, one file.** Diff verified = that line only; LF preserved.
+- Recon before edit: 31 consumers (20 practice + 10 LP + `index.astro`), only 2 spread-overrides (`index.astro` adds `description`; `criminal-law.astro` sets `jobTitle: "Attorney"`), 30 pages reference it via `employee: { "@id": "#attorney" }` on their `#service` node (schema.org `employee` expects Person — so this was the right shape all along). Bio pages have no JSON-LD → no conflicting Eric entity. Only one `"@type": "Attorney"` existed in `src/`.
+- Linux build (fresh `~/build-check`, `npm ci` + copy `src public astro.config.mjs tsconfig.json`): **83 pages, 0 errors**; `dist/` grep: 0 × `"@type":"Attorney"`, **31 × `"@type":"Person","@id":"…#attorney"`**; criminal-law override + homepage description intact.
+- Live (curl pages.dev ~100 s after push): car-accidents, `/`, criminal-law (`jobTitle: "Attorney"`), LP car-accident all emit `Person`.
+- **RRT re-check NOT run** — Google blocked a second anonymous test again; H.K. chose to skip (live HTML + clean build = enough). Expected RRT delta whenever someone does run it signed-in: "Local businesses" drops from 3 items to 2 (Eric no longer counted as a business); errors stay 0.
 
 ## Finding: FAQ rich results are gone (Google's doing, not ours)
 Google stopped showing FAQ rich results on **2026-05-07** and removed FAQ from the Rich Results Test + Search Console reporting in **June 2026** (the FAQPage docs page now carries only a removal notice: https://developers.google.com/search/docs/appearance/structured-data/faqpage). So "Rich Results test on a FAQ page" can no longer be done as written — the RRT reports nothing FAQ-related for anyone. Google's guidance: keep FAQPage markup when it matches visible content (Bing / AI crawlers still read it). **Decision: markup stays. No action.**
@@ -12,15 +32,15 @@ Google stopped showing FAQ rich results on **2026-05-07** and removed FAQ from t
 - **Google Rich Results Test — `/practice-areas/car-accidents/`:** crawled OK (smartphone), **6 valid items, 0 errors**: Local businesses ×3 (firm node clean; `#service` node "missing optional address/telephone" — by design, it delegates via `provider`; `#attorney` node "missing optional telephone/priceRange/address/image"), Organization ×3. **No FAQ item** — confirms the June removal.
 - **Google Rich Results Test — `/faq/`:** NOT run. Google blocked a second anonymous test ("Something went wrong — Log in and try again"). Not worth a sign-in: it would show nothing FAQ-related.
 
-## NEW ticket (not a cutover blocker): `#attorney` node type
+## ~~NEW ticket~~ RESOLVED same session (`4372120`): `#attorney` node type
 `src/data/firm.ts` `attorneyNode` is `@type: "Attorney"`. schema.org marks `Attorney` **deprecated** ("This type is deprecated - LegalService is more inclusive and less ambiguous", https://schema.org/Attorney) and it is an Organization/LocalBusiness subtype — which is why the RRT lists "Eric R. Blank" as a *local business*. `jobTitle` and `worksFor` are `Person` properties, not valid on it (Google ignores them silently today). Correct fix: `@type: "Person"` (keep `@id #attorney`, `name`, `url`, `jobTitle`, `worksFor`; the firm node's `employee` already expects a Person). One-file change → propagates to all 31 schema pages. criminal-law's `jobTitle: "Attorney"` spread-override is unaffected. Own commit; re-run RRT on one practice page after. Log in ClickUp.
 
 ## NEXT (updated)
-1. H.K.: commit `HANDOFF.md` from PowerShell (session-5 + session-6 edits).
+1. H.K.: commit `HANDOFF.md` from PowerShell (this round-3 edit).
 2. ~~Rich Results test on one FAQ page~~ DONE / moot — see finding above.
-3. Optional: `attorneyNode` → `Person` (ticket above).
+3. ~~`attorneyNode` → `Person`~~ DONE `4372120`.
 4. Optional, next time you talk to Eric: the 3 judgment calls (bicycle helmet Q, criminal split, rideshare wording) + old-FAQ copy flags (punitive "required", "one month to one year").
-5. Remaining cutover gates unchanged: bar admission numbers ×3 · 2× `/es/` (leave alone) · day-of 349-URL redirect audit · Cloudflare DNS + GSC sitemap resubmit. Debt: hero LCP `86baj7a9t`.
+5. Remaining cutover gates: ~~bar admission numbers ×3~~ DONE `d7d160c` · 2× `/es/` (leave alone) · day-of 349-URL redirect audit · Cloudflare DNS + GSC sitemap resubmit. Debt: hero LCP `86baj7a9t`.
 6. Still untested in RRT (optional, from the 06-18 list): Article + Breadcrumb on a couple of blog URLs; LegalService on one LP URL.
 
 ## Gotchas this session
