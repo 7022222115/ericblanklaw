@@ -1,6 +1,6 @@
 # _redirects — Eric Blank Injury Attorneys (WordPress -> Astro)
 # Generated from EBIAtriageinventory_2_WORKING.xlsx (Action = 301 REDIRECT)
-# 683 rules = 343 legacy-URL redirects + 340 no-trailing-slash twins (see bottom). Explicit 301 on every line (Cloudflare defaults to 302).
+# 685 rules = 344 exact-path redirects (343 legacy URLs + 1 retired Astro page) + 341 no-trailing-slash twins (see bottom). Explicit 301 on every line (Cloudflare defaults to 302).
 # Specific routes first, wildcards last. Single hops only - no chains.
 #
 # NOT handled here (do in Cloudflare dashboard before cutover):
@@ -255,7 +255,7 @@
 /dog-bites-personal-injuries/                                                                                        /practice-areas/dog-bites/  301
 /drunk-driving-and-halloween/                                                                                        /practice-areas/dui-accidents/  301
 /gathering-info-after-injury/                                                                                        /blog/  301
-/our-firm/robert-t-hernandez/                                                                                        /attorneys/robert-hernandez/  301
+/our-firm/robert-t-hernandez/                                                                                        /attorneys/  301
 /eric-blank-tv-interview-on/                                                                                         /blog/  301
 /personal-injury-prevention/                                                                                         /blog/  301
 /trick-or-treat-road-safety/                                                                                         /blog/  301
@@ -359,6 +359,9 @@
 
 # --- Added 2026-09-23: expired 2024 Chayanne ticket-giveaway rules page -> reusable /giveaway/ rules template (noindex until a giveaway is active).
 /chayannegiveaway/                                                                                                   /giveaway/  301
+
+# --- Added 2026-09-27: Robert T. Hernandez left the firm. Bio page removed; his Astro URL + the legacy /our-firm/ URL (retargeted above) now 301 -> /attorneys/, same as Peetris/Moore.
+/attorneys/robert-hernandez/                                                                                         /attorneys/  301
 
 # --- Added 2026-09-23: NO-TRAILING-SLASH twins of every rule above (generated; keep in sync when adding rules).
 # WordPress 301'd /foo -> /foo/ for every URL; Pages _redirects only matches the exact path, so without these 343/349 legacy URLs 404'd when typed or linked without the slash.
@@ -610,7 +613,7 @@
 /dog-bites-personal-injuries                                                                                         /practice-areas/dog-bites/  301
 /drunk-driving-and-halloween                                                                                         /practice-areas/dui-accidents/  301
 /gathering-info-after-injury                                                                                         /blog/  301
-/our-firm/robert-t-hernandez                                                                                         /attorneys/robert-hernandez/  301
+/our-firm/robert-t-hernandez                                                                                         /attorneys/  301
 /eric-blank-tv-interview-on                                                                                          /blog/  301
 /personal-injury-prevention                                                                                          /blog/  301
 /trick-or-treat-road-safety                                                                                          /blog/  301
@@ -703,3 +706,4 @@
 /what-to-do-after-a-slip-and-fall-injury-in-a-las-vegas-casino                                                       /blog/what-do-after-slip-fall-injury-las-vegas-casino/  301
 /sitemap                                                                                                             /sitemap-index.xml  301
 /chayannegiveaway                                                                                                    /giveaway/  301
+/attorneys/robert-hernandez                                                                                          /attorneys/  301
