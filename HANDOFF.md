@@ -1,4 +1,31 @@
-# 🟢 CURRENT STATE — 2026-09-27 (session 7)  ·  HEAD `eae6c9e`  ·  tree clean except this file
+# 🟢 CURRENT STATE — 2026-09-27 (session 8)  ·  HEAD `f3ac11e`  ·  tree clean except this file
+
+**DNS CUTOVER COMPLETE — ericblanklaw.com is LIVE on Cloudflare Pages** (flipped 2026-09-27, ~13:30 PDT). WordPress/GreenGeeks stays up as the rollback (H.K. confirmed). Robert is now gone from the public site — his URL 301s live. No code commits this session: Cloudflare dashboard + docs only. H.K. drove the dashboard, Claude called steps and verified from outside.
+
+## What happened, in order
+- Pre-flight audit vs pages.dev: **344/349 literal, 347/349 effective** — only the 3 stale sheet cells (#2 Robert, #164 sitemap, #194 chayannegiveaway) + the 2 deliberate `/es/` 404s. (Session-7 note said "expect 346 literal" — arithmetic slip: 3 stale + 2 es = 5 listed FAILs → 344 is the correct literal ceiling.)
+- H.K. exported the zone file BEFORE the flip → saved verbatim, with the 2-record rollback procedure, in project doc **`claude/CUTOVER-rollback-DNS-2026-09-27.md`**. Zone was already on Cloudflare (mimi/todd NS); `@` was A `108.178.43.106` DNS-only, `www` CNAME → apex DNS-only. Mail is Microsoft 365 (MX/SPF untouched); both `google-site-verification` TXTs intact.
+- Pages project → Custom domains: added `ericblanklaw.com` (Cloudflare replaced the A record with CNAME `ericblanklaw.pages.dev`, proxied — that confirm click WAS the flip) and `www.ericblanklaw.com` (CNAME → pages.dev). Both Active.
+- **INCIDENT (~3 min, resolved):** the moment apex went proxied, a years-dormant Page Rule `ericblanklaw.com/* → 301 https://www.ericblanklaw.com/$1` (the old WP site was www-canonical) woke up — while the www custom domain was still initializing (522). So apex 301'd onto a 522 for ~2–3 min. www went Active on its own (~90 s). The Page Rule was **toggled OFF, not deleted** (archived in place: Rules → Page Rules, 1/3 slots used).
+- New Single Redirect deployed (CF template "Redirect from WWW to root", edited): wildcard `https://www.ericblanklaw.com/*` → `https://ericblanklaw.com/${1}`, **301, Preserve query string ON**. Template defaults were narrowed on purpose: stock pattern `https://www.*` would also catch `www.2026.`, and the query-string box ships unticked. Verified: root, deep path, `?query` — all preserved, single hop.
+- Post-flight audit vs **https://ericblanklaw.com**: **344/349 — identical to pre-flight, zero new failures.** `robots.txt` 200 with correct `Sitemap:` line; `sitemap-index.xml` 200; homepage 200, right title, 0× noindex, no `x-robots-tag`; Robert's URL single-hop 301 → `/attorneys/`; http→https 301 clean.
+- GSC (domain property): submitted `https://ericblanklaw.com/sitemap-index.xml` → "Sitemap submitted successfully" 2026-09-27. Old entries (`www…/sitemap_index.xml` Success Sep 19 2026, `es…/sitemap_index.xml`) left in place — the www one now 301s through to the new sitemap; `es.` is the separate Spanish WP build, untouched.
+
+## NEXT
+1. H.K.: commit `HANDOFF.md` from PowerShell (this edit).
+2. **Watch GSC for the next week** (homepage ~500 backlinks): the new Sitemaps row should flip to Success with ~80 discovered pages; the Pages report shouldn't show a 404/soft-404 spike. Re-run any time: `python scripts/redirect_audit.py EBIAtriageinventory_2_WORKING.xlsx https://ericblanklaw.com` (expect 344/349, the 5 known rows).
+3. Triage sheet: fix the 3 stale cells (#2, #164, #194) next time the sheet is touched.
+4. GreenGeeks WP hosting: **do NOT cancel yet** — it's the rollback, and `es.` + `2026.` subdomains still point at it. Revisit after GSC coverage is stable (weeks, not days).
+5. Carried: Eric's 3 judgment calls + old-FAQ copy flags; optional bar number in Eric's `Person` node (`firm.ts`); hero LCP `86baj7a9t`; about-card headshots `86ba711eu`; criminal-law priceRange `86bafjx5c`; truncated blog slug; `/es/` ×2 leave alone.
+6. Optional Cloudflare hygiene, own tasks, not urgent: DMARC record (CF banner nags about it); someday clean up the inert `_acme-challenge.*` / `_cf-custom-hostname.*` TXTs on `es`/`www`.
+
+## Gotchas this session
+- **A dormant Page Rule wakes up the instant a hostname goes orange-cloud.** This zone had exactly one, from the www-canonical WordPress era, invisible in the modern Rules → Overview page (that page shows only templates when no new-style rules exist). Before flipping any gray→proxied record, check Rules → **Page Rules** AND account-level Bulk Redirects first.
+- A Pages custom domain answers **522 while "Initializing"** (~60–90 s). The 90-second rule applies to domain activation too, not just deploys.
+- CF's "Redirect from WWW to root" template ships loose: pattern `https://www.*` (matches every www.* host in the zone) and Preserve query string OFF. Narrow the pattern, tick the box.
+- GSC shows "Discovered pages: 0" right after submitting — normal, it processes async.
+
+# 🗄️ SUPERSEDED — 2026-09-27 (session 7)  ·  HEAD `eae6c9e`
 
 **Robert T. Hernandez left the firm.** Two commits, both pushed, both VERIFIED LIVE on pages.dev: **`54cbe52` (feat: Robert removed, his URLs 301 → `/attorneys/`)** · `eae6c9e` (style: 2-column centered grids). Site is now 82 pages. Attorney roster on the site = Eric + Fikisha.
 
