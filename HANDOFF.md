@@ -1,4 +1,42 @@
-# 🟢 CURRENT STATE — 2026-09-24 (session 6)  ·  HEAD `d7d160c`  ·  tree clean except this file
+# 🟢 CURRENT STATE — 2026-09-27 (session 7)  ·  HEAD `eae6c9e`  ·  tree clean except this file
+
+**Robert T. Hernandez left the firm.** Two commits, both pushed, both VERIFIED LIVE on pages.dev: **`54cbe52` (feat: Robert removed, his URLs 301 → `/attorneys/`)** · `eae6c9e` (style: 2-column centered grids). Site is now 82 pages. Attorney roster on the site = Eric + Fikisha.
+
+## Round 1 — Robert removed · COMMITTED `54cbe52` · VERIFIED LIVE
+- H.K.'s calls (2026-09-27): **301 → `/attorneys/`** (same as former attorneys Peetris/Moore, already in `_redirects`) — not 410, not a "no longer with the firm" page (departed attorney on a law-firm site = misleading-advertising risk). **Delete** the files outright (git history is the archive; `git show d7d160c:src/pages/attorneys/robert-hernandez.astro` brings it back). Grid tweak in its own commit.
+- Deleted: `src/pages/attorneys/robert-hernandez.astro`, `public/Robert-Hernandez.png` (`git rm` from PowerShell — VM has no delete rights).
+- Edited (byte-exact, line endings preserved — `about.astro` is CRLF, the other two LF): Robert's object removed from the `attorneys` array in `src/pages/attorneys/index.astro` and the `team` array in `src/pages/about.astro`.
+- `public/_redirects` **683 → 685 rules**: lines 258 + 616 (`/our-firm/robert-t-hernandez/` + no-slash twin) retargeted → `/attorneys/`; NEW dated block `/attorneys/robert-hernandez/ → /attorneys/` + twin at the bottom. Header count comment updated (685 = 344 + 341). Twin check: 0 slash-sources without a twin, 0 target mismatches.
+- He had no schema node (only Eric does) and the sitemap is generated from `src/pages`, so nothing else to touch. `grep -ri hernandez src public` → only `_redirects` (by design).
+- Linux build 82 pages, 0 errors, 0 × "Hernandez" in `dist/**/*.html`, sitemap clean. Live (~100 s after push): `/attorneys/robert-hernandez/`, `/attorneys/robert-hernandez`, `/our-firm/robert-t-hernandez/`, `/our-firm/robert-t-hernandez` all **301 → `/attorneys/`** single hop; `/Robert-Hernandez.png` 404; `/attorneys/` + `/about/` + `sitemap-0.xml` 0 × Hernandez.
+
+## Round 2 — 2-column grids · COMMITTED `eae6c9e` · VERIFIED LIVE (screenshots, 1280 px)
+- `src/pages/attorneys/index.astro`: `grid gap-10 sm:grid-cols-2 lg:grid-cols-3` → `grid gap-10 sm:grid-cols-2 max-w-3xl mx-auto`.
+- `src/pages/about.astro` team section: `md:grid-cols-3` → `md:grid-cols-2` + `max-w-3xl mx-auto`.
+- `max-w-3xl` keeps the cards ~the same width as the old 3-col layout (≈365–372 px) instead of stretching to half the container; both grids centered, no empty third slot.
+
+## Bar numbers on site (was 3, now 2)
+| Attorney | Bar No. | Status | Admitted | On site |
+| --- | --- | --- | --- | --- |
+| Eric R. Blank | 6910 | Active | 1999-10-12 | `/attorneys/eric-blank/` |
+| Fikisha Liki Miller | 13539 | Active | 2014-10-22 | `/attorneys/fikisha-miller/` |
+| ~~Robert T. Hernandez~~ | ~~13892~~ | — | — | REMOVED 2026-09-27 (`54cbe52`) |
+
+Bar-numbers cutover gate stays CLOSED (2/2).
+
+## NEXT
+1. H.K.: commit `HANDOFF.md` from PowerShell (this edit).
+2. ~~Live WordPress site still shows Robert~~ **DECIDED 2026-09-27 (H.K.): let the cutover handle it.** No WP edit. At cutover his only public URL (`/our-firm/robert-t-hernandez/`) is already covered → 301 `/attorneys/`. GBP / directory listings: not raised, not in scope.
+3. Triage sheet: Robert's row (`/our-firm/robert-t-hernandez/` → `/attorneys/robert-hernandez/`) is now a **third stale cell** — `scripts/redirect_audit.py` will report it as FAIL because the live target is `/attorneys/`. Expected; fix the cell with #164 + #194 when the sheet is next touched. Audit day-of-cutover should read 346/349 literal, 347/349 effective.
+4. Carried: optional bar number in Eric's `Person` node (`firm.ts`); 3 judgment calls + old-FAQ copy flags for Eric; `/es/` ×2 leave alone; Cloudflare DNS + GSC sitemap resubmit; hero LCP `86baj7a9t`.
+
+## Gotchas this session
+- **Never run plain `git status` in the Linux VM.** It tries to refresh the index, drops a `.git/index.lock`, and can't remove it (no delete rights) → H.K.'s next PowerShell commit fails with "index.lock exists". Use `git --no-optional-locks status` / `diff` / `ls-files` in the VM, always. If it happens anyway: PowerShell `Remove-Item .git\index.lock`.
+- From the VM, `git status` shows ~38 files "modified" with equal insertions/deletions — that's Windows `autocrlf=true` CRLF working copies vs. LF index, not real changes. `git diff --ignore-cr-at-eol --stat` is empty. Windows `git status` shows the truth; commit from PowerShell only (standing rule).
+- Windows git warns "LF will be replaced by CRLF" on `git add` of LF files written from the VM. Cosmetic — the committed blob stays LF (verified `ls-files --eol` i/lf).
+- VM `~/build` (node_modules from `npm ci`) survived within the session even across H.K.'s reboot; still assume it's gone next session.
+
+# 🗄️ SUPERSEDED — 2026-09-24 (session 6)  ·  HEAD `d7d160c`
 
 Three commits, all pushed, all VERIFIED LIVE on pages.dev: `e9cec5b` (docs) · `4372120` (fix: `attorneyNode` Attorney → Person) · **`d7d160c` (feat: Nevada bar numbers on all 3 bio pages)**.
 
