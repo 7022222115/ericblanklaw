@@ -1,4 +1,36 @@
-# 🟢 CURRENT STATE — 2026-09-27 (session 8)  ·  HEAD `f3ac11e`  ·  tree clean except this file
+# 🟢 CURRENT STATE — 2026-10-12 (session 10)  ·  /community/ page built · UNCOMMITTED — awaiting Eric's copy review + H.K. commit
+
+**NEW COMMUNITY PAGE** built from Myah's draft doc (Community Page — Draft Copy.docx, Oct 12). All changes are in the working tree only — nothing committed, nothing live. **Pushing to main auto-deploys — do not push until Eric has seen the copy.**
+
+## What changed
+- **NEW `src/pages/community.astro`** → `/community/` (indexed; sitemap picks it up automatically, 83 pages in build). Modeled on about.astro (hero w/ navy overlay, white/gray-50 sections, closing navy CTA). Sections: hero · Our Commitment quote · Where We Show Up (3 icon cards: kids & families / riders / first responders) · Featured Initiatives (6 cards) · closing CTA with Instagram + LinkedIn buttons (`linkedin.com/company/eric-blank-injury-attorneys`, URL from H.K.).
+- **NEW `public/community/` — 6 images**, web-optimized webp from the doc originals (4.5 MB → ~0.5 MB total, max 1080w): bgc-jingle-2026, rider-down-humpday-2026, first-responders-911-2026, sneaker-ball-2026, holiday-families-2025, back-to-school-2025.
+- **`src/components/Footer.astro`**: "Community" added to quick links between Terms and Careers (byte-safe edit, CRLF preserved). Header nav NOT touched — H.K.'s call (footer only; header already 7 items).
+
+## H.K.'s calls this session
+URL `/community/` · footer-only nav · light copy polish allowed · build in-repo.
+
+## Copy notes (for Eric/Myah)
+- Fixed draft grammar ("Although we practice law and fighting for…" → "We practice law and fight for what our clients deserve — but…").
+- Standardized "Hogs 'n Heifers" → "Hogs & Heifers" everywhere.
+- Hero image is the Dec 2025 Hogs & Heifers table photo as a **PLACEHOLDER** per the draft's image direction — swap for a wide team event photo when one exists (one `style` attr + comment marks it in community.astro).
+- Instagram reel link kept on the jingle card (tracking param stripped).
+
+## Verification (cloud build, npm ci against repo lockfile, Node 22)
+83 pages, 0 errors · `/community/` in sitemap-0.xml · footer link renders site-wide · desktop + mobile screenshots reviewed · all 6 images 200.
+
+## ⚠ SESSION 9 (2026-10-05 Spanish /es/ build) IS NOT IN THIS REPO
+At session-10 start the tree was clean on `main` (HEAD f3ac11e lineage), **no `es` branch local or remote, no `src/pages/es/`, no `src/data/i18n.ts`, and this file's head was still session 8.** The project-side status doc says session 9 wrote 44 ES pages + i18n.ts + component edits "in the repo working tree." Whatever container/session held that work, it never landed here. If it isn't recoverable from that chat, the Spanish build must be re-generated. H.K.: check the 2026-10-05 chat before assuming loss.
+
+## NEXT
+1. **Eric reviews the /community/ copy** (new public copy → his gate applies; no legal/statutory claims on the page, so low risk, but it's his call).
+2. H.K., Windows PowerShell, repo root: `git add src/pages/community.astro public/community src/components/Footer.astro HANDOFF.md` → `git status` (expect 9 files) → commit → push (auto-deploys to live).
+3. After deploy: check https://ericblanklaw.com/community/ + footer link + the IG/LinkedIn buttons.
+4. Swap the placeholder hero photo when a wide team shot exists.
+5. Scratch: `_buildcheck/` (untracked tarball used for the cloud build check) — safe to delete anytime.
+6. Carried: GSC watch, 3 stale triage cells, GreenGeeks rollback stays, Eric's 3 judgment calls, hero LCP, DMARC — and the session-9 Spanish question above.
+
+# 🗄️ SUPERSEDED — 2026-09-27 (session 8)  ·  HEAD `f3ac11e`  ·  tree clean except this file
 
 **DNS CUTOVER COMPLETE — ericblanklaw.com is LIVE on Cloudflare Pages** (flipped 2026-09-27, ~13:30 PDT). WordPress/GreenGeeks stays up as the rollback (H.K. confirmed). Robert is now gone from the public site — his URL 301s live. No code commits this session: Cloudflare dashboard + docs only. H.K. drove the dashboard, Claude called steps and verified from outside.
 
