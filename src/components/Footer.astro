@@ -34,25 +34,79 @@ const socials = [
 	},
 ];
 
-const navLinks = [
-	{ label: "Home", href: "/" },
-	{ label: "About", href: "/about" },
-	{ label: "Practice Areas", href: "/practice-areas" },
-	{ label: "Results", href: "/results" },
-	{ label: "Reviews", href: "/reviews" },
-	{ label: "Blog", href: "/blog" },
-	{ label: "Contact", href: "/contact" },
-];
+interface Props {
+	lang?: "en" | "es";
+}
 
-const legalLinks = [
-	{ label: "Privacy Policy", href: "/privacy-policy/" },
-	{ label: "Terms", href: "/terms-of-use/" },
-	{ label: "Community", href: "/community/" },
-	{ label: "Careers", href: "/careers/" },
-	{ label: "FAQ", href: "/faq/" },
-	{ label: "Sitemap", href: "/sitemap-index.xml" },
-];
+const { lang = "en" } = Astro.props as Props;
 
+const navLinks =
+	lang === "es"
+		? [
+				{ label: "Inicio", href: "/es/" },
+				{ label: "Nosotros", href: "/es/sobre-nosotros" },
+				{ label: "Áreas de Práctica", href: "/es/areas-de-practica" },
+				{ label: "Resultados", href: "/es/resultados" },
+				{ label: "Reseñas", href: "/es/resenas" },
+				{ label: "Contacto", href: "/es/contacto" },
+			]
+		: [
+				{ label: "Home", href: "/" },
+				{ label: "About", href: "/about" },
+				{ label: "Practice Areas", href: "/practice-areas" },
+				{ label: "Results", href: "/results" },
+				{ label: "Reviews", href: "/reviews" },
+				{ label: "Blog", href: "/blog" },
+				{ label: "Contact", href: "/contact" },
+			];
+
+// Note: "Community" has no Spanish page yet, so the ES footer omits it.
+const legalLinks =
+	lang === "es"
+		? [
+				{ label: "Política de Privacidad", href: "/es/politica-de-privacidad/" },
+				{ label: "Términos", href: "/es/terminos-de-uso/" },
+				{ label: "Empleo", href: "/es/empleo/" },
+				{ label: "Preguntas Frecuentes", href: "/es/preguntas-frecuentes/" },
+				{ label: "Mapa del Sitio", href: "/sitemap-index.xml" },
+			]
+		: [
+				{ label: "Privacy Policy", href: "/privacy-policy/" },
+				{ label: "Terms", href: "/terms-of-use/" },
+				{ label: "Community", href: "/community/" },
+				{ label: "Careers", href: "/careers/" },
+				{ label: "FAQ", href: "/faq/" },
+				{ label: "Sitemap", href: "/sitemap-index.xml" },
+			];
+
+const t =
+	lang === "es"
+		? {
+				tagline: "Mejor Representación. Mejor Recuperación. Es Mejor Con Blank.",
+				quickLinks: "Enlaces Rápidos",
+				footerAria: "Pie de página",
+				contact: "Contacto",
+				visitUs: "Visítenos",
+				open247: "Abierto 24/7",
+				mapAlt: "Mapa de la oficina de Eric Blank Injury Attorneys en Las Vegas",
+				rights: "Todos los derechos reservados.",
+				disclaimer:
+					"La información en este sitio web es solo para fines informativos generales y no constituye asesoramiento legal. Comunicarse con Eric Blank Injury Attorneys no crea una relación abogado-cliente. Los resultados pasados no garantizan resultados futuros.",
+			}
+		: {
+				tagline: "{t.tagline}",
+				quickLinks: "Quick Links",
+				footerAria: "Footer",
+				contact: "Contact",
+				visitUs: "Visit Us",
+				open247: "Open 24/7",
+				mapAlt: "Map of Eric Blank Injury Attorneys office in Las Vegas",
+				rights: "All rights reserved.",
+				disclaimer:
+					"The information on this website is for general informational purposes only and does not constitute legal advice. Contacting Eric Blank Injury Attorneys does not create an attorney-client relationship. Past results do not guarantee future outcomes.",
+			};
+
+const homeHref = lang === "es" ? "/es/" : "/";
 const year = new Date().getFullYear();
 const mapsHref =
 	"https://www.google.com/maps/place/Eric+Blank+Injury+Attorneys/@36.1452971,-115.2629678";
@@ -65,7 +119,7 @@ const mapsHref =
 			<!-- Column 1: Brand -->
 			<div class="order-1 min-w-0">
 				<!-- TODO: Add the white-text logo at /public/Eric_Blank_Injury_Attorneys_Logo_White.png — the dark footer needs a light version (the existing logo has black text). -->
-				<a href="/" class="inline-block">
+				<a href={homeHref} class="inline-block">
 					<img
 						src="/Eric_Blank_Injury_Attorneys_Logo_White.png"
 						alt="Eric Blank Injury Attorneys"
@@ -98,9 +152,9 @@ const mapsHref =
 			</div>
 
 			<!-- Column 2: Quick Links -->
-			<nav class="order-3 min-w-0 md:order-2" aria-label="Footer">
+			<nav class="order-3 min-w-0 md:order-2" aria-label={t.footerAria}>
 				<h2 class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
-					Quick Links
+					{t.quickLinks}
 				</h2>
 				<ul class="mt-4 space-y-3">
 					{
@@ -121,7 +175,7 @@ const mapsHref =
 			<!-- Column 3: Contact -->
 			<div class="order-2 min-w-0 md:order-3">
 				<h2 class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
-					Contact
+					{t.contact}
 				</h2>
 				<ul class="mt-4 space-y-4 text-sm text-white/80">
 					<li class="flex items-start gap-3">
@@ -150,7 +204,7 @@ const mapsHref =
 					</li>
 					<li class="flex items-start gap-3">
 						<span class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5" set:html={clockIcon} aria-hidden="true" />
-						<span class="font-medium text-white">Open 24/7</span>
+						<span class="font-medium text-white">{t.open247}</span>
 					</li>
 				</ul>
 			</div>
@@ -158,7 +212,7 @@ const mapsHref =
 			<!-- Column 4: Visit Us -->
 			<div class="order-4 min-w-0">
 				<h2 class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
-					Visit Us
+					{t.visitUs}
 				</h2>
 				<a
 					href={mapsHref}
@@ -168,7 +222,7 @@ const mapsHref =
 				>
 					<img
 						src="/Map_Eric_Blank_Injury_Attorneys.png"
-						alt="Map of Eric Blank Injury Attorneys office in Las Vegas"
+						alt={t.mapAlt}
 						width="1196"
 						height="728"
 						loading="lazy"
@@ -183,13 +237,10 @@ const mapsHref =
 			<div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
 				<div class="md:max-w-3xl">
 					<p class="text-sm text-white/80">
-						&copy; {year} Eric Blank Injury Attorneys. All rights reserved.
+						&copy; {year} Eric Blank Injury Attorneys. {t.rights}
 					</p>
 					<p class="mt-2 text-xs leading-relaxed text-white/60">
-						The information on this website is for general informational purposes only and
-						does not constitute legal advice. Contacting Eric Blank Injury Attorneys does
-						not create an attorney-client relationship. Past results do not guarantee
-						future outcomes.
+						{t.disclaimer}
 					</p>
 				</div>
 				<ul class="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/60">

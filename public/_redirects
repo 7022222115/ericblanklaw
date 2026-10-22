@@ -1,6 +1,6 @@
 # _redirects — Eric Blank Injury Attorneys (WordPress -> Astro)
 # Generated from EBIAtriageinventory_2_WORKING.xlsx (Action = 301 REDIRECT)
-# 685 rules = 344 exact-path redirects (343 legacy URLs + 1 retired Astro page) + 341 no-trailing-slash twins (see bottom). Explicit 301 on every line (Cloudflare defaults to 302).
+# 689 rules = 346 exact-path redirects (345 legacy URLs + 1 retired Astro page) + 343 no-trailing-slash twins (see bottom). Explicit 301 on every line (Cloudflare defaults to 302).
 # Specific routes first, wildcards last. Single hops only - no chains.
 #
 # NOT handled here (do in Cloudflare dashboard before cutover):
@@ -707,3 +707,9 @@
 /sitemap                                                                                                             /sitemap-index.xml  301
 /chayannegiveaway                                                                                                    /giveaway/  301
 /attorneys/robert-hernandez                                                                                          /attorneys/  301
+
+# 2026-10-05 - Spanish /es/ build (branch: es). The 2 legacy Spanish URLs the triage sheet marked "PRESERVE -> /es/..." finally get live targets. No-slash twins per standing rule.
+/clark-county-reclamos-de-lesiones-personales-abogado-nevada/                                                        /es/lp/abogado-de-lesiones-personales-condado-de-clark/  301
+/abogado-de-reclamo-de-lesiones-de-accidente-de-automovil-en-las-vegas-nevada/                                       /es/lp/abogado-de-accidentes-de-auto-las-vegas/  301
+/clark-county-reclamos-de-lesiones-personales-abogado-nevada                                                         /es/lp/abogado-de-lesiones-personales-condado-de-clark/  301
+/abogado-de-reclamo-de-lesiones-de-accidente-de-automovil-en-las-vegas-nevada                                        /es/lp/abogado-de-accidentes-de-auto-las-vegas/  301

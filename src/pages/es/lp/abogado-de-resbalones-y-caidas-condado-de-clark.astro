@@ -1,0 +1,340 @@
+---
+import '../../../styles/global.css';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import TestimonialCarousel from '../../../components/TestimonialCarousel.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+import { firmNode, attorneyNode } from '../../../data/firm';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+
+const title = "Abogado de Resbalones y Caídas en el Condado de Clark | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"¿Se resbaló y cayó en el Condado de Clark? Eric Blank Injury Attorneys maneja reclamos de responsabilidad de locales en Nevada — más de 26 años, sin honorarios a menos que ganemos. Llame al (702) 222-2115.";
+
+const heroTrust = ["Más de 26 Años", "Millones Recuperados", "Disponibles 24/7", "Consulta Gratuita"];
+
+const stats = [
+	{ value: "Millones", label: "Recuperados para Víctimas de Caídas" },
+	{ value: "Miles", label: "de Casos de Resbalones y Caídas Manejados" },
+	{ value: "$0", label: "de Su Bolsillo", note: "Solo honorarios de contingencia" },
+	{ value: "24/7", label: "Consulta Gratuita" },
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Investigamos el Local",
+		text: "Actuamos rápido para preservar la evidencia — videos de vigilancia, registros de limpieza y mantenimiento, informes de incidentes anteriores y declaraciones de testigos. La mayoría está en manos del dueño de la propiedad y se sobrescribe rápidamente sin una carta de preservación.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Construimos el Expediente Médico",
+		text: "Las lesiones por resbalones y caídas suelen ser múltiples — espalda, cuello, rodilla, hombro, cabeza — y con frecuencia se desarrollan a lo largo de días o semanas. Trabajamos con sus médicos para documentar cada lesión, presente y futura, para que las aseguradoras no puedan minimizar el daño.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Negociamos con la Aseguradora",
+		text: "Eric Blank pasó años del lado de la defensa de las aseguradoras. Sabemos cómo los ajustadores de responsabilidad de locales valoran los reclamos y dónde recortan — y usamos ese conocimiento para exigir una cifra real.",
+	},
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Plazo de Prescripción",
+		text: "Nevada le da 2 años desde la fecha de la caída para presentar una demanda de responsabilidad de locales (NRS 11.190). Los reclamos contra entidades gubernamentales — una caída en propiedad de la ciudad o del estado, por ejemplo — suelen tener plazos de notificación mucho más cortos, así que no espere.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Negligencia Comparativa",
+		text: "Nevada sigue una regla de negligencia comparativa modificada. Si usted tiene el 51% o más de la culpa, no recupera nada; si tuvo parte de la culpa pero menos de ese límite, su recuperación se reduce según su porcentaje.",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "Deber del Propietario y Aviso del Peligro",
+		text: "Bajo la ley de responsabilidad de locales de Nevada, el deber que un dueño de propiedad tiene hacia usted depende de si usted era un invitado comercial, un visitante con permiso o un intruso — a los invitados comerciales se les debe el deber más alto. Para recuperar compensación, generalmente tiene que demostrar que el dueño sabía o debía haber sabido del peligro — aviso real o constructivo — y no lo corrigió ni le advirtió.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Evaluación de caso gratuita y sin compromiso", icon: checkCircleIcon },
+	{ text: "Sin honorarios a menos que ganemos su caso", icon: circleDollarSignIcon },
+	{ text: "Disponibles 24/7 — noches, fines de semana y días festivos", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		firmNode,
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/es/lp/abogado-de-resbalones-y-caidas-condado-de-clark#service",
+			name: "Eric Blank Injury Attorneys — Representación en Resbalones y Caídas y Responsabilidad de Locales",
+			serviceType: "Servicios Legales de Resbalones y Caídas / Responsabilidad de Locales",
+			url: "https://ericblanklaw.com/es/lp/abogado-de-resbalones-y-caidas-condado-de-clark",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			priceRange: "Honorarios de Contingencia — Sin Honorarios a Menos Que Ganemos",
+			inLanguage: "es",
+			provider: { "@id": "https://ericblanklaw.com/#legalservice" },
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		attorneyNode,
+	],
+};
+---
+
+<html lang="es">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/es/lp/abogado-de-resbalones-y-caidas-condado-de-clark"
+			lang="es"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header lang="es" />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/slip-and-fall-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Abogado de Resbalones y Caídas en el Condado de Clark
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Abogado de Resbalones y Caídas en el Condado de Clark
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						¿Lesionado en un resbalón, tropiezo o caída en la propiedad de otra persona en el
+						Condado de Clark? Por más de 26 años, Eric Blank Injury Attorneys ha hecho que los
+						dueños de propiedades y sus aseguradoras respondan por las condiciones inseguras.
+						Consulta gratuita, y sin honorarios a menos que ganemos.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Evaluación Gratuita de su Caso
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — Why Us -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Por Qué Nosotros
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Por Qué los Residentes Lesionados del Condado de Clark Confían en Eric Blank
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank pasó los primeros años de su carrera defendiendo a compañías de
+							seguros. Aplicamos ese conocimiento interno a cada reclamo de resbalones y
+							caídas.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — Nevada law -->
+			<section class="bg-white" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Ley de Nevada
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Leyes Clave de Nevada Sobre Resbalones y Caídas
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Esta es información general, no asesoramiento legal para su caso específico. Hable
+						con un abogado sobre los hechos de su accidente.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<p class="mt-3 text-xs text-gray-500">Reseña original en inglés.</p>
+					<a
+						href="/es/resenas"
+						class="mt-6 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Lea más reseñas de clientes →
+					</a>
+				</div>
+			</section>
+
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel lang="es" />
+
+			<!-- SECTION 6 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Solicite su Evaluación Gratuita de Caso
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							Es gratis, confidencial y sin compromiso.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Por Qué Llamar Ahora
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Tres Razones Para Contactarnos Hoy
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								La mayoría de los reclamos de responsabilidad de locales en Nevada tienen
+								plazos estrictos — y el video de vigilancia que los gana suele sobrescribirse
+								rápido. Cuanto antes nos contacte, más podremos hacer.
+							</p>
+						</div>
+						<ContactForm lang="es" />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer lang="es" />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
+	</body>
+</html>

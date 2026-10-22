@@ -1,0 +1,589 @@
+---
+import '../../../styles/global.css';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import TestimonialCarousel from '../../../components/TestimonialCarousel.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+import { firmNode, attorneyNode } from '../../../data/firm';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Abogado de Accidentes de Camión en Las Vegas | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"¿Lesionado en un accidente de camión en Las Vegas? Eric Blank Injury Attorneys enfrenta a las empresas de transporte y sus aseguradoras — más de 26 años de experiencia. Consulta gratuita. Sin honorarios a menos que ganemos. Llame al (702) 222-2115.";
+
+const heroTrust = ["Más de 26 Años", "Millones Recuperados", "Disponibles 24/7", "Consulta Gratuita"];
+
+const stats = [
+	{ value: "Millones", label: "Recuperados para Víctimas de Choques de Camión" },
+	{ value: "Miles", label: "de Casos de Accidentes de Camión Manejados" },
+	{ value: "$0", label: "de Su Bolsillo", note: "Solo honorarios de contingencia" },
+	{ value: "24/7", label: "Consulta Gratuita" },
+];
+
+const steps = [
+	{
+		icon: shieldIcon,
+		title: "Póngase a Salvo",
+		text: "Si puede moverse, salga del tráfico junto con su vehículo. Los camiones comerciales pueden llevar combustible, carga peligrosa o cargas inestables — la distancia importa. Luego revise cómo están usted y sus pasajeros.",
+	},
+	{
+		icon: phoneCallIcon,
+		title: "Llame al 911",
+		text: "Siempre obtenga un informe policial. La Patrulla de Carreteras de Nevada normalmente lleva la delantera en la I-15, la US-95 y las autopistas donde ocurren la mayoría de los choques de camión, y una investigación federal puede comenzar rápidamente cuando hay lesiones graves.",
+	},
+	{
+		icon: cameraIcon,
+		title: "Documente Todo",
+		text: "Fotografíe el camión — especialmente el número DOT, la placa, las marcas del remolque y cualquier carga derramada — además de la escena, las condiciones del camino y sus lesiones. Obtenga los datos de la licencia de conducir comercial (CDL) del conductor, el nombre de la empresa de transporte y los datos del seguro. Los testigos son críticos.",
+	},
+	{
+		icon: stethoscopeIcon,
+		title: "Vea a un Médico",
+		text: "Los choques de camión producen lesiones catastróficas que a menudo no se manifiestan por horas — sangrado interno, daño en la columna, lesión cerebral traumática (TBI). Hágase evaluar de inmediato y manténgase al día con el tratamiento de seguimiento.",
+	},
+	{
+		icon: banIcon,
+		title: "No Hable con la Aseguradora de Ellos",
+		text: "Las empresas de transporte y sus aseguradoras actúan rápido — a veces en cuestión de horas. Enviarán investigadores y presionarán por declaraciones grabadas antes de que usted salga del hospital. Refiéralos a su abogado.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Llame Rápido a un Abogado",
+		text: "Con los camiones comerciales, la evidencia clave — los registros del dispositivo de registro electrónico (ELD), videos de cámara de tablero, registros de despacho, archivos de mantenimiento — puede desaparecer en días. Cuanto más rápido un abogado envíe una carta de preservación, mejor para su caso.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Investigamos el Accidente",
+		text: "Los casos de camión dependen de evidencia que controla la empresa de transporte — registros ELD, videos de cámara de tablero, archivos de calificación del conductor, registros de mantenimiento, registros de despacho. Enviamos cartas de preservación rápido y perseguimos cada fuente antes de que desaparezca.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Construimos el Expediente Médico",
+		text: "Las lesiones de los choques de camión suelen ser catastróficas y de por vida. Trabajamos con sus médicos tratantes — y, cuando hace falta, con planificadores de cuidado de vida — para documentar el costo completo: tratamiento actual, cirugías, rehabilitación y décadas de cuidado futuro.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Negociamos con la Aseguradora",
+		text: "Las empresas de transporte y sus aseguradoras tienen mucha más cobertura que el conductor típico — y traen muchos más abogados a la pelea. La experiencia de Eric Blank en la defensa de aseguradoras nos ayuda a navegar ese campo de batalla.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Llevamos el Caso a Juicio si Hace Falta",
+		text: "Los casos comerciales se resuelven cuando la empresa de transporte sabe que el equipo de juicio es real. Preparamos cada caso de camión como si fuera a presentarse ante un jurado.",
+	},
+];
+
+const economicDamages = [
+	"Gastos médicos — tratamiento pasado y futuro",
+	"Salarios perdidos y reducción de su capacidad futura de ingresos",
+	"Daños materiales a su vehículo",
+	"Gastos de bolsillo — transporte, medicamentos y más",
+];
+
+const nonEconomicDamages = [
+	"Dolor y sufrimiento",
+	"Angustia emocional",
+	"Pérdida del disfrute de la vida",
+	"Discapacidad o desfiguración permanente",
+	"Pérdida de consorcio",
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Plazo de Prescripción",
+		text: "Nevada le da 2 años desde la fecha del choque para presentar una demanda por accidente de camión (NRS 11.190). Si pasa ese plazo, su reclamo se pierde — y en los casos comerciales, la evidencia suele desaparecer mucho antes.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Negligencia Comparativa",
+		text: "En Nevada, usted no pierde su caso solo por haber tenido parte de la culpa. Siempre que su grado de culpa sea del 50% o menos, aún puede presentar un reclamo, pero su recuperación se reducirá según su porcentaje de culpa. Sin embargo, cuando la otra parte logra llevar su responsabilidad por encima del 50%, la regla de negligencia comparativa modificada de Nevada generalmente le impide recuperar compensación alguna (NRS 41.141).",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "Regulaciones Federales y Seguros",
+		text: "Los camiones comerciales que cruzan líneas estatales deben tener una cobertura de responsabilidad significativamente mayor que los vehículos de pasajeros — típicamente desde $750,000 hasta $5,000,000 según la carga, bajo las reglas de la Administración Federal de Seguridad de Autotransportes (FMCSA). Las empresas de transporte también están obligadas por regulaciones federales de horas de servicio, registro electrónico y mantenimiento que a menudo salen a la luz como evidencia de negligencia.",
+	},
+];
+
+const faqs = [
+	{
+		q: "¿A quién se puede demandar después de un accidente de camión en Nevada?",
+		a: "A más partes que en un choque de auto típico. El conductor, la empresa de transporte, el intermediario (broker), quien cargó la mercancía, un contratista de mantenimiento y — si una pieza defectuosa causó el choque — el fabricante pueden compartir la responsabilidad. Identificar a cada parte con cobertura es una de las cosas más importantes que hace un abogado de accidentes de camión.",
+	},
+	{
+		q: "¿Qué evidencia importa más en un caso de camión?",
+		a: "Los datos del dispositivo de registro electrónico (ELD), los videos de cámara de tablero, los registros de despacho, el archivo de calificación del conductor, los registros de mantenimiento y los datos a bordo del camión. La mayoría está en manos de la empresa de transporte y puede perderse o sobrescribirse rápidamente. Enviamos cartas de preservación de inmediato para asegurarla.",
+	},
+	{
+		q: "¿No son los límites del seguro de camiones mucho más altos que los del seguro de autos?",
+		a: "Generalmente sí. Las empresas de transporte interestatal deben tener al menos $750,000 en cobertura de responsabilidad bajo las reglas federales de la FMCSA, y muchas tienen $1,000,000 o más. A las empresas que transportan materiales peligrosos se les puede exigir hasta $5,000,000. Eso no significa que la aseguradora ofrezca lo que su caso vale — significa que hay cobertura real por la cual luchar.",
+	},
+	{
+		q: "¿Cuánto tiempo tengo para presentar un reclamo por accidente de camión en Nevada?",
+		a: "Dos años desde la fecha del choque, según NRS 11.190. En los casos comerciales, la preservación de la evidencia debe comenzar mucho antes — a menudo en cuestión de días — así que no espere los dos años completos para hablar con un abogado.",
+	},
+	{
+		q: "¿Qué pasa si el conductor del camión violó las regulaciones federales?",
+		a: "Las Regulaciones Federales de Seguridad de Autotransportes — incluidos los límites de horas de servicio, los requisitos de registro electrónico, las pruebas de drogas y alcohol y las reglas de mantenimiento — aplican a la mayoría de los camiones comerciales. Las violaciones son evidencia poderosa de negligencia, y a menudo exponen a la empresa de transporte a una responsabilidad más allá del conductor.",
+	},
+	{
+		q: "¿Cuánto cuesta contratar a un abogado de accidentes de camión?",
+		a: "Nuestros honorarios son de contingencia — sin costo inicial y sin cobro por hora. Solo nos pagan si ganamos, y el honorario es un porcentaje de la recuperación, pactado por escrito antes de empezar.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Evaluación de caso gratuita y sin compromiso", icon: checkCircleIcon },
+	{ text: "Sin honorarios a menos que ganemos su caso", icon: circleDollarSignIcon },
+	{ text: "Disponibles 24/7 — noches, fines de semana y días festivos", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		firmNode,
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/accidentes-de-camion#service",
+			name: "Eric Blank Injury Attorneys — Representación en Accidentes de Camión",
+			serviceType: "Servicios Legales de Accidentes de Camión",
+			url: "https://ericblanklaw.com/es/areas-de-practica/accidentes-de-camion",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			priceRange: "Honorarios de Contingencia — Sin Honorarios a Menos Que Ganemos",
+			inLanguage: "es",
+			provider: { "@id": "https://ericblanklaw.com/#legalservice" },
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		attorneyNode,
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/accidentes-de-camion#faq",
+			inLanguage: "es",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="es">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/es/areas-de-practica/accidentes-de-camion"
+			lang="es"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header lang="es" />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/truck-accidents-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Accidentes de Camión en Las Vegas
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Abogado de Accidentes de Camión en Las Vegas
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						Un camión comercial totalmente cargado no choca como un auto — destruye lo que
+						golpea. Cuando un accidente involucra un tráiler, usted no enfrenta a un solo
+						ajustador de seguros sino a toda una red de defensa: la empresa de transporte,
+						el intermediario, quien cargó la mercancía y un marco regulatorio federal que la
+						mayoría de los abogados nunca toca. Por más de 26 años, Eric Blank Injury
+						Attorneys ha construido casos contra las empresas de transporte y sus
+						aseguradoras. Consulta gratuita, y sin honorarios a menos que ganemos.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Evaluación Gratuita de su Caso
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What to do after a crash -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Primeros Pasos
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Qué Hacer Después de un Accidente de Camión en Las Vegas
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Las primeras horas después de un choque comercial definen todo su reclamo. Así
+							puede protegerse usted y proteger su caso.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nuestro Enfoque
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Cómo Eric Blank Injury Attorneys Maneja los Casos de Accidentes de Camión
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank pasó los primeros años de su carrera defendiendo a compañías de
+							seguros. Aplicamos ese conocimiento interno a cada caso de camión — la misma
+							ventaja que usamos en toda nuestra{" "}
+							<a
+								href="/es/areas-de-practica"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								práctica de lesiones personales
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — What you can recover -->
+			<section class="bg-white" aria-labelledby="damages-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Daños y Perjuicios
+						</p>
+						<h2
+							id="damages-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Lo Que las Víctimas de Accidentes de Camión Pueden Recuperar en Nevada
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							La ley de Nevada permite a las víctimas de lesiones recuperar daños
+							compensatorios — tanto las pérdidas económicas concretas como el costo humano
+							del choque. En casos poco comunes de conducta especialmente imprudente,
+							también pueden aplicarse daños punitivos.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Daños Económicos</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									economicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Daños No Económicos</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									nonEconomicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Nevada limita los daños en casos de negligencia médica pero <strong>no</strong> en
+						los reclamos generales de lesiones personales. La cantidad que puede recuperar
+						depende de los detalles de su caso — una{" "}
+						<a
+							href="/es/contacto"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							consulta gratuita
+						</a>{" "}
+						es la mejor manera de obtener una respuesta real.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Ley de Nevada
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Leyes Clave de Nevada Sobre Accidentes de Camión
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Esta es información general, no asesoramiento legal para su caso específico. Hable
+						con un abogado sobre los hechos de su accidente.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Preguntas Frecuentes
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Preguntas Comunes Sobre Accidentes de Camión
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<p class="mt-3 text-xs text-gray-500">Reseña original en inglés.</p>
+					<a
+						href="/es/resenas"
+						class="mt-6 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Lea más reseñas de clientes →
+					</a>
+				</div>
+			</section>
+
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel lang="es" />
+
+			<!-- SECTION 9 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Solicite su Evaluación Gratuita de Caso
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							Es gratis, confidencial y sin compromiso.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Por Qué Llamar Ahora
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Tres Razones Para Contactarnos Hoy
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								La evidencia de un accidente de camión — datos ELD, videos de cámara de
+								tablero, registros de despacho — puede desaparecer en cuestión de días.
+								Cuanto antes nos contacte, más podremos hacer.
+							</p>
+						</div>
+						<ContactForm lang="es" />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer lang="es" />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
+	</body>
+</html>

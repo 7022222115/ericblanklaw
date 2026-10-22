@@ -13,11 +13,31 @@ import dice5Icon from "lucide-static/icons/dice-5.svg?raw";
 
 interface Props {
 	gridClass?: string;
+	lang?: "en" | "es";
 }
 
 const {
 	gridClass = "grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
+	lang = "en",
 } = Astro.props;
+
+// Spanish card labels + routes (order must match the practiceAreas array below).
+const esCards = [
+	{ title: "Accidentes de Auto", href: "/es/areas-de-practica/accidentes-de-auto" },
+	{ title: "Accidentes de Motocicleta", href: "/es/areas-de-practica/accidentes-de-motocicleta" },
+	{ title: "Accidentes de Camión", href: "/es/areas-de-practica/accidentes-de-camion" },
+	{ title: "Accidentes de Uber/Lyft", href: "/es/areas-de-practica/accidentes-de-uber-y-lyft" },
+	{ title: "Resbalones y Caídas", href: "/es/areas-de-practica/resbalones-y-caidas" },
+	{ title: "Mordeduras de Perro", href: "/es/areas-de-practica/mordeduras-de-perro" },
+	{ title: "Compensación Laboral", href: "/es/areas-de-practica/compensacion-laboral" },
+	{ title: "Lesiones Cerebrales y de Columna", href: "/es/areas-de-practica/lesiones-cerebrales-y-de-columna" },
+	{ title: "Atropellos de Peatones", href: "/es/areas-de-practica/atropellos-de-peatones" },
+	{ title: "Accidentes de Bicicleta", href: "/es/areas-de-practica/accidentes-de-bicicleta" },
+	{ title: "Muerte Injusta", href: "/es/areas-de-practica/muerte-injusta" },
+	{ title: "Lesiones en Casinos", href: "/es/areas-de-practica/lesiones-en-casinos" },
+];
+
+const learnMore = lang === "es" ? "Más información" : "Learn more";
 
 // Lucide has no motorcycle icon — custom inline SVG in Lucide's style.
 const motorcycleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 8 12h6l2-3h2.5"/><path d="M13.5 12 18.5 17"/></svg>`;
@@ -86,7 +106,7 @@ const practiceAreas = [
 		href: "/practice-areas/casino-injuries",
 		icon: dice5Icon,
 	},
-];
+].map((area, i) => (lang === "es" ? { ...area, ...esCards[i] } : area));
 ---
 
 <div class={gridClass}>
@@ -99,7 +119,7 @@ const practiceAreas = [
 				<span class="block text-brand-navy [&>svg]:size-10" set:html={area.icon} />
 				<h3 class="mt-4 text-lg font-bold text-brand-navy">{area.title}</h3>
 				<span class="mt-auto flex items-center gap-1 pt-4 text-sm font-semibold text-gray-500 transition-colors group-hover:text-brand-navy">
-					Learn more
+					{learnMore}
 					<svg
 						class="size-4 transition-transform duration-200 group-hover:translate-x-1"
 						viewBox="0 0 24 24"

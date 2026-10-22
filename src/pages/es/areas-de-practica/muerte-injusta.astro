@@ -1,0 +1,591 @@
+---
+import '../../../styles/global.css';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import TestimonialCarousel from '../../../components/TestimonialCarousel.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+import { firmNode, attorneyNode } from '../../../data/firm';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Abogado de Muerte Injusta en Las Vegas | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"Si perdió a un ser querido por la negligencia de otra persona en Nevada, Eric Blank Injury Attorneys está aquí cuando usted esté listo. Asesoría compasiva bajo NRS 41.085. Sin honorarios a menos que recuperemos para su familia. Llame al (702) 222-2115.";
+
+const heroTrust = ["Más de 26 Años", "Asesoría Compasiva", "Disponibles 24/7", "Sin Honorarios a Menos Que Recuperemos"];
+
+const stats = [
+	{ value: "Millones", label: "Recuperados para Familias" },
+	{ value: "Miles", label: "de Casos de Muerte Injusta Manejados" },
+	{ value: "$0", label: "de Su Bolsillo", note: "Solo honorarios de contingencia" },
+	{ value: "24/7", label: "Cuando Esté Listo Para Hablar" },
+];
+
+const steps = [
+	{
+		icon: shieldIcon,
+		title: "Cuide de Usted y de Su Familia",
+		text: "El reclamo legal puede esperar. El duelo es la prioridad. Nos encontraremos con usted donde esté, en sus tiempos, cuando esté listo para hablar.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Preserve la Documentación Que Pueda",
+		text: "Cuando le sea posible, conserve los informes policiales, los registros del hospital, los informes del accidente, los registros de la autopsia y del forense, y la información de contacto de cualquier testigo. Nosotros podemos ayudar a reunir el resto.",
+	},
+	{
+		icon: banIcon,
+		title: "No Firme Nada",
+		text: "Si lo contacta una compañía de seguros, un empleador o cualquier persona que le pida una declaración grabada, una liberación de responsabilidad o una autorización médica, por favor no firme. Muchos de esos documentos protegen principalmente a la otra parte.",
+	},
+	{
+		icon: cameraIcon,
+		title: "Lleve un Registro de los Gastos",
+		text: "Guarde los recibos y estados de cuenta de los gastos médicos incurridos antes del fallecimiento, los gastos funerarios y de entierro, y cualquier otro costo que haya recaído en la familia. La ley de Nevada permite que el patrimonio recupere muchos de estos.",
+	},
+	{
+		icon: scaleIcon,
+		title: "No Espere Demasiado Para Hablar con un Abogado",
+		text: "Nevada da a las familias un plazo limitado — generalmente 2 años desde la fecha del fallecimiento — para presentar un reclamo de muerte injusta. La evidencia y la memoria de los testigos pueden desvanecerse mucho más rápido.",
+	},
+	{
+		icon: phoneCallIcon,
+		title: "Contáctenos Cuando Esté Listo",
+		text: "No hay prisa, no hay compromiso y no hay honorarios a menos que recuperemos para su familia. Cuando esté listo para hablar, aquí estamos.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Investigamos la Causa",
+		text: "Investigamos exactamente qué sucedió — informes policiales, revisión de expertos, declaraciones de testigos, fotografías, videos de vigilancia — para que el panorama completo de cómo y por qué falleció su ser querido quede en el expediente, y las personas correctas respondan por ello.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Identificamos Cada Fuente de Recuperación",
+		text: "Los reclamos de muerte injusta a menudo involucran a más de una parte responsable — un conductor y un empleador, el dueño de una propiedad y un contratista, un fabricante y un distribuidor. Perseguimos cada póliza aplicable y a cada parte responsable.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Caminamos Junto a Su Familia",
+		text: "Los casos de muerte injusta no se tratan solo de dinero — se tratan de la voz de su familia en lo que sucedió. Lo mantenemos informado, repasamos las decisiones juntos y buscamos una recuperación que refleje la vida de su ser querido.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Llevamos el Caso a Juicio si Hace Falta",
+		text: "Cuando un demandado no quiere pagar lo justo, vamos a juicio. Los demandados y sus aseguradoras suben sus cifras cuando saben que lo haremos.",
+	},
+];
+
+const heirsRecover = [
+	"Duelo y aflicción",
+	"Pérdida del apoyo económico probable",
+	"Pérdida de compañía, convivencia y consuelo",
+	"Pérdida de consorcio (para el cónyuge sobreviviente o una relación familiar comparable)",
+	"Daños por el dolor, sufrimiento o desfiguración del fallecido antes de la muerte",
+];
+
+const estateRecovers = [
+	"Gastos médicos incurridos antes del fallecimiento",
+	"Gastos funerarios y de entierro",
+	"Otros daños especiales que el fallecido incurrió antes de la muerte, como los salarios perdidos entre la lesión y el fallecimiento",
+	"Sanciones, incluidos los daños ejemplares o punitivos, que el fallecido podría haber recuperado si hubiera vivido",
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Plazo de Prescripción",
+		text: "Nevada generalmente da 2 años desde la fecha del fallecimiento para presentar un reclamo de muerte injusta (NRS 11.190). Algunos reclamos — por ejemplo, contra entidades gubernamentales — tienen plazos de notificación mucho más cortos. No recomendamos dejar que el reloj decida el caso de su familia.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Quién Puede Presentar la Demanda",
+		text: "Bajo NRS 41.085, tanto los herederos del fallecido como el representante personal del patrimonio pueden presentar una acción por muerte injusta. \"Herederos\" generalmente significa las personas que heredarían los bienes propios del fallecido bajo la ley de sucesión intestada de Nevada — con mayor frecuencia el cónyuge y los hijos, y en algunos casos los padres u otros familiares.",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "Cómo se Dividen los Daños",
+		text: "NRS 41.085 divide la recuperación. Los herederos tienen derecho al duelo y la aflicción, la pérdida del apoyo probable, la compañía y el consorcio, y el dolor y sufrimiento del fallecido antes de la muerte. El patrimonio puede recuperar los gastos médicos del fallecido previos a la muerte, los costos funerarios, otros daños especiales que el fallecido sufrió antes de la muerte y cualquier sanción — incluidos los daños ejemplares o punitivos — que el fallecido podría haber recuperado si hubiera vivido. Los representantes personales no pueden recuperar daños por dolor y sufrimiento — solo los herederos pueden.",
+	},
+];
+
+const faqs = [
+	{
+		q: "¿Quién puede presentar un reclamo de muerte injusta en Nevada?",
+		a: "Bajo NRS 41.085, dos categorías de demandantes pueden presentar la demanda: los herederos del fallecido (las personas con derecho a heredar los bienes propios del fallecido bajo la ley de sucesión intestada de Nevada — a menudo el cónyuge, los hijos y, en algunos casos, los padres) y el representante personal del patrimonio. Los dos reclamos pueden unirse en una sola acción.",
+	},
+	{
+		q: "¿Cuánto tiempo tenemos para presentar la demanda?",
+		a: "Generalmente dos años desde la fecha del fallecimiento, según NRS 11.190. Ciertos reclamos — por ejemplo, contra una entidad gubernamental — tienen plazos de notificación mucho más cortos, y pueden aplicar otras excepciones limitadas. Recomendamos no esperar para al menos hablar con un abogado.",
+	},
+	{
+		q: "¿Qué puede recuperar realmente nuestra familia?",
+		a: "La ley de Nevada divide la recuperación. Los herederos pueden recuperar por el duelo y la aflicción, la pérdida de compañía y consorcio, la pérdida del apoyo económico probable y los daños por el dolor y sufrimiento del fallecido antes de la muerte. El patrimonio puede recuperar los gastos médicos del fallecido previos a la muerte, los costos funerarios y de entierro, otros daños especiales que el fallecido sufrió antes de la muerte y cualquier sanción — incluidos los daños ejemplares o punitivos — que el fallecido podría haber recuperado si hubiera vivido.",
+	},
+	{
+		q: "¿Qué pasa si más de una persona causó la muerte de nuestro ser querido?",
+		a: "Los casos de muerte injusta a menudo involucran a varios demandados y aseguradoras — por ejemplo, un conductor y el empleador del conductor, o el dueño de una propiedad y un contratista. Identificamos a cada parte responsable y cada póliza de seguro aplicable.",
+	},
+	{
+		q: "¿Es un reclamo de muerte injusta lo mismo que un caso penal de homicidio?",
+		a: "No. Un reclamo de muerte injusta es civil — busca compensación económica por las pérdidas de la familia, y puede avanzar independientemente de cualquier caso penal. Una sentencia civil no requiere una condena penal.",
+	},
+	{
+		q: "¿Cuánto cuesta contratar a un abogado de muerte injusta?",
+		a: "Nuestros honorarios son de contingencia — no hay costo inicial ni cobro por hora. Solo nos pagan si recuperamos para su familia, y el honorario es un porcentaje de la recuperación, pactado por escrito antes de empezar.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Una conversación confidencial y sin compromiso", icon: checkCircleIcon },
+	{ text: "Sin honorarios a menos que recuperemos para su familia", icon: circleDollarSignIcon },
+	{ text: "Disponibles 24/7 — llame cuando esté listo", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		firmNode,
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/muerte-injusta#service",
+			name: "Eric Blank Injury Attorneys — Representación en Casos de Muerte Injusta",
+			serviceType: "Servicios Legales de Muerte Injusta",
+			url: "https://ericblanklaw.com/es/areas-de-practica/muerte-injusta",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			priceRange: "Honorarios de Contingencia — Sin Honorarios a Menos Que Recuperemos",
+			inLanguage: "es",
+			provider: { "@id": "https://ericblanklaw.com/#legalservice" },
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		attorneyNode,
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/muerte-injusta#faq",
+			inLanguage: "es",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="es">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/es/areas-de-practica/muerte-injusta"
+			lang="es"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header lang="es" />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/wrongful-death-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Muerte Injusta en Nevada
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Abogado de Muerte Injusta en Las Vegas
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						Perder a un ser querido es devastador. Cuando esa pérdida proviene de la
+						negligencia o del acto ilícito de otra persona, el duelo se mezcla con la ira,
+						las preguntas y decisiones legales desconocidas — la mayoría con plazos. El
+						estatuto de muerte injusta de Nevada, NRS 41.085, da a ciertos familiares y al
+						patrimonio el derecho de presentar un reclamo. Cuando esté listo para hablar,
+						Eric Blank Injury Attorneys está aquí. No hay prisa, no hay compromiso y no hay
+						honorarios a menos que recuperemos para su familia.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Hable Con Nuestro Equipo
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What to know -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							En los Días Por Venir
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Qué Saber Después de una Muerte Injusta
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							El duelo es lo primero. Estas son cosas en las que pensar — sin prisa — a
+							medida que recupera el equilibrio.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nuestro Enfoque
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Cómo Eric Blank Injury Attorneys Maneja los Casos de Muerte Injusta
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank pasó los primeros años de su carrera defendiendo a compañías de
+							seguros. Aplicamos ese conocimiento interno a cada caso de muerte injusta — la
+							misma experiencia que usamos en toda nuestra{" "}
+							<a
+								href="/es/areas-de-practica"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								práctica de lesiones personales
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — Damages (NRS 41.085 split) -->
+			<section class="bg-white" aria-labelledby="damages-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Lo Que Permite la Ley de Nevada
+						</p>
+						<h2
+							id="damages-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Lo Que un Reclamo de Muerte Injusta en Nevada Puede Recuperar
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							El estatuto de muerte injusta de Nevada (NRS 41.085) permite dos conjuntos
+							distintos de recuperaciones — uno para los herederos del fallecido y otro para
+							el patrimonio.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Los Herederos Pueden Recuperar</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									heirsRecover.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">El Patrimonio Puede Recuperar</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									estateRecovers.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Bajo NRS 41.085, las recuperaciones por muerte injusta pagadas a los herederos
+						generalmente no están disponibles para satisfacer las deudas del fallecido. La
+						cantidad disponible en cada caso individual depende de los hechos, de las partes
+						culpables y del seguro y los bienes que las respaldan — una{" "}
+						<a
+							href="/es/contacto"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							consulta gratuita
+						</a>{" "}
+						es la mejor manera de obtener una respuesta real.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Ley de Nevada
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Reglas Clave de Nevada Sobre Muerte Injusta
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Esta es información general, no asesoramiento legal para la situación específica
+						de su familia. Hable con un abogado sobre los hechos.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Preguntas Frecuentes
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Preguntas Comunes Sobre Muerte Injusta
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<p class="mt-3 text-xs text-gray-500">Reseña original en inglés.</p>
+					<a
+						href="/es/resenas"
+						class="mt-6 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Lea más reseñas de clientes →
+					</a>
+				</div>
+			</section>
+
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel lang="es" />
+
+			<!-- SECTION 9 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Cuando Esté Listo Para Hablar, Aquí Estamos
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							Confidencial, sin compromiso y sin honorarios a menos que recuperemos para su
+							familia.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Qué Esperar
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Una Conversación, No un Discurso de Ventas
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								Nevada da a las familias un plazo limitado — generalmente 2 años desde la
+								fecha del fallecimiento — para presentar un reclamo de muerte injusta. Pero
+								el camino hacia adelante comienza con una conversación. Cuando esté listo,
+								aquí estamos.
+							</p>
+						</div>
+						<ContactForm lang="es" />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer lang="es" />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
+	</body>
+</html>

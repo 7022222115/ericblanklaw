@@ -1,0 +1,63 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import circleCheckBigIcon from 'lucide-static/icons/circle-check-big.svg?raw';
+
+const title = "Gracias — Eric Blank Injury Attorneys";
+const description =
+	"Hemos recibido su solicitud de evaluación de caso. Eric Blank Injury Attorneys se comunicará con usted dentro de un día hábil.";
+---
+
+<html lang="es">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/es/gracias"
+			noindex={true}
+			lang="es"
+		/>
+	</head>
+	<body class="overflow-x-clip">
+		<Header lang="es" />
+		<main>
+			<section class="bg-brand-navy text-white">
+				<div
+					class="mx-auto flex max-w-[640px] flex-col items-center px-4 py-20 text-center sm:px-6 sm:py-28 lg:py-32"
+				>
+					<span
+						class="text-brand-gold [&>svg]:size-16"
+						set:html={circleCheckBigIcon}
+						aria-hidden="true"
+					/>
+					<h1 class="mt-6 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Gracias. Lo Recibimos.
+					</h1>
+					<p class="mt-4 max-w-md text-base text-pretty text-white/70 sm:text-lg">
+						Un abogado de nuestro equipo se comunicará con usted dentro de un día hábil —
+						por lo general mucho antes.
+					</p>
+					<p class="mt-6 max-w-md text-base text-pretty text-white/80">
+						¿Necesita hablar con alguien ahora mismo? Llame al{" "}
+						<a
+							href="tel:7022222115"
+							class="font-bold whitespace-nowrap text-brand-gold transition-colors hover:text-white"
+						>
+							(702) 222-2115
+						</a>{" "}
+						— estamos disponibles 24/7.
+					</p>
+					<a
+						href="/es/"
+						class="mt-10 text-sm font-semibold text-white/60 transition-colors hover:text-brand-gold"
+					>
+						← Volver al inicio
+					</a>
+				</div>
+			</section>
+		</main>
+		<Footer lang="es" />
+	</body>
+</html>

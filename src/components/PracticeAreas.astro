@@ -1,38 +1,60 @@
 ---
 import PracticeAreaGrid from "./PracticeAreaGrid.astro";
+
+interface Props {
+	lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const t =
+	lang === "es"
+		? {
+				eyebrow: "Áreas de Práctica",
+				h2: "Cómo Podemos Ayudarle",
+				sub: "Eric Blank Injury Attorneys maneja una amplia variedad de casos de lesiones personales y accidentes en Las Vegas y el Condado de Clark.",
+				more: "¿No ve su tipo de caso? Manejamos muchos más — llame al",
+				moreTail: "para una consulta gratuita.",
+			}
+		: {
+				eyebrow: "Practice Areas",
+				h2: "How We Help",
+				sub: "Eric Blank Injury Attorneys handles a wide range of personal injury and accident cases throughout Las Vegas and Clark County.",
+				more: "Don't see your case? We handle many more — call",
+				moreTail: "for a free consultation.",
+			};
 ---
 
 <section class="bg-gray-50" aria-labelledby="practice-heading">
 	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
 		<div class="mx-auto max-w-2xl text-center">
 			<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
-				Practice Areas
+				{t.eyebrow}
 			</p>
 			<h2
 				id="practice-heading"
 				class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
 			>
-				How We Help
+				{t.h2}
 			</h2>
 			<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
-				Eric Blank Injury Attorneys handles a wide range of personal injury and accident
-				cases throughout Las Vegas and Clark County.
+				{t.sub}
 			</p>
 		</div>
 
 		<div class="mt-12 lg:mt-16">
-			<PracticeAreaGrid />
+			<PracticeAreaGrid lang={lang} />
 		</div>
 
 		<p class="mx-auto mt-10 max-w-2xl text-center text-base text-pretty text-gray-600 sm:mt-12">
-			Don't see your case? We handle many more — call{" "}
+			{t.more}{" "}
 			<a
 				href="tel:7022222115"
 				class="font-bold whitespace-nowrap text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-4 hover:decoration-brand-navy"
 			>
 				(702) 222-2115
 			</a>{" "}
-			for a free consultation.
+			{t.moreTail}
 		</p>
 	</div>
 </section>

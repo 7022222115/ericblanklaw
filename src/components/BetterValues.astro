@@ -1,4 +1,42 @@
 ---
+interface Props {
+	lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const copy =
+	lang === "es"
+		? {
+				eyebrow: "Por Qué Elegirnos",
+				h2: "La Diferencia Better With Blank",
+				sub: "Cuatro estándares que nos exigimos — con cada cliente, en cada caso.",
+				items: [
+					{
+						title: "Mejor Compensación",
+						description: "Vamos más allá de un simple acuerdo para conseguirle la máxima recuperación que la ley permite.",
+					},
+					{
+						title: "Mejor Salud",
+						description: "Le conectamos con los mejores médicos disponibles para guiar su recuperación — en cada paso del camino.",
+					},
+					{
+						title: "Mejor Comunicación",
+						description: "Acceso abierto y directo a nuestro equipo y a sus proveedores médicos. Sin centros de llamadas. Sin evasivas.",
+					},
+					{
+						title: "Mejor Representación",
+						description: "Un luchador incansable de su lado frente a las compañías de seguros y sus abogados.",
+					},
+				],
+			}
+		: {
+				eyebrow: "Why Choose Us",
+				h2: "The Better With Blank Difference",
+				sub: "Four standards we hold ourselves to — every client, every case.",
+				items: null,
+			};
+
 const values = [
 	{
 		title: "Better Compensation",
@@ -27,23 +65,23 @@ const values = [
 		iconPath:
 			"M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z",
 	},
-];
+].map((value, i) => (copy.items ? { ...value, ...copy.items[i] } : value));
 ---
 
 <section class="bg-white" aria-labelledby="values-heading">
 	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
 		<div class="mx-auto max-w-2xl text-center">
 			<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
-				Why Choose Us
+				{copy.eyebrow}
 			</p>
 			<h2
 				id="values-heading"
 				class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
 			>
-				The Better With Blank Difference
+				{copy.h2}
 			</h2>
 			<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
-				Four standards we hold ourselves to — every client, every case.
+				{copy.sub}
 			</p>
 		</div>
 

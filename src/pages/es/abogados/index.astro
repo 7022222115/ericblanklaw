@@ -1,0 +1,62 @@
+---
+import '../../../styles/global.css';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const title = 'Nuestros Abogados | Eric Blank Injury Attorneys';
+const description = 'Conozca a los abogados de Eric Blank Injury Attorneys — un equipo de lesiones personales y compensación laboral de Las Vegas que representa a clientes lesionados en todo Nevada.';
+
+const attorneys = [
+  {
+    name: 'Eric Blank',
+    role: 'Abogado de Lesiones Personales y Compensación Laboral',
+    photo: '/Eric_Blank_01.jpg',
+    width: 600,
+    height: 900,
+    url: '/es/abogados/eric-blank/',
+  },
+  {
+    name: 'Fikisha Miller',
+    role: 'Abogada de Defensa Penal y Lesiones Personales',
+    photo: '/Fikisha-Miller.png',
+    width: 363,
+    height: 289,
+    url: '/es/abogados/fikisha-miller/',
+  },
+];
+---
+
+<html lang="es">
+  <head>
+    <BaseHead title={title} description={description} canonical="https://ericblanklaw.com/es/abogados" lang="es" />
+  </head>
+  <body class="overflow-x-clip">
+    <Header lang="es" />
+    <main>
+      <section class="bg-brand-navy text-white">
+        <div class="max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+          <p class="text-sm uppercase tracking-wide text-brand-gold mb-3">Nuestro Equipo</p>
+          <h1 class="text-4xl font-bold mb-4">Nuestros Abogados</h1>
+          <p class="text-lg text-gray-200">Conozca al equipo que representa a clientes lesionados en todo Nevada.</p>
+        </div>
+      </section>
+
+      <section class="bg-white">
+        <div class="max-w-5xl mx-auto px-4 py-16">
+          <div class="grid gap-10 sm:grid-cols-2 max-w-3xl mx-auto">
+            {attorneys.map((a) => (
+              <div class="flex flex-col">
+                <img src={a.photo} alt={a.name} width={a.width} height={a.height} loading="lazy" class="w-full h-auto rounded-lg mb-4" />
+                <h2 class="text-xl font-bold text-brand-navy">{a.name}</h2>
+                <p class="text-gray-600 mb-3">{a.role}</p>
+                <a href={a.url} class="text-brand-navy font-semibold underline mt-auto">Lea la Biografía Completa</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer lang="es" />
+  </body>
+</html>

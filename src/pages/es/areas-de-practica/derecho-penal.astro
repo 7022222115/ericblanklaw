@@ -1,0 +1,481 @@
+---
+import '../../../styles/global.css';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import { firmNode, attorneyNode } from '../../../data/firm';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import fileTextIcon from 'lucide-static/icons/file-text.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Abogado de Defensa Penal en Las Vegas | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"¿Acusado de un delito en Las Vegas? Un cargo no es una condena. El equipo de Eric Blank protege sus derechos desde su primera audiencia hasta la resolución de su caso. Solicite una consulta confidencial. Llame al (702) 222-2115.";
+
+const heroTrust = ["Más de 26 Años de Experiencia", "Consulta Confidencial", "Disponibles Cuando Nos Necesite"];
+
+const stats = [
+	{ value: "26+", label: "Años de Experiencia" },
+	{ value: "Confidencial", label: "Consulta" },
+	{ value: "Disponibles", label: "Cuando Nos Necesite" },
+];
+
+const steps = [
+	{
+		icon: banIcon,
+		title: "Use Su Derecho a Guardar Silencio",
+		text: "No está obligado a explicar nada ni a tratar de justificarse. Diga cortésmente que quiere un abogado, y luego guarde silencio. Lo que diga puede usarse en su contra.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Pida un Abogado — Con Claridad",
+		text: "Una vez que pide un abogado, el interrogatorio debe detenerse. Dígalo claramente: 'Quiero un abogado.' No espere a ver cómo avanza la conversación.",
+	},
+	{
+		icon: shieldIcon,
+		title: "No Consienta Registros",
+		text: "Puede negarse a consentir un registro de su teléfono, su auto o su casa. Mantenga la calma y no se resista físicamente — solo diga con claridad que no da su consentimiento.",
+	},
+	{
+		icon: fileTextIcon,
+		title: "Anote lo Que Pasó",
+		text: "En cuanto pueda, anote los detalles: horas, oficiales, qué se dijo, quién estaba presente. Estos hechos importan para su defensa.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: shieldCheckIcon,
+		title: "Protegemos Sus Derechos Desde el Primer Día",
+		text: "Nos aseguramos de que sus derechos constitucionales se respeten — desde los interrogatorios y registros hasta cada comparecencia ante el tribunal.",
+	},
+	{
+		icon: searchIcon,
+		title: "Investigamos el Caso del Estado",
+		text: "Examinamos cómo se obtuvo la evidencia, si se siguieron los procedimientos y dónde es débil el caso de la fiscalía.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Negociamos Cuando le Beneficia",
+		text: "Cuando sirve a sus intereses, trabajamos con los fiscales para reducir los cargos, buscar alternativas a la cárcel o lograr la desestimación — y somos honestos con usted sobre sus opciones.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Lo Defendemos en el Juicio",
+		text: "Si su caso va a juicio, tendrá a un defensor con experiencia entre usted y el Estado.",
+	},
+];
+
+const nevadaLaws = [
+	{
+		icon: clipboardListIcon,
+		title: "Cómo Clasifica Nevada los Cargos",
+		text: "En Nevada, los delitos generalmente se dividen en delitos menores (misdemeanors), delitos menores graves (gross misdemeanors) y delitos mayores (felonies). La categoría de su cargo lo afecta todo — dónde se cumple una condena, cuánto puede durar y el impacto duradero en su historial.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Qué Penas Puede Conllevar Cada Nivel",
+		text: "Un delito menor generalmente se castiga con hasta 6 meses en la cárcel del condado y una multa de hasta $1,000; un delito menor grave generalmente se castiga con hasta 364 días de cárcel y una multa de hasta $2,000; y los delitos mayores se dividen en cinco categorías, de la Categoría A a la Categoría E, con penas potenciales significativamente más serias. El castigo exacto depende del cargo específico y de cualquier agravante de sentencia que pueda aplicarse.",
+	},
+	{
+		icon: shieldIcon,
+		title: "Un Cargo No Es una Condena",
+		text: "Ser arrestado o acusado no significa que usted sea culpable. El Estado tiene que probar su caso, y usted se presume inocente. Una defensa sólida puede cuestionar la evidencia, los procedimientos utilizados y los propios cargos.",
+	},
+	{
+		icon: calendarClockIcon,
+		title: "Actuar Temprano Importa",
+		text: "Las decisiones tomadas en los primeros días de un caso — sobre declaraciones, registros y fechas de audiencia — pueden definir todo lo que sigue. Cuanto antes tenga un abogado, más se puede hacer en muchos casos.",
+	},
+];
+
+const faqs = [
+	{
+		q: "¿Debo hablar con la policía sin un abogado?",
+		a: "Generalmente, no. Usted tiene derecho a guardar silencio y derecho a un abogado. Lo más seguro es pedir claramente un abogado y evitar hablar de su caso hasta que lo tenga.",
+	},
+	{
+		q: "¿Cuánto cuesta un abogado de defensa penal?",
+		a: "La defensa penal generalmente no se maneja bajo el esquema de 'sin honorarios a menos que ganemos' como los casos de lesiones. El honorario depende del cargo, del tribunal involucrado y de la complejidad del caso. Le explicaremos los costos con claridad y honestidad durante su consulta, antes de que se comprometa a nada.",
+	},
+	{
+		q: "Un cargo no es lo mismo que una condena, ¿verdad?",
+		a: "Correcto. En Nevada, usted se presume inocente, y la fiscalía debe probar el cargo más allá de toda duda razonable. Muchos casos se resuelven sin una condena, ya sea mediante desestimación, reducción, programas alternativos u otros resultados negociados.",
+	},
+	{
+		q: "¿Qué sucede en mi primera audiencia?",
+		a: "Su primera comparecencia (lectura de cargos) es generalmente donde los cargos se presentan formalmente y usted presenta su declaración. Tener un abogado antes de ese momento le ayuda a entender sus opciones y tomar decisiones informadas en lugar de reaccionar en el momento.",
+	},
+	{
+		q: "¿Puede un cargo reducirse o desestimarse?",
+		a: "En muchos casos, sí. Un abogado de defensa penal con experiencia puede revisar la evidencia, detectar debilidades en el caso y buscar oportunidades para reducir el cargo, evitar una condena o lograr una resolución más favorable. Cada caso es diferente, pero una defensa sólida le da opciones y ayuda a proteger su futuro.",
+	},
+	{
+		q: "¿Debo simplemente aceptar el acuerdo de culpabilidad que me ofrecen?",
+		a: "No sin asesoría. Un acuerdo de culpabilidad es una decisión importante con consecuencias duraderas. Hable con un abogado sobre lo que realmente significa antes de aceptar nada.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Una consulta confidencial", icon: checkCircleIcon },
+	{ text: "Respuestas directas sobre lo que enfrenta", icon: scaleIcon },
+	{ text: "Disponibles cuando nos necesite", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		firmNode,
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/derecho-penal#service",
+			name: "Eric Blank Injury Attorneys — Representación en Defensa Penal",
+			serviceType: "Servicios Legales de Defensa Penal",
+			url: "https://ericblanklaw.com/es/areas-de-practica/derecho-penal",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			inLanguage: "es",
+			provider: { "@id": "https://ericblanklaw.com/#legalservice" },
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		{ ...attorneyNode, jobTitle: "Abogado" },
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/derecho-penal#faq",
+			inLanguage: "es",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="es">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/es/areas-de-practica/derecho-penal"
+			lang="es"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header lang="es" />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/criminal-law-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Defensa Penal
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						¿Acusado de un Delito en Las Vegas?
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						Un cargo penal no es una condena. Desde su primera audiencia hasta la resolución
+						de su caso, usted tiene derecho a una defensa — y a un abogado que proteja sus
+						derechos en cada paso. Cuanto antes tenga representación, más opciones puede
+						tener.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Solicite una Consulta Confidencial
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-3">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — If you've been arrested or charged -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Conozca Sus Derechos
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Si Ha Sido Arrestado o Acusado
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Lo que haga en las primeras horas puede definir todo su caso. Así puede
+							protegerse.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nuestro Enfoque
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Cómo Defendemos Su Caso
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Desde su primer contacto con los investigadores hasta el juicio, nuestro
+							enfoque es proteger sus derechos y buscar el mejor resultado disponible —
+							parte de cómo servimos a nuestros clientes en todas nuestras{" "}
+							<a
+								href="/es/areas-de-practica"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								áreas de práctica
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — Areas we handle -->
+			<section class="bg-white" aria-labelledby="areas-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Asuntos Penales
+						</p>
+						<h2
+							id="areas-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Asuntos Que Manejamos
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Representamos a personas que enfrentan una amplia gama de asuntos penales en
+							el área de Las Vegas — desde delitos menores hasta cargos graves de delitos
+							mayores. Si ha sido arrestado, citado o contactado por investigadores, vale
+							la pena una conversación confidencial para entender lo que enfrenta y cómo
+							podemos ayudar.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Ley de Nevada
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Entendiendo los Cargos Penales en Nevada
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Esta es información general, no asesoramiento legal para su caso específico. Hable
+						con un abogado sobre los hechos de su situación.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Preguntas Frecuentes
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Preguntas Comunes Sobre Defensa Penal
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							¿Enfrenta un Cargo? No Espere Para Recibir Asesoría.
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							Cuanto antes entienda sus opciones, mejor posicionado estará. Contáctenos
+							para una consulta confidencial sobre su situación.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Qué Esperar
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Hable Con Nosotros Antes de Tomar una Decisión
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								Las decisiones al inicio de un caso — sobre declaraciones, registros y
+								fechas de audiencia — pueden definir todo lo que sigue. Una consulta
+								confidencial le ayuda a entender sus opciones antes de actuar.
+							</p>
+						</div>
+						<ContactForm lang="es" />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer lang="es" />
+	</body>
+</html>
