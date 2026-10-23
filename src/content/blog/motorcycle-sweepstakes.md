@@ -25,3 +25,5 @@ You will receive a series of 7 emails-you may opt-out at anytime
 NAMIL, LLC is the law firm responsible for this ad.
 Our location is 1080 Waterway Lane Myrtle Beach, SC 29572
 **Online Giveaway Sponsored by the National Academy of Motorcycle Injury Lawyers**
+
+<a href="https://lasvegas.bikerswin.org/" style="display:inline-block; margin-top:1.5rem; border-radius:0.5rem; background-color:#E8B842; padding:1rem 2rem; font-size:1.125rem; font-weight:700; color:#0F1E3D; text-decoration:none;">Enter Contest</a>
