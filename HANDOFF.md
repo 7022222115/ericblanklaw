@@ -1,4 +1,20 @@
-# 🟢 CURRENT STATE — 2026-10-26 (session 12)  ·  SPANISH REVIEW CLEARED — READY TO MERGE `es` → main, then the redirects + SEO pass
+# 🟡 NEXT UP — es.ericblanklaw.com retirement (runbook prepped 2026-10-27, NOT started — run it in a fresh chat)
+
+**Full runbook: project doc `claude/ES-SUBDOMAIN-RETIREMENT-plan-2026-10-27.md`.** Goal: 301 the old Spanish WordPress subdomain into the live /es/ pages — consolidates its rankings/backlinks, kills the duplicate-Spanish-content problem created the moment /es/ shipped, and unblocks the GreenGeeks decommission. Three phases: (1) archive the old site + inventory URLs + build the mapping table (no DNS risk, Claude can do solo; Screaming Frog is on H.K.'s PC; `src/data/i18n.ts` is the canonical /es/ slug list; **H.K. reviews the mapping before Cloudflare**); (2) Cloudflare flip — Bulk Redirect list + catch-all, then proxy the `es` record, H.K. driving the dashboard like the 09-27 cutover (**pre-flight the dormant Page Rules/Bulk Redirects FIRST — the cutover lesson**); (3) GSC watch → TXT cleanup → GreenGeeks decision (identify the `2026.` subdomain before cancelling anything). Rollback = flip `es` back to gray; zone snapshot in `claude/CUTOVER-rollback-DNS-2026-09-27.md`.
+
+# ✅ SHIPPED — 2026-10-27 (session 12 result): SPANISH LIVE ON ericblanklaw.com · AUDIT 349/349 · triage sheet fully reconciled
+
+**Merged `es` → main, pushed (`63e1672`), deployed, verified live 2026-10-27.** Apex checks all green: `/es/` 200 · ES/EN toggle + bidirectional hreflang · Meta Pixel firing on ES pages · `/es/gracias/` noindex · sitemap exactly **123 URLs (80 EN + 43 ES)** · both legacy Spanish URLs 301 single-hop to their /es/ LPs · EN pages unchanged (community link intact).
+
+**Redirect audit vs the live apex: 349/349 PASS, 0 no-slash 404s — the first perfect score of the migration.** First run read 344/349; all 5 fails were stale sheet cells, fixed in `EBIAtriageinventory_2_WORKING.xlsx` same day (rows #2 Robert → `/attorneys/`, #164 → `/sitemap-index.xml`, #167/#168 → the real `/es/lp/…` slugs, #194 → `/giveaway/`; each got Redirect Done = YES + a dated note; row #194's Action also corrected HOLD → 301 REDIRECT). Re-run after the fix: 349/349. NOTE: the xlsx had gone missing from the repo root — restored from the project's June copy before fixing; the PROJECT's copy is now the stale one (project doc API still rejects binaries — H.K. can re-upload via the claude.ai project UI if wanted).
+
+## Remaining from the checklist (all H.K., all quick)
+1. **Commit the sheet + this HANDOFF edit** (PowerShell): `git add EBIAtriageinventory_2_WORKING.xlsx HANDOFF.md` → commit → push. (The xlsx was previously untracked — committing it ends the where-did-it-go problem for good.)
+2. **GSC**: Search Console → Sitemaps → resubmit `https://ericblanklaw.com/sitemap-index.xml`. Then over 2–6 weeks: Pages report (/es/ URLs → Indexed, no 404 spike), Performance filtered to path `/es/`. "Discovered: 0" right after submit is normal.
+3. Eric's two open EN-copy items (22-years typo ×2, LP "51%" wording) — next time H.K. talks to him.
+4. Next project when ready: **retire es.ericblanklaw.com** (plan below in this entry's first write-up) → then the GreenGeeks decommission decision.
+
+# 🗄️ SUPERSEDED — 2026-10-26 (session 12 plan — executed; result above)
 
 **Spanish review gate: CLOSED 2026-10-26 — H.K.'s bilingual staff reviewed the branch preview (es.ericblanklaw.pages.dev) and cleared it.** The `es` branch (`7a9a94d` Spanish mirror + `f941965` sweepstakes-link fix) is ready to merge. Main moved meanwhile (`a777944` same sweepstakes fix made independently + `1261dac` Enter Contest button) — the duplicate fix is byte-identical on both sides, so the merge is clean (verified: no overlapping real changes). The VM's ~18 "modified" files are CRLF noise (`git diff --ignore-cr-at-eol` is empty) — ignore them; Windows git shows the truth.
 
