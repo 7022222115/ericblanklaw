@@ -1,4 +1,45 @@
-# 🟡 PENDING BRANCH COMMIT — 2026-10-22 (session 9: Spanish /es/ build · written 2026-10-05, landed in the tree 2026-10-22)
+# 🟢 CURRENT STATE — 2026-10-26 (session 12)  ·  SPANISH REVIEW CLEARED — READY TO MERGE `es` → main, then the redirects + SEO pass
+
+**Spanish review gate: CLOSED 2026-10-26 — H.K.'s bilingual staff reviewed the branch preview (es.ericblanklaw.pages.dev) and cleared it.** The `es` branch (`7a9a94d` Spanish mirror + `f941965` sweepstakes-link fix) is ready to merge. Main moved meanwhile (`a777944` same sweepstakes fix made independently + `1261dac` Enter Contest button) — the duplicate fix is byte-identical on both sides, so the merge is clean (verified: no overlapping real changes). The VM's ~18 "modified" files are CRLF noise (`git diff --ignore-cr-at-eol` is empty) — ignore them; Windows git shows the truth.
+
+## ⚠ Still open for ERIC specifically (staff review didn't cover EN-source questions)
+1. "For over 22 years" typo on bicycle + workers-comp heroes (everything else says 26+) — fix EN + ES together.
+2. LP pages' short "51% or more" comparative-negligence card vs his approved "50% or less" paragraph (consistent math, different wording, no NRS cite).
+Neither blocks the merge — both exist on the live EN site today.
+
+## MERGE (H.K., Windows PowerShell, repo root — pushing main deploys LIVE)
+```
+git add HANDOFF.md
+git commit -m "docs(handoff): session 12 - Spanish review cleared, redirects+SEO checklist"
+git checkout main
+git pull
+git merge es
+git push
+```
+Expect the merge to be clean. Wait ~2 min for the Cloudflare deploy. If anything looks wrong on the apex, `git revert -m 1 HEAD` + push rolls the merge back.
+
+## POST-MERGE — REDIRECTS + SEO CHECKLIST (this phase's work)
+1. **Apex spot-checks** (~2 min after deploy): `https://ericblanklaw.com/es/` 200 · ES/EN toggle both ways · `/es/gracias/` noindex · hreflang `<link rel="alternate">` pairs present on one EN + one ES page · the 2 legacy Spanish URLs 301 single-hop:
+   - `/clark-county-reclamos-de-lesiones-personales-abogado-nevada/` → `/es/lp/abogado-de-lesiones-personales-condado-de-clark/`
+   - `/abogado-de-reclamo-de-lesiones-de-accidente-de-automovil-en-las-vegas-nevada/` → `/es/lp/abogado-de-accidentes-de-auto-las-vegas/`
+2. **Full audit re-run**: `python scripts/redirect_audit.py EBIAtriageinventory_2_WORKING.xlsx https://ericblanklaw.com` → expect **346/349 literal, 349/349 effective** (the 3 remaining = stale sheet cells #2 Robert, #164 sitemap, #194 chayannegiveaway — still sheet problems, not site problems).
+3. **Triage sheet** (next time it's touched): fix the 3 stale cells AND update the 2 `/es/` rows' target cells to the real `/es/lp/…` URLs so the audit goes fully literal.
+4. **GSC** (domain property covers both languages + all subdomains): resubmit `https://ericblanklaw.com/sitemap-index.xml` → expect ~123 discovered URLs (80 EN + 43 ES). Over the following 2–6 weeks: Pages report — /es/ URLs moving to Indexed, no 404/soft-404 spike; Performance filtered to path `/es/` for first Spanish impressions. hreflang pickup is slow (weeks) — "Discovered 0" right after submit is normal.
+5. Nothing else needed on-page: canonical/hreflang/og:locale/inLanguage all ship in the build; Meta Pixel already fires on ES pages.
+
+## NEXT PROJECT — retire es.ericblanklaw.com (own session, the real redirect/SEO job)
+The old Spanish WordPress on GreenGeeks is still live at `es.ericblanklaw.com` and, once /es/ is indexed, becomes competing duplicate Spanish content. Consolidate with 301s:
+1. Inventory es. URLs — Screaming Frog (installed on H.K.'s PC) or the WP sitemap (`es…/sitemap_index.xml`).
+2. Map each old es. URL → best /es/ page (practice pages to their ES twins; everything else → `/es/`).
+3. Cloudflare: account-level **Bulk Redirect List** for the exact mappings + one dynamic Single Redirect catch-all `es.ericblanklaw.com/*` → `https://ericblanklaw.com/es/` 301 for the unmapped tail.
+4. Flip the `es` DNS record gray→orange (proxied). **FIRST check Rules → Page Rules AND account Bulk Redirects for dormant rules — the exact failure mode from the 09-27 cutover.** Also remember the inert `_acme-challenge.*`/`_cf-custom-hostname.*` TXTs on `es` (cleanup candidates).
+5. Verify sample URLs single-hop; GSC's old `es…/sitemap_index.xml` entry then 301s through — leave it.
+6. ONLY after this is stable: the GreenGeeks decommission decision. `2026.` subdomain still points there — identify what it is before any cancellation.
+
+## Carried
+Ozempic mass-tort pilot: untracked in the tree, Eric's gate OPEN (do not sweep into commits). Blog ES translation (36 posts, triage stale news first). /es/ community page when wanted (i18n row + ES footer link come with it). Hero LCP `86baj7a9t` · about-card headshots · criminal-law priceRange · DMARC · GreenGeeks stays paid until es. retirement completes.
+
+# 🗄️ SUPERSEDED — 2026-10-22 (session 9: Spanish /es/ build · committed to branch `es` as `7a9a94d` 2026-10-22, review cleared 2026-10-26 — see session 12 above)
 
 **SPANISH /es/ FULL MIRROR — all 63 files now in the working tree, awaiting H.K.'s `es` BRANCH commit + human Spanish review. NOT for main yet.** 44 Spanish pages under `src/pages/es/` (home, 20 practice areas, 10 LPs, attorneys ×3, contacto, resultados, resenas, preguntas-frecuentes, empleo, privacidad, términos, gracias noindex) + i18n infrastructure. H.K.'s calls (2026-10-05): /es/ in the same repo · **Spanish slugs** · lang prop on shared components · pages now, **blog later** · branch `es`, never straight to main.
 
