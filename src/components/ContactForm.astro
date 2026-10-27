@@ -1,27 +1,64 @@
 ---
 // Reusable Formspree-wired call-back form card.
 // Used by Contact.astro (homepage section) and the /contact page.
+// lang="es" renders the Spanish version (same Formspree endpoint; the
+// _next redirect goes to /es/gracias and the _subject is tagged Español).
+
+interface Props {
+	lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const t =
+	lang === "es"
+		? {
+				heading: "Solicite una Llamada",
+				sub: "Le responderemos dentro de 1 día hábil.",
+				nameLabel: "Nombre Completo",
+				namePlaceholder: "Juana Pérez",
+				phoneLabel: "Número de Teléfono",
+				phoneTitle: "Por favor ingrese un número de teléfono válido",
+				button: "Solicitar Mi Llamada",
+				consent:
+					"Al enviar, usted acepta recibir una llamada o mensaje de texto de Eric Blank Injury Attorneys sobre su consulta. Pueden aplicarse tarifas estándar. Responda STOP para cancelar.",
+				subject: "New Case Review Request — Eric Blank Law (Español)",
+				next: "https://ericblanklaw.com/es/gracias",
+			}
+		: {
+				heading: "Request a Call Back",
+				sub: "We'll respond within 1 business day.",
+				nameLabel: "Full Name",
+				namePlaceholder: "Jane Doe",
+				phoneLabel: "Phone Number",
+				phoneTitle: "Please enter a valid phone number",
+				button: "Request My Call Back",
+				consent:
+					"By submitting, you agree to receive a call or text from Eric Blank Injury Attorneys regarding your inquiry. Standard rates may apply. Reply STOP to opt out.",
+				subject: "New Case Review Request — Eric Blank Law",
+				next: "https://ericblanklaw.com/thank-you",
+			};
 ---
 
 <div class="rounded-2xl bg-white p-6 text-brand-navy shadow-xl sm:p-8">
-	<h3 class="text-xl font-bold sm:text-2xl">Request a Call Back</h3>
-	<p class="mt-1 text-sm text-gray-500">We'll respond within 1 business day.</p>
+	<h3 class="text-xl font-bold sm:text-2xl">{t.heading}</h3>
+	<p class="mt-1 text-sm text-gray-500">{t.sub}</p>
 
 	<form action="https://formspree.io/f/xjgzyjvz" method="POST" class="mt-6 space-y-4">
 		<div>
-			<label for="cb-name" class="block text-sm font-semibold">Full Name</label>
+			<label for="cb-name" class="block text-sm font-semibold">{t.nameLabel}</label>
 			<input
 				type="text"
 				id="cb-name"
 				name="full_name"
 				required
 				autocomplete="name"
-				placeholder="Jane Doe"
+				placeholder={t.namePlaceholder}
 				class="mt-1.5 w-full rounded-md border border-gray-300 px-4 py-3 text-base placeholder:text-gray-400 focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/30 focus:outline-none"
 			/>
 		</div>
 		<div>
-			<label for="cb-phone" class="block text-sm font-semibold">Phone Number</label>
+			<label for="cb-phone" class="block text-sm font-semibold">{t.phoneLabel}</label>
 			<input
 				type="tel"
 				id="cb-phone"
@@ -29,7 +66,7 @@
 				required
 				autocomplete="tel"
 				pattern="[0-9()+\s-]{7,}"
-				title="Please enter a valid phone number"
+				title={t.phoneTitle}
 				placeholder="(702) 555-0100"
 				class="mt-1.5 w-full rounded-md border border-gray-300 px-4 py-3 text-base placeholder:text-gray-400 focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/30 focus:outline-none"
 			/>
@@ -38,16 +75,15 @@
 			type="submit"
 			class="w-full rounded-md bg-brand-gold px-6 py-3.5 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b]"
 		>
-			Request My Call Back
+			{t.button}
 		</button>
 		<p class="text-[11px] leading-relaxed text-gray-500">
-			By submitting, you agree to receive a call or text from Eric Blank Injury Attorneys
-			regarding your inquiry. Standard rates may apply. Reply STOP to opt out.
+			{t.consent}
 		</p>
 
 		<!-- Formspree hidden fields (kept at the end so visible layout is unchanged) -->
-		<input type="hidden" name="_subject" value="New Case Review Request — Eric Blank Law" />
-		<input type="hidden" name="_next" value="https://ericblanklaw.com/thank-you" />
+		<input type="hidden" name="_subject" value={t.subject} />
+		<input type="hidden" name="_next" value={t.next} />
 		<input type="text" name="_gotcha" style="display:none" />
 	</form>
 </div>

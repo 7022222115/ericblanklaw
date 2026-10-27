@@ -1,0 +1,304 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// Spanish translation of /faq/ (three FAQ groups, same 19 Q&As as the English page).
+// The comparative-negligence answer uses Eric's approved 2026-09-23 Spanish paragraph.
+
+const title = 'Preguntas Frecuentes | Eric Blank Injury Attorneys';
+const description =
+  'Respuestas a preguntas comunes sobre reclamos de lesiones personales, accidentes de auto y resbalones y caídas en Las Vegas de Eric Blank Injury Attorneys. ¿Preguntas? Llame al (702) 222-2115.';
+
+type Block = { type: 'p'; text: string } | { type: 'ul'; items: string[] };
+type Faq = { q: string; a: Block[] };
+type Group = { id: string; heading: string; faqs: Faq[]; outro: string };
+
+const phone = '<a href="tel:+17022222115" class="text-brand-navy font-semibold underline">(702) 222-2115</a>';
+const contactLink = '<a href="/es/contacto/" class="text-brand-navy font-semibold underline">formulario de contacto en línea</a>';
+
+const groups: Group[] = [
+  {
+    id: 'personal-injury',
+    heading: 'Preguntas Frecuentes Sobre Lesiones Personales',
+    faqs: [
+      {
+        q: '¿Quién Es Responsable de Mis Lesiones?',
+        a: [
+          { type: 'p', text: 'Determinar la responsabilidad es el primer paso en los reclamos de lesiones personales. Usted quiere saber quién causó el accidente y nombrar a esa parte como demandado en su caso. La parte responsable tendrá que cubrir los daños que usted sufra a causa del accidente.' },
+          { type: 'p', text: 'La cuestión de la responsabilidad es compleja, con varios factores que influyen. Es posible que varias partes sean responsables de un mismo accidente.' },
+          { type: 'p', text: 'Su abogado de lesiones personales le ayudará a analizar la evidencia disponible para determinar la responsabilidad.' },
+        ],
+      },
+      {
+        q: '¿Cuánto Vale Mi Reclamo?',
+        a: [
+          { type: 'p', text: 'La base del valor de su reclamo depende de varios elementos que requieren un análisis cuidadoso. Una de las funciones de un abogado de lesiones personales es ayudar a calcular el monto evaluando los daños medibles, tales como:' },
+          { type: 'ul', items: [
+            'Sus gastos médicos actuales para tratar las lesiones sufridas en el accidente',
+            'Los costos futuros de rehabilitación y tratamiento para sanar las lesiones',
+            'Los ingresos y salarios perdidos porque usted no puede trabajar',
+            'Daños a la propiedad',
+          ] },
+          { type: 'p', text: 'Los daños no económicos se agregan a la demanda de lesiones personales. Estos cubren:' },
+          { type: 'ul', items: [
+            'Estrés emocional',
+            'Dolor y sufrimiento',
+            'Pérdida de consorcio',
+            'Pérdida de la capacidad de disfrutar la vida',
+          ] },
+        ],
+      },
+      {
+        q: '¿Cuánto Tarda Mi Reclamo?',
+        a: [
+          { type: 'p', text: 'El tiempo para resolver un caso depende de las circunstancias particulares y de cómo respondan las compañías de seguros. Puede esperar que el proceso tarde desde un mes hasta un año. En casos extraordinarios, puede tardar aún más.' },
+        ],
+      },
+      {
+        q: '¿Qué Debo Hacer Después de un Accidente?',
+        a: [
+          { type: 'p', text: 'Lo primero que debe hacer después de un accidente es evaluarse a sí mismo. ¿Está lastimado de alguna manera? ¿Siente dolor? Aunque parezca estar bien a primera vista, busque atención médica de inmediato. El médico puede examinarlo mejor y determinar si tiene lesiones ocultas a causa del accidente.' },
+          { type: 'p', text: 'El siguiente paso es reportar el incidente a las autoridades correspondientes. Eso depende de la naturaleza del accidente. En casos de resbalones y caídas dentro de un hotel, significa presentar un reporte ante el equipo de administración. En cualquier caso, usted tiene la opción de llamar a la policía.' },
+          { type: 'p', text: 'Trate de reunir evidencia si no está gravemente lesionado. Use su teléfono para tomar fotos y videos de la escena. Hable con otras personas presentes en el lugar y anote lo que presenciaron junto con sus datos de contacto. Es posible que su abogado quiera hablar con ellas más adelante.' },
+          { type: 'p', text: 'Hable con un abogado de lesiones personales con experiencia para evaluar su caso.' },
+        ],
+      },
+      {
+        q: '¿Qué Son los Daños Punitivos?',
+        a: [
+          { type: 'p', text: 'Los daños económicos y no económicos se pagan a la víctima para compensar los costos que sufre a causa del accidente. Los tribunales exigen daños punitivos cuando hubo intención maliciosa por parte del demandado. En esencia, es una sanción económica que se añade a la compensación pagada a las víctimas.' },
+        ],
+      },
+      {
+        q: '¿Debo Hablar con la Compañía de Seguros?',
+        a: [
+          { type: 'p', text: 'Usted puede hablar con la compañía de seguros de la otra parte después del accidente. Sin embargo, tenga cuidado con la información que comparte con ellos. Recuerde: trabajan para su propio beneficio, no el suyo. Eso significa que intentarán todo lo posible para reducir el monto de su reclamo.' },
+          { type: 'p', text: 'Consulte a su abogado de lesiones personales antes de hablar con la compañía de seguros. Y no acepte ninguna oferta sin hacerlo primero.' },
+        ],
+      },
+    ],
+    outro: `¿Tiene otras preguntas sobre reclamos de lesiones personales que no se cubren en esta página? Puede contactar a Eric Blank Injury Attorneys al ${phone} para obtener más información. Estamos aquí para guiarlo a través del proceso legal de su reclamo de lesiones personales.`,
+  },
+  {
+    id: 'auto-accidents',
+    heading: 'Preguntas Frecuentes Sobre Accidentes de Auto',
+    faqs: [
+      {
+        q: '¿Debo Mover Mi Auto Después de un Accidente?',
+        a: [
+          { type: 'p', text: 'El Departamento de Transporte de Nevada recomienda que las personas involucradas en un accidente de auto retiren sus vehículos del camino para evitar otro choque. Sin embargo, es posible que los investigadores de la policía quieran ver la posición de los vehículos después del incidente para su reporte.' },
+          { type: 'p', text: 'Puede tomar fotos o videos de la escena antes de mover su auto. De esa manera, la policía y su abogado tendrán algo a lo que referirse más adelante.' },
+          { type: 'p', text: 'Todo esto suponiendo que usted pueda moverse. Si está lesionado o siente dolor, es mejor esperar la ayuda.' },
+        ],
+      },
+      {
+        q: '¿Qué Pasa Si Yo Tuve Parte de la Culpa del Accidente?',
+        a: [
+          { type: 'p', text: 'En Nevada, usted no pierde su caso solo por haber tenido parte de la culpa. Siempre que su grado de culpa sea del 50% o menos, aún puede presentar un reclamo, pero su recuperación se reducirá según su porcentaje de culpa. Sin embargo, cuando la otra parte logra llevar su responsabilidad por encima del 50%, la regla de negligencia comparativa modificada de Nevada generalmente le impide recuperar compensación alguna (NRS 41.141).' },
+        ],
+      },
+      {
+        q: '¿Necesito Atención Médica Aunque No Me Sienta Lastimado?',
+        a: [
+          { type: 'p', text: 'No todas las lesiones son evidentes después de un accidente de auto. La adrenalina puede impedirle sentir dolor hasta cierto punto. Siempre debe buscar atención médica de inmediato.' },
+          { type: 'p', text: 'Ser examinado por profesionales médicos también crea un documento oficial de sus lesiones justo después del choque, que luego puede usarse para su reclamo.' },
+        ],
+      },
+      {
+        q: '¿Debo Llamar a la Policía?',
+        a: [
+          { type: 'p', text: 'Aunque no está legalmente obligado a hacerlo, llamar a la policía es una buena idea para asegurar que se presente un reporte. Llame siempre a la policía si:' },
+          { type: 'ul', items: [
+            'Los vehículos involucrados están bloqueando el flujo normal del tráfico.',
+            'Hay daños a otras propiedades como autos, edificios y espacios públicos.',
+            'Alguna persona sufrió una lesión durante el accidente.',
+            'Existe la posibilidad de que uno o más vehículos se incendien.',
+          ] },
+        ],
+      },
+      {
+        q: '¿Quién Es Responsable de Mis Lesiones?',
+        a: [
+          { type: 'p', text: 'La parte que causó el accidente es responsable de las lesiones que usted sufrió. Incluso si usted es un pasajero, puede presentar una demanda contra el otro conductor.' },
+          { type: 'p', text: 'Hay casos en los que otros factores contribuyen al accidente. Por ejemplo, si las bolsas de aire no se despliegan, el fabricante tiene responsabilidad.' },
+          { type: 'p', text: 'Su abogado de accidentes de auto ayudará a determinar las partes responsables analizando la evidencia y los reportes del accidente.' },
+        ],
+      },
+      {
+        q: '¿Qué Pasa Si el Otro Conductor Niega Su Responsabilidad?',
+        a: [
+          { type: 'p', text: 'El otro conductor puede negar su responsabilidad por el accidente, y sucede con frecuencia. En este caso, la carga de la prueba recae sobre usted, y su compañía de seguros no considerará un acuerdo hasta que usted pruebe la culpabilidad del otro conductor.' },
+          { type: 'p', text: 'Su abogado de accidentes de auto puede organizar y presentar sus pruebas. Eso comienza con el análisis de la evidencia disponible para reconstruir la cronología del accidente.' },
+        ],
+      },
+      {
+        q: '¿Debo Aceptar la Oferta de Acuerdo de la Compañía de Seguros?',
+        a: [
+          { type: 'p', text: 'La primera oferta de las compañías de seguros siempre es baja. Su objetivo es terminar con esto lo más rápido posible mientras minimizan su costo. Todo se trata del dinero. No acepte ninguna oferta sin antes:' },
+          { type: 'ul', items: [
+            'Hacerse un chequeo médico para ver si tiene lesiones persistentes a causa del accidente.',
+            'Hablar con un representante legal para discutir su caso.',
+          ] },
+          { type: 'p', text: 'Después de un accidente de auto, es probable que la compañía de seguros del otro conductor se comunique con usted con una oferta. Puede hablar con ellos, pero trate de no responder demasiadas preguntas hasta que consulte con un abogado.' },
+        ],
+      },
+    ],
+    outro: `Un reclamo por accidente de auto en Las Vegas puede ser complejo, pero Eric Blank Injury Attorneys tiene la experiencia necesaria para ayudarle. Llame al ${phone} para programar una sesión de estrategia gratuita.`,
+  },
+  {
+    id: 'slip-and-fall',
+    heading: 'Preguntas Frecuentes Sobre Resbalones y Caídas',
+    faqs: [
+      {
+        q: '¿Cómo Se Prueba un Reclamo por Resbalón y Caída en Las Vegas?',
+        a: [
+          { type: 'p', text: 'Resbalarse y caer puede provocar diversas lesiones. Cuando eso sucede en la propiedad de otra persona, usted podría demandarla por negligencia. Como demandante, necesita probar los siguientes elementos:' },
+          { type: 'ul', items: [
+            'Que el demandado tiene control sobre el lugar donde ocurrió el accidente.',
+            'El demandante tenía permiso para estar en la propiedad.',
+            'Había un peligro en el lugar que provocó el accidente.',
+            'El demandado sabía o debía haber sabido del peligro.',
+            'Los peligros de caída lesionaron al demandante.',
+          ] },
+          { type: 'p', text: 'La carga de la prueba recae sobre los hombros del demandante.' },
+        ],
+      },
+      {
+        q: '¿Cuál Es la Definición de Superficies y Condiciones Peligrosas?',
+        a: [
+          { type: 'p', text: 'No existe una definición única de lo que es una condición peligrosa de una superficie. Un piso se vuelve peligroso cuando los administradores de la propiedad ignoran los problemas de mantenimiento y reparación, o no toman medidas preventivas. El dueño de la propiedad o el personal deben advertir a los visitantes sobre el peligro si no pueden solucionar el problema de inmediato.' },
+          { type: 'p', text: 'Ejemplos específicos de medidas preventivas incluyen:' },
+          { type: 'ul', items: [
+            'Usar tapetes antideslizantes',
+            'Reemplazar alfombras rotas',
+            'Reparar pasillos o escaleras desnivelados',
+            'Colocar conos de advertencia cerca de las áreas de construcción',
+            'Limpiar las superficies mojadas',
+            'Quitar el exceso de cera de los pisos',
+            'Instalar pasamanos en las escaleras',
+            'Cumplir con los códigos de seguridad',
+            'Proporcionar iluminación adecuada',
+            'Acordonar las áreas peligrosas',
+            'Mantener los pisos de los baños públicos secos y seguros',
+          ] },
+        ],
+      },
+      {
+        q: '¿Es Responsable un Hotel de Las Vegas Si Me Resbalo y Me Lesiono en Su Establecimiento?',
+        a: [
+          { type: 'p', text: 'Los hoteles y casinos usan distintos tipos de pisos. Según la ley de Nevada, son responsables de inspeccionar regularmente las instalaciones y atender los peligros existentes. Si el hotel o su personal descuidan su obligación de mantener un entorno seguro para los visitantes, pueden ser responsables de su lesión.' },
+        ],
+      },
+      {
+        q: '¿Qué Daños Se Incluyen en los Reclamos por Resbalones y Caídas?',
+        a: [
+          { type: 'p', text: 'Los demandantes pueden solicitar daños según el accidente y las circunstancias que lo rodean. En los reclamos estándar por negligencia, pueden solicitar daños compensatorios para cubrir:' },
+          { type: 'ul', items: [
+            'Todas las facturas médicas relacionadas con la lesión causada por el accidente. Eso debe cubrir hospitalización, rehabilitación, tratamientos, atención en el hogar, medicamentos y visitas al médico.',
+            'Los salarios que el demandante perdió porque no pudo trabajar mientras estaba lesionado. El cálculo de esto incluye los bonos y las propinas que debió haber recibido.',
+            'En los casos en que la persona ya no puede trabajar, el demandante tiene derecho a recibir el dinero que habría ganado de no ser por el accidente. Eso se llama salarios futuros perdidos.',
+            'El dolor y el sufrimiento son difíciles de calcular. El propósito es compensar al demandante por el estrés emocional y el dolor físico que atraviesa a causa de las lesiones.',
+          ] },
+        ],
+      },
+      {
+        q: '¿Existe un Plazo de Prescripción para los Reclamos por Resbalones y Caídas en Las Vegas?',
+        a: [
+          { type: 'p', text: 'En Nevada, usted tiene dos años para presentar un reclamo de lesiones personales, incluidos los accidentes de resbalones y caídas. Hay casos en los que el plazo se extiende, pero son para circunstancias especiales. Hable con un abogado de inmediato si se lesiona a causa de un accidente de resbalón y caída.' },
+        ],
+      },
+      {
+        q: '¿Qué Puedo Hacer Después de Resbalarme o Caerme?',
+        a: [
+          { type: 'p', text: 'Pida atención médica después de un accidente de resbalón y caída, especialmente si siente dolor. Su salud es lo primero, y es fundamental que lo examinen de inmediato.' },
+          { type: 'p', text: 'Reporte el incidente de inmediato a las autoridades correspondientes. La mayoría de las propiedades comerciales tienen un proceso para esto. También puede llamar a la policía para dar su declaración oficial.' },
+          { type: 'p', text: 'Reúna evidencia sobre el accidente. Hable con posibles testigos para conocer su punto de vista y anótelo. Tome también sus datos de contacto.' },
+          { type: 'p', text: 'Lo más importante: hable con un abogado de accidentes de resbalones y caídas que pueda ayudar a organizar la información para construir su reclamo.' },
+        ],
+      },
+    ],
+    outro: `Si tiene otras preguntas sobre reclamos por resbalones y caídas que no se cubren en esta lista, puede contactar a Eric Blank Injury Attorneys llamando al ${phone} o llenando nuestro ${contactLink}. Le ofreceremos una sesión de estrategia gratuita para hablar sobre los detalles de su caso y determinar el siguiente mejor paso.`,
+  },
+];
+
+const plainText = (blocks: Block[]) =>
+  blocks.map((b) => (b.type === 'p' ? b.text : b.items.join(' '))).join(' ');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://ericblanklaw.com/es/preguntas-frecuentes/#faq',
+  inLanguage: 'es',
+  mainEntity: groups.flatMap((g) =>
+    g.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: plainText(faq.a) },
+    })),
+  ),
+};
+---
+
+<html lang="es">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      canonical="https://ericblanklaw.com/es/preguntas-frecuentes"
+      lang="es"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="overflow-x-clip">
+    <Header lang="es" />
+    <main>
+      <section class="bg-brand-navy text-white">
+        <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+          <p class="text-sm font-semibold uppercase tracking-wide text-brand-gold">Respuestas de Nuestro Equipo</p>
+          <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Preguntas Frecuentes</h1>
+          <p class="mx-auto mt-4 max-w-2xl text-base text-white/70 sm:text-lg">
+            Respuestas a las preguntas que escuchamos con más frecuencia sobre reclamos de lesiones personales, accidentes de auto y resbalones y caídas en Las Vegas. ¿No encuentra la suya? Llame al <a href="tel:+17022222115" class="font-semibold text-brand-gold underline">(702) 222-2115</a> o <a href="/es/contacto/" class="font-semibold text-brand-gold underline">contáctenos</a>.
+          </p>
+        </div>
+      </section>
+      <section class="bg-white">
+        <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+          <nav aria-label="Secciones de preguntas frecuentes" class="mb-12 flex flex-wrap justify-center gap-3">
+            {groups.map((g) => (
+              <a href={`#${g.id}`} class="rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-brand-navy transition-colors hover:border-brand-gold hover:text-brand-gold">{g.heading}</a>
+            ))}
+          </nav>
+          <div class="space-y-16 text-gray-600 leading-relaxed">
+            {groups.map((g) => (
+              <div id={g.id} class="scroll-mt-24">
+                <h2 class="text-2xl font-bold text-brand-navy">{g.heading}</h2>
+                <div class="mt-6 space-y-8">
+                  {g.faqs.map((faq) => (
+                    <div>
+                      <h3 class="text-lg font-bold text-brand-navy">{faq.q}</h3>
+                      <div class="mt-2 space-y-3">
+                        {faq.a.map((b) =>
+                          b.type === 'p' ? (
+                            <p>{b.text}</p>
+                          ) : (
+                            <ul class="list-disc space-y-1 pl-6">
+                              {b.items.map((item) => <li>{item}</li>)}
+                            </ul>
+                          ),
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p class="mt-8 border-l-4 border-brand-gold bg-gray-50 p-4" set:html={g.outro} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer lang="es" />
+  </body>
+</html>

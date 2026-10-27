@@ -1,10 +1,33 @@
 ---
-const trustSignals = [
-	"26+ Years Experience",
-	"Millions Recovered",
-	"Available 24/7",
-	"Free Consultation",
-];
+interface Props {
+	lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const trustSignals =
+	lang === "es"
+		? ["Más de 26 Años de Experiencia", "Millones Recuperados", "Disponibles 24/7", "Consulta Gratuita"]
+		: ["26+ Years Experience", "Millions Recovered", "Available 24/7", "Free Consultation"];
+
+const t =
+	lang === "es"
+		? {
+				h1: "¿Lesionado en un Accidente? Usted Merece Algo Mejor.",
+				tagline: "Mejor Representación. Mejor Recuperación. Es Mejor Con Blank.",
+				lead: "Por más de 26 años, Eric Blank Injury Attorneys ha enfrentado a las compañías de seguros de Las Vegas para conseguir que las víctimas de accidentes reciban la compensación que verdaderamente merecen. No cobramos honorarios a menos que ganemos su caso.",
+				cta: "Evaluación Gratuita de su Caso",
+				ctaHref: "/es/contacto",
+				portraitAlt: "Abogado Eric Blank",
+			}
+		: {
+				h1: "Hurt In An Accident? You Deserve Better.",
+				tagline: "Better Representation. Better Recovery. It's Better With Blank.",
+				lead: "For over 26 years, Eric Blank Injury Attorneys has fought Las Vegas insurance companies to get injury victims the compensation they truly deserve. No fees unless we win your case.",
+				cta: "Free Case Review",
+				ctaHref: "/contact",
+				portraitAlt: "Attorney Eric Blank",
+			};
 
 const phoneDisplay = "(702) 222-2115";
 const phoneHref = "tel:7022222115";
@@ -18,27 +41,25 @@ const phoneHref = "tel:7022222115";
 			id="hero-heading"
 			class="text-3xl font-extrabold leading-tight tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl"
 		>
-			Hurt In An Accident? You Deserve Better.
+			{t.h1}
 		</h1>
 
 		<div class="mx-auto mt-6 h-1 w-24 rounded-full bg-brand-gold lg:mx-0"></div>
 
 		<p class="mt-6 text-lg font-medium text-balance text-brand-gold sm:text-xl lg:text-2xl">
-			Better Representation. Better Recovery. It's Better With Blank.
+			{t.tagline}
 		</p>
 
 		<p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-pretty text-white/80 sm:text-lg lg:mx-0">
-			For over 26 years, Eric Blank Injury Attorneys has fought Las Vegas insurance
-			companies to get injury victims the compensation they truly deserve. No fees
-			unless we win your case.
+			{t.lead}
 		</p>
 
 		<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row lg:justify-start">
 			<a
-				href="/contact"
+				href={t.ctaHref}
 				class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
 			>
-				Free Case Review
+				{t.cta}
 			</a>
 			<a
 				href={phoneHref}
@@ -75,7 +96,7 @@ const phoneHref = "tel:7022222115";
 		<div class="flex items-center justify-center">
 			<img
 				src="/Eric_Blank_Portrait_20260612.png"
-				alt="Attorney Eric Blank"
+				alt={t.portraitAlt}
 				width="1122"
 				height="1402"
 				class="w-full max-w-sm rounded-xl object-cover shadow-2xl"

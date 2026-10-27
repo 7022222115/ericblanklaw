@@ -1,0 +1,595 @@
+---
+import '../../../styles/global.css';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import TestimonialCarousel from '../../../components/TestimonialCarousel.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+import { firmNode, attorneyNode } from '../../../data/firm';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Abogado de Lesiones Cerebrales y de Médula Espinal en Las Vegas | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"¿Sufrió una lesión cerebral traumática o de médula espinal en Las Vegas? Eric Blank Injury Attorneys construye los casos de lesiones catastróficas en torno al costo total de por vida. Consulta gratuita. Sin honorarios a menos que ganemos. Llame al (702) 222-2115.";
+
+const heroTrust = ["Más de 26 Años", "Millones Recuperados", "Disponibles 24/7", "Consulta Gratuita"];
+
+const stats = [
+	{ value: "Millones", label: "Recuperados para Clientes con Lesiones Graves" },
+	{ value: "Miles", label: "de Casos Cerebrales y de Columna Manejados" },
+	{ value: "$0", label: "de Su Bolsillo", note: "Solo honorarios de contingencia" },
+	{ value: "24/7", label: "Consulta Gratuita" },
+];
+
+const steps = [
+	{
+		icon: shieldIcon,
+		title: "Obtenga Atención de Emergencia",
+		text: "Las lesiones cerebrales y de columna son críticas en el tiempo. Si sospecha alguna de las dos, no mueva al paciente a menos que sea absolutamente necesario, y llame al 911. Los paramédicos están entrenados para estabilizar la cabeza y la columna antes del traslado.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Asegúrese de Que la Causa Quede Documentada",
+		text: "Ya sea que la lesión haya venido de un choque, una caída, una agresión o un evento laboral, la causa debe quedar asegurada. Los informes policiales y de incidentes, las fotografías y los datos de contacto de los testigos se convierten después en evidencia esencial.",
+	},
+	{
+		icon: cameraIcon,
+		title: "Fotografíe la Escena si Puede",
+		text: "Si un tercero causó la lesión, las fotografías de la escena, del peligro, del vehículo o del lugar suelen desaparecer en cuestión de días. Si usted no puede, pida a un familiar o amigo que lo haga rápido.",
+	},
+	{
+		icon: stethoscopeIcon,
+		title: "Guarde Cada Registro",
+		text: "Los registros del hospital, las imágenes médicas, las notas de terapia, las recetas, los recibos de equipo y las facturas de cuidado en el hogar pasan a formar parte del panorama de daños. Manténgalos organizados desde el primer día — estos casos dependen de la documentación.",
+	},
+	{
+		icon: banIcon,
+		title: "No Hable con las Aseguradoras",
+		text: "Las aseguradoras — de auto, de locales, del empleador — se comunicarán rápido. No dé declaraciones grabadas, no firme autorizaciones ni acepte ofertas tempranas. Con lesiones catastróficas, las cifras tempranas casi siempre quedan muy por debajo del costo de por vida.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Llame a un Abogado con Experiencia",
+		text: "Los casos catastróficos requieren planificación de cuidados de por vida, expertos vocacionales y economistas para plasmar en papel el panorama completo de daños. Un abogado que maneja estos casos sabe qué expertos contratar y cuándo.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Investigamos la Causa",
+		text: "Las lesiones cerebrales y de columna pueden surgir de choques, caídas, peligros en locales, agresiones, eventos laborales y más. Investigamos el marco de responsabilidad que corresponde a la causa — asegurando la evidencia, identificando a cada parte responsable y persiguiendo cada fuente de seguro aplicable.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Construimos el Panorama de Daños de Por Vida",
+		text: "Los daños por lesiones catastróficas no son solo las facturas de hoy. Trabajamos con los médicos tratantes, planificadores de cuidados de por vida, expertos vocacionales y economistas para documentar el costo total de por vida — atención futura, pérdida de capacidad de ingresos, modificaciones del hogar y apoyo continuo.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Negociamos Desde una Postura Catastrófica",
+		text: "Las aseguradoras valoran los reclamos catastróficos de manera muy distinta a los reclamos ordinarios de lesiones — y prefieren valorarlos bajo. La experiencia de Eric Blank en la defensa de aseguradoras nos dice de dónde salen sus números y cómo rebatir cada suposición.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Llevamos el Caso a Juicio si Hace Falta",
+		text: "Los casos catastróficos alcanzan su valor real cuando las aseguradoras saben que el equipo de juicio es real. Preparamos cada caso cerebral y de columna como si fuera a presentarse ante un jurado.",
+	},
+];
+
+const economicDamages = [
+	"Atención médica pasada y futura — hospitalización, cirugía, rehabilitación",
+	"Cuidado en el hogar, equipo y modificaciones de la vivienda",
+	"Salarios perdidos y pérdida de capacidad futura de ingresos",
+	"Gastos de bolsillo durante toda la vida de la lesión",
+];
+
+const nonEconomicDamages = [
+	"Dolor y sufrimiento",
+	"Angustia emocional",
+	"Pérdida del disfrute de la vida",
+	"Discapacidad o desfiguración permanente",
+	"Pérdida de consorcio",
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Plazo de Prescripción",
+		text: "Nevada generalmente le da 2 años desde la fecha de la lesión para presentar una demanda de lesiones personales (NRS 11.190). Aplican excepciones limitadas, pero esperar es arriesgado. Los reclamos contra entidades de gobierno tienen plazos de notificación mucho más cortos, y las reglas para menores y para reclamos de muerte injusta son distintas.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Negligencia Comparativa",
+		text: "En Nevada, usted no pierde su caso solo por haber tenido parte de la culpa. Siempre que su grado de culpa sea del 50% o menos, aún puede presentar un reclamo, pero su recuperación se reducirá según su porcentaje de culpa. Sin embargo, cuando la otra parte logra llevar su responsabilidad por encima del 50%, la regla de negligencia comparativa modificada de Nevada generalmente le impide recuperar compensación alguna (NRS 41.141).",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "La Responsabilidad Depende de la Causa",
+		text: "El marco legal para una lesión cerebral o de médula espinal depende de cómo ocurrió. Los casos de choques giran en torno a la negligencia del conductor y las pólizas de auto; las caídas, en torno a la responsabilidad de locales; las agresiones pueden involucrar al agresor y a cualquier propietario cuya seguridad negligente contribuyó; las lesiones laborales involucran la compensación laboral junto con cualquier reclamo contra terceros. Identificamos cada marco que aplica.",
+	},
+];
+
+const faqs = [
+	{
+		q: "¿Qué tipos de accidentes causan lesiones cerebrales y de médula espinal?",
+		a: "Choques de auto, accidentes de motocicleta y bicicleta, atropellos de peatones, caídas (en locales comerciales, en el trabajo o en otros lugares), agresiones relacionadas con seguridad inadecuada e incidentes laborales son las causas más comunes que vemos. El marco legal depende de la causa.",
+	},
+	{
+		q: "¿Por qué el costo futuro de una lesión cerebral o de columna es tan importante para mi caso?",
+		a: "Porque la mayor parte del costo llega después. La rehabilitación, las cirugías futuras, los medicamentos, el equipo, el cuidado en el hogar, las modificaciones de la vivienda y décadas de pérdida de capacidad de ingresos pueden superar con creces la hospitalización inicial. Las aseguradoras prefieren llegar a un acuerdo cuando solo las facturas iniciales están sobre la mesa — ese es exactamente el momento en que la mayoría de los casos catastróficos se subvaloran.",
+	},
+	{
+		q: "¿Con qué tipos de expertos trabajan en los casos catastróficos?",
+		a: "Médicos tratantes, planificadores de cuidados de por vida, expertos vocacionales, neuropsicólogos, especialistas en rehabilitación y economistas, según el caso. El objetivo es presentar ante la aseguradora o el jurado un panorama de daños de por vida creíble y respaldado por evidencia — no una suposición.",
+	},
+	{
+		q: "¿Cuánto tiempo tengo para presentar un reclamo por lesión cerebral o de médula espinal en Nevada?",
+		a: "Generalmente dos años desde la fecha de la lesión, según NRS 11.190. Algunos reclamos — por ejemplo, contra una entidad de gobierno — tienen plazos de notificación mucho más cortos, y ciertas excepciones limitadas pueden afectar cuándo empieza a correr el plazo. No espere.",
+	},
+	{
+		q: "¿Qué pasa si también hay un reclamo de compensación laboral?",
+		a: "Las lesiones cerebrales y de columna por incidentes laborales pueden involucrar tanto un reclamo de compensación laboral como un reclamo de lesiones personales contra un tercero distinto de su empleador. Coordinamos los dos para que la compensación laboral no socave una recuperación completa contra el tercero.",
+	},
+	{
+		q: "¿Cuánto cuesta contratar a un abogado de lesiones cerebrales y de columna?",
+		a: "Nuestros honorarios son de contingencia — sin costo inicial y sin cobro por hora. Solo nos pagan si ganamos, y el honorario es un porcentaje de su recuperación, pactado por escrito antes de empezar.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Evaluación de caso gratuita y sin compromiso", icon: checkCircleIcon },
+	{ text: "Sin honorarios a menos que ganemos su caso", icon: circleDollarSignIcon },
+	{ text: "Disponibles 24/7 — noches, fines de semana y días festivos", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		firmNode,
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/lesiones-cerebrales-y-de-columna#service",
+			name: "Eric Blank Injury Attorneys — Representación en Lesiones Cerebrales y de Médula Espinal",
+			serviceType: "Servicios Legales de Lesiones Catastróficas",
+			url: "https://ericblanklaw.com/es/areas-de-practica/lesiones-cerebrales-y-de-columna",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			priceRange: "Honorarios de Contingencia — Sin Honorarios a Menos Que Ganemos",
+			inLanguage: "es",
+			provider: { "@id": "https://ericblanklaw.com/#legalservice" },
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		attorneyNode,
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/lesiones-cerebrales-y-de-columna#faq",
+			inLanguage: "es",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="es">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/es/areas-de-practica/lesiones-cerebrales-y-de-columna"
+			lang="es"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header lang="es" />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/brain-and-spine-injury-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Lesión Catastrófica
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Abogado de Lesiones Cerebrales y de Médula Espinal en Las Vegas
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						Una lesión grave del cerebro o de la médula espinal cambia una vida — y cambia
+						las cuentas de cada reclamo. La atención médica no termina con el alta. La
+						rehabilitación, las cirugías futuras, el cuidado en el hogar, el equipo, la
+						pérdida de capacidad de ingresos y décadas de impacto en una familia — todo eso
+						debe estar sobre la mesa. Por más de 26 años, Eric Blank Injury Attorneys ha
+						construido casos de lesiones catastróficas que toman en cuenta el costo total de
+						por vida — no la versión instantánea que prefieren las aseguradoras. Consulta
+						gratuita, y sin honorarios a menos que ganemos.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Evaluación Gratuita de su Caso
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What to do after a brain or spine injury -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Primeros Pasos
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Qué Hacer Después de una Lesión Cerebral o de Columna
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Los primeros días después de la lesión definen todo el reclamo — y el
+							expediente médico construido entonces acompaña cada paso que sigue.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nuestro Enfoque
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Cómo Eric Blank Injury Attorneys Maneja los Casos Cerebrales y de Columna
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank pasó los primeros años de su carrera defendiendo a compañías de
+							seguros. Aplicamos ese conocimiento interno a cada caso catastrófico — la
+							misma ventaja que usamos en toda nuestra{" "}
+							<a
+								href="/es/areas-de-practica"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								práctica de lesiones personales
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — What you can recover -->
+			<section class="bg-white" aria-labelledby="damages-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Daños y Perjuicios
+						</p>
+						<h2
+							id="damages-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Lo Que las Víctimas de Lesiones Catastróficas Pueden Recuperar en Nevada
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							La ley de Nevada permite a las víctimas de lesiones recuperar daños
+							compensatorios — tanto las pérdidas económicas concretas como el costo humano
+							de la lesión. Con las lesiones cerebrales y de médula espinal, los daños
+							futuros — atención, equipo, pérdida de capacidad de ingresos — típicamente
+							superan con creces las facturas iniciales.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Daños Económicos</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									economicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Daños No Económicos</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									nonEconomicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Que los límites de daños de Nevada apliquen depende de cómo ocurrió la lesión.
+						Una lesión cerebral o de médula espinal causada por negligencia médica está
+						sujeta al límite legal de Nevada sobre daños no económicos en casos de
+						negligencia médica; la mayoría de los demás reclamos por lesiones catastróficas
+						— choques, caídas, peligros en locales, agresiones — no tienen límite bajo la
+						ley general de Nevada. La cantidad que puede recuperar depende de los detalles
+						de su caso — una{" "}
+						<a
+							href="/es/contacto"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							consulta gratuita
+						</a>{" "}
+						es la mejor manera de obtener una respuesta real.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Ley de Nevada
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Leyes Clave de Nevada Sobre Lesiones Catastróficas
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Esta es información general, no asesoramiento legal para su caso específico. Hable
+						con un abogado sobre los hechos de su situación.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Preguntas Frecuentes
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Preguntas Comunes Sobre Lesiones Cerebrales y de Columna
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<p class="mt-3 text-xs text-gray-500">Reseña original en inglés.</p>
+					<a
+						href="/es/resenas"
+						class="mt-6 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Lea más reseñas de clientes →
+					</a>
+				</div>
+			</section>
+
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel lang="es" />
+
+			<!-- SECTION 9 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Solicite su Evaluación Gratuita de Caso
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							Es gratis, confidencial y sin compromiso.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Por Qué Llamar Ahora
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Tres Razones Para Contactarnos Hoy
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								Los casos de lesiones cerebrales y de médula espinal requieren un panorama
+								completo de daños de por vida — construido con expertos, registros y
+								planificación detallada. Cuanto antes nos contacte, más podremos hacer.
+							</p>
+						</div>
+						<ContactForm lang="es" />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer lang="es" />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
+	</body>
+</html>

@@ -1,0 +1,64 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import BetterValues from '../../components/BetterValues.astro';
+import MidPageCTA from '../../components/MidPageCTA.astro';
+import PracticeAreas from '../../components/PracticeAreas.astro';
+import AboutEric from '../../components/AboutEric.astro';
+import Results from '../../components/Results.astro';
+import Reviews from '../../components/Reviews.astro';
+import Badges from '../../components/Badges.astro';
+import Contact from '../../components/Contact.astro';
+import TestimonialCarousel from '../../components/TestimonialCarousel.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import Footer from '../../components/Footer.astro';
+import { firmNode, attorneyNode } from '../../data/firm';
+
+const title =
+	"Abogado de Lesiones Personales en Las Vegas | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"¿Lesionado en un accidente? Eric Blank Injury Attorneys ha enfrentado a las aseguradoras de Las Vegas por más de 26 años. Consulta gratuita. Sin honorarios a menos que ganemos. Llame al (702) 222-2115.";
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{ ...firmNode, description, inLanguage: "es" },
+		{ ...attorneyNode, description: "Un abogado de lesiones personales de Las Vegas que pasó años defendiendo a compañías de seguros antes de dedicar su práctica a representar a demandantes lesionados." },
+	],
+};
+---
+
+<html lang="es">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/es/"
+			ogImage="/og-default.jpg"
+			lang="es"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header lang="es" />
+		<main>
+			<Hero lang="es" />
+			<BetterValues lang="es" />
+			<MidPageCTA lang="es" />
+			<PracticeAreas lang="es" />
+			<AboutEric lang="es" />
+			<Results lang="es" />
+			<Reviews lang="es" />
+			<Badges lang="es" />
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel lang="es" />
+
+			<Contact lang="es" />
+		</main>
+		<Footer lang="es" />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
+	</body>
+</html>

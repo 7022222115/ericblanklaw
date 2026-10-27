@@ -1,9 +1,45 @@
 ---
-const stats = [
-	{ value: "26+", label: "Years of Experience" },
-	{ value: "Millions", label: "Recovered for Clients" },
-	{ value: "Free", label: "Initial Consultation" },
-];
+interface Props {
+	lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const stats =
+	lang === "es"
+		? [
+				{ value: "26+", label: "Años de Experiencia" },
+				{ value: "Millones", label: "Recuperados para Clientes" },
+				{ value: "Gratis", label: "Consulta Inicial" },
+			]
+		: [
+				{ value: "26+", label: "Years of Experience" },
+				{ value: "Millions", label: "Recovered for Clients" },
+				{ value: "Free", label: "Initial Consultation" },
+			];
+
+const t =
+	lang === "es"
+		? {
+				photoAlt: "Eric R. Blank — Abogado de Lesiones Personales, Las Vegas",
+				eyebrow: "Conozca a su Abogado",
+				subtitle: "Ex Abogado Defensor de Aseguradoras. Ahora Lucha Por Usted.",
+				p1: "Durante años, Eric Blank trabajó para las compañías de seguros. Como abogado defensor de aseguradoras, lo contrataban para evaluar reclamos de lesiones, encontrar sus puntos débiles y mantener los pagos bajos. Hoy está del lado opuesto — usando ese conocimiento interno para luchar por las personas lesionadas a quienes esas mismas compañías intentan pagar de menos.",
+				p2: "Con más de 26 años de experiencia legal, Eric ha visto el proceso de reclamos desde todos los ángulos. Antes de dedicar su práctica a las víctimas de accidentes, defendió a aseguradoras en los tribunales y fue asesor general de las afiliadas locales de televisión de NBC y Fox. Hoy su enfoque es único: representar a demandantes lesionados en Las Vegas y el Condado de Clark.",
+				p3: "Eric dejó la defensa de aseguradoras por una razón sencilla — quería que su trabajo significara algo. Ayudar a las personas lesionadas a recuperarse, reconstruir su vida y hacer que los responsables rindan cuentas es lo que lo motiva. Ese es el trabajo que hace hoy, y haciéndolo ha recuperado millones en veredictos y acuerdos.",
+				cta: "Lea la Biografía Completa de Eric",
+				ctaHref: "/es/abogados/eric-blank/",
+			}
+		: {
+				photoAlt: "Eric R. Blank — Personal Injury Attorney, Las Vegas",
+				eyebrow: "Meet Your Attorney",
+				subtitle: "Former Insurance Defense Attorney. Now Fighting For You.",
+				p1: "For years, Eric Blank worked for the insurance companies. As an insurance defense attorney, he was hired to evaluate injury claims, find their weak points, and keep payouts low. Today he stands on the opposite side — using that insider knowledge to fight for the injured people those same companies try to underpay.",
+				p2: "With more than 26 years of legal experience, Eric has seen the claims process from every angle. Before devoting his practice to injury victims, he defended insurance carriers in court and served as general counsel for the local NBC and Fox television affiliates. Today his focus is singular: representing injured plaintiffs throughout Las Vegas and Clark County.",
+				p3: "Eric left insurance defense for a straightforward reason — he wanted his work to mean something. Helping injured people recover, rebuild, and hold the responsible parties accountable is what drives him. That's the work he does today, and he's recovered millions in verdicts and settlements doing it.",
+				cta: "Read Eric's Full Bio",
+				ctaHref: "https://ericblanklaw.com/attorneys/eric-blank/",
+			};
 ---
 
 <section class="bg-white" aria-labelledby="about-heading">
@@ -13,7 +49,7 @@ const stats = [
 			<div class="mx-auto w-full max-w-[320px] lg:mx-0">
 				<img
 					src="/Eric_Blank_01.jpg"
-					alt="Eric R. Blank — Personal Injury Attorney, Las Vegas"
+					alt={t.photoAlt}
 					width="600"
 					height="900"
 					loading="lazy"
@@ -24,7 +60,7 @@ const stats = [
 			<!-- Bio -->
 			<div>
 				<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
-					Meet Your Attorney
+					{t.eyebrow}
 				</p>
 				<h2
 					id="about-heading"
@@ -33,30 +69,13 @@ const stats = [
 					Eric R. Blank
 				</h2>
 				<p class="mt-2 text-lg font-semibold text-brand-gold sm:text-xl">
-					Former Insurance Defense Attorney. Now Fighting For You.
+					{t.subtitle}
 				</p>
 
 				<div class="mt-6 space-y-4 text-base leading-relaxed text-pretty text-gray-600">
-					<p>
-						For years, Eric Blank worked for the insurance companies. As an insurance
-						defense attorney, he was hired to evaluate injury claims, find their weak
-						points, and keep payouts low. Today he stands on the opposite side — using
-						that insider knowledge to fight for the injured people those same companies
-						try to underpay.
-					</p>
-					<p>
-						With more than 26 years of legal experience, Eric has seen the claims process
-						from every angle. Before devoting his practice to injury victims, he defended
-						insurance carriers in court and served as general counsel for the local NBC
-						and Fox television affiliates. Today his focus is singular: representing
-						injured plaintiffs throughout Las Vegas and Clark County.
-					</p>
-					<p>
-						Eric left insurance defense for a straightforward reason — he wanted his work
-						to mean something. Helping injured people recover, rebuild, and hold the
-						responsible parties accountable is what drives him. That's the work he does
-						today, and he's recovered millions in verdicts and settlements doing it.
-					</p>
+					<p>{t.p1}</p>
+					<p>{t.p2}</p>
+					<p>{t.p3}</p>
 				</div>
 
 				<!-- Stat callouts -->
@@ -78,10 +97,10 @@ const stats = [
 
 				<!-- CTA -->
 				<a
-					href="https://ericblanklaw.com/attorneys/eric-blank/"
+					href={t.ctaHref}
 					class="mt-8 inline-flex items-center justify-center rounded-md bg-brand-gold px-6 py-3 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b]"
 				>
-					Read Eric's Full Bio
+					{t.cta}
 				</a>
 			</div>
 		</div>

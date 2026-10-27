@@ -1,3 +1,101 @@
+# 🟢 CURRENT STATE — 2026-10-26 (session 12)  ·  SPANISH REVIEW CLEARED — READY TO MERGE `es` → main, then the redirects + SEO pass
+
+**Spanish review gate: CLOSED 2026-10-26 — H.K.'s bilingual staff reviewed the branch preview (es.ericblanklaw.pages.dev) and cleared it.** The `es` branch (`7a9a94d` Spanish mirror + `f941965` sweepstakes-link fix) is ready to merge. Main moved meanwhile (`a777944` same sweepstakes fix made independently + `1261dac` Enter Contest button) — the duplicate fix is byte-identical on both sides, so the merge is clean (verified: no overlapping real changes). The VM's ~18 "modified" files are CRLF noise (`git diff --ignore-cr-at-eol` is empty) — ignore them; Windows git shows the truth.
+
+## ⚠ Still open for ERIC specifically (staff review didn't cover EN-source questions)
+1. "For over 22 years" typo on bicycle + workers-comp heroes (everything else says 26+) — fix EN + ES together.
+2. LP pages' short "51% or more" comparative-negligence card vs his approved "50% or less" paragraph (consistent math, different wording, no NRS cite).
+Neither blocks the merge — both exist on the live EN site today.
+
+## MERGE (H.K., Windows PowerShell, repo root — pushing main deploys LIVE)
+```
+git add HANDOFF.md
+git commit -m "docs(handoff): session 12 - Spanish review cleared, redirects+SEO checklist"
+git checkout main
+git pull
+git merge es
+git push
+```
+Expect the merge to be clean. Wait ~2 min for the Cloudflare deploy. If anything looks wrong on the apex, `git revert -m 1 HEAD` + push rolls the merge back.
+
+## POST-MERGE — REDIRECTS + SEO CHECKLIST (this phase's work)
+1. **Apex spot-checks** (~2 min after deploy): `https://ericblanklaw.com/es/` 200 · ES/EN toggle both ways · `/es/gracias/` noindex · hreflang `<link rel="alternate">` pairs present on one EN + one ES page · the 2 legacy Spanish URLs 301 single-hop:
+   - `/clark-county-reclamos-de-lesiones-personales-abogado-nevada/` → `/es/lp/abogado-de-lesiones-personales-condado-de-clark/`
+   - `/abogado-de-reclamo-de-lesiones-de-accidente-de-automovil-en-las-vegas-nevada/` → `/es/lp/abogado-de-accidentes-de-auto-las-vegas/`
+2. **Full audit re-run**: `python scripts/redirect_audit.py EBIAtriageinventory_2_WORKING.xlsx https://ericblanklaw.com` → expect **346/349 literal, 349/349 effective** (the 3 remaining = stale sheet cells #2 Robert, #164 sitemap, #194 chayannegiveaway — still sheet problems, not site problems).
+3. **Triage sheet** (next time it's touched): fix the 3 stale cells AND update the 2 `/es/` rows' target cells to the real `/es/lp/…` URLs so the audit goes fully literal.
+4. **GSC** (domain property covers both languages + all subdomains): resubmit `https://ericblanklaw.com/sitemap-index.xml` → expect ~123 discovered URLs (80 EN + 43 ES). Over the following 2–6 weeks: Pages report — /es/ URLs moving to Indexed, no 404/soft-404 spike; Performance filtered to path `/es/` for first Spanish impressions. hreflang pickup is slow (weeks) — "Discovered 0" right after submit is normal.
+5. Nothing else needed on-page: canonical/hreflang/og:locale/inLanguage all ship in the build; Meta Pixel already fires on ES pages.
+
+## NEXT PROJECT — retire es.ericblanklaw.com (own session, the real redirect/SEO job)
+The old Spanish WordPress on GreenGeeks is still live at `es.ericblanklaw.com` and, once /es/ is indexed, becomes competing duplicate Spanish content. Consolidate with 301s:
+1. Inventory es. URLs — Screaming Frog (installed on H.K.'s PC) or the WP sitemap (`es…/sitemap_index.xml`).
+2. Map each old es. URL → best /es/ page (practice pages to their ES twins; everything else → `/es/`).
+3. Cloudflare: account-level **Bulk Redirect List** for the exact mappings + one dynamic Single Redirect catch-all `es.ericblanklaw.com/*` → `https://ericblanklaw.com/es/` 301 for the unmapped tail.
+4. Flip the `es` DNS record gray→orange (proxied). **FIRST check Rules → Page Rules AND account Bulk Redirects for dormant rules — the exact failure mode from the 09-27 cutover.** Also remember the inert `_acme-challenge.*`/`_cf-custom-hostname.*` TXTs on `es` (cleanup candidates).
+5. Verify sample URLs single-hop; GSC's old `es…/sitemap_index.xml` entry then 301s through — leave it.
+6. ONLY after this is stable: the GreenGeeks decommission decision. `2026.` subdomain still points there — identify what it is before any cancellation.
+
+## Carried
+Ozempic mass-tort pilot: untracked in the tree, Eric's gate OPEN (do not sweep into commits). Blog ES translation (36 posts, triage stale news first). /es/ community page when wanted (i18n row + ES footer link come with it). Hero LCP `86baj7a9t` · about-card headshots · criminal-law priceRange · DMARC · GreenGeeks stays paid until es. retirement completes.
+
+# 🗄️ SUPERSEDED — 2026-10-22 (session 9: Spanish /es/ build · committed to branch `es` as `7a9a94d` 2026-10-22, review cleared 2026-10-26 — see session 12 above)
+
+**SPANISH /es/ FULL MIRROR — all 63 files now in the working tree, awaiting H.K.'s `es` BRANCH commit + human Spanish review. NOT for main yet.** 44 Spanish pages under `src/pages/es/` (home, 20 practice areas, 10 LPs, attorneys ×3, contacto, resultados, resenas, preguntas-frecuentes, empleo, privacidad, términos, gracias noindex) + i18n infrastructure. H.K.'s calls (2026-10-05): /es/ in the same repo · **Spanish slugs** · lang prop on shared components · pages now, **blog later** · branch `es`, never straight to main.
+
+## ⚠⚠ COMMIT COORDINATION — READ BEFORE `git add`
+The working tree ALSO holds session 11's **uncommitted `src/pages/practice-areas/mass-tort/ozempic.astro`** (Eric's gate wide open on it). **Do NOT `git add -A` / `git add .`** — it would drag the Ozempic pilot into the Spanish branch. Use the explicit path list in NEXT below. Sessions 10 (community page) + Meta Pixel are already on main (`b5e7152`, `a8eb434`); the Spanish components were re-based onto them 2026-10-22 (pixel kept in BaseHead — it fires on ES pages too; Community link kept in the EN footer only, the ES footer omits it until a Spanish community page exists).
+
+## ⚠ SPANISH REVIEW GATE (OPEN)
+All Spanish copy is machine-translated (Claude) from Eric's approved English. **A Spanish-fluent human must review before `es` merges to main.** Flag list for Eric/the reviewer is at the bottom of this entry.
+
+## How it works (one source of truth each)
+- **`src/data/i18n.ts` (NEW)** — the EN↔ES route map (44 pairs). RULE: every new ES page gets a row, and the row must never land before the page exists (BaseHead would emit a hreflang to a 404). `/community/` deliberately has no row yet.
+- **`BaseHead.astro`** — auto-emits `hreflang="en"/"es"/x-default` on any page whose path is in the map (both directions, zero per-page wiring); `lang="es"` → `og:locale es_US`. Meta Pixel untouched, renders on ES pages.
+- **`Header.astro`** — ES nav + **ES/EN toggle** (desktop button + mobile menu item) linking each page to its counterpart via the map, falling back to the other homepage. ES nav omits Blog (untranslated).
+- **14 components took `lang?: "en" | "es"`, EN default** (EN output verified unchanged in build): BaseHead, Header, Footer, ContactForm, Contact, Hero, BetterValues, MidPageCTA, PracticeAreas, PracticeAreaGrid, AboutEric, Results, Badges, Reviews, TestimonialCarousel.
+- ContactForm lang="es": same Formspree endpoint, `_next` → `/es/gracias`, `_subject` tagged "(Español)".
+- Client review/testimonial QUOTES stay English (real reviews) + "Reseña original en inglés." note; carousel sub notes "(videos en inglés)".
+- ES JSON-LD: ES `@id`/`url`/`name`/`serviceType`, `inLanguage: "es"` on service + FAQPage nodes; firmNode/attorneyNode shared. ES FAQ JSON-LD verified = visible text (19/19).
+- `astro.config.mjs` sitemap filter also excludes `/gracias`. Sitemap gains 43 ES URLs.
+- **`public/_redirects` 685 → 689**: the 2 legacy Spanish URLs (triage "PRESERVE → /es/…", the last 2 deliberate audit fails) 301 → `/es/lp/abogado-de-lesiones-personales-condado-de-clark/` and `/es/lp/abogado-de-accidentes-de-auto-las-vegas/` + no-slash twins. Once on MAIN: audit ceiling 346/349 literal, 349/349 effective.
+- Cloud build check 2026-10-22 (post-rebase on community+pixel): 0 errors; hreflang bidirectional; ES/EN toggle both ways; `/es/gracias` noindex + out of sitemap; 689 _redirects rules in dist.
+
+## NEXT
+1. **H.K., Windows PowerShell, repo root** (never git from the VM):
+   `git checkout -b es`
+   `git add src/pages/es src/data/i18n.ts src/components public/_redirects astro.config.mjs HANDOFF.md`
+   `git status` → expect **63 files** (45 new under src/pages/es + i18n.ts, 15 modified components, astro.config.mjs, _redirects, HANDOFF) and **ozempic.astro still untracked — leave it**.
+   `git commit -m "feat(i18n): Spanish /es/ mirror - 44 pages, hreflang, lang-aware components"`
+   `git push -u origin es`
+   → Cloudflare branch preview at **https://es.ericblanklaw.pages.dev**; main untouched.
+2. Eyeball the preview: /es/, toggle both ways, /es/areas-de-practica/accidentes-de-auto/, /es/preguntas-frecuentes/, form → /es/gracias, the 2 legacy Spanish redirect URLs, and that EN pages still render identically (pixel, community link).
+3. Spanish-fluent reviewer clears the gate → merge `es` → main → GSC sitemap re-check (+43 URLs) → re-run audit (expect 346/349 literal).
+4. LATER: translate blog (36 posts — triage stale news first); /es/ community page (then add its i18n row + ES footer link); retire `es.ericblanklaw.com` WP with 301s into /es/ (ties into GreenGeeks decommission).
+
+## Flags for Eric / the Spanish reviewer
+- **EN source typo ×2**: bicycle + workers-comp heroes say "For over 22 years" (everything else 26+). Translated faithfully — fix EN+ES together if it's a typo.
+- **LP pages' short comparative-negligence card** says "51% or more → recover nothing" (consistent with the 50%-or-less rule but not Eric's approved paragraph, no NRS cite). Translated as-is; confirm whether LPs should carry his full paragraph.
+- Terminology calls: "muerte injusta", "responsabilidad indirecta" (vicarious), "invitado comercial / licenciatario / intruso", "notificación real o implícita", "compañía, convivencia y consuelo" (NRS 41.085), "Formulario C-1/C-4" with translated parentheticals, "delitos mayores (felonies)" style first-use glosses, gendered "listo" on the sexual-assault page (consider neutral "cuando usted lo decida"), tagline "Mejor Representación. Mejor Recuperación. Es Mejor Con Blank.", "La Diferencia Better With Blank".
+- Terms-of-use emphasis clause rendered in normal Spanish capitalization ("tal cual" quoted); ALL CAPS if the firm wants visual emphasis.
+- `/video-testimonials` link on /es/resenas still points at the legacy EN URL (no ES counterpart).
+
+## Gotchas this session
+- **Device offline 10-05 → 10-22**: files were built 10-05, held in the cloud workspace + a chat zip, landed 10-22 after re-basing BaseHead (pixel) and Footer (community) onto main — mtime guards caught both. Lesson: any gap between build and landing = re-stage every modified file and re-apply, never force.
+- Cloud build check needed `overrides: {"vite": "7.3.6"}` only because the check copy had no package-lock (astro 6.3.6 pins vite 7; a second rolldown vite 8 snuck in via @tailwindcss/vite). **Repo package.json NOT touched** — `npm ci` never hits this.
+- Spanish slugs mean hreflang/toggle pairing runs off `i18n.ts`, not path symmetry. Keep that file honest.
+- Line endings preserved per file (CRLF components stayed CRLF; new ES files are LF).
+
+# 🟡 IN PROGRESS — 2026-10-12 (session 11)  ·  Mass tort expansion · PILOT PAGE AWAITING H.K./ERIC APPROVAL
+
+**Scope (H.K.'s calls):** 3 tort subpages under `/practice-areas/mass-tort/[slug]/` — **Ozempic/GLP-1 (pilot), Hair Relaxer, Uber Sexual Assault.** Hub page gets an "Active Litigation" card grid AFTER the pilot pattern is approved. Rejected: Roundup (SCOTUS preemption loss 6/2026 + $7.25B settlement pending), Depo-Provera (settlement in principle 6/2026), Paraquat (winding down), talc, AFFF, Bair Hugger, Tylenol-autism, hernia mesh (H.K. passed).
+
+**In working tree, uncommitted:** `src/pages/practice-areas/mass-tort/ozempic.astro` — 11 sections, mirrors mass-tort.astro template + 2 new sections (Litigation Status cards, Who May Qualify drugs/injuries columns). Reuses /mass-tort-hero.jpeg, no new assets. Cloud build: 84 pages, 0 errors, sitemap + FAQ JSON-LD verified.
+
+**⚠ ERIC'S GATE — WIDE OPEN on this page (litigation-status claims, time-sensitive).** Facts verified 2026-10-12 against JPML/court sources; full flag list in the project chat + status doc. Key: MDL-3094 (GI, E.D. Pa., objective-testing requirement, Daubert argued 9/2026, no settlement) · MDL-3163 (NAION, created 12/2025, no settlement) · drugs list (Ozempic/Wegovy/Rybelsus · Mounjaro/Zepbound/Trulicity) · "as of October 2026" dating — THIS PAGE NEEDS A QUARTERLY RE-VERIFY, litigation facts go stale.
+
+**NEXT:** 1. H.K./Eric review pilot (screenshots in 2026-10-12 chat). 2. On approval: mirror for hair-relaxer + uber-sexual-assault, add hub grid, build-check, then one commit for the set. 3. Do NOT push main until Eric clears the litigation claims.
+
 # 🟢 CURRENT STATE — 2026-10-12 (session 10)  ·  /community/ page built · UNCOMMITTED — awaiting Eric's copy review + H.K. commit
 
 **NEW COMMUNITY PAGE** built from Myah's draft doc (Community Page — Draft Copy.docx, Oct 12). All changes are in the working tree only — nothing committed, nothing live. **Pushing to main auto-deploys — do not push until Eric has seen the copy.**

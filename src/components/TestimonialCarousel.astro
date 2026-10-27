@@ -16,14 +16,49 @@ import playIcon from 'lucide-static/icons/play.svg?raw';
 import chevronLeftIcon from 'lucide-static/icons/chevron-left.svg?raw';
 import chevronRightIcon from 'lucide-static/icons/chevron-right.svg?raw';
 
+interface Props {
+	lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props as Props;
+
 // Client testimonials only (no news clips — those live on the gallery pages).
-const videos = [
-	{ id: '9JcLX3d8vaE', name: 'Tami', label: 'Recovered after a serious accident' },
-	{ id: '5rIXqFmnEoM', name: 'Joanna Crawford', label: 'Pleased with the process and result' },
-	{ id: '5ufsBNPmPh4', name: 'Shaun Carradine', label: 'Felt taken care of' },
-	{ id: 'tG8srnf9G3Q', name: 'Warren Stewart', label: 'Returns calls and emails' },
-	{ id: 'yuoWIW7uSQg', name: 'Aaron', label: 'Made me feel taken care of' },
-];
+// The videos themselves are in English; the Spanish version says so.
+const videos =
+	lang === "es"
+		? [
+				{ id: '9JcLX3d8vaE', name: 'Tami', label: 'Se recuperó tras un accidente grave' },
+				{ id: '5rIXqFmnEoM', name: 'Joanna Crawford', label: 'Satisfecha con el proceso y el resultado' },
+				{ id: '5ufsBNPmPh4', name: 'Shaun Carradine', label: 'Se sintió bien atendido' },
+				{ id: 'tG8srnf9G3Q', name: 'Warren Stewart', label: 'Responde llamadas y correos' },
+				{ id: 'yuoWIW7uSQg', name: 'Aaron', label: 'Me hicieron sentir bien atendido' },
+			]
+		: [
+				{ id: '9JcLX3d8vaE', name: 'Tami', label: 'Recovered after a serious accident' },
+				{ id: '5rIXqFmnEoM', name: 'Joanna Crawford', label: 'Pleased with the process and result' },
+				{ id: '5ufsBNPmPh4', name: 'Shaun Carradine', label: 'Felt taken care of' },
+				{ id: 'tG8srnf9G3Q', name: 'Warren Stewart', label: 'Returns calls and emails' },
+				{ id: 'yuoWIW7uSQg', name: 'Aaron', label: 'Made me feel taken care of' },
+			];
+
+const t =
+	lang === "es"
+		? {
+				eyebrow: "Clientes Reales",
+				h2: "Escuche a Nuestros Clientes",
+				sub: "Historias breves en video de personas que hemos representado (videos en inglés).",
+				prevAria: "Testimonio anterior",
+				nextAria: "Siguiente testimonio",
+				playAria: (name) => `Reproducir testimonio en video — ${name}`,
+			}
+		: {
+				eyebrow: "Real Clients",
+				h2: "Hear From Our Clients",
+				sub: "{t.sub}",
+				prevAria: "Previous testimonial",
+				nextAria: "Next testimonial",
+				playAria: (name) => `Play video testimonial — ${name}`,
+			};
 
 const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 ---
@@ -32,13 +67,13 @@ const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
 		<div class="mx-auto max-w-2xl text-center">
 			<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
-				Real Clients
+				{t.eyebrow}
 			</p>
 			<h2
 				id="carousel-heading"
 				class="mt-3 text-2xl font-bold tracking-tight text-balance text-brand-navy sm:text-3xl"
 			>
-				Hear From Our Clients
+				{t.h2}
 			</h2>
 			<p class="mt-3 text-base text-pretty text-gray-600">
 				Short video stories from people we've represented.
@@ -50,7 +85,7 @@ const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 			<button
 				type="button"
 				data-carousel-prev
-				aria-label="Previous testimonial"
+				aria-label={t.prevAria}
 				class="absolute -left-3 top-1/2 z-10 hidden size-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-brand-navy shadow-md transition-all hover:border-brand-gold hover:text-brand-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold disabled:pointer-events-none disabled:opacity-0 sm:inline-flex lg:-left-5 [&>svg]:size-5"
 				set:html={chevronLeftIcon}
 			></button>
@@ -67,7 +102,7 @@ const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 								data-lightbox
 								data-type="video"
 								data-video-id={video.id}
-								aria-label={`Play video testimonial — ${video.name}`}
+								aria-label={t.playAria(video.name)}
 								class="group block w-full overflow-hidden rounded-xl border border-gray-200 bg-white text-left shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2"
 							>
 								<span class="relative block aspect-video overflow-hidden bg-brand-navy">
@@ -100,7 +135,7 @@ const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 			<button
 				type="button"
 				data-carousel-next
-				aria-label="Next testimonial"
+				aria-label={t.nextAria}
 				class="absolute -right-3 top-1/2 z-10 hidden size-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-brand-navy shadow-md transition-all hover:border-brand-gold hover:text-brand-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold disabled:pointer-events-none disabled:opacity-0 sm:inline-flex lg:-right-5 [&>svg]:size-5"
 				set:html={chevronRightIcon}
 			></button>

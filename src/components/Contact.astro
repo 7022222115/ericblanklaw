@@ -4,11 +4,41 @@ import circleDollarSignIcon from "lucide-static/icons/circle-dollar-sign.svg?raw
 import clockIcon from "lucide-static/icons/clock.svg?raw";
 import ContactForm from "./ContactForm.astro";
 
-const reasons = [
-	{ text: "Free, no-obligation case review", icon: checkCircleIcon },
-	{ text: "No fees unless we win your case", icon: circleDollarSignIcon },
-	{ text: "Available 24/7 — nights, weekends, holidays", icon: clockIcon },
-];
+interface Props {
+	lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const reasons =
+	lang === "es"
+		? [
+				{ text: "Evaluación de caso gratuita y sin compromiso", icon: checkCircleIcon },
+				{ text: "Sin honorarios a menos que ganemos su caso", icon: circleDollarSignIcon },
+				{ text: "Disponibles 24/7 — noches, fines de semana y días festivos", icon: clockIcon },
+			]
+		: [
+				{ text: "Free, no-obligation case review", icon: checkCircleIcon },
+				{ text: "No fees unless we win your case", icon: circleDollarSignIcon },
+				{ text: "Available 24/7 — nights, weekends, holidays", icon: clockIcon },
+			];
+
+const t =
+	lang === "es"
+		? {
+				h2: "Solicite su Evaluación Gratuita de Caso",
+				sub: "Es gratis, confidencial y sin compromiso.",
+				eyebrow: "Por Qué Llamar Ahora",
+				h3: "Tres Razones Para Contactarnos Hoy",
+				deadline: "La mayoría de los casos de lesiones personales tienen plazos estrictos. Cuanto antes nos contacte, más opciones tendremos para luchar por lo que le corresponde.",
+			}
+		: {
+				h2: "Request Your Free Case Review",
+				sub: "It's free, confidential, and there's no obligation.",
+				eyebrow: "Why Call Now",
+				h3: "Three Reasons To Reach Out Today",
+				deadline: "Most personal injury cases have strict deadlines. The sooner we hear from you, the more options we have to fight for what you're owed.",
+			};
 ---
 
 <section
@@ -22,10 +52,10 @@ const reasons = [
 				id="contact-heading"
 				class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
 			>
-				Request Your Free Case Review
+				{t.h2}
 			</h2>
 			<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
-				It's free, confidential, and there's no obligation.
+				{t.sub}
 			</p>
 		</div>
 
@@ -33,10 +63,10 @@ const reasons = [
 			<!-- LEFT: why call now -->
 			<div>
 				<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
-					Why Call Now
+					{t.eyebrow}
 				</p>
 				<h3 class="mt-3 text-xl font-bold sm:text-2xl">
-					Three Reasons To Reach Out Today
+					{t.h3}
 				</h3>
 				<ul class="mt-6 space-y-4">
 					{
@@ -53,13 +83,12 @@ const reasons = [
 					}
 				</ul>
 				<p class="mt-6 max-w-md text-base text-pretty text-white/70">
-					Most personal injury cases have strict deadlines. The sooner we hear from you, the
-					more options we have to fight for what you're owed.
+					{t.deadline}
 				</p>
 			</div>
 
 			<!-- RIGHT: call-back form -->
-			<ContactForm />
+			<ContactForm lang={lang} />
 		</div>
 	</div>
 </section>

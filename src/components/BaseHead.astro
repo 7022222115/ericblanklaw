@@ -1,4 +1,6 @@
 ---
+import { altFor } from "../data/i18n";
+
 interface Props {
 	title: string;
 	description: string;
@@ -6,6 +8,7 @@ interface Props {
 	ogImage?: string;
 	ogType?: string;
 	noindex?: boolean;
+	lang?: "en" | "es";
 }
 
 const {
@@ -15,6 +18,7 @@ const {
 	ogImage = "/og-default.jpg",
 	ogType = "website",
 	noindex = false,
+	lang = "en",
 } = Astro.props;
 
 let canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
@@ -29,6 +33,13 @@ if (!canonicalParsed.pathname.endsWith("/") && !canonicalLastSegment.includes(".
 }
 const ogImageURL = new URL(ogImage, Astro.site).href;
 const siteName = "Eric Blank Injury Attorneys";
+const ogLocale = lang === "es" ? "es_US" : "en_US";
+
+// Bidirectional hreflang pair — emitted automatically on any page (either
+// language) whose path is in the i18n route map. x-default points at English.
+const alt = altFor(Astro.url.pathname);
+const hreflangEn = alt ? new URL(alt.en, Astro.site).href : null;
+const hreflangEs = alt ? new URL(alt.es, Astro.site).href : null;
 const robotsContent = noindex
 	? "noindex, nofollow"
 	: "index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large";
@@ -41,6 +52,9 @@ const robotsContent = noindex
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
+{hreflangEn && <link rel="alternate" hreflang="en" href={hreflangEn} />}
+{hreflangEs && <link rel="alternate" hreflang="es" href={hreflangEs} />}
+{hreflangEn && <link rel="alternate" hreflang="x-default" href={hreflangEn} />}
 <meta name="robots" content={robotsContent} />
 <meta name="theme-color" content="#0F1E3D" />
 
@@ -54,7 +68,7 @@ const robotsContent = noindex
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:image" content={ogImageURL} />
 <meta property="og:site_name" content={siteName} />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content={ogLocale} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />

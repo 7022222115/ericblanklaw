@@ -1,0 +1,593 @@
+---
+import '../../../styles/global.css';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import TestimonialCarousel from '../../../components/TestimonialCarousel.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+import { firmNode, attorneyNode } from '../../../data/firm';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import quoteIcon from 'lucide-static/icons/quote.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+
+const title = "Abogado de Compensación Laboral en Las Vegas | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"¿Lesionado en el trabajo en Nevada? La compensación laboral es un sistema sin culpa con plazos estrictos (Formulario C-1 dentro de 7 días; Formulario C-4 dentro de 90 días). Eric Blank Injury Attorneys ayuda a los trabajadores lesionados a obtener los beneficios que se les deben. Consulta gratuita. Llame al (702) 222-2115.";
+
+const heroTrust = ["Más de 26 Años", "Millones Recuperados", "Disponibles 24/7", "Consulta Gratuita"];
+
+const stats = [
+	{ value: "Millones", label: "Recuperados para Trabajadores Lesionados" },
+	{ value: "Miles", label: "de Casos de Lesiones Laborales Manejados" },
+	{ value: "$0", label: "de Su Bolsillo", note: "Solo honorarios de contingencia" },
+	{ value: "24/7", label: "Consulta Gratuita" },
+];
+
+const steps = [
+	{
+		icon: stethoscopeIcon,
+		title: "Obtenga Atención Médica",
+		text: "Reciba atención médica de inmediato. La compensación laboral de Nevada generalmente exige tratamiento de un proveedor autorizado — el panel de su empleador o de su aseguradora — así que pregunte antes de elegir un médico si no es una emergencia.",
+	},
+	{
+		icon: phoneCallIcon,
+		title: "Notifique a Su Empleador de Inmediato",
+		text: "Avise a su supervisor o a recursos humanos lo antes posible después de la lesión. Reportar tarde es una de las razones más comunes por las que los reclamos se cuestionan o se niegan.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Presente el Formulario C-1 (Dentro de 7 Días)",
+		text: "El Formulario C-1 (Aviso de Lesión o Enfermedad Ocupacional) es su notificación formal por escrito a su empleador. La ley de Nevada exige que lo presente dentro de los 7 días del accidente o de darse cuenta por primera vez de que su condición puede estar relacionada con el trabajo. Guarde siempre una copia del C-1 completado para sus propios registros.",
+	},
+	{
+		icon: searchIcon,
+		title: "Presente el Formulario C-4 (Dentro de 90 Días)",
+		text: "En Nevada, el Formulario C-4 (Reclamo de Compensación del Empleado / Informe de Tratamiento Inicial) es el formulario que realmente inicia su reclamo de compensación laboral. Usted completa su parte con el médico tratante en su primera visita, y el proveedor lo presenta ante su empleador y su aseguradora. Por ley, el C-4 debe completarse y presentarse dentro de los 90 días del accidente (o del primer inicio de una enfermedad ocupacional), un plazo estricto que puede costarle sus beneficios si lo incumple.",
+	},
+	{
+		icon: banIcon,
+		title: "No Renuncie a Sus Derechos con una Firma",
+		text: "No firme formularios de acuerdo, de liberación de responsabilidad o de 'elección de médico' que no entienda por completo. Algunas firmas pierden beneficios de forma permanente. Y no renuncie a su trabajo sin hablar primero con un abogado.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Llame a un Abogado",
+		text: "Los reclamos negados, las calificaciones de deterioro bajas y los beneficios cortados indebidamente son comunes en los casos de compensación laboral de Nevada. Cuanto antes un abogado con experiencia participe en su expediente, más fácil es defenderse e identificar cualquier posible reclamo contra terceros antes de que la evidencia clave desaparezca.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: searchIcon,
+		title: "Construimos el Reclamo y Cumplimos los Plazos",
+		text: "Nos aseguramos de que su C-1 y su C-4 se presenten correctamente y a tiempo, de que su tratamiento autorizado quede documentado y de que el formulario correcto llegue a la parte correcta. Los plazos de la compensación laboral de Nevada son cortos e implacables.",
+	},
+	{
+		icon: clipboardListIcon,
+		title: "Peleamos las Negativas y las Malas Calificaciones",
+		text: "Las negativas, las calificaciones de deterioro bajas y los cortes de beneficios son comunes. Manejamos la apelación de varios pasos de Nevada — oficial de audiencias, oficial de apelaciones y más allá — y rebatimos con fuerza una evaluación de calificación que subestime la lesión.",
+	},
+	{
+		icon: handshakeIcon,
+		title: "Encontramos el Reclamo Contra Terceros",
+		text: "Si alguien distinto de su empleador causó la lesión — un conductor negligente, un contratista en el lugar de trabajo, el fabricante de un producto defectuoso — puede existir un reclamo de lesiones personales separado junto a su reclamo de compensación laboral. Ese segundo reclamo puede recuperar daños que la compensación laboral no cubre.",
+	},
+	{
+		icon: gavelIcon,
+		title: "Negociamos o Litigamos",
+		text: "Ya sea que su caso se resuelva en una audiencia, se decida en apelación o avance a una demanda contra terceros, preparamos cada expediente como si fuera a pelearse.",
+	},
+];
+
+const benefitsAvailable = [
+	"Tratamiento médico autorizado",
+	"Incapacidad Total Temporal (TTD) — reemplazo de salario mientras no puede trabajar",
+	"Incapacidad Parcial Temporal (TPD) — complemento de salario en trabajo liviano",
+	"Incapacidad Parcial Permanente (PPD) — indemnización basada en el deterioro calificado",
+	"Incapacidad Total Permanente (PTD) — para lesiones catastróficas",
+	"Rehabilitación vocacional",
+	"Beneficios por muerte para los dependientes sobrevivientes",
+];
+
+const benefitsNotAvailable = [
+	"Dolor y sufrimiento",
+	"Angustia emocional (en la mayoría de las situaciones)",
+	"La totalidad de los salarios perdidos — el TTD generalmente reemplaza alrededor de dos tercios del salario",
+	"Pérdida de consorcio para los familiares",
+	"Daños punitivos",
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "Plazos Estrictos",
+		text: "La compensación laboral de Nevada tiene sus propios plazos, separados de la ley de lesiones personales. El Formulario C-1 (aviso del empleado) debe presentarse dentro de los 7 días de la lesión (NRS 616C.015). El Formulario C-4 (el reclamo en sí) debe presentarse dentro de los 90 días del accidente (NRS 616C.020). Incumplir estos plazos puede hundir un reclamo que de otro modo sería válido.",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "Sistema Sin Culpa",
+		text: "La compensación laboral es un sistema sin culpa. Generalmente no necesita probar que su empleador fue negligente — solo que la lesión surgió de su empleo y en el curso del mismo. La contraparte: los beneficios de compensación laboral están definidos por estatuto y no incluyen el dolor y sufrimiento.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Reclamos Contra Terceros",
+		text: "Si alguien distinto de su empleador causó la lesión — un conductor negligente, un contratista en el lugar de trabajo, un producto defectuoso — usted puede tener un reclamo de lesiones personales separado junto al reclamo de compensación laboral. Coordinar los dos es crítico para una recuperación completa, y nosotros manejamos ambos lados.",
+	},
+];
+
+const faqs = [
+	{
+		q: "¿Necesito probar que mi empleador tuvo la culpa?",
+		a: "No. La compensación laboral de Nevada es un sistema sin culpa. Generalmente solo tiene que demostrar que la lesión surgió de su empleo y en el curso del mismo — no que su empleador hizo algo mal. La contraparte es que los beneficios de compensación laboral se limitan a lo que el estatuto establece y no incluyen el dolor y sufrimiento.",
+	},
+	{
+		q: "¿Cuáles son los plazos de la compensación laboral en Nevada?",
+		a: "Dos plazos clave. Primero, notifique a su empleador y complete el Formulario C-1 (Aviso de Lesión o Enfermedad Ocupacional) dentro de los 7 días de la lesión (NRS 616C.015). Segundo, presente el Formulario C-4 (Reclamo de Compensación del Empleado) dentro de los 90 días del accidente (NRS 616C.020). Ambos son estrictos — incumplirlos puede poner en riesgo un reclamo. Existen excepciones limitadas: por ejemplo, si su empleador ya tenía conocimiento real del accidente, el requisito de aviso por escrito puede excusarse. Si le preocupa un plazo vencido, hable con un abogado de inmediato en lugar de asumir que el reclamo está perdido.",
+	},
+	{
+		q: "¿Puedo ver a mi propio médico por una lesión de trabajo?",
+		a: "En la mayoría de los reclamos de compensación laboral de Nevada, el tratamiento debe venir de un proveedor autorizado — el panel de su empleador o de su aseguradora. El tratamiento no autorizado puede no estar cubierto. Aplican algunas excepciones, especialmente en emergencias. Pregunte antes de elegir, y no asuma que la aseguradora cubrirá la atención externa.",
+	},
+	{
+		q: "¿Qué beneficios puedo recibir?",
+		a: "Atención médica autorizada, incapacidad total o parcial temporal (reemplazo de salario mientras no puede trabajar o solo puede hacer trabajo liviano), indemnizaciones por incapacidad parcial o total permanente si su lesión resulta en un deterioro duradero calificado, rehabilitación vocacional y — si un trabajador fallece — beneficios para los dependientes sobrevivientes. Generalmente no hay recuperación por dolor y sufrimiento en un reclamo estándar de compensación laboral.",
+	},
+	{
+		q: "¿Puedo también demandar a alguien distinto de mi empleador?",
+		a: "A menudo sí. Si un tercero — un conductor que lo golpeó mientras estaba en el trabajo, un contratista en un lugar de trabajo, el fabricante de un producto defectuoso — causó o contribuyó a la lesión, usted puede tener un reclamo de lesiones personales separado junto a su reclamo de compensación laboral. Esos reclamos SÍ pueden recuperar daños que la compensación laboral no cubre, incluido el dolor y sufrimiento. Coordinamos los dos para que la compensación laboral no socave una recuperación completa contra el tercero.",
+	},
+	{
+		q: "¿Qué pasa si mi reclamo de compensación fue negado?",
+		a: "Las negativas son comunes y apelables. Nevada tiene un proceso de apelación de varios pasos — oficial de audiencias, oficial de apelaciones y, en última instancia, revisión en el tribunal de distrito. Los plazos de cada paso son cortos, así que no espere para involucrar a un abogado.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Evaluación de caso gratuita y sin compromiso", icon: checkCircleIcon },
+	{ text: "Sin honorarios a menos que ganemos su caso", icon: circleDollarSignIcon },
+	{ text: "Disponibles 24/7 — noches, fines de semana y días festivos", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		firmNode,
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/compensacion-laboral#service",
+			name: "Eric Blank Injury Attorneys — Representación en Compensación Laboral",
+			serviceType: "Servicios Legales de Compensación Laboral",
+			url: "https://ericblanklaw.com/es/areas-de-practica/compensacion-laboral",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			priceRange: "Honorarios de Contingencia — Sin Honorarios a Menos Que Ganemos",
+			inLanguage: "es",
+			provider: { "@id": "https://ericblanklaw.com/#legalservice" },
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		attorneyNode,
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/compensacion-laboral#faq",
+			inLanguage: "es",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="es">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/es/areas-de-practica/compensacion-laboral"
+			lang="es"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header lang="es" />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/workers-compensation-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Compensación Laboral en Las Vegas
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Abogado de Compensación Laboral en Las Vegas
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						Un reclamo de compensación laboral en Nevada no es una demanda por lesiones
+						personales. Es un sistema sin culpa separado con sus propios formularios, sus
+						propios beneficios y plazos muy cortos — y un solo paso en falso puede hundir un
+						reclamo que de otro modo sería sólido. Por más de 22 años, Eric Blank Injury
+						Attorneys ha ayudado a los trabajadores lesionados a avanzar por el proceso de
+						compensación laboral y recuperar los beneficios a los que tienen derecho. Consulta
+						gratuita, y sin honorarios a menos que ganemos.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Evaluación Gratuita de su Caso
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What to do after a work injury -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Primeros Pasos
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Qué Hacer Después de una Lesión de Trabajo en Nevada
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							La compensación laboral de Nevada gira en torno a plazos y papeleo. Así puede
+							proteger su reclamo desde el primer día.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nuestro Enfoque
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Cómo Eric Blank Injury Attorneys Maneja los Casos de Compensación Laboral
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Eric Blank pasó los primeros años de su carrera defendiendo a compañías de
+							seguros. Aplicamos ese conocimiento interno a cada expediente de compensación
+							laboral — la misma ventaja que usamos en toda nuestra{" "}
+							<a
+								href="/es/areas-de-practica"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								práctica de lesiones personales
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — Benefits (NOT PI damages) -->
+			<section class="bg-white" aria-labelledby="benefits-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Beneficios
+						</p>
+						<h2
+							id="benefits-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Lo Que Cubre la Compensación Laboral de Nevada — Y Lo Que No
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							La compensación laboral es un sistema de beneficios definidos. Paga categorías
+							específicas de pérdidas establecidas por el estatuto de Nevada — pero no
+							incluye toda la gama de daños que una demanda por lesiones personales
+							permitiría.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Beneficios Disponibles de la Compensación Laboral</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									benefitsAvailable.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">No Disponible Solo Bajo la Compensación Laboral</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									benefitsNotAvailable.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={banIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Si un tercero — alguien distinto de su empleador — causó la lesión, un reclamo de
+						lesiones personales separado junto al reclamo de compensación laboral puede
+						incluir el dolor y sufrimiento y otros daños que la compensación laboral no
+						cubre. Una{" "}
+						<a
+							href="/es/contacto"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							consulta gratuita
+						</a>{" "}
+						es la mejor manera de identificar cada reclamo que aplica.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Ley de Nevada
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Reglas Clave de la Compensación Laboral de Nevada
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Esta es información general, no asesoramiento legal para su caso específico. Hable
+						con un abogado sobre los hechos de su lesión.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Preguntas Frecuentes
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Preguntas Comunes Sobre Compensación Laboral
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Featured testimonial -->
+			<section class="bg-gray-50">
+				<div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+					<figure>
+						<span
+							aria-hidden="true"
+							class="mx-auto block w-fit text-brand-navy/60 [&>svg]:size-10"
+							set:html={quoteIcon}
+						/>
+						<blockquote class="mt-5 text-xl font-medium text-balance text-brand-navy sm:text-2xl">
+							I had terrible injuries as a result of the accident I had and hiring Eric
+							Blank to be on my side during this difficult process was the best thing I did.
+						</blockquote>
+						<figcaption class="mt-5 text-base font-bold text-brand-navy">— Tami</figcaption>
+					</figure>
+					<p class="mt-3 text-xs text-gray-500">Reseña original en inglés.</p>
+					<a
+						href="/es/resenas"
+						class="mt-6 inline-block text-sm font-semibold text-brand-navy transition-colors hover:text-brand-gold"
+					>
+						Lea más reseñas de clientes →
+					</a>
+				</div>
+			</section>
+
+			<!-- Video testimonial carousel -->
+			<TestimonialCarousel lang="es" />
+
+			<!-- SECTION 9 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Solicite su Evaluación Gratuita de Caso
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							Es gratis, confidencial y sin compromiso.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Por Qué Llamar Ahora
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Tres Razones Para Contactarnos Hoy
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								Los plazos de la compensación laboral de Nevada son cortos y estrictos — y el
+								ángulo de los reclamos contra terceros puede cambiar todo el panorama de la
+								recuperación. Cuanto antes nos contacte, más podremos hacer.
+							</p>
+						</div>
+						<ContactForm lang="es" />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer lang="es" />
+		<!-- Universal media lightbox (used by the carousel) -->
+		<Lightbox />
+	</body>
+</html>

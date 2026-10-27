@@ -1,0 +1,546 @@
+---
+import '../../../styles/global.css';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import { firmNode, attorneyNode } from '../../../data/firm';
+
+import phoneIcon from 'lucide-static/icons/phone.svg?raw';
+import shieldIcon from 'lucide-static/icons/shield.svg?raw';
+import phoneCallIcon from 'lucide-static/icons/phone-call.svg?raw';
+import cameraIcon from 'lucide-static/icons/camera.svg?raw';
+import stethoscopeIcon from 'lucide-static/icons/stethoscope.svg?raw';
+import banIcon from 'lucide-static/icons/ban.svg?raw';
+import scaleIcon from 'lucide-static/icons/scale.svg?raw';
+import searchIcon from 'lucide-static/icons/search.svg?raw';
+import clipboardListIcon from 'lucide-static/icons/clipboard-list.svg?raw';
+import handshakeIcon from 'lucide-static/icons/handshake.svg?raw';
+import gavelIcon from 'lucide-static/icons/gavel.svg?raw';
+import circleCheckIcon from 'lucide-static/icons/circle-check.svg?raw';
+import calendarClockIcon from 'lucide-static/icons/calendar-clock.svg?raw';
+import shieldCheckIcon from 'lucide-static/icons/shield-check.svg?raw';
+import checkCircleIcon from 'lucide-static/icons/check-circle.svg?raw';
+import circleDollarSignIcon from 'lucide-static/icons/circle-dollar-sign.svg?raw';
+import clockIcon from 'lucide-static/icons/clock.svg?raw';
+import landmarkIcon from 'lucide-static/icons/landmark.svg?raw';
+
+const title = "Abogado para Sobrevivientes de Agresión Sexual y Abuso en Las Vegas | Eric Blank Injury Attorneys | (702) 222-2115";
+const description =
+	"Si usted sobrevivió una agresión sexual o abuso, la ley de Nevada le da opciones — y a menudo sin plazo para alzar la voz. Eric Blank Injury Attorneys ofrece una conversación gratuita, confidencial y sin presión. Llame al (702) 222-2115.";
+
+const heroTrust = ["Más de 26 Años", "Representación Compasiva", "Disponibles 24/7", "Gratis y Confidencial"];
+
+const stats = [
+	{ value: "26+", label: "Años Ayudando a Víctimas de Lesiones" },
+	{ value: "Miles", label: "de Casos de Lesiones Manejados" },
+	{ value: "$0", label: "de Su Bolsillo", note: "Solo honorarios de contingencia" },
+	{ value: "100%", label: "Gratis y Confidencial" },
+];
+
+const steps = [
+	{
+		icon: shieldIcon,
+		title: "Usted Tiene el Control",
+		text: "No hay una forma incorrecta de alzar la voz, ni un calendario que deba cumplir para hablar con nosotros. Usted decide qué pasa después, en cada paso del camino.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Un Caso Civil Es Independiente de Uno Penal",
+		text: "No necesita un informe policial, un cargo penal ni una condena para presentar un reclamo civil. Son caminos distintos, y usted puede elegir uno, ambos o ninguno.",
+	},
+	{
+		icon: calendarClockIcon,
+		title: "Puede Tener Más Tiempo del Que Cree",
+		text: "Nevada ha eliminado el plazo de presentación para muchos reclamos por agresión sexual. Alzar la voz años — incluso décadas — después aún puede ser posible.",
+	},
+	{
+		icon: shieldCheckIcon,
+		title: "Su Privacidad Importa",
+		text: "Estas conversaciones son confidenciales. Manejamos cada caso con discreción y cuidado por su seguridad y bienestar.",
+	},
+];
+
+const howWeHelp = [
+	{
+		icon: handshakeIcon,
+		title: "Escuchamos, Creemos y Vamos a Su Ritmo",
+		text: "Empezamos por escuchar. Nada avanza hasta que usted esté listo para que avance.",
+	},
+	{
+		icon: landmarkIcon,
+		title: "Responsabilizamos a las Partes Correctas",
+		text: "Esto puede incluir a la persona responsable y, en muchos casos, a una institución que permitió o ignoró el abuso — una escuela, un empleador o una organización.",
+	},
+	{
+		icon: shieldIcon,
+		title: "Protegemos Su Privacidad en Todo Momento",
+		text: "Tomamos medidas para resguardar su identidad y manejamos la información sensible con cuidado durante el proceso legal.",
+	},
+	{
+		icon: stethoscopeIcon,
+		title: "Buscamos una Recuperación Significativa",
+		text: "La compensación no puede deshacer lo que pasó, pero puede apoyar su sanación, su tratamiento y su futuro.",
+	},
+];
+
+const economicDamages = [
+	"Costos de consejería y terapia",
+	"Gastos médicos",
+	"Ingresos perdidos o capacidad de generar ingresos",
+	"Costos de reubicación o medidas de seguridad",
+];
+
+const nonEconomicDamages = [
+	"Daño emocional y psicológico",
+	"Dolor y sufrimiento",
+	"Pérdida del disfrute de la vida",
+	"Daño a las relaciones y al sentido de seguridad",
+];
+
+const nevadaLaws = [
+	{
+		icon: calendarClockIcon,
+		title: "A Menudo, No Hay Plazo para Alzar la Voz",
+		text: "En 2023, Nevada eliminó el plazo de presentación para muchos reclamos civiles basados en agresión sexual, incluidos los reclamos de sobrevivientes adultos. Los sobrevivientes de abuso sexual infantil también han estado libres de plazo de presentación en muchos casos desde hace tiempo. En algunas situaciones, la ley puede aplicarse retroactivamente, lo que puede reabrir opciones para personas a quienes alguna vez les dijeron que era demasiado tarde.",
+	},
+	{
+		icon: landmarkIcon,
+		title: "Puede Reclamar a Quienes lo Permitieron",
+		text: "Un reclamo civil no se limita a la persona que causó el daño. En algunos casos, una institución — como una escuela, un empleador, una organización religiosa, un grupo juvenil o un negocio — también puede ser legalmente responsable si no lo protegió o ignoró las señales de advertencia.",
+	},
+	{
+		icon: scaleIcon,
+		title: "Los Casos Civiles y Penales Son Diferentes",
+		text: "Un caso civil trata de su recuperación y de que los responsables rindan cuentas, y es independiente de cualquier caso penal. No necesita una condena penal — ni siquiera un caso penal — para presentar un reclamo civil.",
+	},
+	{
+		icon: clockIcon,
+		title: "Algunos Reclamos Tienen Sus Propios Plazos",
+		text: "Aunque Nevada ha eliminado el plazo para muchos reclamos de agresión sexual, los reclamos relacionados aún pueden tener reglas diferentes. La mejor manera de entender qué aplica a su situación es tener una conversación privada con un abogado. No tiene costo ni obligación de seguir adelante.",
+	},
+];
+
+const faqs = [
+	{
+		q: "¿Es demasiado tarde para alzar la voz?",
+		a: "En muchos casos, no. Nevada ha eliminado el plazo de presentación para muchos reclamos de agresión sexual, y la ley puede aplicarse retroactivamente en algunas situaciones. Aunque alguna vez le hayan dicho que era demasiado tarde, aún puede valer la pena hablar con un abogado.",
+	},
+	{
+		q: "¿Tengo que ir a la policía?",
+		a: "No. Un reclamo civil es independiente del sistema penal. Usted puede buscar que se rindan cuentas y obtener recuperación sin presentar un informe policial ni esperar un caso penal.",
+	},
+	{
+		q: "¿Se hará público mi nombre?",
+		a: "Tomamos su privacidad en serio y usamos todas las protecciones legales disponibles para ayudar a mantener su identidad y su información confidenciales siempre que sea posible. Le explicaremos cómo funcionan las protecciones de privacidad antes de que decida si seguir adelante.",
+	},
+	{
+		q: "¿Puedo responsabilizar a una escuela u organización?",
+		a: "Muchas veces, sí. Si una institución no lo protegió o ignoró las señales de advertencia, puede compartir la responsabilidad. En muchos casos, responsabilizar a la institución es una parte importante del caso.",
+	},
+	{
+		q: "¿Cuánto me costará?",
+		a: "Nada por hablar con nosotros. Su consulta es gratuita y confidencial, y si avanzamos juntos, usted no paga honorarios de abogado a menos que recuperemos compensación para usted.",
+	},
+	{
+		q: "No estoy seguro de estar listo. ¿Puedo contactarlos de todos modos?",
+		a: "Sí. Puede contactarnos simplemente para entender sus opciones, sin presión y sin obligación de seguir adelante. Usted marca el ritmo, y nosotros lo acompañamos desde donde esté.",
+	},
+];
+
+const contactReasons = [
+	{ text: "Una conversación gratuita y confidencial", icon: checkCircleIcon },
+	{ text: "Sin honorarios a menos que recuperemos para usted", icon: circleDollarSignIcon },
+	{ text: "Usted marca el ritmo — sin presión, sin compromiso", icon: clockIcon },
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		firmNode,
+		{
+			"@type": "LegalService",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/agresion-sexual#service",
+			name: "Eric Blank Injury Attorneys — Representación para Sobrevivientes de Agresión Sexual y Abuso",
+			serviceType: "Servicios Legales para Sobrevivientes de Agresión Sexual y Abuso",
+			url: "https://ericblanklaw.com/es/areas-de-practica/agresion-sexual",
+			image: "https://ericblanklaw.com/Eric_Blank_Injury_Attorneys_Logo.png",
+			priceRange: "Honorarios de Contingencia — Sin Honorarios a Menos Que Ganemos",
+			inLanguage: "es",
+			provider: { "@id": "https://ericblanklaw.com/#legalservice" },
+			employee: { "@id": "https://ericblanklaw.com/#attorney" },
+		},
+		attorneyNode,
+		{
+			"@type": "FAQPage",
+			"@id": "https://ericblanklaw.com/es/areas-de-practica/agresion-sexual#faq",
+			inLanguage: "es",
+			mainEntity: faqs.map((faq) => ({
+				"@type": "Question",
+				name: faq.q,
+				acceptedAnswer: { "@type": "Answer", text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<html lang="es">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			canonical="https://ericblanklaw.com/es/areas-de-practica/agresion-sexual"
+			lang="es"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="overflow-x-clip">
+		<Header lang="es" />
+		<main>
+			<!-- SECTION 1 — Hero -->
+			<section class="relative bg-brand-navy text-white">
+				<div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/sexual-assault-hero.jpeg')" aria-hidden="true"></div>
+				<div class="absolute inset-0 bg-brand-navy/75" aria-hidden="true"></div>
+				<div class="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
+					<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+						Sobrevivientes de Agresión Sexual y Abuso
+					</p>
+					<h1 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+						Apoyo y Opciones Legales para Sobrevivientes
+					</h1>
+					<p class="mx-auto mt-4 max-w-2xl text-base text-pretty text-white/70 sm:text-lg">
+						Si usted sobrevivió una agresión sexual o abuso, merece ser escuchado, creído y
+						tratado con cuidado. La ley de Nevada da a los sobrevivientes opciones legales
+						importantes y, en muchos casos, el plazo para presentar un reclamo puede estar
+						extendido o eliminado por completo. Cuando usted esté listo, estamos aquí para
+						escuchar, de manera confidencial y a su ritmo.
+					</p>
+					<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="#contact"
+							class="inline-flex w-full items-center justify-center rounded-md bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:w-auto sm:text-lg"
+						>
+							Hable con Nosotros Confidencialmente
+						</a>
+						<a
+							href="tel:7022222115"
+							class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/30 px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 sm:w-auto sm:text-lg"
+						>
+							<span class="[&>svg]:size-5" set:html={phoneIcon} aria-hidden="true" />
+							(702) 222-2115
+						</a>
+					</div>
+					<ul class="mx-auto mt-8 flex max-w-xl flex-wrap items-center justify-center gap-y-1 text-xs font-medium text-white/60 sm:text-sm">
+						{
+							heroTrust.map((item, index) => (
+								<li
+									class:list={[
+										index > 0 &&
+											"before:mx-2 before:text-brand-gold before:content-['•'] sm:before:mx-3",
+									]}
+								>
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</section>
+
+			<!-- SECTION 2 — Trust strip -->
+			<section class="border-b border-gray-200 bg-white">
+				<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+					<dl class="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+						{
+							stats.map((stat) => (
+								<div class="text-center">
+									<dd class="text-3xl font-extrabold text-brand-navy sm:text-4xl">
+										{stat.value}
+									</dd>
+									<dt class="mt-1 text-sm font-semibold text-gray-600">{stat.label}</dt>
+									{stat.note && <p class="mt-0.5 text-xs text-gray-500">{stat.note}</p>}
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</section>
+
+			<!-- SECTION 3 — What you should know -->
+			<section class="bg-white" aria-labelledby="steps-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Para Sobrevivientes
+						</p>
+						<h2
+							id="steps-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Lo Que Debe Saber
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Algunas cosas que pueden ayudarle mientras considera si contactarnos, y cuándo
+							hacerlo.
+						</p>
+					</div>
+					<ol class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+						{
+							steps.map((step, index) => (
+								<li class="rounded-lg border border-gray-200 bg-white p-6">
+									<div class="flex items-center gap-3">
+										<span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-brand-gold">
+											{index + 1}
+										</span>
+										<span
+											class="text-brand-navy [&>svg]:size-7"
+											set:html={step.icon}
+											aria-hidden="true"
+										/>
+									</div>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{step.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{step.text}
+									</p>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+
+			<!-- SECTION 4 — How we help -->
+			<section class="bg-gray-50" aria-labelledby="help-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Nuestro Enfoque
+						</p>
+						<h2
+							id="help-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Cómo Eric Blank Injury Attorneys Puede Ayudar
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							Manejamos estos casos con compasión, discreción y respeto por lo que usted ha
+							vivido — parte de cómo servimos nuestra más amplia{" "}
+							<a
+								href="/es/areas-de-practica"
+								class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+							>
+								práctica de lesiones personales
+							</a>.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+						{
+							howWeHelp.map((item) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={item.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{item.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{item.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 5 — What you can recover -->
+			<section class="bg-white" aria-labelledby="damages-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Daños y Perjuicios
+						</p>
+						<h2
+							id="damages-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Lo Que los Sobrevivientes Podrían Recuperar
+						</h2>
+						<p class="mt-4 text-base text-pretty text-gray-600 sm:text-lg">
+							La compensación nunca puede deshacer el daño. Lo que sí puede hacer es ayudar a
+							apoyar la sanación y el futuro de un sobreviviente — cubriendo tanto los costos
+							tangibles como el costo personal más profundo.
+						</p>
+					</div>
+					<div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:mt-16">
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Daños Económicos</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									economicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<div class="rounded-lg border border-gray-200 bg-white p-8">
+							<h3 class="text-xl font-bold text-brand-navy">Daños No Económicos</h3>
+							<ul class="mt-5 space-y-3">
+								{
+									nonEconomicDamages.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-5"
+												set:html={circleCheckIcon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-gray-700">{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						La situación de cada sobreviviente es diferente, y lo que un reclamo puede implicar
+						depende de los hechos específicos. Una{" "}
+						<a
+							href="/es/contacto"
+							class="font-semibold text-brand-navy underline decoration-brand-gold decoration-2 underline-offset-2 transition-colors hover:decoration-brand-navy"
+						>
+							conversación gratuita y confidencial
+						</a>{" "}
+						es la mejor manera de entender sus opciones.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 6 — Nevada law -->
+			<section class="bg-gray-50" aria-labelledby="law-heading">
+				<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Ley de Nevada
+						</p>
+						<h2
+							id="law-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Leyes Clave de Nevada de Protección a Sobrevivientes
+						</h2>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:mt-16">
+						{
+							nevadaLaws.map((law) => (
+								<div class="rounded-lg border border-gray-200 bg-white p-6">
+									<span
+										class="block text-brand-navy [&>svg]:size-10"
+										set:html={law.icon}
+										aria-hidden="true"
+									/>
+									<h3 class="mt-4 text-lg font-bold text-brand-navy">{law.title}</h3>
+									<p class="mt-2 text-sm leading-relaxed text-pretty text-gray-600">
+										{law.text}
+									</p>
+								</div>
+							))
+						}
+					</div>
+					<p class="mx-auto mt-8 max-w-2xl text-center text-sm text-pretty text-gray-500">
+						Esta es información general, no asesoramiento legal para su caso específico. Hable
+						con un abogado sobre los hechos de su situación.
+					</p>
+				</div>
+			</section>
+
+			<!-- SECTION 7 — FAQ -->
+			<section class="bg-white" aria-labelledby="faq-heading">
+				<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+					<div class="text-center">
+						<p class="text-sm font-semibold tracking-wider text-brand-navy uppercase">
+							Preguntas Frecuentes
+						</p>
+						<h2
+							id="faq-heading"
+							class="mt-3 text-3xl font-bold tracking-tight text-balance text-brand-navy sm:text-4xl"
+						>
+							Preguntas Comunes de Sobrevivientes
+						</h2>
+					</div>
+					<div class="mt-10 space-y-8 lg:mt-12">
+						{
+							faqs.map((faq) => (
+								<div>
+									<h3 class="text-lg font-bold text-brand-navy sm:text-xl">{faq.q}</h3>
+									<p class="mt-2 text-base leading-relaxed text-pretty text-gray-600">
+										{faq.a}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 8 — Final CTA + contact form -->
+			<section
+				id="contact"
+				class="scroll-mt-24 bg-brand-navy text-white"
+				aria-labelledby="cta-heading"
+			>
+				<div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+					<div class="mx-auto max-w-2xl text-center">
+						<h2
+							id="cta-heading"
+							class="text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+						>
+							Cuando Usted Esté Listo, Estamos Aquí para Escuchar
+						</h2>
+						<p class="mt-3 text-base text-pretty text-white/70 sm:text-lg">
+							Sea lo que sea que haya vivido, merece ser tratado con cuidado y respeto.
+							Contáctenos cuando esté listo — confidencialmente y a su ritmo.
+						</p>
+					</div>
+					<div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+						<div>
+							<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
+								Qué Esperar
+							</p>
+							<h3 class="mt-3 text-xl font-bold sm:text-2xl">
+								Una Conversación, en Sus Términos
+							</h3>
+							<ul class="mt-6 space-y-4">
+								{
+									contactReasons.map((reason) => (
+										<li class="flex items-start gap-3">
+											<span
+												class="mt-0.5 shrink-0 text-brand-gold [&>svg]:size-6"
+												set:html={reason.icon}
+												aria-hidden="true"
+											/>
+											<span class="text-base text-white/90 sm:text-lg">{reason.text}</span>
+										</li>
+									))
+								}
+							</ul>
+							<p class="mt-6 max-w-md text-base text-pretty text-white/70">
+								No hay presión ni compromiso. Puede contactarnos simplemente para entender sus
+								opciones, y decidir desde ahí qué es lo correcto para usted.
+							</p>
+						</div>
+						<ContactForm lang="es" />
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer lang="es" />
+	</body>
+</html>

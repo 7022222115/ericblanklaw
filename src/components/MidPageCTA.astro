@@ -1,32 +1,57 @@
 ---
-const trustSignals = ["Available 24/7", "Free Consultation", "No Fees Unless We Win"];
+interface Props {
+	lang?: "en" | "es";
+}
+
+const { lang = "en" } = Astro.props as Props;
+
+const trustSignals =
+	lang === "es"
+		? ["Disponibles 24/7", "Consulta Gratuita", "Sin Honorarios a Menos Que Ganemos"]
+		: ["Available 24/7", "Free Consultation", "No Fees Unless We Win"];
+
+const t =
+	lang === "es"
+		? {
+				eyebrow: "Listos Cuando Usted Lo Esté",
+				h2: "Obtenga su Evaluación Gratuita de Caso",
+				sub: "Sin honorarios a menos que ganemos. Solo responda dos preguntas rápidas y le llamaremos dentro de un día hábil.",
+				cta: "Solicitar Mi Evaluación Gratuita",
+				prefer: "¿Prefiere llamar?",
+			}
+		: {
+				eyebrow: "Ready When You Are",
+				h2: "Get Your Free Case Review",
+				sub: "No fees unless we win. Just answer two quick questions and we'll call you within one business day.",
+				cta: "Request My Free Case Review",
+				prefer: "Prefer to call?",
+			};
 ---
 
 <section class="bg-brand-navy text-white" aria-labelledby="midcta-heading">
 	<div class="mx-auto max-w-[700px] px-4 py-14 text-center sm:px-6 sm:py-16 lg:py-20">
 		<p class="text-sm font-semibold tracking-wider text-brand-gold uppercase">
-			Ready When You Are
+			{t.eyebrow}
 		</p>
 		<h2
 			id="midcta-heading"
 			class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl"
 		>
-			Get Your Free Case Review
+			{t.h2}
 		</h2>
 		<p class="mx-auto mt-4 max-w-lg text-base text-pretty text-white/70 sm:text-lg">
-			No fees unless we win. Just answer two quick questions and we'll call you within one
-			business day.
+			{t.sub}
 		</p>
 
 		<a
 			href="#contact"
 			class="mt-8 inline-flex items-center justify-center rounded-lg bg-brand-gold px-8 py-4 text-base font-bold text-brand-navy transition-colors hover:bg-[#d1a63b] sm:text-lg"
 		>
-			Request My Free Case Review
+			{t.cta}
 		</a>
 
 		<p class="mt-5 text-sm text-white/70">
-			Prefer to call?{" "}
+			{t.prefer}{" "}
 			<a
 				href="tel:7022222115"
 				class="font-semibold text-white transition-colors hover:text-brand-gold"
