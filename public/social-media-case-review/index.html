@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Case Review: Social Media Harm | Eric Blank Injury Attorneys</title>
+<meta name="description" content="Was your child hurt by social media? Find out in a few minutes if your family may have a case. Free and private.">
+<meta name="robots" content="noindex">
+<!--
+  SOCIAL MEDIA HARM INTAKE PAGE: Eric Blank Injury Attorneys
+  Lives at: https://ericblanklaw.com/social-media-case-review/  (this is the {{INTAKE_PAGE_URL}} for the newsletter)
+  Form posts to the SAME Formspree endpoint as the site contact form (xjgzyjvz); submissions are tagged by the _subject and source fields. After submit, _next redirects to /thank-you (mirrors ContactForm.astro).
+  Field names are in each input's name="" attribute. "_gotcha" is Formspree's hidden spam trap - leave it empty and in place.
+  Submissions include health information about minors - notification emails must go only to the firm's intake address.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1A3A;
+    --blue: #1C3AFF;
+    --yellow: #FFDF44;
+    --ink: #1F2937;
+    --muted: #5B6474;
+    --rule: #C9D0DD;
+    --soft: #F3F5FA;
+    --page: #EEF1F7;
+    --error: #B42318;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Source Sans 3', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; }
+  a { color: var(--blue); }
+
+  .topbar { background: #fff; border-bottom: 5px solid var(--yellow); }
+  .topbar-inner { max-width: 760px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .topbar img { width: 180px; height: auto; display: block; }
+  .topbar .call { font-weight: 700; color: var(--navy); text-decoration: none; white-space: nowrap; }
+  .topbar .call span { display: block; font-size: 13px; font-weight: 400; color: var(--muted); line-height: 1.2; }
+
+  .hero { background: var(--navy); color: #D5DCEB; }
+  .hero-inner { max-width: 760px; margin: 0 auto; padding: 40px 20px 36px; }
+  .hero h1 { font-family: var(--serif); font-weight: 600; color: #fff; font-size: 34px; line-height: 1.2; margin: 0 0 14px; }
+  .hero p { margin: 0; max-width: 34em; }
+
+  main { max-width: 760px; margin: 0 auto; padding: 0 20px 48px; }
+  .card { background: #fff; margin-top: -1px; padding: 32px 36px 36px; }
+  .crisis { background: #FFF8D6; border-left: 5px solid var(--yellow); padding: 14px 18px; font-size: 15px; line-height: 1.5; margin: 0 0 28px; }
+  .crisis strong { color: var(--navy); }
+  .crisis a { color: var(--navy); font-weight: 700; }
+
+  fieldset { border: 0; padding: 0; margin: 0 0 30px; }
+  legend { float: left; width: 100%; font-family: var(--serif); font-weight: 600; font-size: 22px; color: var(--navy); padding: 0; margin: 0 0 4px; }
+  .legend-note { clear: both; color: var(--muted); font-size: 15px; margin: 0 0 16px; padding-top: 4px; }
+  legend + .field, legend + div { clear: both; }
+  .section { border-top: 1px solid var(--rule); padding-top: 24px; }
+
+  .field { margin: 0 0 20px; }
+  .field > label, .q { display: block; font-weight: 600; color: var(--navy); margin: 0 0 6px; line-height: 1.35; }
+  .hint { display: block; font-weight: 400; color: var(--muted); font-size: 15px; }
+  input[type=text], input[type=tel], input[type=email], input[type=number], select, textarea {
+    width: 100%; font: inherit; color: var(--ink); background: #fff;
+    border: 1px solid #9AA6BF; border-radius: 4px; padding: 11px 12px; min-height: 48px;
+  }
+  textarea { min-height: 96px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: 3px solid rgba(28,58,255,.25); border-color: var(--blue); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+
+  .choices { display: grid; gap: 8px; }
+  .choices.cols { grid-template-columns: 1fr 1fr; }
+  .choices.cols3 { grid-template-columns: 1fr 1fr 1fr; }
+  .choice { display: flex; align-items: flex-start; gap: 10px; border: 1px solid var(--rule); border-radius: 4px; padding: 11px 12px; cursor: pointer; background: #fff; line-height: 1.35; }
+  .choice:hover { border-color: #9AA6BF; }
+  .choice input { margin: 3px 0 0; width: 18px; height: 18px; flex: none; accent-color: var(--blue); }
+  .choice:has(input:checked) { border-color: var(--blue); background: #F4F6FF; }
+
+  .field > label.consent { font-weight: 400; color: var(--muted); }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.45; color: var(--muted); margin: 0 0 22px; }
+  .consent input { margin-top: 3px; width: 18px; height: 18px; flex: none; accent-color: var(--blue); }
+
+  button[type=submit] { font: inherit; font-weight: 700; font-size: 18px; color: var(--navy); background: var(--yellow); border: 0; border-radius: 4px; padding: 15px 28px; cursor: pointer; width: 100%; }
+  button[type=submit]:hover { background: #FFE97A; }
+  .after-submit { text-align: center; font-size: 15px; color: var(--muted); margin: 12px 0 0; }
+
+  .error-msg { display: none; color: var(--error); font-size: 15px; margin-top: 6px; }
+  .invalid .error-msg { display: block; }
+  .invalid input[type=text], .invalid input[type=tel], .invalid input[type=email], .invalid input[type=number], .invalid select { border-color: var(--error); }
+  .invalid .choices .choice { border-color: #E3A8A3; }
+  .form-alert { display: none; background: #FEF3F2; border: 1px solid #F4C7C3; color: var(--error); border-radius: 4px; padding: 12px 14px; margin: 0 0 18px; font-size: 15px; }
+
+  .save-note { background: var(--soft); border-radius: 4px; padding: 14px 18px; font-size: 15px; line-height: 1.5; margin: 0 0 22px; }
+  .save-note strong { color: var(--navy); }
+  [data-show-if][hidden] { display: none !important; }
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+  footer { max-width: 760px; margin: 0 auto; padding: 0 20px 40px; font-size: 13px; line-height: 1.55; color: var(--muted); }
+  footer p { margin: 0 0 10px; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 28px; }
+    .card { padding: 26px 20px 28px; }
+    .row, .choices.cols { grid-template-columns: 1fr; }
+    .choices.cols3 { grid-template-columns: 1fr 1fr 1fr; }
+    .topbar img { width: 150px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="https://ericblanklaw.com/"><img src="/Eric_Blank_Injury_Attorneys_Logo.png" alt="Eric Blank Injury Attorneys" width="180" height="43"></a>
+    <a class="call" href="tel:+17022222115"><span>Free, 24/7</span>(702) 222-2115</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Was your child hurt by social media?</h1>
+    <p>Answer a few questions to see if your family may have a case. It takes about 5 minutes. It's free and private, and you don't have to hire us.</p>
+  </div>
+</section>
+
+<main>
+  <div class="card">
+    <div class="crisis" role="note">
+      <strong>If someone is struggling right now:</strong> call or text <a href="tel:988">988</a> to reach the Suicide &amp; Crisis Lifeline, any time. If someone is in danger, call 911. Get help first. This form can wait.
+    </div>
+
+    <form id="intake" action="https://formspree.io/f/xjgzyjvz" method="post" novalidate>
+      <div class="form-alert" id="formAlert" role="alert">Please fix the items marked in red.</div>
+
+      <input type="hidden" name="source" value="social-media-harm-newsletter">
+      <input type="hidden" name="_subject" value="New Social Media Harm Intake — Eric Blank Law">
+      <input type="hidden" name="_next" value="https://ericblanklaw.com/thank-you">
+      <input type="hidden" name="utm_source" id="utm_source" value="">
+      <input type="hidden" name="utm_medium" id="utm_medium" value="">
+      <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
+      <div class="hp" aria-hidden="true">
+        <label for="website">Leave this empty</label>
+        <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
+      </div>
+
+      <!-- 1. About you -->
+      <fieldset>
+        <legend>About you</legend>
+        <p class="legend-note">So we know who to call back.</p>
+
+        <div class="field" data-required>
+          <span class="q" id="q-rel">Who are you filling this out for?</span>
+          <div class="choices" role="radiogroup" aria-labelledby="q-rel">
+            <label class="choice"><input type="radio" name="relationship" value="self"> Myself</label>
+            <label class="choice"><input type="radio" name="relationship" value="parent_guardian"> My child (I'm a parent or guardian)</label>
+            <label class="choice"><input type="radio" name="relationship" value="family_deceased"> A loved one who passed away</label>
+            <label class="choice"><input type="radio" name="relationship" value="other"> Someone else</label>
+          </div>
+          <span class="error-msg">Please choose one.</span>
+        </div>
+
+        <div class="row">
+          <div class="field" data-required>
+            <label for="name">Your full name</label>
+            <input type="text" id="name" name="caller_name" autocomplete="name">
+            <span class="error-msg">Please enter your name.</span>
+          </div>
+          <div class="field" data-required>
+            <label for="phone">Your phone number</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(702) 555-0123">
+            <span class="error-msg">Please enter a phone number we can reach.</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="email">Email <span class="hint">Optional</span></label>
+            <input type="email" id="email" name="email" autocomplete="email">
+            <span class="error-msg">Please check your email address.</span>
+          </div>
+          <div class="field">
+            <label for="best_time">Best time to call <span class="hint">Optional</span></label>
+            <select id="best_time" name="best_time">
+              <option value="">Any time</option>
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 2. Social media use -->
+      <fieldset class="section">
+        <legend>Social media use</legend>
+        <p class="legend-note">"They" means the person who was hurt. If that's you, answer for yourself.</p>
+
+        <div class="field" data-required>
+          <span class="q" id="q-apps">Which apps did they use? <span class="hint">Pick all that apply.</span></span>
+          <div class="choices cols" role="group" aria-labelledby="q-apps">
+            <label class="choice"><input type="checkbox" name="platforms" value="instagram"> Instagram</label>
+            <label class="choice"><input type="checkbox" name="platforms" value="tiktok"> TikTok</label>
+            <label class="choice"><input type="checkbox" name="platforms" value="snapchat"> Snapchat</label>
+            <label class="choice"><input type="checkbox" name="platforms" value="youtube"> YouTube</label>
+            <label class="choice"><input type="checkbox" name="platforms" value="facebook"> Facebook</label>
+            <label class="choice"><input type="checkbox" name="platforms" value="other"> Other</label>
+          </div>
+          <span class="error-msg">Please pick at least one.</span>
+        </div>
+
+        <div class="row">
+          <div class="field" data-required>
+            <label for="start_age">How old were they when they started?</label>
+            <select id="start_age" name="start_age">
+              <option value="">Choose one</option>
+              <option value="under_10">Under 10</option>
+              <option value="10_12">10 to 12</option>
+              <option value="13_15">13 to 15</option>
+              <option value="16_17">16 or 17</option>
+              <option value="18_plus">18 or older</option>
+              <option value="not_sure">Not sure</option>
+            </select>
+            <span class="error-msg">Please choose one.</span>
+          </div>
+          <div class="field" data-required>
+            <label for="hours">About how many hours a day?</label>
+            <select id="hours" name="daily_hours">
+              <option value="">Choose one</option>
+              <option value="under_3">Less than 3 hours</option>
+              <option value="3_5">3 to 5 hours</option>
+              <option value="over_5">More than 5 hours</option>
+              <option value="not_sure">Not sure</option>
+            </select>
+            <span class="error-msg">Please choose one.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 3. What happened -->
+      <fieldset class="section">
+        <legend>What happened</legend>
+        <p class="legend-note">Just the basics. We'll talk through the rest on the phone.</p>
+
+        <div class="field">
+          <label for="injured_name">Name of the person who was hurt <span class="hint">Skip this if it's you.</span></label>
+          <input type="text" id="injured_name" name="injured_name" autocomplete="off">
+        </div>
+
+        <div class="field" data-required>
+          <span class="q" id="q-harm">What did they go through? <span class="hint">Pick all that apply.</span></span>
+          <div class="choices" role="group" aria-labelledby="q-harm">
+            <label class="choice"><input type="checkbox" name="injuries" value="eating_disorder"> Eating disorder (like anorexia or bulimia)</label>
+            <label class="choice"><input type="checkbox" name="injuries" value="body_dysmorphia"> Body dysmorphia (a disorder about how you look)</label>
+            <label class="choice"><input type="checkbox" name="injuries" value="self_harm"> Self-harm</label>
+            <label class="choice"><input type="checkbox" name="injuries" value="suicidal_thoughts"> Thoughts of suicide</label>
+            <label class="choice"><input type="checkbox" name="injuries" value="suicide_attempt"> Suicide attempt</label>
+            <label class="choice"><input type="checkbox" name="injuries" value="death_by_suicide"> Died by suicide</label>
+            <label class="choice"><input type="checkbox" name="injuries" value="other"> Something else</label>
+          </div>
+          <span class="error-msg">Please pick at least one.</span>
+        </div>
+
+        <div class="row">
+          <div class="field" data-required>
+            <label for="age_now">How old are they today? <span class="hint">If they passed away, how old were they?</span></label>
+            <input type="number" id="age_now" name="age_now" min="1" max="99" inputmode="numeric">
+            <span class="error-msg">Please enter an age.</span>
+          </div>
+          <div class="field" data-required>
+            <label for="age_harm">How old were they when this started? <span class="hint">Your best guess is fine.</span></label>
+            <input type="number" id="age_harm" name="age_at_injury" min="1" max="99" inputmode="numeric">
+            <span class="error-msg">Please enter an age.</span>
+          </div>
+        </div>
+
+        <div class="field" data-required>
+          <span class="q" id="q-when">About when did it start? <span class="hint">Month and year. Your best guess is fine.</span></span>
+          <div class="row" role="group" aria-labelledby="q-when">
+            <select id="injury_month" name="injury_month" aria-label="Month"><option value="">Month</option><option value="unknown">Not sure</option><option value="01">January</option><option value="02">February</option><option value="03">March</option><option value="04">April</option><option value="05">May</option><option value="06">June</option><option value="07">July</option><option value="08">August</option><option value="09">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
+            <select id="injury_year" name="injury_year" aria-label="Year" class="year-select"><option value="">Year</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option value="before_2005">Before 2005</option></select>
+          </div>
+          <span class="error-msg">Please choose a month and year.</span>
+        </div>
+
+        <div class="field" data-required>
+          <label for="state">What state did they live in when this happened?</label>
+          <select id="state" name="state">
+            <option value="">Choose a state</option>
+            <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>District of Columbia</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Puerto Rico</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+          </select>
+          <span class="error-msg">Please choose a state.</span>
+        </div>
+
+        <!-- Shown only when a loved one passed away -->
+        <div id="deceased-fields" data-show-if="deceased">
+          <div class="row">
+            <div class="field" data-required>
+              <label for="death_date">When did they pass away? <span class="hint">Month and year</span></label>
+              <input type="text" id="death_date" name="date_of_death" placeholder="e.g. May 2025">
+              <span class="error-msg">Please enter a month and year.</span>
+            </div>
+            <div class="field" data-required>
+              <label for="estate">Has an estate been opened?</label>
+              <select id="estate" name="estate_opened">
+                <option value="">Choose one</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="not_sure">Not sure</option>
+              </select>
+              <span class="error-msg">Please choose one.</span>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 4. Treatment -->
+      <fieldset class="section">
+        <legend>Treatment</legend>
+        <p class="legend-note">This helps us understand what they went through.</p>
+
+        <div class="field" data-required>
+          <span class="q" id="q-treat">What treatment did they get? <span class="hint">Pick all that apply.</span></span>
+          <div class="choices cols" role="group" aria-labelledby="q-treat">
+            <label class="choice"><input type="checkbox" name="treatment" value="counseling_therapy"> Counseling or therapy</label>
+            <label class="choice"><input type="checkbox" name="treatment" value="medicine"> Medicine</label>
+            <label class="choice"><input type="checkbox" name="treatment" value="hospital"> Hospital stay</label>
+            <label class="choice"><input type="checkbox" name="treatment" value="other"> Other treatment</label>
+            <label class="choice"><input type="checkbox" name="treatment" value="none" data-exclusive> No treatment</label>
+          </div>
+          <span class="error-msg">Please pick at least one.</span>
+        </div>
+
+        <!-- Shown only when they had treatment -->
+        <div id="treatment-details" data-show-if="treated">
+          <div class="row">
+            <div class="field">
+              <label for="doctor">Doctor or counselor's name <span class="hint">Optional</span></label>
+              <input type="text" id="doctor" name="treating_doctor">
+            </div>
+            <div class="field">
+              <label for="facility">Office, clinic, or hospital <span class="hint">Optional</span></label>
+              <input type="text" id="facility" name="treatment_facility">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="facility_city">City and state of that office <span class="hint">Optional</span></label>
+              <input type="text" id="facility_city" name="treatment_facility_location" placeholder="e.g. Las Vegas, NV">
+            </div>
+            <div class="field">
+              <label for="treat_freq">How long and how often? <span class="hint">Optional</span></label>
+              <input type="text" id="treat_freq" name="treatment_duration_frequency" placeholder="e.g. weekly for 1 year">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 5. A few more questions -->
+      <fieldset class="section">
+        <legend>A few more questions</legend>
+        <p class="legend-note">There are no wrong answers. These just help our review.</p>
+
+        <div class="field" data-required>
+          <span class="q" id="q-prior">Before they started using social media, did they ever get treatment for mental health or behavior?</span>
+          <div class="choices cols3" role="radiogroup" aria-labelledby="q-prior">
+            <label class="choice"><input type="radio" name="prior_mental_health" value="no"> No</label>
+            <label class="choice"><input type="radio" name="prior_mental_health" value="yes"> Yes</label>
+            <label class="choice"><input type="radio" name="prior_mental_health" value="not_sure"> Not sure</label>
+          </div>
+          <span class="error-msg">Please choose one.</span>
+        </div>
+
+        <div class="field" data-required>
+          <span class="q" id="q-event">Around the time this started, was there another big life event? <span class="hint">Like a death in the family, a divorce, or a breakup.</span></span>
+          <div class="choices cols3" role="radiogroup" aria-labelledby="q-event">
+            <label class="choice"><input type="radio" name="competing_life_event" value="no"> No</label>
+            <label class="choice"><input type="radio" name="competing_life_event" value="yes"> Yes</label>
+            <label class="choice"><input type="radio" name="competing_life_event" value="not_sure"> Not sure</label>
+          </div>
+          <span class="error-msg">Please choose one.</span>
+        </div>
+
+        <div class="field" data-required>
+          <span class="q" id="q-family">Does anyone in their family have a history of mental illness?</span>
+          <div class="choices cols3" role="radiogroup" aria-labelledby="q-family">
+            <label class="choice"><input type="radio" name="family_mental_health_history" value="no"> No</label>
+            <label class="choice"><input type="radio" name="family_mental_health_history" value="yes"> Yes</label>
+            <label class="choice"><input type="radio" name="family_mental_health_history" value="not_sure"> Not sure</label>
+          </div>
+          <span class="error-msg">Please choose one.</span>
+        </div>
+
+        <!-- Shown only for a parent/guardian of a child under 18 -->
+        <div id="custody-field" data-show-if="minor">
+          <div class="field" data-required>
+            <span class="q" id="q-custody">Do you have custody of the child?</span>
+            <div class="choices cols" role="radiogroup" aria-labelledby="q-custody">
+            <label class="choice"><input type="radio" name="has_custody" value="no"> No</label>
+            <label class="choice"><input type="radio" name="has_custody" value="yes"> Yes</label>
+          </div>
+            <span class="error-msg">Please choose one.</span>
+          </div>
+          <div class="field" id="custody-who" data-show-if="no_custody" data-required>
+            <label for="custody_holder">Who has custody?</label>
+            <input type="text" id="custody_holder" name="custody_holder">
+            <span class="error-msg">Please tell us who has custody.</span>
+          </div>
+        </div>
+
+        <div class="field" data-required>
+          <span class="q" id="q-lawyer">Do you already have a lawyer for this?</span>
+          <div class="choices cols" role="radiogroup" aria-labelledby="q-lawyer">
+            <label class="choice"><input type="radio" name="has_lawyer" value="no"> No</label>
+            <label class="choice"><input type="radio" name="has_lawyer" value="yes"> Yes</label>
+          </div>
+          <span class="error-msg">Please choose one.</span>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything else you want us to know? <span class="hint">Optional. A sentence or two is plenty.</span></label>
+          <textarea id="notes" name="notes" maxlength="1000"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="save-note">
+        <strong>Please save anything that could help.</strong> Keep screenshots, screen-time reports, texts, emails, and medical records. Talk to us before deleting any social media accounts.
+      </div>
+
+      <div class="field" data-required id="consent-field">
+        <label class="consent"><input type="checkbox" name="consent_contact" value="yes"> I agree that Eric Blank Injury Attorneys may call or text me about this request. Message and data rates may apply. I understand that sending this form does not make the firm my lawyer.</label>
+        <span class="error-msg">Please check this box so we can contact you.</span>
+      </div>
+
+      <button type="submit">See if my family has a case</button>
+      <p class="after-submit">Rather talk now? Call <a href="tel:+17022222115"><strong>(702) 222-2115</strong></a>. We answer 24/7.</p>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <p><strong>ATTORNEY ADVERTISING.</strong> Attorney responsible: Eric Blank. Eric Blank Injury Attorneys, 7860 W Sahara Ave, Ste. 110, Las Vegas, NV 89117. This page is for general information and is not legal advice. Sending this form does not create an attorney-client relationship. Prior results do not guarantee a similar outcome. Whether you have a claim depends on the facts of your case, and time limits vary by state. Our firm may work with other law firms on these cases.</p>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('intake');
+  if (!form) return;
+
+  // Carry newsletter tracking tags (e.g. ?utm_source=newsletter) into the submission
+  var params = new URLSearchParams(window.location.search);
+  ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+    var el = document.getElementById(k);
+    if (el && params.get(k)) el.value = params.get(k);
+  });
+
+  // Show/hide follow-up questions
+  function val(name) { var el = form.querySelector('[name="' + name + '"]:checked'); return el ? el.value : ''; }
+  function checkedValues(name) { return Array.prototype.map.call(form.querySelectorAll('[name="' + name + '"]:checked'), function (i) { return i.value; }); }
+  var rules = {
+    deceased: function () { return val('relationship') === 'family_deceased' || checkedValues('injuries').indexOf('death_by_suicide') > -1; },
+    treated: function () { var t = checkedValues('treatment'); return t.length > 0 && t.indexOf('none') === -1; },
+    minor: function () { var a = Number(document.getElementById('age_now').value); return val('relationship') === 'parent_guardian' && a > 0 && a < 18; },
+    no_custody: function () { return val('has_custody') === 'no'; }
+  };
+  function updateVisibility() {
+    form.querySelectorAll('[data-show-if]').forEach(function (el) { el.hidden = !rules[el.getAttribute('data-show-if')](); });
+  }
+  form.addEventListener('input', updateVisibility);
+  form.addEventListener('change', updateVisibility);
+  updateVisibility();
+
+  // "No treatment" clears the other treatment boxes, and vice versa
+  form.addEventListener('change', function (ev) {
+    var t = ev.target;
+    if (t.name !== 'treatment' || !t.checked) return;
+    form.querySelectorAll('[name="treatment"]').forEach(function (b) {
+      if (b !== t && (t.hasAttribute('data-exclusive') || b.hasAttribute('data-exclusive'))) b.checked = false;
+    });
+    updateVisibility();
+  });
+
+  function isShown(el) { return !el.closest('[hidden]'); }
+
+  function fieldValid(field) {
+    var inputs = field.querySelectorAll('input, select, textarea');
+    var first = inputs[0];
+    if (!first) return true;
+    if (field.querySelector('#injury_month')) {
+      return !!document.getElementById('injury_month').value && !!document.getElementById('injury_year').value;
+    }
+    if (first.type === 'radio' || first.type === 'checkbox') {
+      return Array.prototype.some.call(inputs, function (i) { return i.checked; });
+    }
+    var v = (first.value || '').trim();
+    if (!v) return false;
+    if (first.type === 'tel') return v.replace(/\D/g, '').length >= 10;
+    if (first.type === 'number') { var n = Number(v); return n >= 1 && n <= 99; }
+    return true;
+  }
+
+  function emailValid() {
+    var e = document.getElementById('email');
+    var ok = !e.value.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value.trim());
+    e.closest('.field').classList.toggle('invalid', !ok);
+    return ok;
+  }
+
+  // Clear an error as soon as it's fixed (on typing, not on blur, so the page doesn't jump under the cursor)
+  function clearIfFixed(ev) {
+    var f = ev.target.closest('[data-required]');
+    if (f && f.classList.contains('invalid') && fieldValid(f)) f.classList.remove('invalid');
+    if (ev.target.id === 'email' && (ev.type === 'change' || ev.target.closest('.invalid'))) emailValid();
+  }
+  form.addEventListener('input', clearIfFixed);
+  form.addEventListener('change', clearIfFixed);
+
+  form.addEventListener('submit', function (ev) {
+    var firstBad = null;
+    form.querySelectorAll('[data-required]').forEach(function (f) {
+      if (!isShown(f)) { f.classList.remove('invalid'); return; }
+      var ok = fieldValid(f);
+      f.classList.toggle('invalid', !ok);
+      if (!ok && !firstBad) firstBad = f;
+    });
+    if (!emailValid() && !firstBad) firstBad = document.getElementById('email').closest('.field');
+    var alertBox = document.getElementById('formAlert');
+    if (firstBad) {
+      ev.preventDefault();
+      alertBox.style.display = 'block';
+      firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var focusable = firstBad.querySelector('input, select, textarea');
+      if (focusable) setTimeout(function () { focusable.focus({ preventScroll: true }); }, 300);
+    } else {
+      alertBox.style.display = 'none';
+    }
+  });
+})();
+</script>
+</body>
+</html>

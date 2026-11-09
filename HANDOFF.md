@@ -2,6 +2,20 @@
 
 **Full runbook: project doc `claude/ES-SUBDOMAIN-RETIREMENT-plan-2026-10-27.md`.** Goal: 301 the old Spanish WordPress subdomain into the live /es/ pages — consolidates its rankings/backlinks, kills the duplicate-Spanish-content problem created the moment /es/ shipped, and unblocks the GreenGeeks decommission. Three phases: (1) archive the old site + inventory URLs + build the mapping table (no DNS risk, Claude can do solo; Screaming Frog is on H.K.'s PC; `src/data/i18n.ts` is the canonical /es/ slug list; **H.K. reviews the mapping before Cloudflare**); (2) Cloudflare flip — Bulk Redirect list + catch-all, then proxy the `es` record, H.K. driving the dashboard like the 09-27 cutover (**pre-flight the dormant Page Rules/Bulk Redirects FIRST — the cutover lesson**); (3) GSC watch → TXT cleanup → GreenGeeks decision (identify the `2026.` subdomain before cancelling anything). Rollback = flip `es` back to gray; zone snapshot in `claude/CUTOVER-rollback-DNS-2026-09-27.md`.
 
+# 🟢 READY TO PUSH — 2026-11-09 (session 13): /social-media-case-review/ intake LP built + wired
+
+**New standalone landing page `public/social-media-case-review/index.html`** → serves verbatim at `https://ericblanklaw.com/social-media-case-review/` (this URL is the newsletter's {{INTAKE_PAGE_URL}}). Social-media-harm case-review intake: ~25 fields, conditional sections (deceased / treatment / custody), client-side validation, 988 crisis note, ATTORNEY ADVERTISING footer. `noindex` meta; lives in `public/` so the sitemap is untouched; **zero redirect changes — audit gate unaffected (still expect 349/349).**
+
+**Form wiring (mirrors ContactForm.astro):** posts to the SAME Formspree endpoint as the site contact form (`xjgzyjvz`) — H.K.'s call 2026-11-09, zero-setup over a separate form. Tagged `_subject` "New Social Media Harm Intake — Eric Blank Law" + hidden `source=social-media-harm-newsletter`; `_gotcha` honeypot; `_next` → `/thank-you`. Headless render check passed (conditionals, exclusive "No treatment" box, validation blocking, no JS errors).
+
+## ⚠ WARNING — check BEFORE the newsletter goes out
+Formspree **FREE plan caps ALL forms combined at 50 submissions/month** (verified in Formspree docs 2026-11-09; custom thank-you redirect is also paid-only — if the account is Free, `_next` is ignored and submitters see Formspree's generic thank-you instead of /thank-you). A newsletter blast on a Free account can blow the cap and **silently drop leads, contact-form leads included**. Check the plan in the Formspree dashboard; upgrade or split to a dedicated form if needed.
+
+## Verify after push (~2 min for the Cloudflare deploy)
+1. `https://ericblanklaw.com/social-media-case-review/` → 200, logo renders, phone links work.
+2. One TEST submission (put "TEST — ignore" in the notes field): notification email arrives with the tagged subject · **all checked values of the checkbox groups (platforms/injuries/treatment) appear in the email, not just the last one** · redirect lands on /thank-you (if it doesn't, see the plan warning above — cosmetic, submission still goes through).
+3. View-source: `noindex` meta present.
+
 # ✅ SHIPPED — 2026-10-27 (session 12 result): SPANISH LIVE ON ericblanklaw.com · AUDIT 349/349 · triage sheet fully reconciled
 
 **Merged `es` → main, pushed (`63e1672`), deployed, verified live 2026-10-27.** Apex checks all green: `/es/` 200 · ES/EN toggle + bidirectional hreflang · Meta Pixel firing on ES pages · `/es/gracias/` noindex · sitemap exactly **123 URLs (80 EN + 43 ES)** · both legacy Spanish URLs 301 single-hop to their /es/ LPs · EN pages unchanged (community link intact).
